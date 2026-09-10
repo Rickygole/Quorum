@@ -28,11 +28,15 @@ function plainTitle(t) {
   return head.replace(/^(Rezoning|Zoning)\s*[-–]\s*/i, "").replace(/\s*[-–]\s*$/, "").trim();
 }
 
+function tidyZone(z) {
+  return String(z).trim().replace(/\s+/g, "-").replace(/-+/g, "-").toUpperCase();
+}
+
 function plainLanguage(rec) {
   const t = rec.title;
   const addr = (rec.parcels[0] || {}).address || "the property";
   const zone = /from the (.{2,14}?) Zoning District to the (.{2,14}?) Zoning District/i.exec(t);
-  if (zone) return `Changes the zoning of ${addr} from ${zone[1].trim()} to ${zone[2].trim()}.`;
+  if (zone) return `Changes the zoning of ${addr} from ${tidyZone(zone[1])} to ${tidyZone(zone[2])}.`;
   if (/Conditional Use/i.test(t) && /(\d+) Dwelling Units/i.test(t)) {
     const n = /to (\d+) Dwelling Units/i.exec(t);
     return `Allows ${addr} to be converted into ${n ? n[1] : "several"} homes.`;
