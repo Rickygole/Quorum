@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -12,7 +13,10 @@ from ingest.normalize import load_corpus
 ROOT = Path(__file__).resolve().parent
 LABELS = ROOT / "labeled_set.jsonl"
 RESULTS = ROOT / "RESULTS.md"
+PERTURBATIONS_RESULTS = ROOT / "PERTURBATIONS.md"
 DECISIONS = ROOT / "agent_decisions.json"
+
+SWEEP_THRESHOLDS = (0.80, 0.85, 0.90, 0.92, 0.94, 0.95, 0.96, 0.97, 0.975, 0.98, 0.99, 1.00)
 
 
 def load_pairs():
@@ -75,16 +79,216 @@ BASELINES = {
 }
 
 
+def two_clause_rule(t):
+    return lambda r, o, n, f: f["parcel"]["match"] == "exact" or (
+        f["title"]["cosine"] >= t and f["committee_progression"]["prior_terminal"]
+    )
+
+
 def threshold_sweep(pairs):
     out = []
-    for t in (0.80, 0.85, 0.90, 0.92, 0.94, 0.95, 0.96, 0.97, 0.975, 0.98, 0.99, 1.00):
-        c = confusion(pairs, lambda r, o, n, f, t=t: f["parcel"]["match"] == "exact"
-                      or (f["title"]["cosine"] >= t and f["committee_progression"]["prior_terminal"]))
+    for t in SWEEP_THRESHOLDS:
+        c = confusion(pairs, two_clause_rule(t))
         out.append((t, c["accuracy"]))
     return out
 
 
-def run_agent(pairs, model=None):
+def pair_split_key(pair_id: int) -> str:
+    return hashlib.sha256(f"quorum-heldout-{pair_id}".encode()).hexdigest()
+
+
+def stratified_split(pairs):
+    groups: dict[tuple[str, str], list] = {}
+    for p in pairs:
+        row = p[0]
+        key = (row.get("tier", "parcel"), row["label"])
+        groups.setdefault(key, []).append(p)
+    tune, test = [], []
+    for key, items in groups.items():
+        items = sorted(items, key=lambda p: pair_split_key(p[0]["pair_id"]))
+        half = len(items) // 2
+        tune += items[:half]
+        test += items[half:]
+    return tune, test
+
+
+def tune_threshold(tune_pairs):
+    best_t, best_acc = SWEEP_THRESHOLDS[0], -1.0
+    for t in SWEEP_THRESHOLDS:
+        acc = confusion(tune_pairs, two_clause_rule(t))["accuracy"]
+        if acc > best_acc:
+            best_t, best_acc = t, acc
+    return best_t, best_acc
+
+
+def heldout_report(pairs, agent_decisions):
+    tune, test = stratified_split(pairs)
+    frozen_t, tune_acc = tune_threshold(tune)
+
+    baselines_on_test = {
+        name: confusion(test, fn) for name, fn in BASELINES.items()
+    }
+    frozen_rule_on_test = confusion(test, two_clause_rule(frozen_t))
+
+    agent_on_test = None
+    if agent_decisions:
+        test_ids = {row["pair_id"] for row, _, _, _ in test if row["pair_id"] in agent_decisions}
+        if test_ids:
+            agent_on_test = confusion(
+                [p for p in test if p[0]["pair_id"] in test_ids],
+                lambda r, o, n, f: agent_decisions[r["pair_id"]].decision == "continuation",
+            )
+
+    return {
+        "tune_ids": sorted(p[0]["pair_id"] for p in tune),
+        "test_ids": sorted(p[0]["pair_id"] for p in test),
+        "tune_size": len(tune),
+        "test_size": len(test),
+        "frozen_threshold": frozen_t,
+        "tune_accuracy": tune_acc,
+        "baselines_on_test": baselines_on_test,
+        "frozen_rule_on_test": frozen_rule_on_test,
+        "agent_on_test": agent_on_test,
+    }
+
+
+def apply_perturbation(pairs, perturbation):
+    out = []
+    for row, older, newer, _ in pairs:
+        o2, n2 = perturbation.apply(older, newer)
+        out.append((row, o2, n2, compute(n2, o2)))
+    return out
+
+
+def flipped_pairs(pairs, perturbed, fn):
+    out = []
+    for (row, o, n, f), (_, o2, n2, f2) in zip(pairs, perturbed):
+        before, after = fn(row, o, n, f), fn(row, o2, n2, f2)
+        if before != after:
+            out.append({
+                "pair_id": row["pair_id"], "label": row["label"],
+                "cosine_before": f["title"]["cosine"], "cosine_after": f2["title"]["cosine"],
+                "predicted_before": before, "predicted_after": after,
+            })
+    return out
+
+
+def perturbation_suite(pairs, baseline_stats, agent_decisions, run_agent_arm=False, model=None):
+    from eval.perturbations import REGISTRY
+
+    baseline_acc = {name: c["accuracy"] for name, c in baseline_stats.items()}
+    agent_acc = None
+    if agent_decisions:
+        agent_acc = confusion(
+            pairs, lambda r, o, n, f: agent_decisions[r["pair_id"]].decision == "continuation"
+        )["accuracy"]
+
+    rows = []
+    for name, perturbation in REGISTRY.items():
+        perturbed = apply_perturbation(pairs, perturbation)
+        changed_titles = sum(
+            1 for (row, o, n, f), (_, o2, n2, _) in zip(pairs, perturbed)
+            if o.title != o2.title or n.title != n2.title
+        )
+        for rule_name, fn in BASELINES.items():
+            after = confusion(perturbed, fn)
+            rows.append({
+                "transform": name,
+                "corpus_example": perturbation.corpus_example,
+                "titles_changed": changed_titles,
+                "rule": rule_name,
+                "before": round(baseline_acc[rule_name], 3),
+                "after": round(after["accuracy"], 3),
+                "delta": round(after["accuracy"] - baseline_acc[rule_name], 3),
+                "measured": True,
+                "flips": flipped_pairs(pairs, perturbed, fn),
+            })
+        if agent_decisions:
+            if run_agent_arm:
+                from agents.continuity import ContinuityAgent
+
+                agent = ContinuityAgent(model=model)
+                fresh = {}
+                for row, o2, n2, _ in perturbed:
+                    fresh[row["pair_id"]] = agent.decide(n2, o2)
+                after = confusion(
+                    perturbed, lambda r, o, n, f: fresh[r["pair_id"]].decision == "continuation"
+                )["accuracy"]
+                rows.append({
+                    "transform": name, "corpus_example": perturbation.corpus_example,
+                    "titles_changed": changed_titles, "rule": "Continuity Agent (re-run live)",
+                    "before": round(agent_acc, 3), "after": round(after, 3),
+                    "delta": round(after - agent_acc, 3), "measured": True,
+                })
+            else:
+                rows.append({
+                    "transform": name, "corpus_example": perturbation.corpus_example,
+                    "titles_changed": changed_titles, "rule": "Continuity Agent (cached, not re-run)",
+                    "before": round(agent_acc, 3), "after": round(agent_acc, 3),
+                    "delta": 0.0, "measured": False,
+                })
+    return rows
+
+
+def write_perturbation_results(rows, n_pairs):
+    L = []
+    L.append("# Perturbation results\n")
+    L.append(
+        f"Each transform in eval/perturbations.py is applied to the newer record's title in all "
+        f"{n_pairs} labeled pairs, the comparison features are recomputed, and every rule in BASELINES "
+        "is re-scored against the same, unchanged labels. A label preserving transform that flips "
+        "accuracy is evidence the rule is reading formatting noise rather than the underlying fact.\n"
+    )
+    L.append(
+        "Rows marked cached, not re-run report the accuracy of the Continuity Agent decisions already "
+        "on file, unchanged, because the perturbation was not sent to the model. That row cannot show "
+        "an effect by construction. It is listed only for side by side comparison with the deterministic "
+        "rows, and the delta is always zero. Pass --perturb-agent to spend real model calls and re-run "
+        "the agent on the perturbed titles.\n"
+    )
+    L.append("## Transforms and where they come from\n")
+    L.append("| Transform | Corpus example |")
+    L.append("|---|---|")
+    seen = set()
+    for r in rows:
+        if r["transform"] not in seen:
+            seen.add(r["transform"])
+            L.append(f"| {r['transform']} | {r['corpus_example']} |")
+
+    L.append("\n## Accuracy by transform and rule\n")
+    L.append("| Transform | Titles changed | Rule | Accuracy before | Accuracy after | Delta |")
+    L.append("|---|---|---|---|---|---|")
+    for r in rows:
+        L.append(
+            f"| {r['transform']} | {r['titles_changed']} | {r['rule']} | "
+            f"{fmt_pct(r['before'])} | {fmt_pct(r['after'])} | {r['delta']:+.3f} |"
+        )
+
+    flips = [r for r in rows if r.get("flips")]
+    if flips:
+        L.append("\n## Pairs where a transform flipped a rule's decision\n")
+        L.append("| Transform | Rule | Pair | Label | Cosine before | Cosine after |")
+        L.append("|---|---|---|---|---|---|")
+        for r in flips:
+            for flip in r["flips"]:
+                L.append(
+                    f"| {r['transform']} | {r['rule']} | {flip['pair_id']} | {flip['label']} | "
+                    f"{flip['cosine_before']} | {flip['cosine_after']} |"
+                )
+        L.append(
+            "\nEvery flip above happened without changing which parcel, sponsor, or status the record "
+            "names. Only the surface form of the title moved.\n"
+        )
+    else:
+        L.append(
+            "\nNo transform flipped any rule's decision on this set.\n"
+        )
+
+    PERTURBATIONS_RESULTS.write_text("\n".join(L) + "\n")
+    print(f"wrote {PERTURBATIONS_RESULTS}")
+
+
+def run_agent(pairs, model=None, persist=True):
     from agents.continuity import ContinuityAgent
 
     agent = ContinuityAgent(model=model)
@@ -94,7 +298,8 @@ def run_agent(pairs, model=None):
         decisions[row["pair_id"]] = d
         mark = "ok " if (d.decision == "continuation") == (row["label"] == "continuation") else "MISS"
         print(f"  {mark} pair {row['pair_id']:2} {older.file_number:>9} -> {newer.file_number:<9} {d.decision:13} {d.confidence:.2f}", flush=True)
-    save_decisions(decisions, agent)
+    if persist:
+        save_decisions(decisions, agent)
     return decisions
 
 
@@ -119,7 +324,47 @@ def fmt_pct(x):
     return f"{x * 100:.0f}%"
 
 
-def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions):
+def write_heldout_section(heldout):
+    L = []
+    L.append("## Held out split, frozen threshold\n")
+    L.append(
+        f"The 50 pairs are split into a tune half ({heldout['tune_size']}) and a test half "
+        f"({heldout['test_size']}), stratified on (tier, label) and assigned by a sha256 hash of the "
+        "pair id, so the split is the same every time this runs and was not chosen by looking at "
+        "which pairs are easy. The two clause rule's cosine threshold is swept on the tune half only, "
+        f"frozen at **{heldout['frozen_threshold']:.3f}** (tune accuracy "
+        f"{fmt_pct(heldout['tune_accuracy'])}), and every number below is that frozen rule and every "
+        "other rule scored on the test half, which the threshold never saw.\n"
+    )
+    L.append(f"Tune pair ids: {heldout['tune_ids']}")
+    L.append(f"\nTest pair ids: {heldout['test_ids']}\n")
+    L.append("| Rule | Accuracy on test half | Precision | Recall | F1 |")
+    L.append("|---|---|---|---|---|")
+    for name, c in heldout["baselines_on_test"].items():
+        L.append(f"| {name} | {fmt_pct(c['accuracy'])} | {c['precision']:.2f} | {c['recall']:.2f} | {c['f1']:.2f} |")
+    fr = heldout["frozen_rule_on_test"]
+    L.append(
+        f"| parcel exact OR (cosine >= {heldout['frozen_threshold']:.3f} AND prior terminal), "
+        f"threshold frozen from tune half | {fmt_pct(fr['accuracy'])} | {fr['precision']:.2f} | "
+        f"{fr['recall']:.2f} | {fr['f1']:.2f} |"
+    )
+    if heldout["agent_on_test"]:
+        a = heldout["agent_on_test"]
+        L.append(
+            f"| Continuity Agent, cached decisions | {fmt_pct(a['accuracy'])} | {a['precision']:.2f} | "
+            f"{a['recall']:.2f} | {a['f1']:.2f} |"
+        )
+    L.append(
+        "\nThe row above labelled 'threshold frozen from tune half' is the honest version of the tuned "
+        "two clause rule: its threshold was never allowed to see the test half it is scored on. Compare "
+        "its test accuracy to the 100% the same rule shape gets when tuned on all 50 pairs at once. Any "
+        "drop here is the amount of that 100% that was an artefact of tuning on the evaluation set, not "
+        "a property of the rule.\n"
+    )
+    return L
+
+
+def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions, heldout=None):
     n = len(pairs)
     pos = sum(1 for p in pairs if p[0]["label"] == "continuation")
     hard = sum(1 for p in pairs if p[0]["hard"])
@@ -241,6 +486,10 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
             "so that the baselines above cannot be mistaken for agent results.\n"
         )
 
+    if heldout:
+        L.append("")
+        L.extend(write_heldout_section(heldout))
+
     RESULTS.write_text("\n".join(L) + "\n")
     print(f"wrote {RESULTS}")
 
@@ -250,6 +499,8 @@ def main():
     ap.add_argument("--agent", action="store_true")
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--from-cache", action="store_true")
+    ap.add_argument("--perturb", action="store_true")
+    ap.add_argument("--perturb-agent", action="store_true")
     args = ap.parse_args()
 
     pairs, missing = load_pairs()
@@ -273,7 +524,7 @@ def main():
         if args.offline:
             from tests.offline_stub import offline_model
             model = offline_model()
-        decisions = run_agent(pairs, model)
+        decisions = run_agent(pairs, model, persist=not args.offline)
         agent_stats = confusion(pairs, lambda r, o, n, f: decisions[r["pair_id"]].decision == "continuation")
         print(f"  agent accuracy {agent_stats['accuracy']:.2f}")
         if args.offline:
@@ -281,7 +532,24 @@ def main():
             agent_stats = None
             decisions = {}
 
-    write_results(pairs, missing, baselines, sweep, agent_stats, decisions)
+    heldout_decisions = decisions or load_decisions()
+    heldout = heldout_report(pairs, heldout_decisions)
+    print(
+        f"  heldout: tune {heldout['tune_size']} pairs, test {heldout['test_size']} pairs, "
+        f"frozen threshold {heldout['frozen_threshold']:.3f}, "
+        f"frozen rule test accuracy {heldout['frozen_rule_on_test']['accuracy']:.2f}"
+    )
+
+    write_results(pairs, missing, baselines, sweep, agent_stats, decisions, heldout)
+
+    if args.perturb:
+        perturb_decisions = decisions or load_decisions()
+        rows = perturbation_suite(
+            pairs, baselines, perturb_decisions, run_agent_arm=args.perturb_agent,
+        )
+        for r in rows:
+            print(f"  [{r['transform']}] {r['rule']:55} {r['before']:.2f} -> {r['after']:.2f} ({r['delta']:+.3f})")
+        write_perturbation_results(rows, len(pairs))
 
 
 if __name__ == "__main__":
