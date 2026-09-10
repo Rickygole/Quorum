@@ -64,20 +64,34 @@ A second verified case, **4911-4925 West Forest Park Avenue**: `22-0295` (Withdr
 
 ### Gate C: what does the corpus actually support?
 
-Counted, not estimated:
+Counted, not estimated. Every figure below comes from the same cached corpus and the
+same parcel parser, so they can be added up against each other.
 
 | | |
 |---|---|
-| Matters, 2021-01-01 to 2026-09 | **1,679** |
-| Matters introduced since 2025-01-01 | **505** |
-| Of those: Ordinances / Executive Nominations / Resolutions | 203 / 174 / 63 |
-| Address-bearing titles, Jan 2025 to Jul 2026 (19 months) | **51** |
-| Addresses appearing under 2+ distinct file numbers, 2021–2026 | **13** |
+| Matters in the corpus, introduced 2021-01-11 to 2026-07-13 | **1,679** |
+| Fetched at | `2026-09-10T02:14:14Z` |
+| Matters that name a parcel Quorum can parse | **270** |
+| Of those, resolving to a parcel in the city gazetteer | **252** |
+| Parcels appearing under two or more file numbers | **9** |
+| Matters introduced 2025-01-01 onward | **505** |
+| Of those, naming a parcel | **59** |
 | Parcels in the gazetteer | **237,092** |
 
-Those 13 multi-file addresses are the population the Continuity Agent is evaluated
-against. It is a small number and Quorum says so out loud rather than implying a
-larger one. See `eval/RESULTS.md` for what the agent actually scored on it.
+**How the evaluation set relates to those numbers.** The labeled set is **50 pairs**, not 50
+records, and it is built in two tiers:
+
+| Tier | How pairs were generated | Pairs | Continuations | Distinct issues | Hard |
+|---|---|---|---|---|---|
+| Parcel | Both records touch the same parcel or the same block | 28 | 8 | 20 | 14 |
+| Citywide | No shared parcel; shared sponsor and title cosine at or above 0.97 | 22 | 11 | 11 | 12 |
+| **Total** | | **50** | **19** | **31** | **26** |
+
+The second tier exists because the first one is not enough on its own. Probing what parcel
+matching misses turned up a whole class of true continuation it cannot see: citywide bills
+that die at end of term and return under a new file number with no parcel anywhere in them.
+Sitting immediately beside them are recurring annual bills with identical titles that are
+**not** continuations. See [eval/RESULTS.md](eval/RESULTS.md).
 
 ---
 
@@ -101,12 +115,16 @@ Written before a judge finds them.
   jurisdiction without new ingestion adapters and a new gazetteer.
 - **One source.** City Council legislation via Legistar. Zoning appeals, liquor
   licences and tax sale run through three other Baltimore agencies and are out of scope.
-- **A small evaluation population.** 28 hand-labeled pairs drawn from the 270
-  parcel-resolvable records in a 1,679 record corpus. That is what the corpus supports
-  and the number is stated rather than implied.
-- **Parcels are resolved from titles.** 270 of 1,679 records name a parcel Quorum can
-  resolve. The rest are budget, procurement, personnel and citywide matters that name no
-  property, and Quorum drops them rather than guessing.
+- **A small evaluation population.** 50 hand labeled pairs, 19 of them continuations. That
+  is what a corpus of 1,679 records with 270 parcel bearing items supports, and the number
+  is stated rather than implied.
+- **The labels are one person's judgment.** They were assigned by reading the source
+  documents, and a tuned two clause rule reproduces them exactly. Both facts are reported
+  in [eval/RESULTS.md](eval/RESULTS.md) rather than left for a reader to discover.
+- **Parcels are resolved from titles.** 270 of 1,679 records name a parcel Quorum can parse
+  and 252 of those resolve against the city gazetteer. The remainder are budget,
+  procurement, personnel and citywide matters that name no property, and Quorum drops them
+  rather than guessing.
 - **Quorum never submits.** It drafts a comment and stops. The human sends it or does not.
   This is a design decision, not a missing feature.
 
