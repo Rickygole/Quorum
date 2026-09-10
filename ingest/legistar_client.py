@@ -1,13 +1,3 @@
-"""Legistar Web API client for Baltimore City.
-
-Gate A finding (see README): baltimore.legistar.com exposes a live, public,
-unauthenticated Legistar Web API at webapi.legistar.com/v1/baltimore. Every
-item type Quorum commits to comes from this one source, so there is no
-multi-agency publishing-habit problem to absorb.
-
-The API caps $top at 1000, so every list call pages on $skip.
-"""
-
 from __future__ import annotations
 
 import time
@@ -20,9 +10,7 @@ BASE = "https://webapi.legistar.com/v1/baltimore"
 PAGE = 1000
 PORTAL = "https://baltimore.legistar.com/LegislationDetail.aspx?ID={matter_id}&GUID={guid}"
 
-
 class LegistarClient:
-    """Thin, polite wrapper. Read-only; never writes to the city's systems."""
 
     def __init__(self, timeout: float = 30.0, pause: float = 0.15):
         self._http = httpx.Client(timeout=timeout, headers={"Accept": "application/json"})
@@ -61,15 +49,11 @@ class LegistarClient:
                 return
             skip += PAGE
 
-    # -- the four calls Quorum actually needs -----------------------------
-
     def matters_since(self, since: date) -> list[dict]:
-        """Every matter introduced on or after `since`."""
         flt = f"MatterIntroDate ge datetime'{since.isoformat()}'"
         return list(self._paged("/matters", {"$filter": flt}))
 
     def histories(self, matter_id: int) -> list[dict]:
-        """Action history: the appearances of one matter across bodies."""
         return self._get(f"/matters/{matter_id}/histories")
 
     def sponsors(self, matter_id: int) -> list[dict]:
@@ -80,5 +64,4 @@ class LegistarClient:
 
     @staticmethod
     def portal_url(matter: dict) -> str:
-        """Citation link a human can actually open."""
         return PORTAL.format(matter_id=matter["MatterId"], guid=matter["MatterGuid"])

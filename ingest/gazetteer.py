@@ -1,15 +1,3 @@
-"""Parcel gazetteer, built from Baltimore's own open property data.
-
-Source: the city's public parcel layer (dmxOwnership/Properties), which carries
-BLOCKLOT, BLOCK, LOT, FULLADDR, NEIGHBOR and ZONECODE for all ~237k parcels.
-
-Why this module is deterministic code and not an agent: address normalization
-and block/lot parsing are solved problems, and a language model asked to
-normalize "205-209 E Cold Spring Lane" will occasionally invent a block number.
-Quorum puts this in code and spends its agent budget where judgment is actually
-required. See ARCHITECTURE.md.
-"""
-
 from __future__ import annotations
 
 import gzip
@@ -27,8 +15,6 @@ LAYER = "https://egisdata.baltimorecity.gov/egis/rest/services/Housing/dmxOwners
 FIELDS = "BLOCKLOT,BLOCK,LOT,FULLADDR,NEIGHBOR,ZONECODE,OWNER_1,NO_IMPRV,VACIND"
 PAGE = 5000
 CACHE = Path(__file__).resolve().parent.parent / "data" / "cache" / "gazetteer.json.gz"
-
-# -- address normalization ------------------------------------------------
 
 _SUFFIX = {
     "st": "Street", "street": "Street", "ave": "Avenue", "av": "Avenue", "avenue": "Avenue",
@@ -49,19 +35,13 @@ _ADDR_RE = re.compile(
     r"(?P<suf>" + _SUFFIX_RE + r")\b\.?",
     re.IGNORECASE,
 )
-# "Block 5053I, Lots 001, 002, 003" / "Block 0965, Lot 046"
+
 _BLOCK_RE = re.compile(
     r"Block\s+(?P<block>[0-9]{3,5}[A-Z]?)\s*,?\s*Lots?\s+(?P<lots>[0-9A-Z]{1,4}(?:\s*(?:,|and|&)\s*[0-9A-Z]{1,4})*)",
     re.IGNORECASE,
 )
 
-
 def normalize_address(raw: str) -> str | None:
-    """'205-209 E. Cold Spring Ln' -> '205 East Cold Spring Lane'.
-
-    Ranged addresses collapse to the low number, which is how Baltimore's
-    parcel table addresses a multi-lot property.
-    """
     m = _ADDR_RE.search(raw or "")
     if not m:
         return None
@@ -78,19 +58,13 @@ def normalize_address(raw: str) -> str | None:
     out.append(_SUFFIX[m.group("suf").lower()])
     return f"{int(m.group('num'))} " + " ".join(out)
 
-
 def blocklot_key(block: str, lot: str) -> str:
-    """Baltimore's BLOCKLOT is fixed width: block left-justified in five
-    characters, lot zero-padded to three. '0965' + '046' -> '0965 046'."""
     return f"{(block or '').upper().strip():<5}{(lot or '').strip().zfill(3)}"
-
 
 def _norm_key(addr: str) -> str:
     return re.sub(r"[^a-z0-9 ]", "", (addr or "").lower()).strip()
 
-
 def parse_parcel_refs(text: str) -> list[ParcelRef]:
-    """Pull every parcel the record names: block/lot first, addresses second."""
     text = re.sub(r"\s+", " ", text or "")
     refs: list[ParcelRef] = []
 
@@ -116,9 +90,6 @@ def parse_parcel_refs(text: str) -> list[ParcelRef]:
             refs.append(ParcelRef(address_raw=a, address_normalized=a))
     return refs
 
-
-# -- the index ------------------------------------------------------------
-
 class Gazetteer:
     def __init__(self, rows: list[dict]):
         self.rows = rows
@@ -138,7 +109,6 @@ class Gazetteer:
             return cls(json.load(fh)["payload"])
 
     def lookup(self, ref: ParcelRef) -> dict | None:
-        """Block/lot wins; address is the fallback."""
         if ref.block:
             for lot in ref.lots or []:
                 hit = self.by_blocklot.get(blocklot_key(ref.block, lot))
@@ -149,7 +119,6 @@ class Gazetteer:
         return None
 
     def resolve(self, ref: ParcelRef) -> ParcelRef:
-        """Fill in what the city's records know about this parcel."""
         hit = self.lookup(ref)
         if not hit:
             return ref
@@ -167,9 +136,7 @@ class Gazetteer:
         out = [normalize_address(r["FULLADDR"]) for key, r in self.by_address.items() if key.startswith(k)]
         return sorted({o for o in out if o})[:limit]
 
-
 def build(path: Path = CACHE) -> int:
-    """Page the whole parcel layer down to disk, once, with a timestamp."""
     stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
     rows: list[dict] = []
     with httpx.Client(timeout=120.0) as http:
@@ -190,7 +157,6 @@ def build(path: Path = CACHE) -> int:
     with gzip.open(path, "wt") as fh:
         json.dump({"fetched_at": stamp, "source": "baltimore-egis-dmxOwnership", "payload": rows}, fh)
     return len(rows)
-
 
 if __name__ == "__main__":
     print("parcels cached:", build())
