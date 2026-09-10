@@ -482,15 +482,40 @@ function renderEvidence() {
   host.appendChild(tail);
 }
 
+function measureNoun(rec) {
+  const t = String(rec.title || "");
+  if (/Rezoning|changing the zoning/i.test(t)) return "rezoning";
+  if (/RPP Area|Parking Management Plan/i.test(t)) return "parking permit change";
+  if (/Conditional Use/i.test(t)) return "conditional use request";
+  if (/Sale of Property/i.test(t)) return "property sale";
+  if (/Landmark/i.test(t)) return "landmark designation";
+  if (/Planned Unit Development/i.test(t)) return "development plan change";
+  return "measure";
+}
+
 function fallbackDraft(t) {
   const r = t.records[t.records.length - 1];
   const prev = t.records[0];
-  const addr = (r.parcels[0] || {}).address || "";
+  const addr = (r.parcels[0] || {}).address || (r.neighborhood ? titleCase(r.neighborhood) : "my neighbourhood");
+  const noun = measureNoun(r);
+
+  const opening = r.hearing_date
+    ? `I live near ${addr} and I am writing about ${r.file_number}, scheduled for a public hearing on ${fmtDate(r.hearing_date)}.`
+    : `I live near ${addr} and I am writing about ${r.file_number}, which is currently ${statusClause(r)}.`;
+
+  const lotsNow = (t.features.parcel.lots_a || []);
+  const lotsBefore = (t.features.parcel.lots_b || []);
+  const scope = (lotsNow.length && lotsBefore.length && lotsNow.join() !== lotsBefore.join())
+    ? ` The current bill covers lots ${lotsNow.join(" and ")}, where the earlier one covered lots ${lotsBefore.join(", ")}.`
+    : "";
+
+  const history = `This is not the first time this ${noun} has come before the council. The earlier bill, ${prev.file_number}, was introduced on ${fmtDate(prev.introduced_date)} and ${statusClause(prev)}.${scope}`;
+
   return `To the ${r.committee || "Baltimore City Council"},
 
-I live near ${addr} and I am writing about ${r.file_number}, scheduled for a public hearing on ${fmtDate(r.hearing_date)}.
+${opening}
 
-This is the second time this rezoning has come before the council. The earlier bill, ${prev.file_number}, was introduced on ${fmtDate(prev.introduced_date)} and ${statusClause(prev)}. The current bill covers lots ${(t.features.parcel.lots_a || []).join(" and ")}, where the earlier one covered lots ${(t.features.parcel.lots_b || []).join(", ")}.
+${history}
 
 I would like the committee to consider the following before voting:
 
@@ -1432,6 +1457,8 @@ async function boot() {
   state.thread = state.data.threads.find(t => t.pair_id === 20) || state.data.threads[0];
 
   $("#parcel-count").textContent = num(state.data.counts.parcels);
+  const addrCount = $("#addr-count");
+  if (addrCount) addrCount.textContent = num((state.data.addresses || []).length);
   $("#addr-list").innerHTML = (state.data.addresses || []).map(a => `<option value="${esc(a)}">`).join("");
   $("#add-addr").onclick = () => {
     const v = $("#addr").value.trim();
