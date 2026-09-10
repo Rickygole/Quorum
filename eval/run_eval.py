@@ -369,6 +369,71 @@ def fmt_pct(x):
     return f"{x * 100:.0f}%"
 
 
+def load_ablation():
+    path = ROOT / "ablation.json"
+    if not path.exists():
+        return None
+    return json.loads(path.read_text())
+
+
+def write_ablation_section(ab):
+    L = []
+    L.append("## Ablation: is the prompt just the rule, written in English?\n")
+    L.append(
+        "This is the strongest objection to the whole project, so it gets its own experiment.\n"
+    )
+    L.append(
+        "`agents/continuity.py` tells the model, in prose, that the parcel comparison is the "
+        "strongest signal, that `adjacent` usually means two different properties, that title "
+        "similarity is weak evidence and must never be a primary driver, and that a terminal prior "
+        "status followed by a reintroduction is the classic pattern. That is close to the two clause "
+        "rule stated in words. A fair reader asks whether the agent is doing anything beyond "
+        "executing a rule it was handed.\n"
+    )
+    L.append(
+        "So the domain guidance was deleted. The neutral prompt keeps only the task, the output "
+        "schema, and the instruction not to invent facts. Same feature table, same pairs, same "
+        "model. It is in `eval/ablation.py` and reproducible with `python -m eval.ablation`.\n"
+    )
+    L.append("| Prompt | Accuracy | Continuations called (19 true) |")
+    L.append("|---|---|---|")
+    L.append(f"| Full prompt, with domain guidance | 100% (50/50) | 19 |")
+    L.append(
+        f"| Neutral prompt, domain guidance removed | {fmt_pct(ab['accuracy'])} "
+        f"({ab['correct']}/{ab['n']}) | {ab['called_continuation']} |"
+    )
+    L.append("| Best single deterministic feature (parcel exact) | 78% | 8 |\n")
+    L.append(
+        f"**The prompt is not doing the work.** Strip every domain hint and accuracy falls from "
+        f"100% to {fmt_pct(ab['accuracy'])}, not to the 78% a parcel only rule gets. The model reads "
+        "the feature table and reasons from it. If the guidance were the rule in disguise, removing "
+        "it would collapse performance to the level of the rule, and it does not.\n"
+    )
+    L.append(
+        f"**The domain guidance is worth exactly {ab['n'] - ab['correct']} pairs**, and they are not "
+        "random. Every miss is a continuation the neutral prompt declined to call, so removing the "
+        "guidance makes the agent conservative rather than wrong in both directions. It called "
+        f"{ab['called_continuation']} continuations where 19 are true.\n"
+    )
+    for m in ab["results"]:
+        if (m["said"] == "continuation") == (m["label"] == "continuation"):
+            continue
+        L.append(f"- **Pair {m['pair_id']}, `{m['a']}` and `{m['b']}`**: labeled {m['label']}, neutral prompt said {m['said']} at {m['confidence']:.2f}.")
+    L.append(
+        "\nThose three are the cases that need domain knowledge: a liquor licence and the zoning "
+        "approval for the same establishment, a charter amendment returning after a failed term, and "
+        "the Opening and Closing halves of one street condemnation. Nothing in a feature table says "
+        "those are one issue. Someone has to know how a city works.\n"
+    )
+    L.append(
+        "The honest reading of this project is therefore: the deterministic features do most of the "
+        "work, the model generalises from them better than any single feature does, and the domain "
+        "guidance buys the last three cases. That is a hybrid, and it is worth saying so rather than "
+        "claiming the agent is doing something magical.\n"
+    )
+    return L
+
+
 def write_heldout_section(heldout):
     L = []
     L.append("## Held out split, frozen threshold\n")
@@ -572,6 +637,10 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
     if heldout:
         L.append("")
         L.extend(write_heldout_section(heldout))
+
+    ab = load_ablation()
+    if ab:
+        L += write_ablation_section(ab)
 
     RESULTS.write_text("\n".join(L) + "\n")
     print(f"wrote {RESULTS}")

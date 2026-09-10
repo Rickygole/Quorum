@@ -1,0 +1,847 @@
+{
+ "system_prompt": "You decide whether a new municipal legislative record continues an issue the system has already seen, or starts a new one.\n\nYou are given two records and a table of comparison features that were computed deterministically in code. The feature table is evidence. Do not recompute it, do not contradict it, and do not invent facts that are not in it or in the records.\n\nReturn your decision with:\n- `decision`: continuation, new_issue, or uncertain.\n- `rationale`: short plain sentences a resident could follow. Name the specific evidence.\n- `drivers`: the feature names that actually drove the decision.\n- `non_drivers`: the features you considered and explicitly did not rely on, with the value.\n- `confidence`: 0 to 1.\n\nUse `uncertain` when the evidence genuinely conflicts, not to avoid a call.",
+ "accuracy": 0.94,
+ "correct": 47,
+ "n": 50,
+ "called_continuation": 16,
+ "results": [
+  {
+   "pair_id": 1,
+   "a": "21-0006",
+   "b": "21-0073",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "zoning_transition",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 2,
+   "a": "21-0013",
+   "b": "21-0052",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "zoning_transition",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 3,
+   "a": "21-0026",
+   "b": "26-0177",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "zoning_transition",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 4,
+   "a": "21-0031R",
+   "b": "24-0577",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "parcel",
+    "record_type",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 5,
+   "a": "21-0035",
+   "b": "22-0277",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "parcel",
+    "sponsor",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 6,
+   "a": "21-0042R",
+   "b": "21-0064",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "sponsor",
+    "temporal",
+    "committee_progression",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 7,
+   "a": "21-0045",
+   "b": "23-0374",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "zoning_transition",
+    "committee_progression",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 8,
+   "a": "21-0051R",
+   "b": "24-0516",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "title",
+    "temporal",
+    "record_type"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 9,
+   "a": "21-0054",
+   "b": "22-0217",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "zoning_transition",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 10,
+   "a": "21-0076",
+   "b": "23-0408",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 11,
+   "a": "21-0076",
+   "b": "23-0469",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 12,
+   "a": "21-0077",
+   "b": "21-0098",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 13,
+   "a": "21-0170",
+   "b": "26-0206",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "zoning_transition",
+    "temporal",
+    "committee_progression",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 14,
+   "a": "21-0171",
+   "b": "25-0104",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "temporal",
+    "sponsor"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 15,
+   "a": "22-0240",
+   "b": "24-0497",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "title",
+    "sponsor",
+    "requester",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 16,
+   "a": "22-0295",
+   "b": "23-0417",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "title",
+    "zoning_transition",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 17,
+   "a": "22-0302",
+   "b": "23-0375",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "title",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 18,
+   "a": "22-0320",
+   "b": "22-0325",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 19,
+   "a": "23-0408",
+   "b": "23-0469",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 20,
+   "a": "23-0411",
+   "b": "26-0148",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "zoning_transition",
+    "sponsor",
+    "title",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 21,
+   "a": "23-0437",
+   "b": "23-0441",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "temporal",
+    "sponsor",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 22,
+   "a": "23-0454",
+   "b": "24-0549",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 23,
+   "a": "24-0221R",
+   "b": "24-0550",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "new_issue",
+   "confidence": 0.85,
+   "drivers": [
+    "record_type",
+    "file_number",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 24,
+   "a": "24-0533",
+   "b": "25-0091",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 25,
+   "a": "25-0055",
+   "b": "25-0056",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "file_number",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 26,
+   "a": "25-0071",
+   "b": "25-0083",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "sponsor",
+    "title",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 27,
+   "a": "25-0073",
+   "b": "25-0074",
+   "tier": "parcel",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "sponsor",
+    "temporal",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 28,
+   "a": "25-0089",
+   "b": "25-0142",
+   "tier": "parcel",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "parcel",
+    "zoning_transition",
+    "file_number",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 29,
+   "a": "21-0014R",
+   "b": "21-0015R",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.98,
+   "drivers": [
+    "parcel",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 30,
+   "a": "22-0096R",
+   "b": "26-0048R",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "temporal",
+    "committee_progression",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 31,
+   "a": "22-0233",
+   "b": "26-0179",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "file_number",
+    "temporal",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 32,
+   "a": "21-0114",
+   "b": "25-0059",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "sponsor",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 33,
+   "a": "22-0194",
+   "b": "25-0102",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "title.token_jaccard",
+    "temporal.gap_days",
+    "temporal.same_council_term",
+    "committee_progression.prior_status",
+    "committee_progression.candidate_furthest_stage",
+    "file_number.identical"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 34,
+   "a": "22-0326",
+   "b": "26-0199",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "temporal",
+    "committee_progression",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 35,
+   "a": "24-0508",
+   "b": "24-0509",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "title",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 36,
+   "a": "23-0415",
+   "b": "24-0568",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "requester",
+    "committee_progression",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 37,
+   "a": "24-0556",
+   "b": "25-0058",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "temporal",
+    "sponsor"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 38,
+   "a": "24-0576",
+   "b": "25-0003",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "temporal",
+    "sponsor"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 39,
+   "a": "22-0111R",
+   "b": "23-0195R",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.95,
+   "drivers": [
+    "title.token_jaccard",
+    "title.cosine",
+    "record_type.match",
+    "sponsor.overlap",
+    "temporal.gap_days",
+    "committee_progression.shape"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 40,
+   "a": "22-0126R",
+   "b": "24-0226R",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "sponsor",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 41,
+   "a": "22-0140R",
+   "b": "25-0003R",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "sponsor",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 42,
+   "a": "22-0139R",
+   "b": "25-0036R",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "committee_progression",
+    "temporal",
+    "record_type"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 43,
+   "a": "21-0058",
+   "b": "23-0373",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.85,
+   "drivers": [
+    "title",
+    "temporal",
+    "committee_progression"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 44,
+   "a": "23-0452",
+   "b": "24-0488",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "committee_progression",
+    "file_number",
+    "temporal",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 45,
+   "a": "21-0168",
+   "b": "22-0299",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "temporal",
+    "committee_progression",
+    "file_number"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 46,
+   "a": "22-0299",
+   "b": "24-0545",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "temporal",
+    "committee_progression",
+    "file_number",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 47,
+   "a": "21-0168",
+   "b": "24-0545",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "temporal",
+    "committee_progression",
+    "file_number",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 48,
+   "a": "21-0056",
+   "b": "21-0120",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.95,
+   "drivers": [
+    "file_number",
+    "temporal",
+    "committee_progression",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 49,
+   "a": "24-0599",
+   "b": "25-0015",
+   "tier": "citywide",
+   "label": "continuation",
+   "said": "continuation",
+   "confidence": 0.98,
+   "drivers": [
+    "title",
+    "sponsor",
+    "committee_progression",
+    "temporal"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  },
+  {
+   "pair_id": 50,
+   "a": "24-0544",
+   "b": "25-0093",
+   "tier": "citywide",
+   "label": "new_issue",
+   "said": "new_issue",
+   "confidence": 0.9,
+   "drivers": [
+    "committee_progression",
+    "temporal",
+    "title"
+   ],
+   "non_drivers": [],
+   "usage": {}
+  }
+ ]
+}

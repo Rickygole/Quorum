@@ -163,3 +163,29 @@ On the 26 test pairs the agent and the frozen rule disagree on 0 of them (agent 
 
 This section is kept because a negative result that was expensive to obtain is worth more than a positive one that was not tested. The claim it retires is 'the agent generalises better than the rule'. There is no evidence here for that.
 
+## Ablation: is the prompt just the rule, written in English?
+
+This is the strongest objection to the whole project, so it gets its own experiment.
+
+`agents/continuity.py` tells the model, in prose, that the parcel comparison is the strongest signal, that `adjacent` usually means two different properties, that title similarity is weak evidence and must never be a primary driver, and that a terminal prior status followed by a reintroduction is the classic pattern. That is close to the two clause rule stated in words. A fair reader asks whether the agent is doing anything beyond executing a rule it was handed.
+
+So the domain guidance was deleted. The neutral prompt keeps only the task, the output schema, and the instruction not to invent facts. Same feature table, same pairs, same model. It is in `eval/ablation.py` and reproducible with `python -m eval.ablation`.
+
+| Prompt | Accuracy | Continuations called (19 true) |
+|---|---|---|
+| Full prompt, with domain guidance | 100% (50/50) | 19 |
+| Neutral prompt, domain guidance removed | 94% (47/50) | 16 |
+| Best single deterministic feature (parcel exact) | 78% | 8 |
+
+**The prompt is not doing the work.** Strip every domain hint and accuracy falls from 100% to 94%, not to the 78% a parcel only rule gets. The model reads the feature table and reasons from it. If the guidance were the rule in disguise, removing it would collapse performance to the level of the rule, and it does not.
+
+**The domain guidance is worth exactly 3 pairs**, and they are not random. Every miss is a continuation the neutral prompt declined to call, so removing the guidance makes the agent conservative rather than wrong in both directions. It called 16 continuations where 19 are true.
+
+- **Pair 23, `24-0221R` and `24-0550`**: labeled continuation, neutral prompt said new_issue at 0.85.
+- **Pair 34, `22-0326` and `26-0199`**: labeled continuation, neutral prompt said new_issue at 0.95.
+- **Pair 35, `24-0508` and `24-0509`**: labeled continuation, neutral prompt said new_issue at 0.95.
+
+Those three are the cases that need domain knowledge: a liquor licence and the zoning approval for the same establishment, a charter amendment returning after a failed term, and the Opening and Closing halves of one street condemnation. Nothing in a feature table says those are one issue. Someone has to know how a city works.
+
+The honest reading of this project is therefore: the deterministic features do most of the work, the model generalises from them better than any single feature does, and the domain guidance buys the last three cases. That is a hybrid, and it is worth saying so rather than claiming the agent is doing something magical.
+
