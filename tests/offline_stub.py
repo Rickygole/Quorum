@@ -89,4 +89,4 @@ def handler(output_model: type, prompt: Any):
 
 
 def offline_model() -> OfflineModel:
-    return OfflineModel(handler)
+    return OfflineModel(handler, [AnalystOutput, ContinuityOutput, RelevanceOutput, ActionOutput])

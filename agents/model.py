@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import json
 import os
-from typing import Any, AsyncGenerator, Callable, TypeVar
+from typing import Any, AsyncGenerator, Callable, Iterable, TypeVar
 
+from pydantic import BaseModel
 from strands.models import Model
 
 T = TypeVar("T")
@@ -22,8 +24,9 @@ def bedrock(model_id: str | None = None, temperature: float = 0.2) -> Model:
 
 
 class OfflineModel(Model):
-    def __init__(self, handler: Callable[[type, list], Any]):
+    def __init__(self, handler: Callable[[type, list], Any], output_models: Iterable[type[BaseModel]] = ()):
         self._handler = handler
+        self._by_name = {m.__name__: m for m in output_models}
         self._config: dict[str, Any] = {"model_id": "offline"}
         self.calls: list[tuple[type, list]] = []
 
@@ -34,7 +37,28 @@ class OfflineModel(Model):
         self._config.update(model_config)
 
     async def stream(self, messages, tool_specs=None, system_prompt=None, **kwargs) -> AsyncGenerator:
-        raise NotImplementedError("OfflineModel supports structured_output only")
+        tool_spec = (tool_specs or [None])[0]
+        if not tool_spec or tool_spec["name"] not in self._by_name:
+            raise NotImplementedError("OfflineModel only supports a single registered structured output tool")
+
+        output_model = self._by_name[tool_spec["name"]]
+        self.calls.append((output_model, messages))
+        result = self._handler(output_model, messages)
+        tool_use_id = f"offline-{len(self.calls)}"
+
+        yield {"messageStart": {"role": "assistant"}}
+        yield {"contentBlockStart": {"contentBlockIndex": 0, "start": {"toolUse": {
+            "toolUseId": tool_use_id, "name": tool_spec["name"],
+        }}}}
+        yield {"contentBlockDelta": {"contentBlockIndex": 0, "delta": {"toolUse": {
+            "input": json.dumps(result.model_dump(mode="json")),
+        }}}}
+        yield {"contentBlockStop": {"contentBlockIndex": 0}}
+        yield {"messageStop": {"stopReason": "tool_use"}}
+        yield {"metadata": {
+            "usage": {"inputTokens": 0, "outputTokens": 0, "totalTokens": 0},
+            "metrics": {"latencyMs": 0},
+        }}
 
     async def structured_output(self, output_model: type[T], prompt: list, system_prompt: str | None = None, **kwargs) -> AsyncGenerator[dict[str, Any], None]:
         self.calls.append((output_model, prompt))
