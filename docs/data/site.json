@@ -1,0 +1,5339 @@
+{
+ "fetched_at": "2026-09-10T02:14:14+00:00",
+ "generated_at": "2026-09-09T22:30:15",
+ "counts": {
+  "matters": 1679,
+  "parcel_resolvable": 270,
+  "parcels": 237092,
+  "labeled_pairs": 28
+ },
+ "watched": [
+  "205 East Cold Spring Lane",
+  "4911 West Forest Park Avenue",
+  "15 East West Street"
+ ],
+ "addresses": [
+  "10 East West Street",
+  "1000 East Cold Spring Lane",
+  "1001 East Cold Spring Lane",
+  "1002 East Cold Spring Lane",
+  "1003 East Cold Spring Lane",
+  "1004 East Cold Spring Lane",
+  "1005 East Cold Spring Lane",
+  "103 East West Street",
+  "105 East West Street",
+  "106 East West Street",
+  "107 East West Street",
+  "108 East West Street",
+  "109 East West Street",
+  "11 East West Street",
+  "111 East West Street",
+  "1110 East Cold Spring Lane",
+  "1111 East Cold Spring Lane",
+  "112 East West Street",
+  "1120 East Cold Spring Lane",
+  "1126 East Cold Spring Lane",
+  "113 East West Street",
+  "1136 East Cold Spring Lane",
+  "115 East West Street",
+  "117 East West Street",
+  "119 East West Street",
+  "1201 East Cold Spring Lane",
+  "121 East West Street",
+  "1210 East Cold Spring Lane",
+  "1212 East Cold Spring Lane",
+  "1214 East Cold Spring Lane",
+  "1216 East Cold Spring Lane",
+  "1218 East Cold Spring Lane",
+  "1220 East Cold Spring Lane",
+  "1222 East Cold Spring Lane",
+  "1224 East Cold Spring Lane",
+  "1226 East Cold Spring Lane",
+  "1228 East Cold Spring Lane",
+  "123 East West Street",
+  "1230 East Cold Spring Lane",
+  "1232 East Cold Spring Lane",
+  "1234 East Cold Spring Lane",
+  "1236 East Cold Spring Lane",
+  "1238 East Cold Spring Lane",
+  "1240 East Cold Spring Lane",
+  "125 East West Street",
+  "127 East West Street",
+  "129 East West Street",
+  "13 East West Street",
+  "1300 East Cold Spring Lane",
+  "1302 East Cold Spring Lane",
+  "1304 East Cold Spring Lane",
+  "1306 East Cold Spring Lane",
+  "1308 East Cold Spring Lane",
+  "131 East West Street",
+  "1310 East Cold Spring Lane",
+  "1312 East Cold Spring Lane",
+  "1314 East Cold Spring Lane",
+  "1316 East Cold Spring Lane",
+  "1318 East Cold Spring Lane",
+  "1320 East Cold Spring Lane",
+  "1322 East Cold Spring Lane",
+  "1324 East Cold Spring Lane",
+  "1326 East Cold Spring Lane",
+  "1328 East Cold Spring Lane",
+  "133 East West Street",
+  "1330 East Cold Spring Lane",
+  "135 East West Street",
+  "137 East West Street",
+  "139 East West Street",
+  "1400 East Cold Spring Lane",
+  "1401 East Cold Spring Lane",
+  "1402 East Cold Spring Lane",
+  "1404 East Cold Spring Lane",
+  "1406 East Cold Spring Lane",
+  "1408 East Cold Spring Lane",
+  "141 East West Street",
+  "1410 East Cold Spring Lane",
+  "1412 East Cold Spring Lane",
+  "1414 East Cold Spring Lane",
+  "1416 East Cold Spring Lane",
+  "1418 East Cold Spring Lane",
+  "1420 East Cold Spring Lane",
+  "1422 East Cold Spring Lane",
+  "1424 East Cold Spring Lane",
+  "1426 East Cold Spring Lane",
+  "1428 East Cold Spring Lane",
+  "143 East West Street",
+  "15 East West Street",
+  "1500 East Cold Spring Lane",
+  "1501 East Cold Spring Lane",
+  "1502 East Cold Spring Lane",
+  "1503 East Cold Spring Lane",
+  "1504 East Cold Spring Lane",
+  "1505 East Cold Spring Lane",
+  "1506 East Cold Spring Lane",
+  "1507 East Cold Spring Lane",
+  "1508 East Cold Spring Lane",
+  "1509 East Cold Spring Lane",
+  "1510 East Cold Spring Lane",
+  "1511 East Cold Spring Lane",
+  "1512 East Cold Spring Lane",
+  "1513 East Cold Spring Lane",
+  "1514 East Cold Spring Lane",
+  "1515 East Cold Spring Lane",
+  "1516 East Cold Spring Lane",
+  "1517 East Cold Spring Lane",
+  "1518 East Cold Spring Lane",
+  "1519 East Cold Spring Lane",
+  "1520 East Cold Spring Lane",
+  "1521 East Cold Spring Lane",
+  "1522 East Cold Spring Lane",
+  "1523 East Cold Spring Lane",
+  "1524 East Cold Spring Lane",
+  "1525 East Cold Spring Lane",
+  "1526 East Cold Spring Lane",
+  "1527 East Cold Spring Lane",
+  "1528 East Cold Spring Lane",
+  "1529 East Cold Spring Lane",
+  "1530 East Cold Spring Lane",
+  "1531 East Cold Spring Lane",
+  "1532 East Cold Spring Lane",
+  "1533 East Cold Spring Lane",
+  "1534 East Cold Spring Lane",
+  "1535 East Cold Spring Lane",
+  "1536 East Cold Spring Lane",
+  "1537 East Cold Spring Lane",
+  "1538 East Cold Spring Lane",
+  "1539 East Cold Spring Lane",
+  "1540 East Cold Spring Lane",
+  "1541 East Cold Spring Lane",
+  "1542 East Cold Spring Lane",
+  "1543 East Cold Spring Lane",
+  "1544 East Cold Spring Lane",
+  "1545 East Cold Spring Lane",
+  "1546 East Cold Spring Lane",
+  "1547 East Cold Spring Lane",
+  "1548 East Cold Spring Lane",
+  "1549 East Cold Spring Lane",
+  "1551 East Cold Spring Lane",
+  "1600 East Cold Spring Lane",
+  "1601 East Cold Spring Lane",
+  "1602 East Cold Spring Lane",
+  "1603 East Cold Spring Lane",
+  "1604 East Cold Spring Lane",
+  "1605 East Cold Spring Lane",
+  "1606 East Cold Spring Lane",
+  "1607 East Cold Spring Lane",
+  "1608 East Cold Spring Lane",
+  "1609 East Cold Spring Lane",
+  "1610 East Cold Spring Lane",
+  "1611 East Cold Spring Lane",
+  "1612 East Cold Spring Lane",
+  "1613 East Cold Spring Lane",
+  "1614 East Cold Spring Lane",
+  "1615 East Cold Spring Lane",
+  "1616 East Cold Spring Lane",
+  "1617 East Cold Spring Lane",
+  "1618 East Cold Spring Lane",
+  "1619 East Cold Spring Lane",
+  "1620 East Cold Spring Lane",
+  "1621 East Cold Spring Lane",
+  "1622 East Cold Spring Lane",
+  "1623 East Cold Spring Lane",
+  "1624 East Cold Spring Lane",
+  "1625 East Cold Spring Lane",
+  "1626 East Cold Spring Lane",
+  "1627 East Cold Spring Lane",
+  "1628 East Cold Spring Lane",
+  "1629 East Cold Spring Lane",
+  "1630 East Cold Spring Lane",
+  "1631 East Cold Spring Lane",
+  "1632 East Cold Spring Lane",
+  "1633 East Cold Spring Lane",
+  "1634 East Cold Spring Lane",
+  "1635 East Cold Spring Lane",
+  "1636 East Cold Spring Lane",
+  "1637 East Cold Spring Lane",
+  "1638 East Cold Spring Lane",
+  "1639 East Cold Spring Lane",
+  "1640 East Cold Spring Lane",
+  "1641 East Cold Spring Lane",
+  "1642 East Cold Spring Lane",
+  "1643 East Cold Spring Lane",
+  "1644 East Cold Spring Lane",
+  "1645 East Cold Spring Lane",
+  "1646 East Cold Spring Lane",
+  "1647 East Cold Spring Lane",
+  "1648 East Cold Spring Lane",
+  "1649 East Cold Spring Lane",
+  "1650 East Cold Spring Lane",
+  "1651 East Cold Spring Lane",
+  "1652 East Cold Spring Lane",
+  "1653 East Cold Spring Lane",
+  "1654 East Cold Spring Lane",
+  "1655 East Cold Spring Lane",
+  "1656 East Cold Spring Lane",
+  "1657 East Cold Spring Lane",
+  "1658 East Cold Spring Lane",
+  "1659 East Cold Spring Lane",
+  "1660 East Cold Spring Lane",
+  "1661 East Cold Spring Lane",
+  "1662 East Cold Spring Lane",
+  "1663 East Cold Spring Lane",
+  "1664 East Cold Spring Lane",
+  "1665 East Cold Spring Lane",
+  "1666 East Cold Spring Lane",
+  "1667 East Cold Spring Lane",
+  "1669 East Cold Spring Lane",
+  "1671 East Cold Spring Lane",
+  "1911 East Cold Spring Lane",
+  "2 West Forest Park Avenue",
+  "200 East West Street",
+  "205 East Cold Spring Lane",
+  "208 East Cold Spring Lane",
+  "209 East Cold Spring Lane",
+  "21 East West Street",
+  "2105 East Cold Spring Lane",
+  "2107 East Cold Spring Lane",
+  "2115 East Cold Spring Lane",
+  "2201 East Cold Spring Lane",
+  "2205 East Cold Spring Lane",
+  "2206 East Cold Spring Lane",
+  "2207 East Cold Spring Lane",
+  "2209 East Cold Spring Lane",
+  "2211 East Cold Spring Lane",
+  "23 East West Street",
+  "2300 East Cold Spring Lane",
+  "2301 East Cold Spring Lane",
+  "2302 East Cold Spring Lane",
+  "2303 East Cold Spring Lane",
+  "2304 East Cold Spring Lane",
+  "2305 East Cold Spring Lane",
+  "2306 East Cold Spring Lane",
+  "2307 East Cold Spring Lane",
+  "2308 East Cold Spring Lane",
+  "2309 East Cold Spring Lane",
+  "2310 East Cold Spring Lane",
+  "2311 East Cold Spring Lane",
+  "2312 East Cold Spring Lane",
+  "2313 East Cold Spring Lane",
+  "2315 East Cold Spring Lane",
+  "2400 East Cold Spring Lane",
+  "2401 East Cold Spring Lane",
+  "2402 East Cold Spring Lane",
+  "2403 East Cold Spring Lane",
+  "2404 East Cold Spring Lane",
+  "2405 East Cold Spring Lane",
+  "2406 East Cold Spring Lane",
+  "2407 East Cold Spring Lane",
+  "2408 East Cold Spring Lane",
+  "2409 East Cold Spring Lane",
+  "2410 East Cold Spring Lane",
+  "2412 East Cold Spring Lane",
+  "25 East West Street",
+  "2500 East Cold Spring Lane",
+  "2500 West Forest Park Avenue",
+  "2501 West Forest Park Avenue",
+  "2502 West Forest Park Avenue",
+  "2503 West Forest Park Avenue",
+  "2504 West Forest Park Avenue",
+  "2505 West Forest Park Avenue",
+  "2506 West Forest Park Avenue",
+  "2507 West Forest Park Avenue",
+  "2508 West Forest Park Avenue",
+  "2509 West Forest Park Avenue",
+  "2510 West Forest Park Avenue",
+  "2511 West Forest Park Avenue",
+  "2512 West Forest Park Avenue",
+  "2514 West Forest Park Avenue",
+  "2521 West Forest Park Avenue",
+  "2523 West Forest Park Avenue",
+  "2525 West Forest Park Avenue",
+  "2601 West Forest Park Avenue",
+  "2602 West Forest Park Avenue",
+  "2603 West Forest Park Avenue",
+  "2604 West Forest Park Avenue",
+  "2605 West Forest Park Avenue",
+  "2606 West Forest Park Avenue",
+  "2607 West Forest Park Avenue",
+  "2608 West Forest Park Avenue",
+  "2609 West Forest Park Avenue",
+  "2610 West Forest Park Avenue",
+  "2612 West Forest Park Avenue",
+  "2614 West Forest Park Avenue",
+  "2616 West Forest Park Avenue",
+  "2618 West Forest Park Avenue",
+  "2620 West Forest Park Avenue",
+  "2622 West Forest Park Avenue",
+  "2624 West Forest Park Avenue",
+  "27 East West Street",
+  "2700 East Cold Spring Lane",
+  "2800 East Cold Spring Lane",
+  "2802 East Cold Spring Lane",
+  "2804 East Cold Spring Lane",
+  "29 East West Street",
+  "2900 East Cold Spring Lane",
+  "2901 East Cold Spring Lane",
+  "2903 East Cold Spring Lane",
+  "2904 East Cold Spring Lane",
+  "2905 East Cold Spring Lane",
+  "2906 East Cold Spring Lane",
+  "2907 East Cold Spring Lane",
+  "2908 East Cold Spring Lane",
+  "2909 East Cold Spring Lane",
+  "2910 East Cold Spring Lane",
+  "2912 East Cold Spring Lane",
+  "2914 East Cold Spring Lane",
+  "2916 East Cold Spring Lane",
+  "2918 East Cold Spring Lane",
+  "2920 East Cold Spring Lane",
+  "2922 East Cold Spring Lane",
+  "2924 East Cold Spring Lane",
+  "2926 East Cold Spring Lane",
+  "300 East Cold Spring Lane",
+  "301 East West Street",
+  "302 East West Street",
+  "303 East Cold Spring Lane",
+  "305 East Cold Spring Lane",
+  "305 East West Street",
+  "307 East Cold Spring Lane",
+  "307 East West Street",
+  "309 East Cold Spring Lane",
+  "309 East West Street",
+  "31 East West Street",
+  "311 East West Street",
+  "313 East Cold Spring Lane",
+  "313 East West Street",
+  "315 East Cold Spring Lane",
+  "316 East Cold Spring Lane",
+  "317 East Cold Spring Lane",
+  "318 East Cold Spring Lane",
+  "319 East Cold Spring Lane",
+  "320 East Cold Spring Lane",
+  "3300 West Forest Park Avenue",
+  "3304 West Forest Park Avenue",
+  "3306 West Forest Park Avenue",
+  "3308 West Forest Park Avenue",
+  "3309 West Forest Park Avenue",
+  "3310 West Forest Park Avenue",
+  "3311 West Forest Park Avenue",
+  "3313 West Forest Park Avenue",
+  "3315 West Forest Park Avenue",
+  "3316 West Forest Park Avenue",
+  "3317 West Forest Park Avenue",
+  "3319 West Forest Park Avenue",
+  "3321 West Forest Park Avenue",
+  "3323 West Forest Park Avenue",
+  "3325 West Forest Park Avenue",
+  "3327 West Forest Park Avenue",
+  "3400 West Forest Park Avenue",
+  "3401 West Forest Park Avenue",
+  "3402 West Forest Park Avenue",
+  "3403 West Forest Park Avenue",
+  "3404 West Forest Park Avenue",
+  "3405 West Forest Park Avenue",
+  "3406 West Forest Park Avenue",
+  "3407 West Forest Park Avenue",
+  "3408 West Forest Park Avenue",
+  "3409 West Forest Park Avenue",
+  "3410 West Forest Park Avenue",
+  "3411 West Forest Park Avenue",
+  "3412 West Forest Park Avenue",
+  "3413 West Forest Park Avenue",
+  "3414 West Forest Park Avenue",
+  "3415 West Forest Park Avenue",
+  "3500 West Forest Park Avenue",
+  "3501 West Forest Park Avenue",
+  "3502 West Forest Park Avenue",
+  "3503 West Forest Park Avenue",
+  "3504 West Forest Park Avenue",
+  "3505 West Forest Park Avenue",
+  "3506 West Forest Park Avenue",
+  "3507 West Forest Park Avenue",
+  "3508 West Forest Park Avenue",
+  "3509 West Forest Park Avenue",
+  "3510 West Forest Park Avenue",
+  "3511 West Forest Park Avenue",
+  "3512 West Forest Park Avenue",
+  "3513 West Forest Park Avenue",
+  "3514 West Forest Park Avenue",
+  "3515 West Forest Park Avenue",
+  "3517 West Forest Park Avenue",
+  "3519 West Forest Park Avenue",
+  "3600 West Forest Park Avenue",
+  "3601 West Forest Park Avenue",
+  "3602 West Forest Park Avenue",
+  "3603 West Forest Park Avenue",
+  "3604 West Forest Park Avenue",
+  "3605 West Forest Park Avenue",
+  "3606 West Forest Park Avenue",
+  "3607 West Forest Park Avenue",
+  "3608 West Forest Park Avenue",
+  "3609 West Forest Park Avenue",
+  "3610 West Forest Park Avenue",
+  "3611 West Forest Park Avenue",
+  "3615 West Forest Park Avenue",
+  "3616 West Forest Park Avenue",
+  "3617 West Forest Park Avenue",
+  "3618 West Forest Park Avenue",
+  "3619 West Forest Park Avenue",
+  "3620 West Forest Park Avenue",
+  "4911 West Forest Park Avenue"
+ ],
+ "graph": [
+  {
+   "node": "Civic Analyst",
+   "kind": "agent"
+  },
+  {
+   "node": "Resolution",
+   "kind": "code"
+  },
+  {
+   "node": "Continuity",
+   "kind": "agent"
+  },
+  {
+   "node": "Relevance",
+   "kind": "agent"
+  },
+  {
+   "node": "Action",
+   "kind": "agent"
+  }
+ ],
+ "threads": [
+  {
+   "pair_id": 5,
+   "label": "Reed Calloway House landmark designation, 1316 North Carey Street. Identical title, same parcel, withdrawn in 2021 and enacted in 2022.",
+   "records": [
+    {
+     "record_id": "8667",
+     "file_number": "21-0035",
+     "record_type": "ordinance",
+     "title": "Landmark List - Reed Calloway House For the purpose of designating the Reed Calloway House, 1316 North Carey Street, as an historical landmark: exterior.",
+     "sponsors": [
+      "James Torrence"
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2021-02-08",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8667&GUID=4338ACC9-EDEA-4FCE-B361-527516FBD012",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0036A010",
+       "block": "0036A",
+       "lots": [],
+       "address": "1316 North Carey Street"
+      }
+     ],
+     "neighborhood": "SANDTOWN-WINCHESTER",
+     "owner": "HERNANDEZ, HUMBERTO CASIMIRO",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2021-02-08",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-08",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-11",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-27",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9207",
+     "file_number": "22-0277",
+     "record_type": "ordinance",
+     "title": "Landmark List - Reed Calloway House For the purpose of designating the Reed Calloway House, 1316 North Carey Street, as an historical landmark: exterior.",
+     "sponsors": [
+      "James Torrence"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2022-09-12",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9207&GUID=8294A34A-065C-448A-BD23-A1D3C9DA6FB2",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0036A010",
+       "block": "0036A",
+       "lots": [],
+       "address": "1316 North Carey Street"
+      }
+     ],
+     "neighborhood": "SANDTOWN-WINCHESTER",
+     "owner": "HERNANDEZ, HUMBERTO CASIMIRO",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2022-09-12",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-12",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-15",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-05",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-06",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-21",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-27",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-27",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-03",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-26",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "0036A010"
+     ],
+     "lots_a": [],
+     "lots_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "james torrence"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "james torrence"
+     ],
+     "b": [
+      "james torrence"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "1316",
+      "calloway",
+      "carey",
+      "designating",
+      "exterior",
+      "historical",
+      "house",
+      "landmark",
+      "list",
+      "north",
+      "reed",
+      "street"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2022-09-12",
+     "prior_introduced": "2021-02-08",
+     "gap_days": 581,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "22-0277",
+     "b": "21-0035"
+    }
+   }
+  },
+  {
+   "pair_id": 6,
+   "label": "3901 Boston Street. The liquor licence exchange and the zoning conditional use for the same establishment, introduced the same day. One project, two required approvals.",
+   "records": [
+    {
+     "record_id": "8742",
+     "file_number": "21-0042R",
+     "record_type": "resolution",
+     "title": "Approval for the Exchange of a Class B-D-7 License For Use at 3501 Boston Street (also known as 3831 Boston Street) to a Class A-7 License For Use at 3901 Boston Street (also known as 3975 Boston Street) For the purpose of providing the required approval under Md. Code Ann., Alc. Bev. \u00a7 12-902.1(d)(1) to allow the license holder holding a valid Class B-D-7 Beer, Wine, and Liquor License issued for use at 3501 Boston Street (also known as 3831 Boston Street), Baltimore, Maryland 21224 to apply to the Board of Liquor License Commissioners for Baltimore City to exchange their Class B-D-7 Beer, Wine, and Liquor License for a Class A-7 Beer, Wine, and Liquor License for use at 3901 Boston Street (also known as 3975 Boston Street), Baltimore, Maryland 21224.",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Adopted",
+     "introduced_date": "2021-04-19",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8742&GUID=F219544C-4F21-442A-AAA8-6F6CA8867881",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "6505 001",
+       "block": "6505",
+       "lots": [],
+       "address": "3501 Boston Street"
+      },
+      {
+       "parcel_id": null,
+       "block": null,
+       "lots": [],
+       "address": "3831 Boston Street"
+      },
+      {
+       "parcel_id": "6505 009A",
+       "block": "6505",
+       "lots": [],
+       "address": "3901 Boston Street"
+      },
+      {
+       "parcel_id": null,
+       "block": null,
+       "lots": [],
+       "address": "3975 Boston Street"
+      }
+     ],
+     "neighborhood": "CANTON INDUSTRIAL AREA",
+     "owner": "BCP INVESTORS, LLC",
+     "zone": "C-3",
+     "history": [
+      {
+       "date": "2021-04-19",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-19",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Board of Liquor Licenses Commissioners",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-08",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-07-20",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "8735",
+     "file_number": "21-0064",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Retail Goods Establishment (With Alcoholic Beverages Sales) - A Portion of 3901 Boston Street (Also Known As 3975 Boston Street) For the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of a retail goods establishment (with alcoholic beverages sales) on the property known as 3901 Boston Street (also known as 3975 Boston Street), as outlined in red on the accompanying plat; and providing for a special effective date.",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-04-19",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8735&GUID=10216FF9-873B-40CB-BDD6-B2AF411CAD6C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "6505 009A",
+       "block": "6505",
+       "lots": [],
+       "address": "3901 Boston Street"
+      },
+      {
+       "parcel_id": null,
+       "block": null,
+       "lots": [],
+       "address": "3975 Boston Street"
+      }
+     ],
+     "neighborhood": "CANTON INDUSTRIAL AREA",
+     "owner": "BCP INVESTORS II, LLC",
+     "zone": "C-3",
+     "history": [
+      {
+       "date": "2021-04-19",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-19",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-04-22",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-08",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-06-28",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-07-20",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-13",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "6505 009A"
+     ],
+     "lots_a": [],
+     "lots_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "zeke cohen"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "zeke cohen"
+     ],
+     "b": [
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.143,
+     "cosine": 0.521,
+     "distinctive_shared": [
+      "3901",
+      "3975",
+      "also",
+      "boston",
+      "providing",
+      "street",
+      "use"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": false,
+     "a": "ordinance",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2021-04-19",
+     "prior_introduced": "2021-04-19",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 3,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Adopted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "21-0064",
+     "b": "21-0042R"
+    }
+   }
+  },
+  {
+   "pair_id": 16,
+   "label": "4911-4925 West Forest Park Avenue. Identical titles and parcels, withdrawn in 2022 and reintroduced in 2023, where it failed at end of term. Sponsors narrow from two to one.",
+   "records": [
+    {
+     "record_id": "9254",
+     "file_number": "22-0295",
+     "record_type": "ordinance",
+     "title": "Rezoning - 4911-4917 and 4919-4925 West Forest Park Avenue For the purpose of changing the zoning for the properties known as 4911-4917 West Forest Park Avenue and 4919-4925 West Forest Park Avenue, as outlined in red on the accompanying plat, from the R-1 Zoning District to the OS Zoning District.",
+     "sponsors": [
+      "Odette Ramos",
+      "Kristerfer Burnett"
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2022-11-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9254&GUID=D0F00F3B-9A6F-4E27-BF80-9369350E7469",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "8393G003",
+       "block": "8393G",
+       "lots": [],
+       "address": "4919 West Forest Park Avenue"
+      },
+      {
+       "parcel_id": "8393G002F",
+       "block": "8393G",
+       "lots": [],
+       "address": "4911 West Forest Park Avenue"
+      }
+     ],
+     "neighborhood": "WEST FOREST PARK",
+     "owner": "UNITY LANE INVESTMENTS, LLC",
+     "zone": "R-1",
+     "history": [
+      {
+       "date": "2022-11-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-26",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9549",
+     "file_number": "23-0417",
+     "record_type": "ordinance",
+     "title": "Rezoning - 4911-4917 and 4919-4925 West Forest Park Avenue For the purpose of changing the zoning for the properties known as 4911-4917 West Forest Park Avenue and 4919-4925 West Forest Park Avenue, as outlined in red on the accompanying plat, from the R-1 Zoning District to the OS Zoning District.",
+     "sponsors": [
+      "Kristerfer Burnett"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Failed - End of Term",
+     "introduced_date": "2023-08-21",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9549&GUID=013AE8C8-6784-4EF7-A663-5A87F66C4BB1",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "8393G003",
+       "block": "8393G",
+       "lots": [],
+       "address": "4919 West Forest Park Avenue"
+      },
+      {
+       "parcel_id": "8393G002F",
+       "block": "8393G",
+       "lots": [],
+       "address": "4911 West Forest Park Avenue"
+      }
+     ],
+     "neighborhood": "WEST FOREST PARK",
+     "owner": "UNITY LANE INVESTMENTS, LLC",
+     "zone": "R-1",
+     "history": [
+      {
+       "date": "2023-08-21",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-21",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "8393G002F",
+      "8393G003"
+     ],
+     "lots_a": [],
+     "lots_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "kristerfer burnett"
+     ],
+     "jaccard": 0.5,
+     "a": [
+      "kristerfer burnett"
+     ],
+     "b": [
+      "kristerfer burnett",
+      "odette ramos"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "4911",
+      "4917",
+      "4919",
+      "4925",
+      "avenue",
+      "changing",
+      "district",
+      "forest",
+      "park",
+      "rezoning",
+      "west",
+      "zoning"
+     ]
+    },
+    "zoning_transition": {
+     "match": true,
+     "a": "R1->OS",
+     "b": "R1->OS"
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-08-21",
+     "prior_introduced": "2022-11-07",
+     "gap_days": 287,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0417",
+     "b": "22-0295"
+    }
+   }
+  },
+  {
+   "pair_id": 20,
+   "label": "205-209 East Cold Spring Lane. Failed at end of term in 2023, reintroduced in 2026 by the same sponsor with lot 003 dropped. Same R-1-C to EC-2 transition. File numbers and title formatting both differ.",
+   "records": [
+    {
+     "record_id": "9528",
+     "file_number": "23-0411",
+     "record_type": "ordinance",
+     "title": "Rezoning - 205-209 East Cold Spring Lane For the purpose of changing the zoning for the property known as 205-209 East Cold Spring Lane (Block 5053I, Lots 001, 002, 003), as outlined in red on the accompanying plat, from the R-1-C Zoning District to the EC-2 Zoning District.",
+     "sponsors": [
+      "Mark Conway"
+     ],
+     "committee": null,
+     "status": "Failed - End of Term",
+     "introduced_date": "2023-07-17",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9528&GUID=FC825E31-FEB0-4E38-9D69-7CA1949CD8D7",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "5053I001",
+       "block": "5053I",
+       "lots": [
+        "001",
+        "002",
+        "003"
+       ],
+       "address": "205 East Cold Spring Lane"
+      }
+     ],
+     "neighborhood": "KERNEWOOD",
+     "owner": "LOYOLA UNIVERSITY MARYLAND, INC",
+     "zone": "R-1-C",
+     "history": [
+      {
+       "date": "2023-07-17",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-17",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-07-20",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "10424",
+     "file_number": "26-0148",
+     "record_type": "ordinance",
+     "title": "Rezoning \u2013 205-209 E Cold Spring Lane FOR the purpose of changing the zoning for the property known as 205-209 E Cold Spring Lane (Block 5053I, Lots 001 and 002), as outlined in red on the accompanying plat, from the R 1 C Zoning District to the EC-2 Zoning District.",
+     "sponsors": [
+      "Mark Conway"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "In Committee",
+     "introduced_date": "2026-02-09",
+     "hearing_date": "2026-09-24",
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10424&GUID=DEECC729-ED42-4537-81A5-630832B576A3",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "5053I001",
+       "block": "5053I",
+       "lots": [
+        "001",
+        "002"
+       ],
+       "address": "205 East Cold Spring Lane"
+      }
+     ],
+     "neighborhood": "KERNEWOOD",
+     "owner": "LOYOLA UNIVERSITY MARYLAND, INC",
+     "zone": "R-1-C",
+     "history": [
+      {
+       "date": "2026-02-09",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-09-24",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "5053I001"
+     ],
+     "lots_a": [
+      "001",
+      "002"
+     ],
+     "lots_b": [
+      "001",
+      "002",
+      "003"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "mark conway"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "mark conway"
+     ],
+     "b": [
+      "mark conway"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.875,
+     "cosine": 0.943,
+     "distinctive_shared": [
+      "001",
+      "002",
+      "205",
+      "209",
+      "5053i",
+      "block",
+      "changing",
+      "cold",
+      "district",
+      "lane",
+      "lots",
+      "rezoning"
+     ]
+    },
+    "zoning_transition": {
+     "match": true,
+     "a": "R1C->EC2",
+     "b": "R1C->EC2"
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2026-02-09",
+     "prior_introduced": "2023-07-17",
+     "gap_days": 938,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 1,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "26-0148",
+     "b": "23-0411"
+    }
+   }
+  },
+  {
+   "pair_id": 21,
+   "label": "1600 South Charles Street. The dwelling conversion and the residential parking permit exception the conversion requires, two weeks apart on the same parcel.",
+   "records": [
+    {
+     "record_id": "9591",
+     "file_number": "23-0437",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 3 Dwelling Units in the R-8 Zoning District - 1600 South Charles Street For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 3 dwelling units in the R-8 Zoning District on the property known as 1600 South Charles Street (Block 1013, Lot 065), as outlined in red on the accompanying plat.",
+     "sponsors": [
+      "Eric T. Costello"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-10-02",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9591&GUID=FF557F57-0558-4AD0-8CDD-5F08D85E62E3",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "1013 065",
+       "block": "1013",
+       "lots": [
+        "065"
+       ],
+       "address": "1600 South Charles Street"
+      }
+     ],
+     "neighborhood": "SOUTH BALTIMORE",
+     "owner": "BATIE JR, LEON",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-10-02",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-02",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-05",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-01-22",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-02-04",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-02-27",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-03-04",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-03-04",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-03-18",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-05-01",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9600",
+     "file_number": "23-0441",
+     "record_type": "ordinance",
+     "title": "RPP Area 30 (South Baltimore East) - Exception - 1600 South Charles Street For the purpose of amending the Parking Management Plan Restatement for RPP Area 30 (South Baltimore East) to add an exception to the Plan\u2019s general permit allotments for dwelling units.",
+     "sponsors": [
+      "Eric T. Costello"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2023-10-16",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9600&GUID=BC48C282-30E8-4686-87B0-1788A31091C8",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "1013 065",
+       "block": "1013",
+       "lots": [],
+       "address": "1600 South Charles Street"
+      }
+     ],
+     "neighborhood": "SOUTH BALTIMORE",
+     "owner": "BATIE JR, LEON",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-10-16",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-16",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Reassigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-02",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-16",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "1013 065"
+     ],
+     "lots_a": [],
+     "lots_b": [
+      "065"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "eric t. costello"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "eric t. costello"
+     ],
+     "b": [
+      "eric t. costello"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.188,
+     "cosine": 0.327,
+     "distinctive_shared": [
+      "1600",
+      "charles",
+      "dwelling",
+      "south",
+      "street",
+      "units"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-10-16",
+     "prior_introduced": "2023-10-02",
+     "gap_days": 14,
+     "ordered": true,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0441",
+     "b": "23-0437"
+    }
+   }
+  },
+  {
+   "pair_id": 23,
+   "label": "3601 Elm Avenue. Liquor licence exchange and the matching zoning conditional use, introduced the same day for the same establishment.",
+   "records": [
+    {
+     "record_id": "9809",
+     "file_number": "24-0221R",
+     "record_type": "resolution",
+     "title": "Approval for the Exchange of a Class B-D-7 License to a Class A-7 License for Use at 3601 Elm Avenue, 21211 For the purpose of providing the required approval under Md. Code Ann., Alc. Bev. \u00a7 12-902.1(d)(1) to allow the license holder holding a valid Class B-D-7 Beer, Wine, and Liquor License issued for use at 3601Elm Avenue, 21211 to apply to the Board of Liquor License Commissioners for Baltimore City to exchange their Class B-D-7 Beer, Wine, and Liquor License for a Class A-7 Beer, Wine, and Liquor License.",
+     "sponsors": [
+      "Odette Ramos"
+     ],
+     "committee": "Ways and Means",
+     "status": "Adopted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9809&GUID=9E25E5CA-5A7A-4401-8A00-914BC80CAEA8",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "3537 049",
+       "block": "3537",
+       "lots": [],
+       "address": "3601 Elm Avenue"
+      }
+     ],
+     "neighborhood": "HAMPDEN",
+     "owner": "WELLS ENTERPRISES, LLC",
+     "zone": "C-1",
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Liquor Licenses Commissioners",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-02",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9805",
+     "file_number": "24-0550",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use - Retail Goods Establishment with Alcoholic Beverage Sales - 3601 Elm Avenue For the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of a retail goods establishment with alcoholic beverage sales on the property known as 3601 Elm Avenue, as outlined in red on the accompanying plat; and providing for a special effective date.",
+     "sponsors": [
+      "Odette Ramos"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9805&GUID=3E0F9975-F8C3-4396-8A3D-8F2825A173C9",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "3537 049",
+       "block": "3537",
+       "lots": [],
+       "address": "3601 Elm Avenue"
+      }
+     ],
+     "neighborhood": "HAMPDEN",
+     "owner": "WELLS ENTERPRISES, LLC",
+     "zone": "C-1",
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-30",
+       "action": "Sign Posting",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-23",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-16",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "3537 049"
+     ],
+     "lots_a": [],
+     "lots_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "odette ramos"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "odette ramos"
+     ],
+     "b": [
+      "odette ramos"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.114,
+     "cosine": 0.127,
+     "distinctive_shared": [
+      "3601",
+      "avenue",
+      "elm",
+      "providing",
+      "use"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": false,
+     "a": "ordinance",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-06-10",
+     "prior_introduced": "2024-06-10",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 3,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Adopted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0550",
+     "b": "24-0221R"
+    }
+   }
+  },
+  {
+   "pair_id": 26,
+   "label": "15 East West Street. The dwelling conversion and the RPP Area 30 parking exception it requires. Same parcel, different instrument, title formatting differs.",
+   "records": [
+    {
+     "record_id": "10131",
+     "file_number": "25-0071",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Conditional Use Conversion of Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District \u2013 Variances \u2013 15 East West Street FOR the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 15 East West Street (Block 0965, Lot 046), as outlined in red on the accompanying plat; granting a variance regarding certain bulk regulations (lot size area); and providing for a special effective date.",
+     "sponsors": [
+      "Zac Blanchard"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-05-12",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10131&GUID=009B812E-8881-4CB4-B45D-B0337ACA1079",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0965 046",
+       "block": "0965",
+       "lots": [
+        "046"
+       ],
+       "address": "15 East West Street"
+      }
+     ],
+     "neighborhood": "FEDERAL HILL",
+     "owner": "ABDALLA, BASHEER",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2025-05-12",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-20",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-11-20",
+       "action": "Recommended Favorably",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-11-24",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-04",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-04",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-11",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10175",
+     "file_number": "25-0083",
+     "record_type": "ordinance",
+     "title": "RPP Area 30 \u2013 Exception \u2013 15 E West Street FOR the purpose of amending the Parking Management Plan Restatement for RPP Area 30 (South Baltimore East) to add an exception to the Plan\u2019s general permit allotments for dwelling units.",
+     "sponsors": [
+      "Zac Blanchard"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-07-21",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10175&GUID=E69042F8-ACCE-4E1E-85DA-EF7B47B9E273",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0965 046",
+       "block": "0965",
+       "lots": [],
+       "address": "15 East West Street"
+      }
+     ],
+     "neighborhood": "FEDERAL HILL",
+     "owner": "ABDALLA, BASHEER",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2025-07-21",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-07-21",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-07-22",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-07-22",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-07-22",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-07-22",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-09-25",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-09-25",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-09-25",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-09-29",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-23",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "0965 046"
+     ],
+     "lots_a": [],
+     "lots_b": [
+      "046"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "zac blanchard"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "zac blanchard"
+     ],
+     "b": [
+      "zac blanchard"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.143,
+     "cosine": 0.281,
+     "distinctive_shared": [
+      "area",
+      "dwelling",
+      "east",
+      "street",
+      "units",
+      "west"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-07-21",
+     "prior_introduced": "2025-05-12",
+     "gap_days": 70,
+     "ordered": true,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": "Land Use & Transportation Committee"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0083",
+     "b": "25-0071"
+    }
+   }
+  },
+  {
+   "pair_id": 27,
+   "label": "1100 Wicomico Street. Repealing the old planned unit development is the step that permits the banquet hall conditional use. Same parcel, same day.",
+   "records": [
+    {
+     "record_id": "10133",
+     "file_number": "25-0073",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Conditional Use Conversion to a Banquet Hall in the IMU-1 Zoning District \u2013 Variances \u2013 1100 Wicomico Street FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of a banquet hall on the property known as 1100 Wicomico Street (Block 0811, Lot 060), as outlined in red on the accompanying plat; granting variances regarding off-street parking requirements; and providing for a special effective date.",
+     "sponsors": [
+      "Phylicia Porter"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-05-12",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10133&GUID=089DD417-0F94-4673-96FA-54CA0FCF618D",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0811 060",
+       "block": "0811",
+       "lots": [
+        "060"
+       ],
+       "address": "1100 Wicomico Street"
+      }
+     ],
+     "neighborhood": "WASHINGTON VILLAGE/PIGTOWN",
+     "owner": "TTV WICOMICO, LLC",
+     "zone": "IMU-1",
+     "history": [
+      {
+       "date": "2025-05-12",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-20",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-01",
+       "action": "Recommended Favorably",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-04",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-23",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10134",
+     "file_number": "25-0074",
+     "record_type": "ordinance",
+     "title": "Repeal of Ordinance 06-222 \u2013 Planned Unit Development \u2013 1100 Wicomico Street FOR the purpose of repealing Ordinance 06-222, which designated certain property located at 1100 Wicomico Street an Industrial Planned Unit Development; and providing for a special effective date.",
+     "sponsors": [
+      "Phylicia Porter"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-05-12",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10134&GUID=ACC0B35F-77A3-4315-BCCC-8EF0A10ED743",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0811 060",
+       "block": "0811",
+       "lots": [],
+       "address": "1100 Wicomico Street"
+      }
+     ],
+     "neighborhood": "WASHINGTON VILLAGE/PIGTOWN",
+     "owner": "TTV WICOMICO, LLC",
+     "zone": "IMU-1",
+     "history": [
+      {
+       "date": "2025-05-12",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-28",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-08-28",
+       "action": "Recommended Favorably",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-09-15",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-09-29",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-09-29",
+       "action": "Refer to Office of the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-23",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "exact",
+     "shared_parcel_ids": [
+      "0811 060"
+     ],
+     "lots_a": [],
+     "lots_b": [
+      "060"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "phylicia porter"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "phylicia porter"
+     ],
+     "b": [
+      "phylicia porter"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.184,
+     "cosine": 0.399,
+     "distinctive_shared": [
+      "1100",
+      "date",
+      "effective",
+      "providing",
+      "special",
+      "street",
+      "wicomico"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-05-12",
+     "prior_introduced": "2025-05-12",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": "Land Use & Transportation Committee"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0074",
+     "b": "25-0073"
+    }
+   }
+  }
+ ],
+ "negatives": [
+  {
+   "pair_id": 3,
+   "label": "Both rezone a South Caton Avenue property on block 2108C, five years apart, but 1201 is lot 002 and 901 is lot 001.",
+   "records": [
+    {
+     "record_id": "8622",
+     "file_number": "21-0026",
+     "record_type": "ordinance",
+     "title": "Rezoning - 1201 South Caton Avenue For the purpose of changing the zoning for the property known as 1201 South Caton Avenue (Block 2108C, Lot 002), as outlined in red on the accompanying plat, from the EC-1 Zoning District to the I-1 Zoning District; and providing for a special effective date.",
+     "sponsors": [
+      "Phylicia Porter"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-01-25",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8622&GUID=E3C0C8D0-2D89-47A4-A8EC-DBA16ADD4711",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "2108C002",
+       "block": "2108C",
+       "lots": [
+        "002"
+       ],
+       "address": "1201 South Caton Avenue"
+      }
+     ],
+     "neighborhood": "WILHELM PARK",
+     "owner": "COMREF CITY LOGISTICS LLC",
+     "zone": "I-1",
+     "history": [
+      {
+       "date": "2021-01-25",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-25",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-08",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-14",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-23",
+       "action": "Advertising",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-04-13",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-04-19",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-04-19",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-03",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-08",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10508",
+     "file_number": "26-0177",
+     "record_type": "ordinance",
+     "title": "Rezoning \u2013 901 S Caton Avenue FOR the purpose of changing the zoning for the property known as 901 S Caton Avenue (Block 2108C, Lot 001), as outlined in red on the accompanying plat, from the OR-2 Zoning District to the C-2 Zoning District; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2026-04-27",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10508&GUID=8959DFD0-D9B3-44F2-BC50-4486D960396F",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "2108C001",
+       "block": "2108C",
+       "lots": [
+        "001"
+       ],
+       "address": "901 South Caton Avenue"
+      }
+     ],
+     "neighborhood": "WILHELM PARK",
+     "owner": "GIBBONS COMMONS, LLC",
+     "zone": "OR-2",
+     "history": [
+      {
+       "date": "2026-04-27",
+       "action": "Introduced",
+       "body": "City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Assigned",
+       "body": "City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-07-09",
+       "action": "Recommended Favorably",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2026-07-13",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2026-07-13",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-07-13",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-08-10",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "2108C"
+     ],
+     "lots_a": [
+      "001"
+     ],
+     "lots_b": [
+      "002"
+     ]
+    },
+    "sponsor": {
+     "overlap": [],
+     "jaccard": 0.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "phylicia porter"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.722,
+     "cosine": 0.812,
+     "distinctive_shared": [
+      "2108c",
+      "avenue",
+      "block",
+      "caton",
+      "changing",
+      "date",
+      "district",
+      "effective",
+      "lot",
+      "providing",
+      "rezoning",
+      "special"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": "OR2->C2",
+     "b": "EC1->I1"
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2026-04-27",
+     "prior_introduced": "2021-01-25",
+     "gap_days": 1918,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "26-0177",
+     "b": "21-0026"
+    }
+   }
+  },
+  {
+   "pair_id": 9,
+   "label": "605 South Caton rezoning versus a storm drain franchise granted to 701 Caton LLC. Same block, related developer, different parcels and different actions.",
+   "records": [
+    {
+     "record_id": "8718",
+     "file_number": "21-0054",
+     "record_type": "ordinance",
+     "title": "Rezoning - 605 South Caton Avenue For the purpose of changing the zoning for the property known as 605 South Caton Avenue, as outlined in red on the accompanying plat, from the C-2 Zoning District to the I-2 Zoning District; and providing for a special effective date.",
+     "sponsors": [
+      "Phylicia Porter"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-03-22",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8718&GUID=992BDCE3-7903-42A4-911E-7DE3E4A66D36",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "2113 001",
+       "block": "2113",
+       "lots": [],
+       "address": "605 South Caton Avenue"
+      }
+     ],
+     "neighborhood": "GWYNNS FALLS",
+     "owner": "BREX INVESTMENT, LLC",
+     "zone": "I-1",
+     "history": [
+      {
+       "date": "2021-03-22",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-03",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-07-19",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-14",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-14",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-10-04",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9089",
+     "file_number": "22-0217",
+     "record_type": "ordinance",
+     "title": "Franchise - Storm Drain Outfall For the purpose of granting a franchise to 701 Caton, LLC to construct, use, and maintain the storm drain outfall located in the City\u2019s Lower Gwynns Falls Park, adjacent to 707 South Caton Avenue, Baltimore, Maryland 21229, subject to certain terms, conditions, and reservations; and providing for a special effective date.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2022-04-04",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9089&GUID=8CBE74E1-0A39-4083-8760-DF3630AA0E8C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "2113 023",
+       "block": "2113",
+       "lots": [],
+       "address": "707 South Caton Avenue"
+      }
+     ],
+     "neighborhood": "GWYNNS FALLS",
+     "owner": "TREA SP V BALTIMORE MD LLC",
+     "zone": "I-1",
+     "history": [
+      {
+       "date": "2022-04-04",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-04",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-07",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-15",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-17",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "2113"
+     ],
+     "lots_a": [],
+     "lots_b": []
+    },
+    "sponsor": {
+     "overlap": [],
+     "jaccard": 0.0,
+     "a": [
+      "city council president (administration)"
+     ],
+     "b": [
+      "phylicia porter"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": "Dept. of Recreation and Parks",
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.212,
+     "cosine": 0.309,
+     "distinctive_shared": [
+      "avenue",
+      "caton",
+      "date",
+      "effective",
+      "providing",
+      "south",
+      "special"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": "C2->I2"
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2022-04-04",
+     "prior_introduced": "2021-03-22",
+     "gap_days": 378,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "22-0217",
+     "b": "21-0054"
+    }
+   }
+  },
+  {
+   "pair_id": 10,
+   "label": "1049 and 1046 Brantley Avenue. Near identical titles, same block 0115, different lots. Two separate households converting a rowhouse.",
+   "records": [
+    {
+     "record_id": "8757",
+     "file_number": "21-0076",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variance - 1049 Brantley Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1049 Brantley Avenue (Block 0115, Lot 069), as outlined in red on the accompanying plat; and granting a variance from certain bulk regulations (lot area size).",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-05-03",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8757&GUID=CF23364E-4023-46CE-9A06-F5011338DC9C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 069",
+       "block": "0115",
+       "lots": [
+        "069"
+       ],
+       "address": "1049 Brantley Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "ANDERSON, RONALD E",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2021-05-03",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-03",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-07-19",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-14",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-10-04",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-12-06",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9520",
+     "file_number": "23-0408",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variances - 1046 Brantley Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1046 Brantley Avenue (Block 0115, Lot 071), as outlined in red on the accompanying plat; and granting variances from certain bulk regulations (lot area size), and off-street parking requirements; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-06-26",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9520&GUID=7209A052-E104-4FC5-9828-358E22AA5268",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 071",
+       "block": "0115",
+       "lots": [
+        "071"
+       ],
+       "address": "1046 Brantley Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "ANDERSON, RONALD E",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-06-26",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-26",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-16",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-11-08",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-05",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-18",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-01-22",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "0115"
+     ],
+     "lots_a": [
+      "071"
+     ],
+     "lots_b": [
+      "069"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.6,
+     "cosine": 0.846,
+     "distinctive_shared": [
+      "0115",
+      "area",
+      "avenue",
+      "block",
+      "brantley",
+      "bulk",
+      "conditional",
+      "conversion",
+      "district",
+      "dwelling",
+      "family",
+      "granting"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-06-26",
+     "prior_introduced": "2021-05-03",
+     "gap_days": 784,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0408",
+     "b": "21-0076"
+    }
+   }
+  },
+  {
+   "pair_id": 11,
+   "label": "Same boilerplate R-8 conversion title, different street entirely.",
+   "records": [
+    {
+     "record_id": "8757",
+     "file_number": "21-0076",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variance - 1049 Brantley Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1049 Brantley Avenue (Block 0115, Lot 069), as outlined in red on the accompanying plat; and granting a variance from certain bulk regulations (lot area size).",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-05-03",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8757&GUID=CF23364E-4023-46CE-9A06-F5011338DC9C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 069",
+       "block": "0115",
+       "lots": [
+        "069"
+       ],
+       "address": "1049 Brantley Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "ANDERSON, RONALD E",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2021-05-03",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-03",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-07-19",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-14",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-10-04",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-12-06",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9654",
+     "file_number": "23-0469",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variances - 1014 Edmondson Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1014 Edmondson Avenue (Block 0115, Lot 037), as outlined in red on the accompanying plat; and granting a variance from certain bulk regulations (lot area size); and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-12-04",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9654&GUID=AB3C7D23-881F-4C19-B274-2989FFED4590",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 037",
+       "block": "0115",
+       "lots": [
+        "037"
+       ],
+       "address": "1014 Edmondson Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "AMG INVESTING LLC",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-12-04",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-04",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-03",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-24",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "0115"
+     ],
+     "lots_a": [
+      "037"
+     ],
+     "lots_b": [
+      "069"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.656,
+     "cosine": 0.852,
+     "distinctive_shared": [
+      "0115",
+      "area",
+      "avenue",
+      "block",
+      "bulk",
+      "conditional",
+      "conversion",
+      "district",
+      "dwelling",
+      "family",
+      "granting",
+      "lot"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-12-04",
+     "prior_introduced": "2021-05-03",
+     "gap_days": 945,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0469",
+     "b": "21-0076"
+    }
+   }
+  },
+  {
+   "pair_id": 12,
+   "label": "1110 West Lafayette withdrawn, then 1100 West Lafayette enacted six weeks later. Different lot and different street number, so labelled distinct, but a continuation reading is defensible and this pair is expected to be contested.",
+   "records": [
+    {
+     "record_id": "8758",
+     "file_number": "21-0077",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single Family Dwelling Unit to 5 Dwelling Units in the R-8 Zoning District - Variances - 1110 West Lafayette Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 5 dwelling units in the R-8 Zoning District on the property known as 1110 W. Lafayette Avenue (Block 0079, Lot 004A), as shown on the accompanying plat with the lot number circled.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2021-05-03",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8758&GUID=FE5D2FE7-0F0A-4BB2-B06F-6D842E27821F",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0079 004A",
+       "block": "0079",
+       "lots": [
+        "004A"
+       ],
+       "address": "1110 West Lafayette Avenue"
+      }
+     ],
+     "neighborhood": "SANDTOWN-WINCHESTER",
+     "owner": "SMITH FAMILY LIVING TRUST",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2021-05-03",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-03",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-06",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-08",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "8792",
+     "file_number": "21-0098",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single Family Dwelling Unit to 5 Dwelling Units in the R-8 Zoning District - Variances - 1100 West Lafayette Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 5 dwelling units in the R-8 Zoning District on the property known as 1100 W. Lafayette Avenue (Block 0079, Lot 001), as shown on the accompanying plat with the lot number circled.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-06-14",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8792&GUID=0FC9F4A6-CE3F-463B-93F6-E108404F91AA",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0079 001",
+       "block": "0079",
+       "lots": [
+        "001"
+       ],
+       "address": "1100 West Lafayette Avenue"
+      }
+     ],
+     "neighborhood": "SANDTOWN-WINCHESTER",
+     "owner": "WESLEAF, LLC",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2021-06-14",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-14",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-06-17",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-13",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-28",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-28",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-10-19",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-02-07",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "0079"
+     ],
+     "lots_a": [
+      "001"
+     ],
+     "lots_b": [
+      "004A"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.84,
+     "cosine": 0.934,
+     "distinctive_shared": [
+      "0079",
+      "avenue",
+      "block",
+      "circled",
+      "conditional",
+      "conversion",
+      "district",
+      "dwelling",
+      "family",
+      "lafayette",
+      "lot",
+      "number"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2021-06-14",
+     "prior_introduced": "2021-05-03",
+     "gap_days": 42,
+     "ordered": true,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "21-0098",
+     "b": "21-0077"
+    }
+   }
+  },
+  {
+   "pair_id": 18,
+   "label": "427 Gusryan withdrawn and 466 Hornel enacted, introduced the same day with the same boilerplate title. Different lots, different streets.",
+   "records": [
+    {
+     "record_id": "9309",
+     "file_number": "22-0320",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-7 Zoning District - Variances - 427 Gusryan Street For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-7 Zoning District on the property known as 427 Gusrayn Street (Block 6345, Lot 037), as outlined in red on the accompanying plat; and granting variances from certain bulk regulations (lot area size).",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2022-12-05",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9309&GUID=E318678F-D294-4AEA-9390-D0FD60B95892",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "6345 037",
+       "block": "6345",
+       "lots": [
+        "037"
+       ],
+       "address": "427 Gusryan Street"
+      }
+     ],
+     "neighborhood": "BAYVIEW",
+     "owner": "LI, HUIFEN",
+     "zone": "R-7",
+     "history": [
+      {
+       "date": "2022-12-05",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-05",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9314",
+     "file_number": "22-0325",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-7 Zoning District - Variances 466 Hornel Street For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-7 Zoning District on the property known as 466 Hornel Street (Block 6345, Lot 023), as outlined in red on the accompanying plat; and granting variances from certain bulk regulations (lot area size) and off-street parking requirements.",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2022-12-05",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9314&GUID=3F60945F-6322-47BF-A642-A5D152BC9478",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "6345 023",
+       "block": "6345",
+       "lots": [
+        "023"
+       ],
+       "address": "466 Hornel Street"
+      }
+     ],
+     "neighborhood": "BAYVIEW",
+     "owner": "AU, HONG",
+     "zone": "R-7",
+     "history": [
+      {
+       "date": "2022-12-05",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-05",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-13",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-03-28",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-05-02",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-05-15",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-05-15",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-12",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-09-18",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "6345"
+     ],
+     "lots_a": [
+      "023"
+     ],
+     "lots_b": [
+      "037"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "zeke cohen"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "zeke cohen"
+     ],
+     "b": [
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.677,
+     "cosine": 0.881,
+     "distinctive_shared": [
+      "6345",
+      "area",
+      "block",
+      "bulk",
+      "conditional",
+      "conversion",
+      "district",
+      "dwelling",
+      "family",
+      "granting",
+      "lot",
+      "permitting"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2022-12-05",
+     "prior_introduced": "2022-12-05",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "22-0325",
+     "b": "22-0320"
+    }
+   }
+  },
+  {
+   "pair_id": 19,
+   "label": "Boilerplate R-8 conversion titles on the same block, different lots and streets.",
+   "records": [
+    {
+     "record_id": "9520",
+     "file_number": "23-0408",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variances - 1046 Brantley Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1046 Brantley Avenue (Block 0115, Lot 071), as outlined in red on the accompanying plat; and granting variances from certain bulk regulations (lot area size), and off-street parking requirements; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-06-26",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9520&GUID=7209A052-E104-4FC5-9828-358E22AA5268",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 071",
+       "block": "0115",
+       "lots": [
+        "071"
+       ],
+       "address": "1046 Brantley Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "ANDERSON, RONALD E",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-06-26",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-26",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-06-29",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-16",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-11-08",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-05",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-18",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-01-22",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9654",
+     "file_number": "23-0469",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variances - 1014 Edmondson Avenue For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1014 Edmondson Avenue (Block 0115, Lot 037), as outlined in red on the accompanying plat; and granting a variance from certain bulk regulations (lot area size); and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-12-04",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9654&GUID=AB3C7D23-881F-4C19-B274-2989FFED4590",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0115 037",
+       "block": "0115",
+       "lots": [
+        "037"
+       ],
+       "address": "1014 Edmondson Avenue"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "AMG INVESTING LLC",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-12-04",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-04",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-07",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-03",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-24",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "0115"
+     ],
+     "lots_a": [
+      "037"
+     ],
+     "lots_b": [
+      "071"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.694,
+     "cosine": 0.859,
+     "distinctive_shared": [
+      "0115",
+      "area",
+      "avenue",
+      "block",
+      "bulk",
+      "conditional",
+      "conversion",
+      "date",
+      "district",
+      "dwelling",
+      "effective",
+      "family"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-12-04",
+     "prior_introduced": "2023-06-26",
+     "gap_days": 161,
+     "ordered": true,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0469",
+     "b": "23-0408"
+    }
+   }
+  },
+  {
+   "pair_id": 22,
+   "label": "1022 and 1002 West Lanvale Street. Same block, same boilerplate, different lots.",
+   "records": [
+    {
+     "record_id": "9627",
+     "file_number": "23-0454",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - 1022 West Lanvale Street For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit into 2 dwelling units in the R-8 Zoning District on the property known as 1022 West Lanvale Street (Block 0092, Lot 030), as outlined in red on the accompanying plat; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2023-11-20",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9627&GUID=D3BDD425-E36F-48FF-9F77-F6D8D455D4E1",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0092 030",
+       "block": "0092",
+       "lots": [
+        "030"
+       ],
+       "address": "1022 West Lanvale Street"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "SAM, KWESI SEDRICK",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2023-11-20",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-20",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-02",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-24",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9804",
+     "file_number": "24-0549",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use Conversion of a Single-Family Dwelling Unit to 2 Dwelling Units in the R-8 Zoning District - Variances 1002 West Lanvale Street For the purpose of permitting, subject to certain conditions, the conversion of a single-family dwelling unit to 2 dwelling units in the R-8 Zoning District on the property known as 1002 West Lanvale Street (Block 0092, Lot 040), as outlined in red on the accompanying plat; and granting variances from off-street parking requirements; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9804&GUID=77C360C5-5969-45CD-9B6D-C2DEDB83DA69",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0092 040",
+       "block": "0092",
+       "lots": [
+        "040"
+       ],
+       "address": "1002 West Lanvale Street"
+      }
+     ],
+     "neighborhood": "HARLEM PARK",
+     "owner": "VRJ BUSINESS SOLUTIONS, LLC",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-22",
+       "action": "Sign Posting",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-09-06",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-09-12",
+       "action": "Sign Posting",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-10-08",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-11-04",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-12-02",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "0092"
+     ],
+     "lots_a": [
+      "040"
+     ],
+     "lots_b": [
+      "030"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "john bullock"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.677,
+     "cosine": 0.882,
+     "distinctive_shared": [
+      "0092",
+      "block",
+      "conditional",
+      "conversion",
+      "date",
+      "district",
+      "dwelling",
+      "effective",
+      "family",
+      "lanvale",
+      "lot",
+      "permitting"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-06-10",
+     "prior_introduced": "2023-11-20",
+     "gap_days": 203,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0549",
+     "b": "23-0454"
+    }
+   }
+  },
+  {
+   "pair_id": 25,
+   "label": "701 and 702 Mura Street. The canonical negative. Same sponsor, same day, same block, near identical titles, and a higher title cosine than the true continuation in pair 20.",
+   "records": [
+    {
+     "record_id": "10084",
+     "file_number": "25-0055",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Conditional Use \u2013 Parking Lot (Principal Use) \u2013 Variances 701 Mura Street FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of a principal use parking lot on the property known as 701 Mura Street (Block 1155, Lot 70), as outlined in red on the accompanying plat; granting certain variances from minimum lot area, minimum interior side yard, and minimum rear yard requirements; and providing for a special effective date.",
+     "sponsors": [
+      "Jermaine Jones"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-04-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10084&GUID=F05E1F77-FCC8-4A74-9891-82987D63661A",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "1155 070",
+       "block": "1155",
+       "lots": [
+        "070"
+       ],
+       "address": "701 Mura Street"
+      }
+     ],
+     "neighborhood": "JOHNSTON SQUARE",
+     "owner": "REBUILD JOHNSTON SQUARE PHASE 1,",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2025-04-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-06-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-20",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-01",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-04",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-23",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10085",
+     "file_number": "25-0056",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Conditional Use \u2013 Parking Lot (Principal Use) \u2013 Variances 702 Mura Street FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of a principal use parking lot on the property known as 702 Mura Street (Block 1155, Lot 101), as outlined in red on the accompanying plat; granting certain variances from minimum lot area, minimum interior side yard, and minimum rear yard requirements; and providing for a special effective date.",
+     "sponsors": [
+      "Jermaine Jones"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-04-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10085&GUID=42E92D8E-287C-4FD4-AB09-EEE58B6B0C51",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "1155 101",
+       "block": "1155",
+       "lots": [
+        "101"
+       ],
+       "address": "702 Mura Street"
+      }
+     ],
+     "neighborhood": "JOHNSTON SQUARE",
+     "owner": "REBUILD JOHNSTON SQUARE PHASE 1,",
+     "zone": "R-8",
+     "history": [
+      {
+       "date": "2025-04-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-20",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-01",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-04",
+       "action": "2nd Reader",
+       "body": "Land Use & Transportation Committee"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-12-15",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-01-12",
+       "action": "Requested Return from Mayor for Further Consideration",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-06",
+       "action": "Returned from Mayor for Further Consideration",
+       "body": "Mayor"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-24",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_blocks": [
+      "1155"
+     ],
+     "lots_a": [
+      "101"
+     ],
+     "lots_b": [
+      "070"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "jermaine jones"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "jermaine jones"
+     ],
+     "b": [
+      "jermaine jones"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.9,
+     "cosine": 0.944,
+     "distinctive_shared": [
+      "1155",
+      "area",
+      "block",
+      "conditional",
+      "date",
+      "effective",
+      "establishment",
+      "granting",
+      "interior",
+      "lot",
+      "maintenance",
+      "minimum"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-04-07",
+     "prior_introduced": "2025-04-07",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": "Land Use & Transportation Committee"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0056",
+     "b": "25-0055"
+    }
+   }
+  }
+ ]
+}
