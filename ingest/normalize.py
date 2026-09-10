@@ -39,11 +39,12 @@ def to_record(
 ) -> CivicRecord:
     histories = sorted(histories or [], key=lambda h: h.get("MatterHistoryActionDate") or "")
     title = _clean(matter.get("MatterTitle") or matter.get("MatterName"))
+    file_number = _clean(matter.get("MatterFile")) or f"ID-{matter['MatterId']}"
 
     appearances = [
         Appearance(
             record_id=str(matter["MatterId"]),
-            file_number=matter["MatterFile"],
+            file_number=file_number,
             action_date=_d(h.get("MatterHistoryActionDate")),
             action=_clean(h.get("MatterHistoryActionName")),
             body=_clean(h.get("MatterHistoryActionBodyName")),
@@ -69,7 +70,7 @@ def to_record(
 
     return CivicRecord(
         record_id=str(matter["MatterId"]),
-        file_number=matter["MatterFile"],
+        file_number=file_number,
         record_type=TYPE_MAP.get(matter.get("MatterTypeName", ""), "agenda_item"),
         title=title,
         body_excerpt=title[:1200],
