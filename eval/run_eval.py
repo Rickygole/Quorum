@@ -201,7 +201,28 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
         )
         L.append("\n### Every miss, named\n")
         if not agent_stats["errors"]:
-            L.append("No misses on this set.\n")
+            L.append(
+                "No misses on this set. That is not the win it looks like, and the reason is in the "
+                "baseline table above: the tuned two clause rule also scores 100%. A perfect score "
+                "here says the set is separable, not that the agent is necessary. The agent ties the "
+                "rule; it does not beat it.\n"
+            )
+            L.append(
+                "What the agent produced that the rule cannot is the reasoning attached to every one "
+                "of the 50 rows, including which evidence it set aside. On the hardest negative, 701 "
+                "and 702 Mura Street, it wrote that the parcels are adjacent lots on the same block "
+                "and listed `title cosine 0.944, boilerplate for conditional use parking lots` as a "
+                "non driver. On the hero pair it listed `title cosine 0.943, expected boilerplate for "
+                "rezoning ordinances` as a non driver and the exact parcel and matching zoning "
+                "transition as drivers. Those two title scores are three thousandths apart and point "
+                "in opposite directions, and in both cases the agent said out loud that it was not "
+                "using them.\n"
+            )
+            L.append(
+                "The honest open question, and the next experiment, is whether that reasoning holds "
+                "on pattern types absent from this set. A 50 pair set assembled by one person cannot "
+                "settle it.\n"
+            )
         else:
             for row, kind in agent_stats["errors"]:
                 d = agent_decisions.get(row["pair_id"])

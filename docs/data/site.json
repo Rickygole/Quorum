@@ -1,6 +1,6 @@
 {
  "fetched_at": "2026-09-10T02:14:14+00:00",
- "generated_at": "2026-09-09T22:48:15",
+ "generated_at": "2026-09-09T23:17:15",
  "counts": {
   "matters": 1679,
   "parcel_resolvable": 270,
@@ -146,7 +146,1031 @@
     "accuracy": 0.96
    }
   ],
-  "agent": null
+  "agent": {
+   "tp": 19,
+   "fp": 0,
+   "fn": 0,
+   "tn": 31,
+   "accuracy": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "misses": [],
+   "decisions": [
+    {
+     "pair_id": 1,
+     "a": "21-0006",
+     "b": "21-0073",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel: adjacent (block 5014C, lots 001 vs 004A)",
+      "addresses: 5600 York Road vs 407 Benninghaus Road",
+      "zoning_transition: none vs R3->OR1",
+      "legislative purpose: conditional use banquet hall vs rezoning"
+     ],
+     "non_drivers": [
+      "title cosine 0.312, low and not meaningful",
+      "sponsor overlap: Mark Conway on both, represents the district",
+      "temporal gap 112 days, not relevant for different parcels",
+      "committee_progression: advance shape, but different properties"
+     ]
+    },
+    {
+     "pair_id": 2,
+     "a": "21-0013",
+     "b": "21-0052",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "zoning_transition mismatch: I2->R8 vs I1->IMU2",
+      "different lots: 004 vs 003",
+      "both enacted (not reintroduction)"
+     ],
+     "non_drivers": [
+      "title cosine 0.599, rezoning boilerplate",
+      "sponsor jaccard 1.0, same district",
+      "same committee, common for area rezonings",
+      "70 day gap"
+     ]
+    },
+    {
+     "pair_id": 3,
+     "a": "21-0026",
+     "b": "26-0177",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lots (001 vs 002)",
+      "zoning_transition mismatch (OR2->C2 vs EC1->I1)",
+      "different addresses (901 vs 1201)"
+     ],
+     "non_drivers": [
+      "title cosine 0.812, heavy boilerplate from rezoning template",
+      "sponsor overlap 0.0",
+      "5-year gap",
+      "both enacted"
+     ]
+    },
+    {
+     "pair_id": 4,
+     "a": "21-0031R",
+     "b": "24-0577",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel: adjacent (different lots on same block)",
+      "title cosine: 0.092 (no meaningful overlap)",
+      "record_type: ordinance vs resolution (different instruments)",
+      "subject matter: parking lot vs liquor license"
+     ],
+     "non_drivers": [
+      "sponsor overlap: 1.0 jaccard - same district representative",
+      "temporal gap: 1267 days - not relevant for different properties"
+     ]
+    },
+    {
+     "pair_id": 5,
+     "a": "21-0035",
+     "b": "22-0277",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 1.0,
+     "drivers": [
+      "parcel exact match",
+      "prior terminal status Withdrawn",
+      "same sponsor",
+      "same council term false",
+      "identical legislative purpose"
+     ],
+     "non_drivers": [
+      "title cosine 1.0, expected for identical legislative purpose",
+      "file numbers differ, expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 6,
+     "a": "21-0042R",
+     "b": "21-0064",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel exact match on 6505 009A",
+      "same introduction date",
+      "same sponsor",
+      "different record types serving complementary purposes",
+      "both address 3901/3975 Boston Street",
+      "committee progression from Adopted resolution to Enacted ordinance"
+     ],
+     "non_drivers": [
+      "title cosine 0.521, different purposes so low similarity is expected",
+      "token jaccard 0.143, appropriately low given one is about liquor license exchange and the other about conditional use"
+     ]
+    },
+    {
+     "pair_id": 7,
+     "a": "21-0045",
+     "b": "23-0374",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lots (076 vs 013)",
+      "different legislative purposes (property sale vs rezoning)"
+     ],
+     "non_drivers": [
+      "title cosine 0.222, low and expected given different purposes",
+      "sponsor overlap (Odette Ramos), common for same district",
+      "same block 4053, not sufficient without same lot",
+      "798-day gap across council terms"
+     ]
+    },
+    {
+     "pair_id": 8,
+     "a": "21-0051R",
+     "b": "24-0516",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel: adjacent",
+      "title cosine: 0.0",
+      "record_type: resolution vs ordinance",
+      "different subject matter"
+     ],
+     "non_drivers": [
+      "sponsor overlap: 1.0 (same sponsor but represents district)",
+      "same block 1295 (different lots)",
+      "temporal gap: 994 days"
+     ]
+    },
+    {
+     "pair_id": 9,
+     "a": "21-0054",
+     "b": "22-0217",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel comparison: adjacent",
+      "different parcels: 2113 023 vs 2113 001",
+      "different addresses: 707 vs 605 South Caton Avenue",
+      "different legal instruments: storm drain franchise vs rezoning",
+      "no sponsor overlap",
+      "different requesters"
+     ],
+     "non_drivers": [
+      "title cosine 0.309, shared only generic boilerplate terms",
+      "same committee, common for area development",
+      "both enacted, not dispositive",
+      "378 day gap, not relevant for different properties"
+     ]
+    },
+    {
+     "pair_id": 10,
+     "a": "21-0076",
+     "b": "23-0408",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different addresses: 1046 vs 1049 Brantley Avenue",
+      "different lots: 071 vs 069"
+     ],
+     "non_drivers": [
+      "title cosine 0.846, boilerplate for R-8 conversions",
+      "sponsor overlap (John Bullock represents the district)",
+      "same committee (standard routing)",
+      "784 day gap"
+     ]
+    },
+    {
+     "pair_id": 11,
+     "a": "21-0076",
+     "b": "23-0469",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different addresses: 1014 Edmondson Avenue vs 1049 Brantley Avenue",
+      "different lots: 037 vs 069"
+     ],
+     "non_drivers": [
+      "title cosine 0.852, boilerplate for conversion ordinances",
+      "sponsor overlap 1.0, same council member represents the block",
+      "945 day gap",
+      "both enacted"
+     ]
+    },
+    {
+     "pair_id": 12,
+     "a": "21-0077",
+     "b": "21-0098",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lots: 001 vs 004A",
+      "different addresses: 1100 vs 1110 West Lafayette"
+     ],
+     "non_drivers": [
+      "title cosine 0.934, heavy boilerplate for identical zoning request type",
+      "sponsor overlap 1.0, same council member for same block",
+      "temporal gap 42 days",
+      "prior status Withdrawn"
+     ]
+    },
+    {
+     "pair_id": 13,
+     "a": "21-0170",
+     "b": "26-0206",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "lots_a: 012/013 vs lots_b: 042",
+      "title token_jaccard: 0.026",
+      "legislative purpose: rezoning vs conditional use parking"
+     ],
+     "non_drivers": [
+      "sponsor overlap: Odette Ramos on both, but sponsors frequently handle multiple unrelated bills in their district",
+      "same block 4127: geographic proximity alone does not indicate continuation when lots differ",
+      "committee_progression restart: consistent with either scenario"
+     ]
+    },
+    {
+     "pair_id": 14,
+     "a": "21-0171",
+     "b": "25-0104",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lot numbers (008A vs 013C)",
+      "different addresses (2405 Linden Avenue vs 811 Chauncey Avenue)",
+      "unrelated legislative purposes (property sale vs conditional use/variance)"
+     ],
+     "non_drivers": [
+      "title cosine 0.162, low and not meaningful",
+      "sponsor overlap 0.0, expected for unrelated properties",
+      "temporal gap of 1449 days, not relevant when parcels differ",
+      "both enacted, but different properties"
+     ]
+    },
+    {
+     "pair_id": 15,
+     "a": "22-0240",
+     "b": "24-0497",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lots (003 vs 062)",
+      "different addresses",
+      "different legislative purposes (conditional use conversion vs city property sale)",
+      "different committees (Economic and Community Development vs Ways and Means)",
+      "different sponsors"
+     ],
+     "non_drivers": [
+      "title cosine 0.15, minimal overlap",
+      "record_type match (both ordinances, but this is common)",
+      "same block 0104 (not sufficient without same lot)"
+     ]
+    },
+    {
+     "pair_id": 16,
+     "a": "22-0295",
+     "b": "23-0417",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 1.0,
+     "drivers": [
+      "parcel exact match",
+      "zoning_transition R1->OS",
+      "committee_progression restart pattern",
+      "prior_terminal status Withdrawn",
+      "same addresses"
+     ],
+     "non_drivers": [
+      "title cosine 1.0 - expected for identical rezoning language",
+      "file_number mismatch - expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 17,
+     "a": "22-0302",
+     "b": "23-0375",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different parcel IDs (4199 010 vs 4199 001)",
+      "different committees (Education vs Ways and Means)",
+      "different legislative purposes (renaming vs property sale)"
+     ],
+     "non_drivers": [
+      "title cosine 0.106, reflects different purposes",
+      "sponsor overlap (Odette Ramos), represents same district not same issue",
+      "both enacted, not relevant to continuity"
+     ]
+    },
+    {
+     "pair_id": 18,
+     "a": "22-0320",
+     "b": "22-0325",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different addresses",
+      "different lot numbers"
+     ],
+     "non_drivers": [
+      "title cosine 0.881, boilerplate from similar project types",
+      "sponsor overlap 1.0, same council member handling multiple similar requests",
+      "same introduction date, batch processing"
+     ]
+    },
+    {
+     "pair_id": 19,
+     "a": "23-0408",
+     "b": "23-0469",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different addresses",
+      "different lot numbers"
+     ],
+     "non_drivers": [
+      "title cosine 0.859, heavy boilerplate from identical zoning request type",
+      "sponsor overlap 1.0, same district council member",
+      "same committee",
+      "file numbers 23-0408 vs 23-0469"
+     ]
+    },
+    {
+     "pair_id": 20,
+     "a": "23-0411",
+     "b": "26-0148",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel exact match",
+      "zoning_transition R1C->EC2",
+      "prior_terminal status Failed - End of Term",
+      "sponsor overlap 1.0",
+      "same_council_term false with new file number",
+      "committee_progression restart pattern"
+     ],
+     "non_drivers": [
+      "title cosine 0.943, expected boilerplate for rezoning ordinances",
+      "temporal gap of 938 days, explained by term boundary"
+     ]
+    },
+    {
+     "pair_id": 21,
+     "a": "23-0437",
+     "b": "23-0441",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: exact",
+      "shared_parcel_ids: 1013 065",
+      "temporal gap: 14 days",
+      "same address: 1600 South Charles Street",
+      "related instruments: zoning conversion and parking permit exception",
+      "sponsor overlap: Eric T. Costello"
+     ],
+     "non_drivers": [
+      "title cosine 0.327, different legislative purposes",
+      "file numbers 23-0437 vs 23-0441, sequential but different instruments",
+      "different committees (Economic and Community Development vs Ways and Means), appropriate for different approval types"
+     ]
+    },
+    {
+     "pair_id": 22,
+     "a": "23-0454",
+     "b": "24-0549",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lot numbers (030 vs 040)",
+      "different street addresses (1022 vs 1002)",
+      "prior status: Enacted (not terminal failure)"
+     ],
+     "non_drivers": [
+      "title cosine 0.882, heavy boilerplate for conditional use conversions",
+      "sponsor overlap 1.0, same council member for same neighborhood",
+      "same record type (ordinance)",
+      "committee progression"
+     ]
+    },
+    {
+     "pair_id": 23,
+     "a": "24-0221R",
+     "b": "24-0550",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: exact",
+      "same introduction date",
+      "same sponsor",
+      "different legislative instruments for same project",
+      "same committee"
+     ],
+     "non_drivers": [
+      "title cosine 0.127, different legal purposes",
+      "file numbers differ (24-0550 vs 24-0221R), expected for different instrument types"
+     ]
+    },
+    {
+     "pair_id": 24,
+     "a": "24-0533",
+     "b": "25-0091",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lot numbers (013 vs 020)",
+      "different addresses"
+     ],
+     "non_drivers": [
+      "title cosine 0.76, heavy boilerplate for similar zoning actions",
+      "sponsor overlap 1.0, same council member for neighborhood",
+      "same record type (ordinance)",
+      "similar zoning purpose (R-8 conversions to 4 units)"
+     ]
+    },
+    {
+     "pair_id": 25,
+     "a": "25-0055",
+     "b": "25-0056",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "different lots: 101 vs 070",
+      "different addresses: 702 vs 701 Mura Street",
+      "consecutive file numbers introduced same day"
+     ],
+     "non_drivers": [
+      "title cosine 0.944, heavy boilerplate for conditional use parking lots",
+      "sponsor overlap 1.0, same sponsor for neighboring properties",
+      "same committee and status, both enacted"
+     ]
+    },
+    {
+     "pair_id": 26,
+     "a": "25-0071",
+     "b": "25-0083",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel exact match",
+      "same sponsor",
+      "sequential timing",
+      "related legislative instruments (zoning conversion followed by parking exception)"
+     ],
+     "non_drivers": [
+      "title cosine 0.281, different subject matter",
+      "file numbers 25-0071 vs 25-0083, sequential not identical"
+     ]
+    },
+    {
+     "pair_id": 27,
+     "a": "25-0073",
+     "b": "25-0074",
+     "tier": "parcel",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: exact",
+      "shared_parcel_ids: 0811 060",
+      "temporal gap: 0 days",
+      "same sponsor: Phylicia Porter",
+      "complementary zoning actions on same property"
+     ],
+     "non_drivers": [
+      "title cosine 0.399, different legislative purposes",
+      "file numbers sequential 25-0073 and 25-0074, expected for companion bills"
+     ]
+    },
+    {
+     "pair_id": 28,
+     "a": "25-0089",
+     "b": "25-0142",
+     "tier": "parcel",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "parcel match: adjacent",
+      "zoning_transition mismatch: R7->IMU1 vs R6->R7",
+      "different lot numbers: 003 vs 014"
+     ],
+     "non_drivers": [
+      "title cosine 0.51, generic rezoning boilerplate",
+      "sponsor overlap (James Torrence), common for district councilmember",
+      "committee progression advance, not meaningful across different properties"
+     ]
+    },
+    {
+     "pair_id": 29,
+     "a": "21-0014R",
+     "b": "21-0015R",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.98,
+     "drivers": [
+      "parcel match: adjacent",
+      "different parcel IDs",
+      "different addresses",
+      "different blocks (0307 vs 3403)"
+     ],
+     "non_drivers": [
+      "title cosine 0.973, heavy boilerplate for liquor license resolutions",
+      "sponsor overlap 1.0, same sponsor for both",
+      "same introduction date, likely batch processing",
+      "sequential file numbers 21-0014R and 21-0015R"
+     ]
+    },
+    {
+     "pair_id": 30,
+     "a": "22-0096R",
+     "b": "26-0048R",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "temporal.gap_days",
+      "temporal.same_council_term",
+      "committee_progression.prior_status",
+      "file_number.identical"
+     ],
+     "non_drivers": [
+      "title cosine 1.0 - identical boilerplate for periodic administrative resolutions",
+      "sponsor overlap 1.0 - both administration-sponsored",
+      "parcel match none - enterprise zone resolutions are citywide policy, not parcel-specific"
+     ]
+    },
+    {
+     "pair_id": 31,
+     "a": "22-0233",
+     "b": "26-0179",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "file_number",
+      "temporal",
+      "title",
+      "parcel"
+     ],
+     "non_drivers": [
+      "title cosine 0.976, expected for bond issue boilerplate with same program name",
+      "sponsor overlap 1.0, administration sponsors all bond issues",
+      "committee progression, both enacted but in different terms"
+     ]
+    },
+    {
+     "pair_id": 32,
+     "a": "21-0114",
+     "b": "25-0059",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title token_jaccard 1.0",
+      "title distinctive_shared",
+      "committee_progression restart from terminal",
+      "prior_status Failed - End of Term",
+      "temporal same_council_term false",
+      "sponsor overlap 8 members",
+      "record_type match ordinance"
+     ],
+     "non_drivers": [
+      "parcel match none - both citywide policy ordinances with no parcels",
+      "file_number different - expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 33,
+     "a": "22-0194",
+     "b": "25-0102",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "committee_progression: prior_terminal false but prior_status Enacted",
+      "temporal: 1351 day gap, different council terms",
+      "record_type: both resolution",
+      "title: identical statutory renewal language"
+     ],
+     "non_drivers": [
+      "parcel: none, districts are area-wide not parcel-specific",
+      "title cosine 1.0, statutory boilerplate for district renewals",
+      "sponsor overlap: Odette Ramos on both, expected for district representative"
+     ]
+    },
+    {
+     "pair_id": 34,
+     "a": "22-0326",
+     "b": "26-0199",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "committee_progression: restart pattern with prior terminal status Failed - End of Term",
+      "title: identical substantive content (token_jaccard 1.0, cosine 1.0) with distinctive shared terms about term limits charter amendment",
+      "temporal: different council terms explaining new file number",
+      "sponsor: two returning sponsors (Ramos, Dorsey) supporting continuity",
+      "record_type: both resolutions"
+     ],
+     "non_drivers": [
+      "parcel: none, but not applicable to citywide charter amendment resolutions",
+      "file_number: different (22-0326 vs 26-0199) but expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 35,
+     "a": "24-0508",
+     "b": "24-0509",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "temporal gap_days 0",
+      "sponsor jaccard 1.0",
+      "identical geographic boundaries",
+      "sequential file numbers",
+      "complementary actions (closing vs opening)"
+     ],
+     "non_drivers": [
+      "title cosine 0.971, expected for companion ordinances with boilerplate",
+      "parcel match none, street closings/openings typically lack parcel identifiers"
+     ]
+    },
+    {
+     "pair_id": 36,
+     "a": "23-0415",
+     "b": "24-0568",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title",
+      "requester",
+      "committee_progression",
+      "temporal",
+      "record_type"
+     ],
+     "non_drivers": [
+      "parcel match: none, but this is citywide policy legislation with no parcels",
+      "sponsor Jaccard 0.111, low overlap but irrelevant for policy bills that gain co-sponsors over time"
+     ]
+    },
+    {
+     "pair_id": 37,
+     "a": "24-0556",
+     "b": "25-0058",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title token_jaccard 1.0",
+      "title cosine 1.0",
+      "committee_progression shape restart",
+      "prior_terminal status Failed - End of Term",
+      "temporal same_council_term false",
+      "sponsor overlap 3 members",
+      "record_type match ordinance"
+     ],
+     "non_drivers": [
+      "parcel match none - policy ordinance has no parcels",
+      "file_number different - expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 38,
+     "a": "24-0576",
+     "b": "25-0003",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title token_jaccard 1.0",
+      "committee_progression restart with prior_terminal true",
+      "temporal same_council_term false",
+      "sponsor overlap john bullock",
+      "prior_status Failed - End of Term"
+     ],
+     "non_drivers": [
+      "parcel match none - this is citywide policy legislation with no specific parcels",
+      "file_number different - expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 39,
+     "a": "22-0111R",
+     "b": "23-0195R",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title token_jaccard 1.0",
+      "committee_progression restart with prior terminal Withdrawn",
+      "temporal same issue different council terms",
+      "record_type match resolution",
+      "sponsor overlap Robert Stokes Sr"
+     ],
+     "non_drivers": [
+      "parcel match none - informational hearings have no parcels",
+      "zoning_transition - not applicable to resolutions"
+     ]
+    },
+    {
+     "pair_id": 40,
+     "a": "22-0126R",
+     "b": "24-0226R",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title cosine 1.0",
+      "committee_progression restart from terminal status",
+      "temporal same_council_term false",
+      "sponsor overlap includes original sponsors",
+      "distinctive_shared tokens (forensic, audit, EBDI, 88-acre)"
+     ],
+     "non_drivers": [
+      "parcel match none - resolutions requesting hearings typically have no parcels",
+      "file_number different - expected across council terms"
+     ]
+    },
+    {
+     "pair_id": 41,
+     "a": "22-0140R",
+     "b": "25-0003R",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "title token_jaccard 1.0",
+      "title cosine 1.0",
+      "committee_progression shape: restart",
+      "prior_terminal: Failed - End of Term",
+      "same_council_term: false",
+      "sponsor overlap 6 members",
+      "record_type match: resolution"
+     ],
+     "non_drivers": [
+      "parcel match: none - not applicable for citywide policy resolutions",
+      "zoning_transition: none - not a zoning matter",
+      "file_number: different due to new council term"
+     ]
+    },
+    {
+     "pair_id": 42,
+     "a": "22-0139R",
+     "b": "25-0036R",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "committee_progression shape: restart with prior_terminal true",
+      "title distinctive_shared tokens (bluedot, collaborative, abuse center, etc.)",
+      "sponsor overlap (Cohen, Ramos, Porter)",
+      "temporal same_council_term false with prior Failed - End of Term",
+      "record_type match (both resolution)"
+     ],
+     "non_drivers": [
+      "parcel match: none, but both records have empty parcel lists because these are citywide policy hearings, not property-specific legislation",
+      "title cosine 0.971, but here it reflects genuine substantive identity rather than boilerplate"
+     ]
+    },
+    {
+     "pair_id": 43,
+     "a": "21-0058",
+     "b": "23-0373",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "committee_progression.prior_status: Enacted",
+      "temporal.gap_days: 756",
+      "temporal.same_council_term: false",
+      "title differences: new record adds 'Tax in Arrears'"
+     ],
+     "non_drivers": [
+      "title cosine 0.978, heavy boilerplate in tax legislation",
+      "sponsor overlap, common in policy areas",
+      "parcel match none, expected for citywide policy ordinances"
+     ]
+    },
+    {
+     "pair_id": 44,
+     "a": "23-0452",
+     "b": "24-0488",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "committee_progression.prior_terminal",
+      "temporal.same_council_term",
+      "temporal.gap_days",
+      "committee_progression.prior_status"
+     ],
+     "non_drivers": [
+      "title cosine 1.0 - reflects identical boilerplate budget language",
+      "parcel match none - budget appropriations do not involve parcels",
+      "sponsor overlap - administration sponsors all budget bills"
+     ]
+    },
+    {
+     "pair_id": 45,
+     "a": "21-0168",
+     "b": "22-0299",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "temporal gap of 385 days",
+      "committee_progression showing both enacted",
+      "no parcels in either record",
+      "different council terms"
+     ],
+     "non_drivers": [
+      "title cosine 1.0, identical boilerplate for annual extensions",
+      "sponsor jaccard 0.833, high overlap expected for routine citywide policy"
+     ]
+    },
+    {
+     "pair_id": 46,
+     "a": "22-0299",
+     "b": "24-0545",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "temporal.same_council_term",
+      "committee_progression.prior_terminal",
+      "parcel.match",
+      "record_type.match"
+     ],
+     "non_drivers": [
+      "title cosine 1.0 - identical boilerplate for recurring administrative ordinances",
+      "sponsor overlap - two shared sponsors out of different-sized groups is not meaningful for citywide policy"
+     ]
+    },
+    {
+     "pair_id": 47,
+     "a": "21-0168",
+     "b": "24-0545",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.95,
+     "drivers": [
+      "committee_progression - prior_terminal false but prior_status Enacted indicating completed lifecycle",
+      "temporal - 966 day gap and different council terms",
+      "parcel - none for either record, both are citywide policy",
+      "record_type - both ordinances of same administrative type"
+     ],
+     "non_drivers": [
+      "title cosine 1.0 - perfect match but this is a recurring administrative ordinance with identical boilerplate language",
+      "sponsor overlap - Costello and Bullock appear on both but this reflects continuity of council membership not issue continuation"
+     ]
+    },
+    {
+     "pair_id": 48,
+     "a": "21-0056",
+     "b": "21-0120",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.85,
+     "drivers": [
+      "parcel match: none",
+      "file_number: different (21-0120 vs 21-0056)",
+      "committee_progression: both enacted (terminal status)",
+      "temporal: 147 day gap, same term"
+     ],
+     "non_drivers": [
+      "title cosine 0.972 - reflects boilerplate for urban renewal plan amendments",
+      "sponsor overlap 1.0 - same sponsor handles multiple amendments to same plan",
+      "record_type match - both ordinances"
+     ]
+    },
+    {
+     "pair_id": 49,
+     "a": "24-0599",
+     "b": "25-0015",
+     "tier": "citywide",
+     "label": "continuation",
+     "said": "continuation",
+     "confidence": 0.98,
+     "drivers": [
+      "committee_progression: restart with prior_terminal true and prior_status Failed - End of Term",
+      "title: token_jaccard 1.0 and cosine 1.0 with distinctive shared tokens indicating identical legislative text",
+      "temporal: same_council_term false with 119-day gap explaining file number change",
+      "sponsor: jaccard 0.667 with 4 of 5 sponsors returning",
+      "parcels: both empty, appropriate for city-wide zoning reform"
+     ],
+     "non_drivers": []
+    },
+    {
+     "pair_id": 50,
+     "a": "24-0544",
+     "b": "25-0093",
+     "tier": "citywide",
+     "label": "new_issue",
+     "said": "new_issue",
+     "confidence": 0.85,
+     "drivers": [
+      "committee_progression: prior status Enacted, candidate regression to In Committee",
+      "temporal: different council terms, 434 day gap",
+      "prior_terminal: Enacted is a successful terminal status",
+      "file_number: different across terms"
+     ],
+     "non_drivers": [
+      "title cosine 1.0: perfect match but overlay district ordinances use identical boilerplate language",
+      "sponsor overlap 1.0: same sponsor is consistent with either continuation or new work by same councilmember",
+      "parcel match none: overlay districts affect corridors, not individual parcels"
+     ]
+    }
+   ]
+  }
  },
  "addresses": [
   "10 East West Street",
