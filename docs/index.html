@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quorum</title>
+<meta name="description" content="Quorum holds the thread on the civic issues that touch your address.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand">Quorum</span>
+    <nav id="nav">
+      <a href="#thread" data-route="thread">Thread</a>
+      <a href="#watch" data-route="watch">Watch an address</a>
+      <a href="#feed" data-route="feed">Feed</a>
+      <a href="#evidence" data-route="evidence">Evidence</a>
+      <a href="#comment" data-route="comment">Draft comment</a>
+      <a href="#run" data-route="run">Agent run</a>
+      <a href="#evaluation" data-route="evaluation">Evaluation</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="thread" data-active>
+    <div class="hero">
+      <h1>Your city decided this twice.<br>You heard about it once.</h1>
+      <div class="spine" id="spine"></div>
+      <p id="spine-caption" class="small muted"></p>
+      <p><a class="btn primary" href="#watch">Watch an address</a></p>
+    </div>
+    <hr class="rule">
+    <h2>The thread</h2>
+    <p id="thread-intro" class="muted"></p>
+    <div id="thread-body"></div>
+  </section>
+
+  <section id="watch">
+    <h2>Watch an address</h2>
+    <p>Add an address and Quorum starts watching what the city decides about it.</p>
+    <label for="addr">Address</label>
+    <input type="text" id="addr" list="addr-list" placeholder="205 East Cold Spring Lane" autocomplete="off">
+    <datalist id="addr-list"></datalist>
+    <p class="small muted" style="margin-top:8px">Matched against Baltimore's parcel record, <span id="parcel-count" class="id"></span> parcels.</p>
+    <button class="primary" id="add-addr">Add address</button>
+    <hr class="rule">
+    <h3>Addresses you watch</h3>
+    <ul class="plain" id="watch-list"></ul>
+  </section>
+
+  <section id="feed">
+    <h2>Feed</h2>
+    <p id="feed-empty" class="muted"></p>
+    <div id="feed-body"></div>
+  </section>
+
+  <section id="evidence">
+    <h2>Why am I seeing this?</h2>
+    <p class="muted">The agent's reasoning is on the page, not behind an expander.</p>
+    <div id="evidence-body"></div>
+  </section>
+
+  <section id="comment">
+    <h2>Draft comment</h2>
+    <div id="comment-body"></div>
+  </section>
+
+  <section id="run">
+    <h2>Agent run</h2>
+    <p class="muted">The Strands Graph as executed, with per node latency and token counts.</p>
+    <div id="run-body"></div>
+  </section>
+
+  <section id="evaluation">
+    <h2>Evaluation</h2>
+    <p class="muted">The labeled set, the results, and every miss named individually.</p>
+    <div id="eval-body"></div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
