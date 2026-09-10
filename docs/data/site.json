@@ -1,17 +1,153 @@
 {
  "fetched_at": "2026-09-10T02:14:14+00:00",
- "generated_at": "2026-09-09T22:30:15",
+ "generated_at": "2026-09-09T22:48:15",
  "counts": {
   "matters": 1679,
   "parcel_resolvable": 270,
   "parcels": 237092,
-  "labeled_pairs": 28
+  "labeled_pairs": 50
  },
  "watched": [
   "205 East Cold Spring Lane",
   "4911 West Forest Park Avenue",
   "15 East West Street"
  ],
+ "evaluation": {
+  "pairs": 50,
+  "continuations": 19,
+  "hard": 26,
+  "missing": [],
+  "baselines": [
+   {
+    "rule": "always continuation",
+    "tp": 19,
+    "fp": 31,
+    "fn": 0,
+    "tn": 0,
+    "accuracy": 0.38,
+    "precision": 0.38,
+    "recall": 1.0,
+    "f1": 0.551
+   },
+   {
+    "rule": "parcel exact",
+    "tp": 8,
+    "fp": 0,
+    "fn": 11,
+    "tn": 31,
+    "accuracy": 0.78,
+    "precision": 1.0,
+    "recall": 0.421,
+    "f1": 0.593
+   },
+   {
+    "rule": "title cosine >= 0.90",
+    "tp": 14,
+    "fp": 13,
+    "fn": 5,
+    "tn": 18,
+    "accuracy": 0.64,
+    "precision": 0.519,
+    "recall": 0.737,
+    "f1": 0.609
+   },
+   {
+    "rule": "title cosine >= 0.99",
+    "tp": 11,
+    "fp": 7,
+    "fn": 8,
+    "tn": 24,
+    "accuracy": 0.7,
+    "precision": 0.611,
+    "recall": 0.579,
+    "f1": 0.595
+   },
+   {
+    "rule": "shared sponsor",
+    "tp": 19,
+    "fp": 27,
+    "fn": 0,
+    "tn": 4,
+    "accuracy": 0.46,
+    "precision": 0.413,
+    "recall": 1.0,
+    "f1": 0.585
+   },
+   {
+    "rule": "prior terminal",
+    "tp": 14,
+    "fp": 3,
+    "fn": 5,
+    "tn": 28,
+    "accuracy": 0.84,
+    "precision": 0.824,
+    "recall": 0.737,
+    "f1": 0.778
+   },
+   {
+    "rule": "parcel exact OR (cosine >= 0.97 AND prior terminal)",
+    "tp": 19,
+    "fp": 0,
+    "fn": 0,
+    "tn": 31,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   }
+  ],
+  "sweep": [
+   {
+    "threshold": 0.8,
+    "accuracy": 0.96
+   },
+   {
+    "threshold": 0.85,
+    "accuracy": 0.96
+   },
+   {
+    "threshold": 0.9,
+    "accuracy": 0.98
+   },
+   {
+    "threshold": 0.92,
+    "accuracy": 0.98
+   },
+   {
+    "threshold": 0.94,
+    "accuracy": 1.0
+   },
+   {
+    "threshold": 0.95,
+    "accuracy": 1.0
+   },
+   {
+    "threshold": 0.96,
+    "accuracy": 1.0
+   },
+   {
+    "threshold": 0.97,
+    "accuracy": 1.0
+   },
+   {
+    "threshold": 0.975,
+    "accuracy": 0.96
+   },
+   {
+    "threshold": 0.98,
+    "accuracy": 0.96
+   },
+   {
+    "threshold": 0.99,
+    "accuracy": 0.96
+   },
+   {
+    "threshold": 1.0,
+    "accuracy": 0.96
+   }
+  ],
+  "agent": null
+ },
  "addresses": [
   "10 East West Street",
   "1000 East Cold Spring Lane",
@@ -442,6 +578,8 @@
   {
    "pair_id": 5,
    "label": "Reed Calloway House landmark designation, 1316 North Carey Street. Identical title, same parcel, withdrawn in 2021 and enacted in 2022.",
+   "tier": "parcel",
+   "watched": [],
    "records": [
     {
      "record_id": "8667",
@@ -706,6 +844,8 @@
   {
    "pair_id": 6,
    "label": "3901 Boston Street. The liquor licence exchange and the zoning conditional use for the same establishment, introduced the same day. One project, two required approvals.",
+   "tier": "parcel",
+   "watched": [],
    "records": [
     {
      "record_id": "8742",
@@ -999,6 +1139,10 @@
   {
    "pair_id": 16,
    "label": "4911-4925 West Forest Park Avenue. Identical titles and parcels, withdrawn in 2022 and reintroduced in 2023, where it failed at end of term. Sponsors narrow from two to one.",
+   "tier": "parcel",
+   "watched": [
+    "4911 West Forest Park Avenue"
+   ],
    "records": [
     {
      "record_id": "9254",
@@ -1253,6 +1397,10 @@
   {
    "pair_id": 20,
    "label": "205-209 East Cold Spring Lane. Failed at end of term in 2023, reintroduced in 2026 by the same sponsor with lot 003 dropped. Same R-1-C to EC-2 transition. File numbers and title formatting both differ.",
+   "tier": "parcel",
+   "watched": [
+    "205 East Cold Spring Lane"
+   ],
    "records": [
     {
      "record_id": "9528",
@@ -1491,6 +1639,8 @@
   {
    "pair_id": 21,
    "label": "1600 South Charles Street. The dwelling conversion and the residential parking permit exception the conversion requires, two weeks apart on the same parcel.",
+   "tier": "parcel",
+   "watched": [],
    "records": [
     {
      "record_id": "9591",
@@ -1783,6 +1933,8 @@
   {
    "pair_id": 23,
    "label": "3601 Elm Avenue. Liquor licence exchange and the matching zoning conditional use, introduced the same day for the same establishment.",
+   "tier": "parcel",
+   "watched": [],
    "records": [
     {
      "record_id": "9809",
@@ -2055,6 +2207,10 @@
   {
    "pair_id": 26,
    "label": "15 East West Street. The dwelling conversion and the RPP Area 30 parking exception it requires. Same parcel, different instrument, title formatting differs.",
+   "tier": "parcel",
+   "watched": [
+    "15 East West Street"
+   ],
    "records": [
     {
      "record_id": "10131",
@@ -2322,6 +2478,8 @@
   {
    "pair_id": 27,
    "label": "1100 Wicomico Street. Repealing the old planned unit development is the step that permits the banquet hall conditional use. Same parcel, same day.",
+   "tier": "parcel",
+   "watched": [],
    "records": [
     {
      "record_id": "10133",
@@ -2574,6 +2732,2746 @@
      "identical": false,
      "a": "25-0074",
      "b": "25-0073"
+    }
+   }
+  },
+  {
+   "pair_id": 32,
+   "label": "Vacant building receivers, failure to sell. Failed at end of term in 2021 and enacted in 2025 under an unrelated file number. No parcel anywhere, so title and sponsor are the only signals and here they are correct.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "8838",
+     "file_number": "21-0114",
+     "record_type": "ordinance",
+     "title": "Building, Fire, and Related Codes - Vacant Building Receivers - Failure to Sell For the purpose of permitting a vacant building receiver to offer the property for sale to the Mayor and City Council of Baltimore City, if the property fails to sell at public auction; and providing certain limitations on the sale price.",
+     "sponsors": [
+      "Odette Ramos",
+      "Sharon Green Middleton",
+      "Zeke Cohen",
+      "Phylicia Porter",
+      "James Torrence",
+      "Antonio \"Tony\" Glover",
+      "Ryan Dorsey",
+      "John Bullock",
+      "Kristerfer Burnett"
+     ],
+     "committee": "Rules and Legislative Oversight",
+     "status": "Failed - End of Term",
+     "introduced_date": "2021-08-16",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8838&GUID=2BCC87D5-8578-4930-8B13-2B252D6430BC",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-08-16",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Public Works",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of General Services",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-09-12",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Rules and Legislative Oversight"
+      }
+     ]
+    },
+    {
+     "record_id": "10095",
+     "file_number": "25-0059",
+     "record_type": "ordinance",
+     "title": "Building, Fire, and Related Codes \u2013 Vacant Building Receivers \u2013 Failure to Sell FOR the purpose of permitting a vacant building receiver to offer the property for sale to the Mayor and City Council of Baltimore City, if the property fails to sell at public auction; and providing certain limitations on the sale price.",
+     "sponsors": [
+      "Antonio \"Tony\" Glover",
+      "James Torrence",
+      "Mark Parker",
+      "Zeke Cohen",
+      "Odette Ramos",
+      "Jermaine Jones",
+      "Zac Blanchard",
+      "Phylicia Porter",
+      "John Bullock",
+      "Sharon Green Middleton",
+      "Mark Conway",
+      "Ryan Dorsey",
+      "Paris Gray"
+     ],
+     "committee": "Housing & Economic Development Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-04-28",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10095&GUID=8BDE4D3F-9D58-43C8-B715-F8C8043EE420",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-04-28",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-28",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-08-26",
+       "action": "Reschedule Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-09-09",
+       "action": "Recommended Favorably",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-09-09",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-09-15",
+       "action": "2nd Reader",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-09-29",
+       "action": "3rd Reader, Enrolled for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-09-29",
+       "action": "Refer to Office of the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-23",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "john bullock",
+      "odette ramos",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ],
+     "jaccard": 0.571,
+     "a": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "jermaine jones",
+      "john bullock",
+      "mark conway",
+      "mark parker",
+      "odette ramos",
+      "paris gray",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zac blanchard",
+      "zeke cohen"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "odette ramos",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "auction",
+      "building",
+      "codes",
+      "fails",
+      "failure",
+      "fire",
+      "limitations",
+      "offer",
+      "permitting",
+      "price",
+      "providing",
+      "public"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-04-28",
+     "prior_introduced": "2021-08-16",
+     "gap_days": 1351,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Housing & Economic Development Committee",
+     "prior_committee": "Rules and Legislative Oversight"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0059",
+     "b": "21-0114"
+    }
+   }
+  },
+  {
+   "pair_id": 34,
+   "label": "Charter amendment repealing council term limits. Failed at end of term in 2022, back in committee in 2026 with an identical title and the same sponsor.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9317",
+     "file_number": "22-0326",
+     "record_type": "resolution",
+     "title": "Charter Amendment - Repeal - Term Limits For the purpose of repealing term limits for Baltimore City elected officials, including the Mayor, Comptroller, City Council President, and City Council members; and submitting this amendment to the qualified voters of the City for adoption or rejection.",
+     "sponsors": [
+      "Kristerfer Burnett",
+      "Danielle McCray",
+      "Odette Ramos",
+      "Ryan Dorsey"
+     ],
+     "committee": null,
+     "status": "Failed - End of Term",
+     "introduced_date": "2022-12-08",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9317&GUID=5F088496-237D-467B-90AD-702A0F208206",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-12-08",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-08",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-13",
+       "action": "Refer to Employees' and Elected Officials' Retirement Systems",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-13",
+       "action": "Refer to Office of the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-13",
+       "action": "Refer to Office of the Comptroller",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-12-13",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "10520",
+     "file_number": "26-0199",
+     "record_type": "resolution",
+     "title": "Charter Amendment \u2013 Repeal \u2013 Term Limits FOR the purpose of repealing term limits for Baltimore City elected officials, including the Mayor, Comptroller, City Council President, and City Council members; and submitting this amendment to the qualified voters of the City for adoption or rejection.",
+     "sponsors": [
+      "Odette Ramos",
+      "Antonio \"Tony\" Glover",
+      "Mark Parker",
+      "Ryan Dorsey"
+     ],
+     "committee": "Charter Review Special Committee",
+     "status": "In Committee",
+     "introduced_date": "2026-05-11",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10520&GUID=D276AEA9-E732-43EF-A6E2-A46901BC64A6",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2026-05-11",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-20",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Charter Review Special Committee"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "odette ramos",
+      "ryan dorsey"
+     ],
+     "jaccard": 0.333,
+     "a": [
+      "antonio \"tony\" glover",
+      "mark parker",
+      "odette ramos",
+      "ryan dorsey"
+     ],
+     "b": [
+      "danielle mccray",
+      "kristerfer burnett",
+      "odette ramos",
+      "ryan dorsey"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "adoption",
+      "amendment",
+      "charter",
+      "comptroller",
+      "elected",
+      "including",
+      "limits",
+      "members",
+      "officials",
+      "president",
+      "qualified",
+      "rejection"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2026-05-11",
+     "prior_introduced": "2022-12-08",
+     "gap_days": 1250,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 1,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Charter Review Special Committee",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "26-0199",
+     "b": "22-0326"
+    }
+   }
+  },
+  {
+   "pair_id": 35,
+   "label": "The Opening and Closing halves of one street condemnation bounded by North and Pennsylvania Avenues. The titles differ by a single word and both failed together. One project, two required ordinances.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9747",
+     "file_number": "24-0508",
+     "record_type": "ordinance",
+     "title": "City Streets - Opening - Certain Streets and Alleys Bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street and a Portion of North Stockton Street For the purpose of condemning and opening certain streets and alleys bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street and a portion of North Stockton Street as shown on the accompanying plat, on file with the Department of Transportation; and providing for a special effective date.",
+     "sponsors": [
+      "President Nicholas J. Mosby",
+      "James Torrence"
+     ],
+     "committee": "Ways and Means",
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-04-08",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9747&GUID=5B33B24D-8F66-4B47-9591-22BAB76306B3",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-04-08",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-08",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Reassigned",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9748",
+     "file_number": "24-0509",
+     "record_type": "ordinance",
+     "title": "City Streets - Closing - Certain Streets and Alleys Bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street and a Portion of North Stockton Street For the purpose of condemning and closing certain streets and alleys bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street and a portion of North Stockton Street as shown on the accompanying plat, on file with the Department of Transportation; and providing for a special effective date.",
+     "sponsors": [
+      "President Nicholas J. Mosby",
+      "James Torrence"
+     ],
+     "committee": "Ways and Means",
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-04-08",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9748&GUID=6058E04B-8FF2-4433-AEAA-A687682B74CF",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-04-08",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-08",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-11",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Reassigned",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "james torrence",
+      "president nicholas j. mosby"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "james torrence",
+      "president nicholas j. mosby"
+     ],
+     "b": [
+      "james torrence",
+      "president nicholas j. mosby"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.909,
+     "cosine": 0.971,
+     "distinctive_shared": [
+      "alleys",
+      "avenue",
+      "bounded",
+      "carey",
+      "condemning",
+      "cumberland",
+      "date",
+      "department",
+      "effective",
+      "file",
+      "north",
+      "pennsylvania"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-04-08",
+     "prior_introduced": "2024-04-08",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0509",
+     "b": "24-0508"
+    }
+   }
+  },
+  {
+   "pair_id": 36,
+   "label": "Community Relations Commission complaint period. Withdrawn in 2023, enacted in 2024.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9546",
+     "file_number": "23-0415",
+     "record_type": "ordinance",
+     "title": "Community Relations Commission - Powers and Duties - Complaint Period For the purpose of increasing the time within which complaints of unlawful practices must be filed with the Community Relations Commission; making certain related amendments; and providing for a special effective date.",
+     "sponsors": [
+      "Administration City Council",
+      "Phylicia Porter"
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2023-08-21",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9546&GUID=E4AAE5B3-159A-49FE-82E4-EB024365A419",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2023-08-21",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-21",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-08-24",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9843",
+     "file_number": "24-0568",
+     "record_type": "ordinance",
+     "title": "Community Relations Commission - Powers and Duties - Complaint Period For the purpose of increasing the time within which complaints of unlawful practices must be filed with the Community Relations Commission; making certain related amendments; and providing for a special effective date.",
+     "sponsors": [
+      "Mark Conway",
+      "Sharon Green Middleton",
+      "John Bullock",
+      "Robert Stokes, Sr.",
+      "Kristerfer Burnett",
+      "Odette Ramos",
+      "City Council President (Administration)",
+      "Phylicia Porter"
+     ],
+     "committee": "Education Workforce and Youth",
+     "status": "Enacted",
+     "introduced_date": "2024-07-22",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9843&GUID=2523AD2A-EC42-4C08-ADCE-E500B55FEB3C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-07-22",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-25",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-25",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-25",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-11-04",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Education Workforce and Youth"
+      },
+      {
+       "date": "2024-11-07",
+       "action": "Recommended Favorably",
+       "body": "Education Workforce and Youth"
+      },
+      {
+       "date": "2024-11-18",
+       "action": "Recommended Favorably",
+       "body": "Education Workforce and Youth"
+      },
+      {
+       "date": "2024-11-18",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-12-02",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-12-04",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "phylicia porter"
+     ],
+     "jaccard": 0.111,
+     "a": [
+      "city council president (administration)",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "odette ramos",
+      "phylicia porter",
+      "robert stokes, sr.",
+      "sharon green middleton"
+     ],
+     "b": [
+      "administration city council",
+      "phylicia porter"
+     ]
+    },
+    "requester": {
+     "match": true,
+     "a": "Office of Civil Rights and Wage Enforcement",
+     "b": "Office of Civil Rights and Wage Enforcement"
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "amendments",
+      "commission",
+      "community",
+      "complaint",
+      "complaints",
+      "date",
+      "duties",
+      "effective",
+      "filed",
+      "increasing",
+      "making",
+      "must"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-07-22",
+     "prior_introduced": "2023-08-21",
+     "gap_days": 336,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Education Workforce and Youth",
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0568",
+     "b": "23-0415"
+    }
+   }
+  },
+  {
+   "pair_id": 37,
+   "label": "Fair wages for tipped employees. Failed at end of term, reintroduced 287 days later.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9816",
+     "file_number": "24-0556",
+     "record_type": "ordinance",
+     "title": "Fair Wages for Tipped Employees For the purpose of limiting and phasing out the amount of tip credit an employer may deduct from the hourly wage of a certain employee; requiring certain disclosures before an employer may charge a consumer a service fee; requiring an employer to submit a certain quarterly report to the Director of Finance; defining certain terms; and generally relating to fair wages for tipped employees.",
+     "sponsors": [
+      "Phylicia Porter",
+      "Odette Ramos",
+      "Kristerfer Burnett",
+      "Ryan Dorsey",
+      "John Bullock"
+     ],
+     "committee": null,
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-06-24",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9816&GUID=F9B4E69F-DEC7-4387-8344-EBA397CFA8B9",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-06-24",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to Dept. of Human Resources",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to Wage Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to Labor Commissioner",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-27",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "10087",
+     "file_number": "25-0058",
+     "record_type": "ordinance",
+     "title": "Fair Wages for Tipped Employees FOR the purpose of limiting and phasing out the amount of tip credit an employer may deduct from the hourly wage of a certain employee; requiring certain disclosures before an employer may charge a consumer a service fee; requiring an employer to submit a certain quarterly report to the Director of Finance; defining certain terms; and generally relating to fair wages for tipped employees.",
+     "sponsors": [
+      "Phylicia Porter",
+      "Odette Ramos",
+      "Jermaine Jones",
+      "Paris Gray",
+      "James Torrence",
+      "John Bullock"
+     ],
+     "committee": null,
+     "status": "In Committee",
+     "introduced_date": "2025-04-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10087&GUID=C129B64E-6F20-4269-BC68-D5CDF4EEAFC9",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-04-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-04-08",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock",
+      "odette ramos",
+      "phylicia porter"
+     ],
+     "jaccard": 0.375,
+     "a": [
+      "james torrence",
+      "jermaine jones",
+      "john bullock",
+      "odette ramos",
+      "paris gray",
+      "phylicia porter"
+     ],
+     "b": [
+      "john bullock",
+      "kristerfer burnett",
+      "odette ramos",
+      "phylicia porter",
+      "ryan dorsey"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "amount",
+      "before",
+      "charge",
+      "consumer",
+      "credit",
+      "deduct",
+      "defining",
+      "director",
+      "disclosures",
+      "employee",
+      "employees",
+      "employer"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-04-07",
+     "prior_introduced": "2024-06-24",
+     "gap_days": 287,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 1,
+     "candidate_furthest_stage": 1,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": null,
+     "prior_committee": null
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0058",
+     "b": "24-0556"
+    }
+   }
+  },
+  {
+   "pair_id": 38,
+   "label": "Conservation districts. Failed at end of term, then enacted 140 days later.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9877",
+     "file_number": "24-0576",
+     "record_type": "ordinance",
+     "title": "Historic Preservation - Conservation Districts - Establishment For the purpose of establishing Conservation Districts; providing a study, proposal, and review process; defining certain terms; and providing for a special effective date.",
+     "sponsors": [
+      "John Bullock"
+     ],
+     "committee": "Rules and Legislative Oversight",
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-08-26",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9877&GUID=A74464E4-7FB4-486D-B68E-C21C55AF2AC5",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-08-26",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Rules and Legislative Oversight"
+      }
+     ]
+    },
+    {
+     "record_id": "9951",
+     "file_number": "25-0003",
+     "record_type": "ordinance",
+     "title": "Historic Preservation \u2013 Conservation Districts \u2013 Establishment FOR the purpose of establishing Conservation Districts; providing a study, proposal, and review process; defining certain terms; and providing for a special effective date.",
+     "sponsors": [
+      "Zeke Cohen",
+      "Odette Ramos",
+      "Antonio \"Tony\" Glover",
+      "Jermaine Jones",
+      "Zac Blanchard",
+      "Phylicia Porter",
+      "Paris Gray",
+      "James Torrence",
+      "Sharon Green Middleton",
+      "Mark Conway",
+      "John Bullock"
+     ],
+     "committee": "Housing & Economic Development Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-01-13",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9951&GUID=40CAA0B9-7376-479D-B5CE-015154EB584F",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-01-13",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Dept. of Public Works",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Baltimore City Administrator",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-03-11",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-03-11",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-03-24",
+       "action": "2nd Reader",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-03-24",
+       "action": "Recommit",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-04-29",
+       "action": "Reschedule Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-05-12",
+       "action": "2nd Reader",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-06-16",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-06-16",
+       "action": "3rd Reader, Enrolled for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-06-17",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-09-15",
+       "action": "Enacted with no signature from Mayor (passage of 3 council meetings)",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock"
+     ],
+     "jaccard": 0.091,
+     "a": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "jermaine jones",
+      "john bullock",
+      "mark conway",
+      "odette ramos",
+      "paris gray",
+      "phylicia porter",
+      "sharon green middleton",
+      "zac blanchard",
+      "zeke cohen"
+     ],
+     "b": [
+      "john bullock"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "conservation",
+      "date",
+      "defining",
+      "districts",
+      "effective",
+      "establishing",
+      "establishment",
+      "historic",
+      "preservation",
+      "process",
+      "proposal",
+      "providing"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-01-13",
+     "prior_introduced": "2024-08-26",
+     "gap_days": 140,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 6,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Housing & Economic Development Committee",
+     "prior_committee": "Rules and Legislative Oversight"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0003",
+     "b": "24-0576"
+    }
+   }
+  },
+  {
+   "pair_id": 39,
+   "label": "Informational hearing on youth violence, withdrawn and requested again.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9153",
+     "file_number": "22-0111R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - Addressing Youth Violence in Baltimore City For the purpose of inviting representatives from the Baltimore City Police Commissioner; the State\u2019s Attorney for Baltimore City; the Chief Academic Officer of the Baltimore City Public School System; the Deputy Commissioner of Youth Wellness & Community Health from the Baltimore City Health Department; the Chief of Police for the Baltimore City School Police; the Director of the Mayor's Office of Neighborhood Safety and Engagement; the Director of the Mayor\u2019s Office of Children and Family Success; the Director of the Mayor\u2019s Office of Employment Development; the Director of the Mayor\u2019s Office of African-American Male Engagement; the Director of the Mayor\u2019s Office of Performance and Innovation; and interested members of the Baltimore City Youth Commission to come before the City Council to discuss the increase in youth violence across the city; and the risk factors that are driving these incidents.",
+     "sponsors": [
+      "James Torrence",
+      "Zeke Cohen",
+      "Antonio \"Tony\" Glover",
+      "Eric T. Costello",
+      "Odette Ramos",
+      "Mark Conway",
+      "Sharon Green Middleton",
+      "Phylicia Porter",
+      "John Bullock",
+      "Robert Stokes, Sr."
+     ],
+     "committee": "Education Workforce and Youth",
+     "status": "Withdrawn",
+     "introduced_date": "2022-06-13",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9153&GUID=01694A34-B019-4D8E-9585-F538198826BC",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-06-13",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Education Workforce and Youth"
+      },
+      {
+       "date": "2022-06-13",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-13",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to States' Attorney's Office",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Baltimore City Public School System",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Mayor's Office of Neighborhood Safety and Engagement",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Mayor's Office of Children and Family Success",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Mayor\u2019s Office of Employment Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-16",
+       "action": "Refer to Mayor's Office of Performance and Innovation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-27",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Education Workforce and Youth"
+      },
+      {
+       "date": "2023-06-26",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9603",
+     "file_number": "23-0195R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - Addressing Youth Violence in Baltimore City For the purpose of inviting representatives from the Baltimore City Police Commissioner; the State\u2019s Attorney for Baltimore City; the Chief Academic Officer of the Baltimore City Public School System; the Deputy Commissioner of Youth Wellness & Community Health from the Baltimore City Health Department; the Chief of Police for the Baltimore City School Police; the Director of the Mayor's Office of Neighborhood Safety and Engagement; the Director of the Mayor\u2019s Office of Children and Family Success; the Director of the Mayor\u2019s Office of Employment Development; the Director of the Mayor\u2019s Office of African-American Male Engagement; the Director of the Mayor\u2019s Office of Performance and Innovation; and interested members of the Baltimore City Youth Commission to come before the City Council to discuss the increase in youth violence across the city; and the risk factors that are driving these incidents.",
+     "sponsors": [
+      "Robert Stokes, Sr."
+     ],
+     "committee": null,
+     "status": "Withdrawn",
+     "introduced_date": "2023-10-16",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9603&GUID=34C5B088-6865-46F7-B32C-B650A37EC219",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2023-10-16",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-16",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to States' Attorney's Office",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Baltimore City Public School System",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Mayor's Office of Neighborhood Safety and Engagement",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Mayor's Office of Children and Family Success",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Mayor's Office of Employee Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-10-19",
+       "action": "Refer to Mayor's Office of Performance and Innovation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "robert stokes, sr."
+     ],
+     "jaccard": 0.1,
+     "a": [
+      "robert stokes, sr."
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "james torrence",
+      "john bullock",
+      "mark conway",
+      "odette ramos",
+      "phylicia porter",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "academic",
+      "across",
+      "addressing",
+      "african",
+      "american",
+      "attorney",
+      "before",
+      "chief",
+      "children",
+      "come",
+      "commission",
+      "commissioner"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-10-16",
+     "prior_introduced": "2022-06-13",
+     "gap_days": 490,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 8,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": null,
+     "prior_committee": "Education Workforce and Youth"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0195R",
+     "b": "22-0111R"
+    }
+   }
+  },
+  {
+   "pair_id": 40,
+   "label": "Informational hearing on the East Baltimore Development audit. Withdrawn, requested again, failed at end of term.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9191",
+     "file_number": "22-0126R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - East Baltimore Development Incorporated Audit For the purpose of requesting that representatives from East Baltimore Development Incorporated (EBDI) brief the Council regarding the status of the ongoing revitalization of an 88-acre portion of East Baltimore and the upcoming forensic audit of EBDI, including considerations for auditor selection, community involvement, and clarification of financial outlay.",
+     "sponsors": [
+      "Antonio \"Tony\" Glover",
+      "Robert Stokes, Sr."
+     ],
+     "committee": "Ways and Means",
+     "status": "Withdrawn",
+     "introduced_date": "2022-08-15",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9191&GUID=40B8BDA5-826A-4DF2-9AEA-EE2E8D962045",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-08-15",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-15",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-18",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-18",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-18",
+       "action": "Refer to Dept. of Audits",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-18",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-01-09",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-06-12",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-06-24",
+       "action": "Withdrawn",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "9871",
+     "file_number": "24-0226R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - East Baltimore Development Incorporated Audit For the purpose of requesting that representatives from East Baltimore Development Incorporated (EBDI) brief the Council regarding the status of the ongoing revitalization of an 88-acre portion of East Baltimore and the upcoming forensic audit of EBDI, including considerations for auditor selection, community involvement, and clarification of financial outlay.",
+     "sponsors": [
+      "Sharon Green Middleton",
+      "James Torrence",
+      "Phylicia Porter",
+      "Odette Ramos",
+      "Antonio \"Tony\" Glover",
+      "Robert Stokes, Sr."
+     ],
+     "committee": "Ways and Means",
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-08-26",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9871&GUID=2D14A61A-1F18-4D9F-BB92-B078976BE05E",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-08-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Dept. of Audits",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-29",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "antonio \"tony\" glover",
+      "robert stokes, sr."
+     ],
+     "jaccard": 0.333,
+     "a": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "odette ramos",
+      "phylicia porter",
+      "robert stokes, sr.",
+      "sharon green middleton"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "robert stokes, sr."
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "acre",
+      "audit",
+      "auditor",
+      "brief",
+      "clarification",
+      "community",
+      "considerations",
+      "development",
+      "east",
+      "ebdi",
+      "financial",
+      "forensic"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-08-26",
+     "prior_introduced": "2022-08-15",
+     "gap_days": 742,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 8,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Withdrawn",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0226R",
+     "b": "22-0126R"
+    }
+   }
+  },
+  {
+   "pair_id": 41,
+   "label": "Informational hearing on permit reforms. Failed at end of term and requested again 833 days later.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9235",
+     "file_number": "22-0140R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - Permit Reforms For the purpose of inviting representatives from the Department of Housing and Community Development, the Office of the City Administrator, the Baltimore City Fire Department, Office of the Fire Marshal, and other relevant parties to provide information on reforms to the Department of Housing and Community Development\u2019s permit process.",
+     "sponsors": [
+      "Ryan Dorsey",
+      "Zeke Cohen",
+      "Phylicia Porter",
+      "John Bullock",
+      "Sharon Green Middleton",
+      "Odette Ramos"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Failed - End of Term",
+     "introduced_date": "2022-10-03",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9235&GUID=2B181490-0386-4D7D-8F44-6541AF75F6A7",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-10-03",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-03",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Baltimore City Administrator",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-02-06",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2023-10-16",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      }
+     ]
+    },
+    {
+     "record_id": "9970",
+     "file_number": "25-0003R",
+     "record_type": "resolution",
+     "title": "Informational Hearing - Permit Reforms FOR the purpose of inviting representatives from the Department of Housing and Community Development, the Office of the City Administrator, the Baltimore City Fire Department, the Office of the Fire Marshal, and other relevant parties to provide information on reforms to the Department of Housing and Community Development\u2019s permit process.",
+     "sponsors": [
+      "Antonio \"Tony\" Glover",
+      "Jermaine Jones",
+      "Zac Blanchard",
+      "Phylicia Porter",
+      "John Bullock",
+      "Paris Gray",
+      "James Torrence",
+      "Sharon Green Middleton",
+      "Isaac \"Yitzy\" Schleifer",
+      "Mark Conway",
+      "Ryan Dorsey",
+      "Mark Parker",
+      "Zeke Cohen",
+      "Odette Ramos"
+     ],
+     "committee": "Housing & Economic Development Committee",
+     "status": "In Committee",
+     "introduced_date": "2025-01-13",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9970&GUID=23C3AB73-9997-4ED5-902F-DBF576D6B66D",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-01-13",
+       "action": "Introduced",
+       "body": "City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Information Technology Services",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Baltimore City Administrator",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-13",
+       "action": "Refer to Dept. of Fire",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-02-10",
+       "action": "Reassigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-03-11",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-07-15",
+       "action": "Canceled Scheduled Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-07-22",
+       "action": "Reschedule Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2025-10-21",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2026-02-10",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Housing & Economic Development Committee"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "john bullock",
+      "odette ramos",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ],
+     "jaccard": 0.429,
+     "a": [
+      "antonio \"tony\" glover",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "jermaine jones",
+      "john bullock",
+      "mark conway",
+      "mark parker",
+      "odette ramos",
+      "paris gray",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zac blanchard",
+      "zeke cohen"
+     ],
+     "b": [
+      "john bullock",
+      "odette ramos",
+      "phylicia porter",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "administrator",
+      "community",
+      "department",
+      "development",
+      "fire",
+      "hearing",
+      "housing",
+      "information",
+      "informational",
+      "inviting",
+      "marshal",
+      "office"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-01-13",
+     "prior_introduced": "2022-10-03",
+     "gap_days": 833,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Housing & Economic Development Committee",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0003R",
+     "b": "22-0140R"
+    }
+   }
+  },
+  {
+   "pair_id": 42,
+   "label": "Investigative hearing on human trafficking prosecutions. Failed at end of term and requested again.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9234",
+     "file_number": "22-0139R",
+     "record_type": "resolution",
+     "title": "Investigative Hearing - Human Trafficking Investigations and Prosecutions For the purpose of inviting representatives from the Baltimore City Office of the State\u2019s Attorney, the Baltimore Police Department, the Baltimore City Fire Department, the Baltimore City Public School System Police, the Baltimore City Sheriff\u2019s Office, the Federal Bureau of Investigation, Homeland Security Investigations, the Maryland State Police, the Maryland United States Attorney\u2019s Office, the Maryland Department of Social Services, the Maryland Department of Juvenile Services, The Hope Center (formerly known as Baltimore Child Abuse Center), BlueDOT, and other collaborators from the Baltimore Human Trafficking Collaborative who provide identified victims of human trafficking with emergency interventions and supportive services, to brief the City Council on the scope of the human trafficking problem in Baltimore City, current efforts to investigate and prosecute perpetrators of human trafficking, further strategies that could be implemented to bring these individuals to justice, and resources that are needed to assist survivors of human trafficking.",
+     "sponsors": [
+      "Robert Stokes, Sr.",
+      "Mark Conway",
+      "Zeke Cohen",
+      "Phylicia Porter",
+      "Odette Ramos",
+      "Antonio \"Tony\" Glover",
+      "Ryan Dorsey",
+      "James Torrence",
+      "Sharon Green Middleton",
+      "Kristerfer Burnett"
+     ],
+     "committee": "Public Safety and Government Operations",
+     "status": "Failed - End of Term",
+     "introduced_date": "2022-10-03",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9234&GUID=1D0DF3A1-18A3-4DFD-B084-5EBA7A9C1B54",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-10-03",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-03",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to States' Attorney's Office",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Baltimore City Public School System",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-10-06",
+       "action": "Refer to Sheriff's Office",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-21",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Public Safety and Government Operations"
+      },
+      {
+       "date": "2023-01-09",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Public Safety and Government Operations"
+      },
+      {
+       "date": "2023-09-18",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Public Safety and Government Operations"
+      }
+     ]
+    },
+    {
+     "record_id": "10295",
+     "file_number": "25-0036R",
+     "record_type": "resolution",
+     "title": "Informational Hearing \u2013 Human Trafficking Investigations and Prosecutions FOR the purpose of inviting representatives from the Baltimore City Office of the State\u2019s Attorney, the Baltimore Police Department, the Baltimore City Fire Department, the Baltimore City Public School System Police, the Baltimore City Sheriff\u2019s Office, the Baltimore City Human Trafficking Collaborative Co Chairs and all subcommittee Chairs, the Federal Bureau of Investigation, Homeland Security Investigations, the Maryland State Police, the Maryland United States Attorney\u2019s Office, the Maryland Department of Social Services, the Maryland Department of Juvenile Services, The Hope Center (formerly known as Baltimore Child Abuse Center), BlueDOT, and other collaborators from the Baltimore Human Trafficking Collaborative who provide victims of human trafficking with emergency interventions and support services to brief the City Council on the scope of the human trafficking problem in Baltimore City, current efforts to investigate and prosecute perpetrators of human trafficking, further strategies that could be implemented to bring these individuals to justice, and resources that are needed to assist survivors of human trafficking.",
+     "sponsors": [
+      "Zeke Cohen",
+      "Odette Ramos",
+      "Jermaine Jones",
+      "Zac Blanchard",
+      "John Bullock",
+      "Paris Gray",
+      "Mark Parker",
+      "Phylicia Porter"
+     ],
+     "committee": "Public Safety Committee",
+     "status": "In Committee",
+     "introduced_date": "2025-10-20",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10295&GUID=7669285A-35C2-48FB-A43A-231444C88AE8",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-10-20",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to States' Attorney's Office",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Baltimore City Public School System",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Mayor's Office of Neighborhood Safety and Engagement",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Public Safety Committee"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "odette ramos",
+      "phylicia porter",
+      "zeke cohen"
+     ],
+     "jaccard": 0.2,
+     "a": [
+      "jermaine jones",
+      "john bullock",
+      "mark parker",
+      "odette ramos",
+      "paris gray",
+      "phylicia porter",
+      "zac blanchard",
+      "zeke cohen"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "kristerfer burnett",
+      "mark conway",
+      "odette ramos",
+      "phylicia porter",
+      "robert stokes, sr.",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.886,
+     "cosine": 0.971,
+     "distinctive_shared": [
+      "abuse",
+      "assist",
+      "attorney",
+      "bluedot",
+      "brief",
+      "bring",
+      "bureau",
+      "center",
+      "child",
+      "collaborative",
+      "collaborators",
+      "could"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-10-20",
+     "prior_introduced": "2022-10-03",
+     "gap_days": 1113,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Public Safety Committee",
+     "prior_committee": "Public Safety and Government Operations"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0036R",
+     "b": "22-0139R"
+    }
+   }
+  },
+  {
+   "pair_id": 49,
+   "label": "Crematorium conditional use. Failed at end of term and reintroduced 119 days later.",
+   "tier": "citywide",
+   "watched": [],
+   "records": [
+    {
+     "record_id": "9906",
+     "file_number": "24-0599",
+     "record_type": "ordinance",
+     "title": "Zoning - Conditional Use - Crematorium For the purpose of creating a stand-alone use in the Zoning Code for crematoriums; amending certain related definitions; revising certain zoning tables to include the use \u201ccrematorium\u201d; making conforming changes; providing for a special effective date; and generally related to creating the stand-alone use \u201ccrematorium\u201d in the Zoning Code.",
+     "sponsors": [
+      "Odette Ramos",
+      "Zeke Cohen",
+      "Antonio \"Tony\" Glover",
+      "Ryan Dorsey",
+      "Mark Conway"
+     ],
+     "committee": "Ways and Means",
+     "status": "Failed - End of Term",
+     "introduced_date": "2024-09-30",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9906&GUID=65C2CB2A-05B9-4D12-99FA-6152E176C3AD",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-09-30",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-30",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Fire Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Parking Authority",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-03",
+       "action": "Refer to Office of Equity and Civil Rights",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-10-07",
+       "action": "Advertising",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-10-21",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-10-24",
+       "action": "Advertising",
+       "body": "Ways and Means"
+      }
+     ]
+    },
+    {
+     "record_id": "9983",
+     "file_number": "25-0015",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Conditional Use \u2013 Crematorium FOR the purpose of creating a stand-alone use in the Zoning Code for crematoriums; amending certain related definitions; revising certain zoning tables to include the use \u201ccrematorium\u201d; making conforming changes; providing for a special effective date; and generally related to creating the stand-alone use \u201ccrematorium\u201d in the Zoning Code.",
+     "sponsors": [
+      "Zeke Cohen",
+      "Odette Ramos",
+      "Ryan Dorsey",
+      "Mark Parker",
+      "Mark Conway"
+     ],
+     "committee": "Land Use and Transportation",
+     "status": "In Committee",
+     "introduced_date": "2025-01-27",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9983&GUID=8DC879A0-7310-4941-82B0-57C9AF77E3C4",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-01-27",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-27",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-27",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-27",
+       "action": "Refer to Mayor's Office of Equity",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-27",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-01-27",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use and Transportation"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "mark conway",
+      "odette ramos",
+      "ryan dorsey",
+      "zeke cohen"
+     ],
+     "jaccard": 0.667,
+     "a": [
+      "mark conway",
+      "mark parker",
+      "odette ramos",
+      "ryan dorsey",
+      "zeke cohen"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "mark conway",
+      "odette ramos",
+      "ryan dorsey",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "alone",
+      "amending",
+      "changes",
+      "code",
+      "conditional",
+      "conforming",
+      "creating",
+      "crematorium",
+      "crematoriums",
+      "date",
+      "definitions",
+      "effective"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-01-27",
+     "prior_introduced": "2024-09-30",
+     "gap_days": 119,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "restart",
+     "consistent": true,
+     "prior_furthest_stage": 2,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": true,
+     "prior_status": "Failed - End of Term",
+     "candidate_committee": "Land Use and Transportation",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0015",
+     "b": "24-0599"
     }
    }
   }
@@ -5332,6 +8230,2933 @@
      "identical": false,
      "a": "25-0056",
      "b": "25-0055"
+    }
+   }
+  },
+  {
+   "pair_id": 29,
+   "label": "Two Class B-D-7 licence exchanges introduced the same day by the same sponsor on the same street, 2733 and 2139 Pennsylvania Avenue. Cosine 0.973 and no parcel resolves, so only the address distinguishes them.",
+   "records": [
+    {
+     "record_id": "8632",
+     "file_number": "21-0014R",
+     "record_type": "resolution",
+     "title": "Approval for the Exchange of a Class B-D-7 License to a Class A-7 License - 2733 Pennsylvania Avenue For the purpose of providing the required approval under Md. Code Ann., Alc. Bev. \u00a7 12-902.1(d)(1) to allow the license holder holding a valid Class B-D-7 Beer, Wine, and Liquor License issued for use at 2733 Pennsylvania Avenue, Baltimore, Maryland 21217 to apply to the Board of Liquor License Commissioners for Baltimore City to exchange their Class B-D-7 Beer, Wine, and Liquor License for a Class A-7 Beer, Wine, and Liquor License.",
+     "sponsors": [
+      "James Torrence"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Adopted",
+     "introduced_date": "2021-01-25",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8632&GUID=2DEDFAD8-CB08-4E52-949D-1ED78CCA8DF5",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "3403 028",
+       "block": "3403",
+       "lots": [],
+       "address": "2733 Pennsylvania Avenue"
+      }
+     ],
+     "neighborhood": "PENN NORTH",
+     "owner": "JC STAR REAL ESTATE, LLC",
+     "zone": "C-1",
+     "history": [
+      {
+       "date": "2021-01-25",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-25",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Board of Liquor Licenses Commissioners",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-22",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-09",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "8633",
+     "file_number": "21-0015R",
+     "record_type": "resolution",
+     "title": "Approval for the Exchange of a Class B-D-7 License to a Class A-7 License - 2139 Pennsylvania Avenue For the purpose of providing the required approval under Md. Code Ann., Alc. Bev. \u00a7 12-902.1(d)(1) to allow the license holder holding a valid Class B-D-7 Beer, Wine, and Liquor License issued for use at 2139 Pennsylvania Avenue, Baltimore, Maryland 21217 to apply to the Board of Liquor License Commissioners for Baltimore City to exchange their Class B-D-7 Beer, Wine, and Liquor License for a Class A-7 Beer, Wine, and Liquor License.",
+     "sponsors": [
+      "James Torrence"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Adopted",
+     "introduced_date": "2021-01-25",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8633&GUID=3322BC72-EEDD-4ABE-81D7-0AE4A4203FE4",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [
+      {
+       "parcel_id": "0307 033",
+       "block": "0307",
+       "lots": [],
+       "address": "2139 Pennsylvania Avenue"
+      }
+     ],
+     "neighborhood": "DRUID HEIGHTS",
+     "owner": "CHOI, GOYA",
+     "zone": "C-1",
+     "history": [
+      {
+       "date": "2021-01-25",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-25",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Board of Liquor Licenses Commissioners",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Police Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Health",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-01-28",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-02-22",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-09",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "adjacent",
+     "shared_street": [
+      "Pennsylvania Avenue"
+     ],
+     "addresses_a": [
+      "2139 Pennsylvania Avenue"
+     ],
+     "addresses_b": [
+      "2733 Pennsylvania Avenue"
+     ]
+    },
+    "sponsor": {
+     "overlap": [
+      "james torrence"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "james torrence"
+     ],
+     "b": [
+      "james torrence"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.935,
+     "cosine": 0.973,
+     "distinctive_shared": [
+      "21217",
+      "902",
+      "alc",
+      "allow",
+      "ann",
+      "apply",
+      "approval",
+      "avenue",
+      "beer",
+      "bev",
+      "board",
+      "class"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2021-01-25",
+     "prior_introduced": "2021-01-25",
+     "gap_days": 0,
+     "ordered": false,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 3,
+     "candidate_furthest_stage": 3,
+     "prior_terminal": false,
+     "prior_status": "Adopted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "21-0015R",
+     "b": "21-0014R"
+    }
+   }
+  },
+  {
+   "pair_id": 30,
+   "label": "State redesignation application, adopted in 2022 and adopted again in 2026. A periodic administrative filing, not a measure returning because it failed.",
+   "records": [
+    {
+     "record_id": "9047",
+     "file_number": "22-0096R",
+     "record_type": "resolution",
+     "title": "Approving the Submission of an Application to the State of Maryland for the Redesignation of Baltimore City\u2019s Modified Consolidated Enterprise Zone and its Focus Areas For the purpose of approving the submission of an application to the State of Maryland to redesignate Baltimore City\u2019s modified Consolidated Enterprise Zone and its Focus Areas.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Adopted",
+     "introduced_date": "2022-03-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9047&GUID=85DBD8D1-B8AC-43DB-8715-E529885A5F07",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-03-07",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-03-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-10",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-10",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-10",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-22",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-04-04",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-04-04",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    },
+    {
+     "record_id": "10447",
+     "file_number": "26-0048R",
+     "record_type": "resolution",
+     "title": "Approving the Submission of an Application to the State of Maryland for the Redesignation of Baltimore City\u2019s Modified Consolidated Enterprise Zone and its Focus Areas FOR the purpose of approving the submission of an application to the State of Maryland to redesignate Baltimore City\u2019s modified Consolidated Enterprise Zone and its Focus Areas.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": null,
+     "status": "Adopted",
+     "introduced_date": "2026-02-23",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10447&GUID=A56FA853-B31B-47CC-8EA3-5B17A4B45725",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2026-02-23",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-23",
+       "action": "Adopted",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "city council president (administration)"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "city council president (administration)"
+     ],
+     "b": [
+      "city council president (administration)"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "application",
+      "approving",
+      "areas",
+      "consolidated",
+      "enterprise",
+      "focus",
+      "its",
+      "maryland",
+      "modified",
+      "redesignate",
+      "redesignation",
+      "state"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2026-02-23",
+     "prior_introduced": "2022-03-07",
+     "gap_days": 1449,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "regression",
+     "consistent": false,
+     "prior_furthest_stage": 3,
+     "candidate_furthest_stage": 0,
+     "prior_terminal": false,
+     "prior_status": "Adopted",
+     "candidate_committee": null,
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "26-0048R",
+     "b": "22-0096R"
+    }
+   }
+  },
+  {
+   "pair_id": 31,
+   "label": "Affordable housing bond issue, both enacted four years apart. Recurring authorisation with identical framing.",
+   "records": [
+    {
+     "record_id": "9122",
+     "file_number": "22-0233",
+     "record_type": "ordinance",
+     "title": "Bond Issue - Affordable Housing Loan - $14,000,000 For the purpose of authorizing the Mayor and City Council of Baltimore (pursuant to General Assembly House Resolution I and Senate Resolution I of 2022 approved by the members of the Maryland General Assembly representing Baltimore City) to create a debt, and to issue and sell, at any time or from time to time and in one or more series its certificates of indebtedness as evidence thereof, and proceeds not exceeding FOURTEEN Million ($14,000,000.00) from the sale of such certificates of indebtedness to be used for the cost of issuance, including the expense of engraving, printing, advertising, attorneys\u2019 fees, and all other incidental expenses connected therewith (which may include the proportion of the compensation of employees and general administrative expenses of the Department of Finance reasonably allocated to the issuance of the bonds); and the remainder of such proceeds shall be used for or in connection with planning, developing, executing, and making operative the Affordable Housing program of the Mayor and City Council of Baltimore, including, but not limited to, the acquisition, by purchase, lease, condemnation or any other legal means, of land or property, or any right, interest, franchise, easement or privilege therein, in the City of Baltimore; the payment of any and all costs and expenses incurred in connection with or incidental to the acquisition and management of said land or property, including any and all rights of interest therein hereinbefore mentioned; the payment of any and all costs and expenses incurred for or in connection with relocating and moving persons or other legal entities displaced by the acquisition of said land or property, or any of the rights or interest therein hereinbefore mentioned, in the City of Baltimore; the development or redevelopment, including, but not limited to, the comprehensive renovation or rehabilitation of, any land or property, or any rights or interests therein hereinbefore mentioned, in the City of Baltimore, and the disposition of land and property for such purposes; costs related to the rehabilitation and new construction of and operation of rental and homeownership developments, such costs to include but not be limited to relocation assistance, rental payment and home purchase assistance, housing counseling and project financing comprised of loans(including forgivable or fully amoritizing) or grants or other related activities and buyer education assistance, and activities to support the orderly and sustainable planning, preservation, rehabilitation, and development of economically diverse housing in City neighborhoods; support for the Affordable Housing Trust Fund; the elimination of unhealthful, unsanitary or unsafe conditions, lessening density, eliminating obsolete or other uses detrimental to the public welfare or otherwise removing or preventing the spread of blight or deterioration in the City of Baltimore; the demolition, removal, relocation, renovation or alteration of land, buildings, streets, highways, alleys, utilities or services, and other structures or improvements, and for the construction, reconstruction, installation, relocation or repair of buildings, streets, highways, alleys, utilities or services, and other structures or improvements; the payment of any and all costs and expenses incurred for, or in connection with, doing any or all of the things herein mentioned, including, but not limited to, the costs and expenses of securing administrative, appraisal, economic analysis, engineering, planning, designing, architectural, surveying, and other professional services; and for doing any and all things necessary, proper or expedient in connection with or pertaining to any or all of the matters or things hereinbefore mentioned; authorizing the submission of this Ordinance to the legal voters of the City of Baltimore, for their approval or disapproval, at the General Election to be held in Baltimore City, on Tuesday, the 8th day of November, 2022; and providing generally for the issuance and sale of such certificates of indebtedness in accordance with the provisions of the Charter of the Mayor and City Council of Baltimore, and by the municipal agency designated in the annual Ordinance of Estimates of the Mayor and City Council of Baltimore.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2022-04-25",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9122&GUID=3E39F348-9F89-4A3F-9067-0822B4428D72",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-04-25",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-25",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-28",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-28",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-28",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-28",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-28",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-13",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2022-06-28",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2022-07-11",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2022-07-11",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-07-25",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-08-15",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10503",
+     "file_number": "26-0179",
+     "record_type": "ordinance",
+     "title": "Bond Issue \u2013 Affordable Housing Loan \u2013 $22,000,000 FOR the purpose of authorizing the Mayor and City Council of Baltimore (pursuant to General Assembly House Resolution I and Senate Resolution I of 2026 approved by the members of the Maryland General Assembly representing Baltimore City) to create a debt, and to issue and sell, at any time or from time to time and in one or more series its certificates of indebtedness as evidence thereof, and proceeds not exceeding TWENTY TWO Million ($22,000,000.00) from the sale of such certificates of indebtedness to be used for or in connection with planning, developing, executing, and making operative the Affordable Housing program of the Mayor and City Council of Baltimore, including, but not limited to, the acquisition, by purchase, lease, condemnation or any other legal means, of land or property, or any right, interest, franchise, easement or privilege therein, in the City of Baltimore; the payment of any and all costs and expenses incurred in connection with or incidental to the acquisition and management of said land or property, including any and all rights of interest therein hereinbefore mentioned; the payment of any and all costs and expenses incurred for or in connection with relocating and moving persons or other legal entities displaced by the acquisition of said land or property, or any of the rights or interest therein hereinbefore mentioned, in the City of Baltimore; the development or redevelopment, including, but not limited to, the comprehensive renovation or rehabilitation of, any land or property, or any rights or interests therein hereinbefore mentioned, in the City of Baltimore, and the disposition of land and property for such purposes; costs related to the rehabilitation and new construction of and operation of rental and homeownership developments, such costs to include but not be limited to relocation assistance, rental payment and home purchase assistance, housing counseling and project financing comprised of loans (including forgivable or fully amortizing) or grants or other related activities and buyer education assistance, and activities to support the orderly and sustainable planning, preservation, rehabilitation, and development of economically diverse housing in City neighborhoods; support for the Affordable Housing Trust Fund; the elimination of unhealthful, unsanitary or unsafe conditions, lessening density, eliminating obsolete or other uses detrimental to the public welfare or otherwise removing or preventing the spread of blight or deterioration in the City of Baltimore; the demolition, removal, relocation, renovation or alteration of land, buildings, streets, highways, alleys, utilities or services, and other structures or improvements, and for the construction, reconstruction, installation, relocation or repair of buildings, streets, highways, alleys, utilities or services, and other structures or improvements; the payment of any and all costs and expenses incurred for, or in connection with, doing any or all of the things herein mentioned, including, but not limited to, the costs and expenses of securing administrative, appraisal, economic analysis, engineering, planning, designing, architectural, surveying, and other professional services; and for doing any and all things necessary, proper or expedient in connection with or pertaining to any or all of the matters or things hereinbefore mentioned; authorizing the issuance of refunding bonds; authorizing the submission of this Ordinance to the legal voters of the City of Baltimore, for their approval or disapproval, at the General Election to be held in Baltimore City, on Tuesday, the 3rd day of November, 2026; and providing generally for the issuance and sale of such certificates of indebtedness in accordance with the provisions of the Charter of the Mayor and City Council of Baltimore, and by the municipal agency designated in the annual Ordinance of Estimates of the Mayor and City Council of Baltimore.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Budget & Appropriations Committee",
+     "status": "Enacted",
+     "introduced_date": "2026-04-27",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10503&GUID=D34FBF50-17B4-4778-AC76-A3A16280BD31",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2026-04-27",
+       "action": "Introduced",
+       "body": "City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Assigned",
+       "body": "City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-04-27",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-05",
+       "action": "Recommended Favorably",
+       "body": "Budget & Appropriations Committee"
+      },
+      {
+       "date": "2026-05-05",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Budget & Appropriations Committee"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "2nd Reader",
+       "body": "Budget & Appropriations Committee"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-11",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-05-20",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "city council president (administration)"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "city council president (administration)"
+     ],
+     "b": [
+      "city council president (administration)"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": "Dept. of Planning"
+    },
+    "title": {
+     "token_jaccard": 0.866,
+     "cosine": 0.976,
+     "distinctive_shared": [
+      "000",
+      "accordance",
+      "acquisition",
+      "activities",
+      "administrative",
+      "affordable",
+      "agency",
+      "all",
+      "alleys",
+      "alteration",
+      "analysis",
+      "annual"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2026-04-27",
+     "prior_introduced": "2022-04-25",
+     "gap_days": 1463,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Budget & Appropriations Committee",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "26-0179",
+     "b": "22-0233"
+    }
+   }
+  },
+  {
+   "pair_id": 33,
+   "label": "Charles Village Community Benefits District renewal. The district is renewed on a schedule and the earlier bill passed, so this is the next scheduled renewal rather than a revival.",
+   "records": [
+    {
+     "record_id": "9021",
+     "file_number": "22-0194",
+     "record_type": "resolution",
+     "title": "Charles Village Community Benefits District and Management Authority FOR the purpose of renewing and continuing the Charles Village Community Benefits District and Management Authority; providing for a special effective date; and generally relating to the activities and authority of the Charles Village Community Benefits District and Management Authority.",
+     "sponsors": [
+      "Robert Stokes, Sr.",
+      "Odette Ramos"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2022-02-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9021&GUID=430ADF19-76A4-4CEC-B673-BCB492BBFD25",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-02-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-02-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-02-10",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-02-10",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-02-10",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-21",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-04-19",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-04-25",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-04-25",
+       "action": "Recommended Favorably",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2022-05-16",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-06-27",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10281",
+     "file_number": "25-0102",
+     "record_type": "resolution",
+     "title": "Charles Village Community Benefits District and Management Authority FOR the purpose of renewing and continuing the Charles Village Community Benefits District and Management Authority; providing for a special effective date; and generally relating to the activities and authority of the Charles Village Community Benefits District and Management Authority.",
+     "sponsors": [
+      "Mark Parker",
+      "Jermaine Jones",
+      "Odette Ramos"
+     ],
+     "committee": "Housing & Economic Development Committee",
+     "status": "Enacted",
+     "introduced_date": "2025-10-20",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10281&GUID=098A819C-E5B0-433D-BADC-81C9D8DE4BA7",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-10-20",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-10-20",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-03",
+       "action": "Recommended Favorably",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2026-02-03",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-09",
+       "action": "2nd Reader",
+       "body": "Housing & Economic Development Committee"
+      },
+      {
+       "date": "2026-02-23",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-23",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-02-24",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "odette ramos"
+     ],
+     "jaccard": 0.25,
+     "a": [
+      "jermaine jones",
+      "mark parker",
+      "odette ramos"
+     ],
+     "b": [
+      "odette ramos",
+      "robert stokes, sr."
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": "Charles Village Community Benefits District and Management Authority"
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "activities",
+      "authority",
+      "benefits",
+      "charles",
+      "community",
+      "continuing",
+      "date",
+      "district",
+      "effective",
+      "generally",
+      "management",
+      "providing"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "resolution",
+     "b": "resolution"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-10-20",
+     "prior_introduced": "2022-02-07",
+     "gap_days": 1351,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Housing & Economic Development Committee",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0102",
+     "b": "22-0194"
+    }
+   }
+  },
+  {
+   "pair_id": 43,
+   "label": "Real property tax installment plans. The 2021 bill was enacted, so the 2023 bill is a further amendment to a law already on the books rather than a revival of a failed measure.",
+   "records": [
+    {
+     "record_id": "8721",
+     "file_number": "21-0058",
+     "record_type": "ordinance",
+     "title": "Real Property Tax - Installment Plans For the purpose of authorizing that the real property taxes to be owed on certain properties may be paid through a monthly installment plan; establishing the maximum term for an installment payment plan in accordance with State law; requiring the Director of Finance to adopt regulations to implement this subtitle; defining certain terms; providing for a special effective date; and generally relating to installment payments of real property taxes in Baltimore City.",
+     "sponsors": [
+      "Robert Stokes, Sr.",
+      "James Torrence",
+      "Mark Conway",
+      "Zeke Cohen",
+      "Kristerfer Burnett",
+      "Antonio \"Tony\" Glover",
+      "Sharon Green Middleton",
+      "Ryan Dorsey",
+      "John Bullock",
+      "Odette Ramos"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2021-03-22",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8721&GUID=1F3E303A-5791-4B38-8DEC-7013789B21A1",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-03-22",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Mayor's Office of Information Technology",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-27",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-09-28",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-10-04",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-10-04",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-18",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-12-09",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9448",
+     "file_number": "23-0373",
+     "record_type": "ordinance",
+     "title": "Real Property Tax - Installment Plans - Tax in Arrears For the purpose of authorizing that certain real property taxes owed on qualifying properties may be paid through a monthly installment plan; establishing the maximum term for an installment payment plan in accordance with State law; requiring the Director of Finance to adopt regulations to implement this subtitle; defining certain terms; providing for a special effective date; and generally relating to installment payments of certain real property taxes in Baltimore City.",
+     "sponsors": [
+      "Mark Conway",
+      "Odette Ramos",
+      "Administration City Council"
+     ],
+     "committee": null,
+     "status": "Failed - End of Term",
+     "introduced_date": "2023-04-17",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9448&GUID=1927B74F-DCB8-4A69-BDA2-6E943594755E",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2023-04-17",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-17",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Mayor's Office of Information Technology",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-04-20",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "mark conway",
+      "odette ramos"
+     ],
+     "jaccard": 0.182,
+     "a": [
+      "administration city council",
+      "mark conway",
+      "odette ramos"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "odette ramos",
+      "robert stokes, sr.",
+      "ryan dorsey",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": "Office of the Mayor",
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 0.946,
+     "cosine": 0.978,
+     "distinctive_shared": [
+      "accordance",
+      "adopt",
+      "authorizing",
+      "date",
+      "defining",
+      "director",
+      "effective",
+      "establishing",
+      "finance",
+      "generally",
+      "implement",
+      "installment"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2023-04-17",
+     "prior_introduced": "2021-03-22",
+     "gap_days": 756,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "regression",
+     "consistent": false,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 1,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": null,
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "23-0373",
+     "b": "21-0058"
+    }
+   }
+  },
+  {
+   "pair_id": 44,
+   "label": "Supplementary appropriation for Arts and Culture. Identical title and identical amount, both enacted 84 days apart. Separate appropriations in separate fiscal periods.",
+   "records": [
+    {
+     "record_id": "9625",
+     "file_number": "23-0452",
+     "record_type": "ordinance",
+     "title": "Supplementary General Fund Operating Appropriation - M-R: Arts and Culture - $581,334 For the purpose of providing a Supplementary General Fund Operating Appropriation in the amount of $581,334 to M-R: Arts and Culture - Service 824 (Events: Art: Culture: and Film), to provide funding for general operations; and providing for a special effective date.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2023-11-20",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9625&GUID=0B975310-FA0C-4A61-8F67-DDE2C1A23960",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2023-11-20",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-20",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Dept. of General Services",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Baltimore Office of Promotion and the Arts",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-11-23",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-04",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-12-12",
+       "action": "Recommended Favorably",
+       "body": ""
+      },
+      {
+       "date": "2023-12-12",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-12-18",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-18",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-12-18",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-01-22",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9712",
+     "file_number": "24-0488",
+     "record_type": "ordinance",
+     "title": "Supplementary General Fund Operating Appropriation - M-R: Arts and Culture - $581,334 For the purpose of providing a Supplementary General Fund Operating Appropriation in the amount of $581,334 to M-R: Arts and Culture - Service 824 (Events: Art: Culture: and Film), to provide funding for general operations; and providing for a special effective date.",
+     "sponsors": [
+      "City Council President (Administration)"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-02-12",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9712&GUID=9554AA66-32F7-4635-B8A1-7C3B7E892BE2",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-02-12",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-12",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-15",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-15",
+       "action": "Refer to Dept. of General Services",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-15",
+       "action": "Refer to Baltimore Office of Promotion and the Arts",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-15",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-15",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-02-26",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-03-13",
+       "action": "Scheduled for Voting Session",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-03-18",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-03-18",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-03-18",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-04-08",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-05-01",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "city council president (administration)"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "city council president (administration)"
+     ],
+     "b": [
+      "city council president (administration)"
+     ]
+    },
+    "requester": {
+     "match": true,
+     "a": "Dept. of Finance",
+     "b": "Dept. of Finance"
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "334",
+      "581",
+      "824",
+      "amount",
+      "appropriation",
+      "art",
+      "arts",
+      "culture",
+      "date",
+      "effective",
+      "events",
+      "film"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-02-12",
+     "prior_introduced": "2023-11-20",
+     "gap_days": 84,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0488",
+     "b": "23-0452"
+    }
+   }
+  },
+  {
+   "pair_id": 45,
+   "label": "Historic property tax credit application extension. Both enacted. The extension is granted repeatedly, so cosine 1.0 here means recurrence, not continuation.",
+   "records": [
+    {
+     "record_id": "8937",
+     "file_number": "21-0168",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Mark Conway",
+      "Kristerfer Burnett",
+      "Phylicia Porter",
+      "Zeke Cohen",
+      "James Torrence",
+      "Isaac \"Yitzy\" Schleifer",
+      "Antonio \"Tony\" Glover",
+      "John Bullock",
+      "Sharon Green Middleton",
+      "Robert Stokes, Sr.",
+      "President Nicholas J. Mosby",
+      "Eric T. Costello"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2021-10-18",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8937&GUID=AD292401-7899-4E84-AFD9-942854468DAB",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-10-18",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-18",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-18",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-11-09",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-12-06",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-01-10",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9258",
+     "file_number": "22-0299",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Sharon Green Middleton",
+      "Antonio \"Tony\" Glover",
+      "Isaac \"Yitzy\" Schleifer",
+      "Mark Conway",
+      "Zeke Cohen",
+      "Kristerfer Burnett",
+      "Robert Stokes, Sr.",
+      "James Torrence",
+      "Eric T. Costello",
+      "John Bullock"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2022-11-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9258&GUID=8636E351-F455-4206-959C-917F6D2A66AD",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-11-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-01-09",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-01-23",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-07",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-03-13",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ],
+     "jaccard": 0.833,
+     "a": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "phylicia porter",
+      "president nicholas j. mosby",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "accepted",
+      "application",
+      "applications",
+      "credit",
+      "credits",
+      "date",
+      "effective",
+      "extending",
+      "extension",
+      "historic",
+      "improvement",
+      "may"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2022-11-07",
+     "prior_introduced": "2021-10-18",
+     "gap_days": 385,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "22-0299",
+     "b": "21-0168"
+    }
+   }
+  },
+  {
+   "pair_id": 46,
+   "label": "The next instance of the same recurring tax credit extension.",
+   "records": [
+    {
+     "record_id": "9258",
+     "file_number": "22-0299",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Sharon Green Middleton",
+      "Antonio \"Tony\" Glover",
+      "Isaac \"Yitzy\" Schleifer",
+      "Mark Conway",
+      "Zeke Cohen",
+      "Kristerfer Burnett",
+      "Robert Stokes, Sr.",
+      "James Torrence",
+      "Eric T. Costello",
+      "John Bullock"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2022-11-07",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9258&GUID=8636E351-F455-4206-959C-917F6D2A66AD",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2022-11-07",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-07",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-11-10",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-01-09",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-01-23",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-07",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-02-27",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2023-03-13",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9810",
+     "file_number": "24-0545",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Eric T. Costello",
+      "John Bullock"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9810&GUID=B2C30061-44F3-4E0B-B483-FD9701CA996C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-02",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-16",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "eric t. costello",
+      "john bullock"
+     ],
+     "jaccard": 0.2,
+     "a": [
+      "eric t. costello",
+      "john bullock"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "accepted",
+      "application",
+      "applications",
+      "credit",
+      "credits",
+      "date",
+      "effective",
+      "extending",
+      "extension",
+      "historic",
+      "improvement",
+      "may"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-06-10",
+     "prior_introduced": "2022-11-07",
+     "gap_days": 581,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0545",
+     "b": "22-0299"
+    }
+   }
+  },
+  {
+   "pair_id": 47,
+   "label": "The first and third instances of the recurring tax credit extension, 966 days apart.",
+   "records": [
+    {
+     "record_id": "8937",
+     "file_number": "21-0168",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Mark Conway",
+      "Kristerfer Burnett",
+      "Phylicia Porter",
+      "Zeke Cohen",
+      "James Torrence",
+      "Isaac \"Yitzy\" Schleifer",
+      "Antonio \"Tony\" Glover",
+      "John Bullock",
+      "Sharon Green Middleton",
+      "Robert Stokes, Sr.",
+      "President Nicholas J. Mosby",
+      "Eric T. Costello"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2021-10-18",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8937&GUID=AD292401-7899-4E84-AFD9-942854468DAB",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-10-18",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-18",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-18",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Real Estate",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-10-21",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-11-09",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2021-12-06",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-01-10",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "9810",
+     "file_number": "24-0545",
+     "record_type": "ordinance",
+     "title": "Tax Credits - Historic Properties - Application Extension For the purpose of extending the period within which applications may be accepted for the historic improvement tax credit and providing for a special effective date.",
+     "sponsors": [
+      "Eric T. Costello",
+      "John Bullock"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9810&GUID=B2C30061-44F3-4E0B-B483-FD9701CA996C",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Planning",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Estimates",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-02",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Recommended Favorably",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-08-26",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-09-16",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "eric t. costello",
+      "john bullock"
+     ],
+     "jaccard": 0.167,
+     "a": [
+      "eric t. costello",
+      "john bullock"
+     ],
+     "b": [
+      "antonio \"tony\" glover",
+      "eric t. costello",
+      "isaac \"yitzy\" schleifer",
+      "james torrence",
+      "john bullock",
+      "kristerfer burnett",
+      "mark conway",
+      "phylicia porter",
+      "president nicholas j. mosby",
+      "robert stokes, sr.",
+      "sharon green middleton",
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "accepted",
+      "application",
+      "applications",
+      "credit",
+      "credits",
+      "date",
+      "effective",
+      "extending",
+      "extension",
+      "historic",
+      "improvement",
+      "may"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2024-06-10",
+     "prior_introduced": "2021-10-18",
+     "gap_days": 966,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Ways and Means",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "24-0545",
+     "b": "21-0168"
+    }
+   }
+  },
+  {
+   "pair_id": 48,
+   "label": "Two sequential amendments to the Canton Industrial Area urban renewal plan, both enacted 147 days apart. Successive amendments to a standing plan, not one measure returning.",
+   "records": [
+    {
+     "record_id": "8722",
+     "file_number": "21-0056",
+     "record_type": "ordinance",
+     "title": "Urban Renewal - Canton Industrial Area - Amendment ___ For the purpose of amending the Urban Renewal Plan for the Canton Industrial Area to revise the boundary of the Plan to remove a certain property; replacing certain exhibits to reflect the change; waiving certain content and procedural requirements; making the provisions of this Ordinance severable; providing for the application of this Ordinance in conjunction with certain other ordinances; and providing for a special effective date.",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-03-22",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8722&GUID=7FCE0874-A908-4686-BB98-84DF57687982",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-03-22",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-22",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Public Works",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-03-25",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-05-17",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-06-08",
+       "action": "Advertising",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-06-10",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-07-19",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-08-27",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-07",
+       "action": "Advertising",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-14",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Advanced to 3rd Reader on same day",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-09-20",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-11-15",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "8844",
+     "file_number": "21-0120",
+     "record_type": "ordinance",
+     "title": "Urban Renewal - Canton Industrial Area - Amendment ___ For the purpose of amending the Urban Renewal Plan to revise the boundary of the Plan to remove a certain property; replacing certain exhibits to reflect the change; waiving certain content and procedural requirements; making the provisions of this Ordinance severable; providing for the application of this Ordinance in conjunction with certain other ordinances; and providing for a special effective date.",
+     "sponsors": [
+      "Zeke Cohen"
+     ],
+     "committee": "Economic and Community Development",
+     "status": "Enacted",
+     "introduced_date": "2021-08-16",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8844&GUID=61765ECF-4C25-4945-A632-84ED4C8959A2",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2021-08-16",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-16",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Public Works",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Commission for Historical & Architectural Preservation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-08-19",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2021-11-01",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-11-23",
+       "action": "Sign Posting",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-11-23",
+       "action": "Advertising",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-12-07",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-12-09",
+       "action": "Recommended Favorably with Amendment",
+       "body": "Economic and Community Development"
+      },
+      {
+       "date": "2021-12-09",
+       "action": "3rd Reader, for final passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-01-10",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2022-03-07",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "zeke cohen"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "zeke cohen"
+     ],
+     "b": [
+      "zeke cohen"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 0.972,
+     "distinctive_shared": [
+      "amending",
+      "amendment",
+      "application",
+      "area",
+      "boundary",
+      "canton",
+      "change",
+      "conjunction",
+      "content",
+      "date",
+      "effective",
+      "exhibits"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2021-08-16",
+     "prior_introduced": "2021-03-22",
+     "gap_days": 147,
+     "ordered": true,
+     "same_council_term": true
+    },
+    "committee_progression": {
+     "shape": "advance",
+     "consistent": true,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 7,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Economic and Community Development",
+     "prior_committee": "Economic and Community Development"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "21-0120",
+     "b": "21-0056"
+    }
+   }
+  },
+  {
+   "pair_id": 50,
+   "label": "Harford Road Overlay District. The 2024 bill established the overlay and was enacted, so the 2025 bill amends a district that already exists.",
+   "records": [
+    {
+     "record_id": "9799",
+     "file_number": "24-0544",
+     "record_type": "ordinance",
+     "title": "Zoning - Harford Road Overlay District For the purpose of establishing the Harford Road Overlay District; delineating the boundaries of the district; creating applicable use regulations within the district; establishing bulk and yard regulations within the district; detailing other applicable standards within the district; amending certain off-street parking requirements; and generally relating to the establishment of the Harford Road Overlay District.",
+     "sponsors": [
+      "Ryan Dorsey"
+     ],
+     "committee": "Ways and Means",
+     "status": "Enacted",
+     "introduced_date": "2024-06-10",
+     "hearing_date": null,
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9799&GUID=3B734064-CE60-42B5-B4FA-E115D6273FE8",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2024-06-10",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-10",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to City Solicitor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-06-13",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-07-22",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-08-09",
+       "action": "Sign Posting",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-08-28",
+       "action": "Advertising",
+       "body": "Ways and Means"
+      },
+      {
+       "date": "2024-11-04",
+       "action": "Advanced to 3rd Reader, for Final Passage",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-11-18",
+       "action": "Held for 1 meeting",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-12-02",
+       "action": "Approved and Sent to the Mayor",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2024-12-04",
+       "action": "Signed by Mayor",
+       "body": "Mayor"
+      }
+     ]
+    },
+    {
+     "record_id": "10198",
+     "file_number": "25-0093",
+     "record_type": "ordinance",
+     "title": "Zoning \u2013 Harford Road Overlay District FOR the purpose of establishing the Harford Road Overlay District; delineating the boundaries of the district; creating applicable use regulations within the district; establishing bulk and yard regulations within the district; detailing other applicable standards within the district; amending certain off-street parking requirements; and generally relating to the establishment of the Harford Road Overlay District.",
+     "sponsors": [
+      "Ryan Dorsey"
+     ],
+     "committee": "Land Use & Transportation Committee",
+     "status": "In Committee",
+     "introduced_date": "2025-08-18",
+     "hearing_date": "2026-09-24",
+     "source_url": "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10198&GUID=98ACC87F-12F6-4B13-AD70-3BF09D4A7984",
+     "fetched_at": "2026-09-10T02:14:14+00:00",
+     "parcels": [],
+     "neighborhood": null,
+     "owner": null,
+     "zone": null,
+     "history": [
+      {
+       "date": "2025-08-18",
+       "action": "Introduced",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Assigned",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Law Department",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Dept. of Finance",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Dept. of Housing and Community Development",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Planning Commission",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-08-18",
+       "action": "Refer to Baltimore Development Corporation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Board of Municipal and Zoning Appeals",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2025-11-12",
+       "action": "Refer to Dept. of Transportation",
+       "body": "Baltimore City Council"
+      },
+      {
+       "date": "2026-09-24",
+       "action": "Scheduled for a Public Hearing",
+       "body": "Land Use & Transportation Committee"
+      }
+     ]
+    }
+   ],
+   "features": {
+    "parcel": {
+     "match": "none",
+     "addresses_a": [],
+     "addresses_b": []
+    },
+    "sponsor": {
+     "overlap": [
+      "ryan dorsey"
+     ],
+     "jaccard": 1.0,
+     "a": [
+      "ryan dorsey"
+     ],
+     "b": [
+      "ryan dorsey"
+     ]
+    },
+    "requester": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "title": {
+     "token_jaccard": 1.0,
+     "cosine": 1.0,
+     "distinctive_shared": [
+      "amending",
+      "applicable",
+      "boundaries",
+      "bulk",
+      "creating",
+      "delineating",
+      "detailing",
+      "district",
+      "establishing",
+      "establishment",
+      "generally",
+      "harford"
+     ]
+    },
+    "zoning_transition": {
+     "match": false,
+     "a": null,
+     "b": null
+    },
+    "record_type": {
+     "match": true,
+     "a": "ordinance",
+     "b": "ordinance"
+    },
+    "temporal": {
+     "candidate_introduced": "2025-08-18",
+     "prior_introduced": "2024-06-10",
+     "gap_days": 434,
+     "ordered": true,
+     "same_council_term": false
+    },
+    "committee_progression": {
+     "shape": "regression",
+     "consistent": false,
+     "prior_furthest_stage": 7,
+     "candidate_furthest_stage": 2,
+     "prior_terminal": false,
+     "prior_status": "Enacted",
+     "candidate_committee": "Land Use & Transportation Committee",
+     "prior_committee": "Ways and Means"
+    },
+    "file_number": {
+     "identical": false,
+     "a": "25-0093",
+     "b": "24-0544"
     }
    }
   }

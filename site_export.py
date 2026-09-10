@@ -70,9 +70,17 @@ def main():
         if not a or not b:
             continue
         older, newer = (a, b) if (a.introduced_date or date.min) <= (b.introduced_date or date.min) else (b, a)
+        watched_norm = {w.lower() for w in WATCHED}
+        touches = sorted({
+            w for rec in (older, newer) for par in rec.parcels
+            for w in WATCHED
+            if (par.address_normalized or "").lower() == w.lower()
+        })
         threads.append({
             "pair_id": p["pair_id"],
             "label": p["note"],
+            "tier": p.get("tier", "parcel"),
+            "watched": touches,
             "records": [record_json(older, gaz), record_json(newer, gaz)],
             "features": compute(newer, older),
         })
@@ -101,6 +109,22 @@ def main():
     })[:400]
     addresses = sorted(set(addresses) | set(WATCHED))
 
+    from eval.run_eval import BASELINES, confusion, load_pairs, threshold_sweep
+
+    eval_pairs, eval_missing = load_pairs()
+    evaluation = {
+        "pairs": len(eval_pairs),
+        "continuations": sum(1 for p in eval_pairs if p[0]["label"] == "continuation"),
+        "hard": sum(1 for p in eval_pairs if p[0]["hard"]),
+        "missing": eval_missing,
+        "baselines": [
+            {"rule": name, **{k: round(v, 3) for k, v in confusion(eval_pairs, fn).items() if k != "errors"}}
+            for name, fn in BASELINES.items()
+        ],
+        "sweep": [{"threshold": t, "accuracy": round(a, 3)} for t, a in threshold_sweep(eval_pairs)],
+        "agent": None,
+    }
+
     fetched = corpus[0].fetched_at if corpus else None
     payload = {
         "fetched_at": _iso(fetched),
@@ -112,6 +136,7 @@ def main():
             "labeled_pairs": len(pairs),
         },
         "watched": WATCHED,
+        "evaluation": evaluation,
         "addresses": addresses,
         "graph": [
             {"node": "Civic Analyst", "kind": "agent"},
