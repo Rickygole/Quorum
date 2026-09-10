@@ -125,6 +125,32 @@ def main():
         "agent": None,
     }
 
+    from eval.run_eval import confusion, load_decisions
+
+    cached = load_decisions()
+    if cached:
+        stats = confusion(eval_pairs, lambda r, o, n, f: cached[r["pair_id"]].decision == "continuation")
+        evaluation["agent"] = {
+            k: round(v, 3) for k, v in stats.items() if k != "errors"
+        }
+        evaluation["agent"]["misses"] = [
+            {"pair_id": row["pair_id"], "a": row["a"], "b": row["b"], "kind": kind,
+             "label": row["label"], "said": cached[row["pair_id"]].decision,
+             "confidence": cached[row["pair_id"]].confidence,
+             "rationale": cached[row["pair_id"]].rationale,
+             "note": row["note"]}
+            for row, kind in stats["errors"]
+        ]
+        evaluation["agent"]["decisions"] = [
+            {"pair_id": row["pair_id"], "a": older.file_number, "b": newer.file_number,
+             "tier": row.get("tier", "parcel"), "label": row["label"],
+             "said": cached[row["pair_id"]].decision,
+             "confidence": round(cached[row["pair_id"]].confidence, 2),
+             "drivers": cached[row["pair_id"]].drivers,
+             "non_drivers": cached[row["pair_id"]].non_drivers}
+            for row, older, newer, f in eval_pairs if row["pair_id"] in cached
+        ]
+
     fetched = corpus[0].fetched_at if corpus else None
     payload = {
         "fetched_at": _iso(fetched),

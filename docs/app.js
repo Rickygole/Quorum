@@ -296,6 +296,57 @@ function renderWatch() {
   if (!state.watched.length) list.innerHTML = `<li class="muted">Add an address and Quorum starts watching what the city decides about it.</li>`;
 }
 
+function agentBlock(a) {
+  const rows = (a.decisions || []).map(d => {
+    const ok = (d.said === "continuation") === (d.label === "continuation");
+    return `<tr>
+      <td class="id">${d.pair_id}</td>
+      <td class="id">${esc(d.a)} to ${esc(d.b)}</td>
+      <td>${esc(d.tier)}</td>
+      <td>${esc(d.label)}</td>
+      <td>${esc(d.said)}</td>
+      <td class="id">${d.confidence.toFixed(2)}</td>
+      <td${ok ? "" : ' class="flag"'}>${ok ? "ok" : "miss"}</td>
+    </tr>`;
+  }).join("");
+
+  const misses = (a.misses || []).map(m => `
+    <div class="panel" style="margin-bottom:16px">
+      <div class="small muted">Pair ${m.pair_id}, ${mono(m.a)} and ${mono(m.b)}, ${esc(m.kind)}</div>
+      <p class="small" style="margin-top:8px"><strong>Labeled</strong> ${esc(m.label)}.
+      <strong>Agent said</strong> ${esc(m.said)} at ${m.confidence.toFixed(2)}.</p>
+      <p class="small"><strong>Why it was labeled that way:</strong> ${esc(m.note)}</p>
+      <p class="small"><strong>What the agent said:</strong> ${esc(m.rationale)}</p>
+    </div>`).join("");
+
+  const neg = (a.decisions || []).filter(d => d.label !== "continuation").length;
+
+  return `
+    <div class="panel">
+      <dl class="evidence">
+        <dt>Accuracy</dt><dd class="id">${Math.round(a.accuracy * 100)}%</dd>
+        <dt>Precision</dt><dd class="id">${a.precision.toFixed(2)}</dd>
+        <dt>Recall</dt><dd class="id">${a.recall.toFixed(2)}</dd>
+        <dt>F1</dt><dd class="id">${a.f1.toFixed(2)}</dd>
+        <dt>True positives</dt><dd class="id">${a.tp}</dd>
+        <dt>False positives</dt><dd class="id">${a.fp}</dd>
+        <dt>Missed continuations</dt><dd class="id">${a.fn}</dd>
+        <dt>True negatives</dt><dd class="id">${a.tn}</dd>
+      </dl>
+    </div>
+    <p style="margin-top:16px">${neg} of the ${(a.decisions || []).length} pairs are negatives. They are
+    listed below alongside the positives, so an agent that simply said yes to everything could not
+    hide here.</p>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Pair</th><th>Records</th><th>Tier</th><th>Label</th><th>Agent</th><th>Conf</th><th></th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>
+    <h3 style="margin-top:32px">Every miss, named</h3>
+    ${misses || "<p>No misses on this set. Given that a tuned two clause rule also scores 100%, this says the set is separable, not that the agent is infallible.</p>"}`;
+}
+
 function renderEval() {
   const d = state.data, e = d.evaluation;
   if (!e) { $("#eval-body").innerHTML = "<p class=\"muted\">No evaluation data exported.</p>"; return; }
@@ -358,7 +409,7 @@ function renderEval() {
     shows a resident and what makes a wrong answer diagnosable instead of silent.</p>
 
     <h3 style="margin-top:32px">Continuity Agent</h3>
-    <p>${e.agent ? "" : "Not yet run against a model provider. This section is published empty rather than omitted, so the baselines above cannot be mistaken for agent results."}</p>`;
+    ${e.agent ? agentBlock(e.agent) : "<p>Not yet run against a model provider. This section is published empty rather than omitted, so the baselines above cannot be mistaken for agent results.</p>"}`;
 }
 
 function renderRun() {
