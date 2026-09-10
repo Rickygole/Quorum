@@ -8,6 +8,11 @@ It never submits anything on a person's behalf.
 
 Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [Strands Agents SDK](https://strandsagents.com).
 
+**Live demo: https://rickygole.github.io/Quorum/**
+
+The published site runs entirely on a cached, timestamped corpus. It never touches the
+live internet, and the fetch timestamp is shown on screen.
+
 ---
 
 ## The three gates
@@ -88,15 +93,40 @@ displayed in the product. **No demo touches the live internet.**
 
 ---
 
+## Limitations
+
+Written before a judge finds them.
+
+- **One city.** Baltimore only. Nothing here claims to generalize to another
+  jurisdiction without new ingestion adapters and a new gazetteer.
+- **One source.** City Council legislation via Legistar. Zoning appeals, liquor
+  licences and tax sale run through three other Baltimore agencies and are out of scope.
+- **A small evaluation population.** 28 hand-labeled pairs drawn from the 270
+  parcel-resolvable records in a 1,679 record corpus. That is what the corpus supports
+  and the number is stated rather than implied.
+- **Parcels are resolved from titles.** 270 of 1,679 records name a parcel Quorum can
+  resolve. The rest are budget, procurement, personnel and citywide matters that name no
+  property, and Quorum drops them rather than guessing.
+- **Quorum never submits.** It drafts a comment and stops. The human sends it or does not.
+  This is a design decision, not a missing feature.
+
 ## Setup
 
 ```bash
 uv venv --python 3.12 && source .venv/bin/activate
 uv pip install -e .
 
-python -m ingest.cache 2021-01-01     # corpus -> data/cache/ (already committed)
-python -m ingest.gazetteer            # parcels -> data/cache/gazetteer.json.gz
+python -m ingest.cache 2021-01-01
+python -m ingest.gazetteer
+python site_export.py
 ```
+
+The cached corpus and gazetteer are committed, so the first two commands are only needed
+to refresh them. `site_export.py` regenerates `docs/data/site.json`, which is what the
+published site reads.
+
+The site is plain static files in `docs/`, published by GitHub Pages from the `main`
+branch. There is no build step and no framework.
 
 ## License
 
