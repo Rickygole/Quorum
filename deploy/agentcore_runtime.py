@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import json
 import os
+import threading
+import time
+from collections import deque
 from functools import lru_cache
 
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
@@ -33,9 +36,43 @@ def _pairs():
     return out
 
 
-@lru_cache(maxsize=1)
+MAX_PER_MINUTE = int(os.environ.get("QUORUM_MAX_PER_MINUTE", "12"))
+MAX_PER_DAY = int(os.environ.get("QUORUM_MAX_PER_DAY", "400"))
+
+_calls = deque()
+_day = {"start": time.time(), "count": 0}
+_lock = threading.Lock()
+
+
+def _take_slot():
+    now = time.time()
+    with _lock:
+        while _calls and now - _calls[0] > 60:
+            _calls.popleft()
+        if now - _day["start"] > 86400:
+            _day["start"] = now
+            _day["count"] = 0
+        if len(_calls) >= MAX_PER_MINUTE:
+            return "rate limit reached, try again in a minute"
+        if _day["count"] >= MAX_PER_DAY:
+            return "daily invocation cap reached"
+        _calls.append(now)
+        _day["count"] += 1
+        return None
+
+
 def _agent():
     return ContinuityAgent()
+
+
+@lru_cache(maxsize=1)
+def _cached_decisions():
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "eval", "agent_decisions.json")
+    try:
+        with open(path) as fh:
+            return json.load(fh)["decisions"]
+    except (OSError, KeyError, ValueError):
+        return {}
 
 
 def _order(a, b):
@@ -70,10 +107,28 @@ def invoke(payload):
         return {"error": f"records not in cached corpus: {row['a']}, {row['b']}"}
 
     older, newer = _order(a, b)
+
+    denied = _take_slot()
+    if denied:
+        cached = _cached_decisions().get(str(pair_id))
+        if not cached:
+            return {"error": denied, "live": False}
+        return {
+            "pair_id": pair_id, "live": False, "cached": True, "reason": denied,
+            "decision": cached["decision"], "confidence": cached["confidence"],
+            "rationale": cached["rationale"], "drivers": cached["drivers"],
+            "non_drivers": cached["non_drivers"],
+        }
+
+    started = time.time()
     decision = _agent().decide(newer, older)
 
     return {
         "pair_id": pair_id,
+        "live": True,
+        "latency_ms": round((time.time() - started) * 1000),
+        "region": os.environ.get("AWS_REGION", "us-east-1"),
+        "model_id": os.environ.get("QUORUM_MODEL_ID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0"),
         "older": {"file_number": older.file_number, "title": older.title[:400],
                   "status": older.status, "introduced": str(older.introduced_date)},
         "newer": {"file_number": newer.file_number, "title": newer.title[:400],

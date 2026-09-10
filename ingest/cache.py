@@ -40,12 +40,20 @@ def snapshot(since: date, with_detail: bool = True) -> dict:
 
         hist: dict[str, list] = {}
         spon: dict[str, list] = {}
+        skipped = []
         for i, m in enumerate(matters, 1):
             mid = m["MatterId"]
-            hist[str(mid)] = api.histories(mid)
-            spon[str(mid)] = api.sponsors(mid)
+            try:
+                hist[str(mid)] = api.histories(mid)
+                spon[str(mid)] = api.sponsors(mid)
+            except Exception as exc:
+                skipped.append({"matter_id": mid, "file": m.get("MatterFile"), "error": str(exc)[:200]})
+                print(f"  skipped {mid}: {str(exc)[:120]}")
             if i % 100 == 0:
                 print(f"  detail {i}/{len(matters)}")
+        if skipped:
+            _write(ROOT / "skipped.json", skipped, stamp)
+            print(f"{len(skipped)} matters skipped, recorded in data/cache/skipped.json.gz")
         _write(ROOT / "histories.json", hist, stamp)
         _write(ROOT / "sponsors.json", spon, stamp)
         print(f"cached detail for {len(hist)} matters")
