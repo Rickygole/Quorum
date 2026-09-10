@@ -14,7 +14,7 @@ Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [St
 
 The build spec required three questions answered with real data before any agent code was written. Here are the answers, with the numbers.
 
-### Gate A — does one source carry every item type?
+### Gate A: does one source carry every item type?
 
 **Yes.** Baltimore runs Legistar, and its Web API is live, public and unauthenticated at
 `https://webapi.legistar.com/v1/baltimore`. It carries matters, action histories, sponsors,
@@ -25,16 +25,16 @@ ordinances and resolutions. Zoning appeals (BMZA), liquor licenses (BLLC) and ta
 (Bureau of Revenue Collections) are three other agencies with three other publishing habits,
 and Quorum does not claim them. One source, one city, deep.
 
-### Gate B — does the hero example exist?
+### Gate B: does the hero example exist?
 
 **Yes, and it is live right now.** Found by hand in the corpus before the Continuity Agent
 was written.
 
-**205–209 East Cold Spring Lane, Kernewood** — owned by Loyola University Maryland.
+**205-209 East Cold Spring Lane, Kernewood**, owned by Loyola University Maryland.
 
 | | File | Introduced | Sponsor | Scope | Outcome |
 |---|---|---|---|---|---|
-| 1 | `23-0411` | 2023-07-17 | Mark Conway | Block 5053I, Lots 001, **002, 003** | **Failed — End of Term** |
+| 1 | `23-0411` | 2023-07-17 | Mark Conway | Block 5053I, Lots 001, **002, 003** | **Failed, End of Term** |
 | 2 | `26-0148` | 2026-02-09 | Mark Conway | Block 5053I, Lots 001, **002** | **In Committee** |
 
 Both bills rezone the same land from `R-1-C` to `EC-2`. The first died quietly when the
@@ -44,29 +44,29 @@ unrelated file number, one lot smaller, and a **public hearing is scheduled for 
 This case is the product thesis in one row, and it is hard on purpose:
 
 - The file numbers share nothing (`23-0411` vs `26-0148`).
-- The titles differ in formatting — `East Cold Spring Lane` vs `E Cold Spring Lane`,
-  `R-1-C` vs `R 1 C` — so naive string matching fails.
+- The titles differ in formatting (`East Cold Spring Lane` vs `E Cold Spring Lane`,
+  `R-1-C` vs `R 1 C`), so naive string matching fails.
 - What carries the match is the **parcel** (block 5053I), the **sponsor**, and the
-  **zoning transition**, not title similarity. That is exactly the drivers / non-drivers
+  **zoning transition**, not title similarity. That is exactly the drivers and non-drivers
   distinction the Continuity Agent is built to make explicit.
 
 Independent corroboration from the city's own parcel table: block 5053I holds exactly two
-lots today (the 2023 bill named three), and its zoning is still `R-1-C` — so the 2023
+lots today (the 2023 bill named three), and its zoning is still `R-1-C`, so the 2023
 rezoning demonstrably never happened.
 
-A second verified case, **4911–4925 West Forest Park Avenue**: `22-0295` (Withdrawn) →
-`23-0417` (Failed — End of Term), identical titles, two sponsors narrowing to one.
+A second verified case, **4911-4925 West Forest Park Avenue**: `22-0295` (Withdrawn) then
+`23-0417` (Failed, End of Term), identical titles, two sponsors narrowing to one.
 
-### Gate C — what does the corpus actually support?
+### Gate C: what does the corpus actually support?
 
 Counted, not estimated:
 
 | | |
 |---|---|
-| Matters, 2021-01-01 → 2026-09 | **1,679** |
+| Matters, 2021-01-01 to 2026-09 | **1,679** |
 | Matters introduced since 2025-01-01 | **505** |
 | Of those: Ordinances / Executive Nominations / Resolutions | 203 / 174 / 63 |
-| Address-bearing titles, Jan 2025 → Jul 2026 (19 months) | **51** |
+| Address-bearing titles, Jan 2025 to Jul 2026 (19 months) | **51** |
 | Addresses appearing under 2+ distinct file numbers, 2021–2026 | **13** |
 | Parcels in the gazetteer | **237,092** |
 
@@ -81,8 +81,8 @@ larger one. See `eval/RESULTS.md` for what the agent actually scored on it.
 Both are public, open, and cached to disk with a `fetched_at` timestamp that is
 displayed in the product. **No demo touches the live internet.**
 
-- **Legislative record** — Legistar Web API, City of Baltimore.
-- **Parcel gazetteer** — the City of Baltimore's open property layer
+- **Legislative record**: Legistar Web API, City of Baltimore.
+- **Parcel gazetteer**: the City of Baltimore's open property layer
   (`egisdata.baltimorecity.gov`, dmxOwnership/Properties): `BLOCKLOT`, `BLOCK`, `LOT`,
   `FULLADDR`, `NEIGHBOR`, `ZONECODE`, owner. 237,092 parcels.
 
