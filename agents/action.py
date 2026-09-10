@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from strands import Agent
 
 from models import CivicRecord, ContinuityDecision
-from .model import bedrock
+from .model import bedrock, run_structured
 
 SYSTEM = """You write the only part of this system a resident actually reads.
 
@@ -42,9 +42,11 @@ class ActionAgent:
         self.agent = agent or Agent(
             model=model or bedrock(),
             system_prompt=SYSTEM,
+            structured_output_model=ActionOutput,
             name="action",
             callback_handler=None,
         )
+        self.usage: list[dict] = []
 
     def compose(
         self,
@@ -80,7 +82,8 @@ class ActionAgent:
                 "lots_before": continuity.features.get("parcel", {}).get("lots_b"),
             },
         }
-        return self.agent.structured_output(
-            ActionOutput,
-            "Write the resident facing summary and the draft comment.\n\n" + json.dumps(payload, indent=1),
-        )
+        out, usage = run_structured(self.agent, "Write the resident facing summary and the draft comment.\n\n" + json.dumps(payload, indent=1))
+
+        self.usage.append(usage)
+
+        return out

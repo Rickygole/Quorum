@@ -43,3 +43,27 @@ class OfflineModel(Model):
 
 def is_offline() -> bool:
     return os.environ.get("QUORUM_OFFLINE") == "1"
+
+
+def usage_of(result) -> dict:
+    m = getattr(result, "metrics", None)
+    usage = getattr(m, "accumulated_usage", None) if m else None
+    if not usage:
+        return {}
+    get = (lambda k: usage.get(k)) if isinstance(usage, dict) else (lambda k: getattr(usage, k, None))
+    return {
+        "input_tokens": get("inputTokens") or get("input_tokens"),
+        "output_tokens": get("outputTokens") or get("output_tokens"),
+        "total_tokens": get("totalTokens") or get("total_tokens"),
+    }
+
+
+def run_structured(agent, prompt: str, stateless: bool = True):
+    if stateless:
+        agent.messages = []
+    before = getattr(agent, "_quorum_usage_total", {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0})
+    result = agent(prompt)
+    after = usage_of(result)
+    delta = {k: (after.get(k) or 0) - (before.get(k) or 0) for k in ("input_tokens", "output_tokens", "total_tokens")}
+    agent._quorum_usage_total = after
+    return result.structured_output, delta

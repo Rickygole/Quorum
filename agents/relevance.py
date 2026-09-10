@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from strands import Agent
 
 from models import CivicRecord, RelevanceDecision
-from .model import bedrock
+from .model import bedrock, run_structured
 
 SYSTEM = """You decide whether a municipal record actually affects a resident who watches \
 a specific address, and you are expected to say no most of the time.
@@ -40,9 +40,11 @@ class RelevanceAgent:
         self.agent = agent or Agent(
             model=model or bedrock(),
             system_prompt=SYSTEM,
+            structured_output_model=RelevanceOutput,
             name="relevance",
             callback_handler=None,
         )
+        self.usage: list[dict] = []
 
     def assess(self, record: CivicRecord, watched_address: str, parcel_match: str) -> RelevanceDecision:
         payload = {
@@ -58,10 +60,9 @@ class RelevanceAgent:
                 for p in record.parcels
             ],
         }
-        out = self.agent.structured_output(
-            RelevanceOutput,
-            "Does this affect the resident who watches this address?\n\n" + json.dumps(payload, indent=1),
-        )
+        out, usage = run_structured(self.agent, "Does this affect the resident who watches this address?\n\n" + json.dumps(payload, indent=1))
+
+        self.usage.append(usage)
         relevant = out.relevant and out.confidence >= self.threshold
         return RelevanceDecision(
             record_id=record.record_id,

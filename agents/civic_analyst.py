@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from strands import Agent
 
 from models import CivicRecord
-from .model import bedrock
+from .model import bedrock, run_structured
 
 SYSTEM = """You read one Baltimore City Council legislative record and extract structured \
 facts from it.
@@ -45,9 +45,11 @@ class CivicAnalyst:
         self.agent = agent or Agent(
             model=model or bedrock(),
             system_prompt=SYSTEM,
+            structured_output_model=AnalystOutput,
             name="civic_analyst",
             callback_handler=None,
         )
+        self.usage: list[dict] = []
 
     def analyze(self, record: CivicRecord) -> AnalystOutput:
         payload = {
@@ -58,10 +60,9 @@ class CivicAnalyst:
             "status": record.status,
             "introduced": record.introduced_date.isoformat() if record.introduced_date else None,
         }
-        out = self.agent.structured_output(
-            AnalystOutput,
-            "Extract the structured facts from this record.\n\n" + json.dumps(payload, indent=1),
-        )
+        out, usage = run_structured(self.agent, "Extract the structured facts from this record.\n\n" + json.dumps(payload, indent=1))
+
+        self.usage.append(usage)
         return self._suppress_low_confidence(out)
 
     def _suppress_low_confidence(self, out: AnalystOutput) -> AnalystOutput:

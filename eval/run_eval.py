@@ -12,6 +12,7 @@ from ingest.normalize import load_corpus
 ROOT = Path(__file__).resolve().parent
 LABELS = ROOT / "labeled_set.jsonl"
 RESULTS = ROOT / "RESULTS.md"
+DECISIONS = ROOT / "agent_decisions.json"
 
 
 def load_pairs():
@@ -91,8 +92,27 @@ def run_agent(pairs, model=None):
     for row, older, newer, _ in pairs:
         d = agent.decide(newer, older)
         decisions[row["pair_id"]] = d
-        print(f"  pair {row['pair_id']:2} {row['a']:>9}/{row['b']:<9} -> {d.decision:13} ({d.confidence:.2f})", file=sys.stderr)
+        mark = "ok " if (d.decision == "continuation") == (row["label"] == "continuation") else "MISS"
+        print(f"  {mark} pair {row['pair_id']:2} {older.file_number:>9} -> {newer.file_number:<9} {d.decision:13} {d.confidence:.2f}", flush=True)
+    save_decisions(decisions, agent)
     return decisions
+
+
+def save_decisions(decisions, agent=None):
+    DECISIONS.write_text(json.dumps({
+        "model": getattr(getattr(agent, "agent", None), "model", None).__class__.__name__ if agent else None,
+        "usage": getattr(agent, "usage", []) if agent else [],
+        "decisions": {str(k): v.model_dump(mode="json") for k, v in decisions.items()},
+    }, indent=1))
+
+
+def load_decisions():
+    from models import ContinuityDecision
+
+    if not DECISIONS.exists():
+        return {}
+    raw = json.loads(DECISIONS.read_text())
+    return {int(k): ContinuityDecision(**v) for k, v in raw["decisions"].items()}
 
 
 def fmt_pct(x):
@@ -161,6 +181,24 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
         L.append(f"| missed continuations | {agent_stats['fn']} |")
         L.append(f"| true negatives | {agent_stats['tn']} |")
 
+        L.append("\n### Every pair, with the agent's call\n")
+        L.append("| Pair | Records | Tier | Label | Agent | Confidence | |")
+        L.append("|---|---|---|---|---|---|---|")
+        for row, older, newer, f in pairs:
+            d = agent_decisions.get(row["pair_id"])
+            if not d:
+                continue
+            ok = (d.decision == "continuation") == (row["label"] == "continuation")
+            L.append(
+                f"| {row['pair_id']} | `{older.file_number}` to `{newer.file_number}` | "
+                f"{row.get('tier', 'parcel')} | {row['label']} | {d.decision} | {d.confidence:.2f} | "
+                f"{'ok' if ok else '**miss**'} |"
+            )
+        L.append(
+            f"\nOf the {len(pairs)} pairs, {sum(1 for p in pairs if p[0]['label'] != 'continuation')} are "
+            "negatives. They are listed above alongside the positives so that the agent cannot be "
+            "mistaken for one that says yes to everything.\n"
+        )
         L.append("\n### Every miss, named\n")
         if not agent_stats["errors"]:
             L.append("No misses on this set.\n")
@@ -190,6 +228,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--agent", action="store_true")
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--from-cache", action="store_true")
     args = ap.parse_args()
 
     pairs, missing = load_pairs()
@@ -203,7 +242,12 @@ def main():
 
     agent_stats = None
     decisions = {}
-    if args.agent:
+    if args.from_cache:
+        decisions = load_decisions()
+        if decisions:
+            agent_stats = confusion(pairs, lambda r, o, n, f: decisions[r["pair_id"]].decision == "continuation")
+            print(f"  agent accuracy {agent_stats['accuracy']:.2f} (from cache)")
+    elif args.agent:
         model = None
         if args.offline:
             from tests.offline_stub import offline_model

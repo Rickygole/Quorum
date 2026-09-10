@@ -8,7 +8,7 @@ from strands import Agent
 
 from features.continuity_features import compute
 from models import CivicRecord, ContinuityDecision
-from .model import bedrock
+from .model import bedrock, run_structured
 
 SYSTEM = """You decide whether a new municipal legislative record continues an issue \
 the system has already seen, or starts a new one.
@@ -88,13 +88,17 @@ class ContinuityAgent:
         self.agent = agent or Agent(
             model=model or bedrock(),
             system_prompt=SYSTEM,
+            structured_output_model=ContinuityOutput,
             name="continuity",
             callback_handler=None,
         )
+        self.usage: list[dict] = []
 
     def decide(self, candidate: CivicRecord, prior: CivicRecord, issue_id: str | None = None) -> ContinuityDecision:
         features = compute(candidate, prior)
-        out = self.agent.structured_output(ContinuityOutput, build_prompt(candidate, prior, features))
+        out, usage = run_structured(self.agent, build_prompt(candidate, prior, features))
+
+        self.usage.append(usage)
         decision = out.decision.strip().lower()
         if decision not in ("continuation", "new_issue", "uncertain"):
             decision = "uncertain"
