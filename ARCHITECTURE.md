@@ -108,6 +108,35 @@ committee, next hearing, and which users watch it. The issue timeline is state
 that must survive between scheduled runs, which is the honest reason for a
 memory service rather than a checkbox one.
 
+## Why the eval set is not enough on its own, and what we did about it
+
+The tuned rule in `eval/RESULTS.md` (`parcel exact OR (cosine >= 0.97 AND prior
+terminal)`) scores 100% on the 50 hand labeled pairs, and its threshold was
+chosen after looking at all 50 labels. That is a tuned on test number, and it
+is reported as one plainly rather than left for a judge to find. Two follow up
+measurements in `eval/run_eval.py` exist to test whether that number means
+anything once the tuning advantage is taken away.
+
+The first is a perturbation suite, `eval/perturbations.py`, run with
+`python -m eval.run_eval --perturb`. It applies label preserving, corpus
+grounded formatting variants (direction word abbreviation, dash style, zoning
+code spacing, lot list order, boilerplate presence) to the newer record's
+title in every pair, recomputes the comparison features, and rescores every
+rule in `BASELINES` against the unchanged labels. Every transform is required
+to cite a real file number where that exact variance occurs; a transform that
+cannot cite one is deleted rather than kept for effect. Re-running the live
+Continuity Agent under perturbation costs real model calls, so that arm is
+opt-in behind `--perturb-agent` and is not run by default.
+
+The second is a held out split. `eval/run_eval.py` partitions the 50 pairs
+into a tune half and a test half, stratified on (tier, label) and assigned by
+a sha256 hash of the pair id so the split is reproducible and was not chosen
+by looking at which pairs are easy. The two clause rule's cosine threshold is
+swept on the tune half only, frozen, and every rule, including the frozen
+rule and the cached agent decisions, is then scored on the test half the
+threshold never saw. The frozen rule's test accuracy is the honest number;
+the 100% in the main table is not.
+
 ## Agents deliberately not built
 
 - No "ask Quorum anything about your city" chatbot. It would be the weakest

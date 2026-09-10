@@ -9,12 +9,44 @@ from ingest.normalize import load_corpus
 from features.continuity_features import compute
 
 OUT = Path(__file__).resolve().parent / "docs" / "data"
+ACTION_CACHE = Path(__file__).resolve().parent / "data" / "action_cache.json"
 
 WATCHED = [
     "205 East Cold Spring Lane",
     "4911 West Forest Park Avenue",
     "15 East West Street",
 ]
+
+
+def _action_cache_key(older, newer):
+    return f"{older.file_number}:{newer.file_number}"
+
+
+def load_action_cache():
+    if not ACTION_CACHE.exists():
+        return {}
+    return json.loads(ACTION_CACHE.read_text())
+
+
+def save_action_cache(cache):
+    ACTION_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    ACTION_CACHE.write_text(json.dumps(cache, indent=1))
+
+
+def action_json(older, newer, continuity, watched_address, cache, agent):
+    key = _action_cache_key(older, newer)
+    if key in cache:
+        return cache[key]
+    out = agent.compose(newer, older, continuity, watched_address)
+    payload = {
+        "headline": out.headline,
+        "what_changed": out.what_changed,
+        "why_it_matters": out.why_it_matters,
+        "draft_comment": out.draft_comment,
+        "sources_cited": out.sources_cited,
+    }
+    cache[key] = payload
+    return payload
 
 
 def _iso(v):
@@ -54,12 +86,19 @@ def record_json(r, gaz):
 
 
 def main():
+    from eval.run_eval import load_decisions
+
     gaz = Gazetteer.load()
     corpus = load_corpus(gaz)
     by_file = {r.file_number: r for r in corpus}
     resolvable = [r for r in corpus if r.parcels]
 
     OUT.mkdir(parents=True, exist_ok=True)
+
+    action_cache = load_action_cache()
+    cached_decisions = load_decisions()
+    action_agent = None
+    cache_hits = cache_misses = 0
 
     pairs = [json.loads(l) for l in open("eval/labeled_set.jsonl")]
     threads = []
@@ -76,6 +115,21 @@ def main():
             for w in WATCHED
             if (par.address_normalized or "").lower() == w.lower()
         })
+
+        cache_key = _action_cache_key(older, newer)
+        if cache_key in action_cache:
+            cache_hits += 1
+        else:
+            cache_misses += 1
+            if action_agent is None:
+                from agents.action import ActionAgent
+
+                action_agent = ActionAgent()
+        action = action_json(
+            older, newer, cached_decisions.get(p["pair_id"]),
+            touches[0] if touches else None, action_cache, action_agent,
+        )
+
         threads.append({
             "pair_id": p["pair_id"],
             "label": p["note"],
@@ -83,7 +137,11 @@ def main():
             "watched": touches,
             "records": [record_json(older, gaz), record_json(newer, gaz)],
             "features": compute(newer, older),
+            "action": action,
         })
+
+    save_action_cache(action_cache)
+    print(f"action agent: {cache_hits} cache hits, {cache_misses} live calls")
 
     negatives = []
     for p in pairs:
@@ -125,9 +183,7 @@ def main():
         "agent": None,
     }
 
-    from eval.run_eval import confusion, load_decisions
-
-    cached = load_decisions()
+    cached = cached_decisions
     if cached:
         stats = confusion(eval_pairs, lambda r, o, n, f: cached[r["pair_id"]].decision == "continuation")
         evaluation["agent"] = {
@@ -150,6 +206,29 @@ def main():
              "non_drivers": cached[row["pair_id"]].non_drivers}
             for row, older, newer, f in eval_pairs if row["pair_id"] in cached
         ]
+
+    from eval.run_eval import heldout_report
+
+    heldout = heldout_report(eval_pairs, cached)
+    evaluation["heldout"] = {
+        "tune_size": heldout["tune_size"],
+        "test_size": heldout["test_size"],
+        "tune_ids": heldout["tune_ids"],
+        "test_ids": heldout["test_ids"],
+        "frozen_threshold": heldout["frozen_threshold"],
+        "tune_accuracy": round(heldout["tune_accuracy"], 3),
+        "baselines_on_test": [
+            {"rule": name, **{k: round(v, 3) for k, v in c.items() if k != "errors"}}
+            for name, c in heldout["baselines_on_test"].items()
+        ],
+        "frozen_rule_on_test": {
+            k: round(v, 3) for k, v in heldout["frozen_rule_on_test"].items() if k != "errors"
+        },
+        "agent_on_test": (
+            {k: round(v, 3) for k, v in heldout["agent_on_test"].items() if k != "errors"}
+            if heldout["agent_on_test"] else None
+        ),
+    }
 
     fetched = corpus[0].fetched_at if corpus else None
     payload = {
