@@ -121,3 +121,26 @@ What the agent produced that the rule cannot is the reasoning attached to every 
 
 The honest open question, and the next experiment, is whether that reasoning holds on pattern types absent from this set. A 50 pair set assembled by one person cannot settle it.
 
+
+## Held out split, frozen threshold
+
+The 50 pairs are split into a tune half (24) and a test half (26), stratified on (tier, label) and assigned by a sha256 hash of the pair id, so the split is the same every time this runs and was not chosen by looking at which pairs are easy. The two clause rule's cosine threshold is swept on the tune half only, frozen at **0.900** (tune accuracy 100%), and every number below is that frozen rule and every other rule scored on the test half, which the threshold never saw.
+
+Tune pair ids: [5, 7, 9, 10, 11, 13, 14, 15, 18, 19, 21, 23, 25, 27, 29, 31, 32, 37, 39, 41, 42, 45, 47, 48]
+
+Test pair ids: [1, 2, 3, 4, 6, 8, 12, 16, 17, 20, 22, 24, 26, 28, 30, 33, 34, 35, 36, 38, 40, 43, 44, 46, 49, 50]
+
+| Rule | Accuracy on test half | Precision | Recall | F1 |
+|---|---|---|---|---|
+| always continuation | 38% | 0.38 | 1.00 | 0.56 |
+| parcel exact | 77% | 1.00 | 0.40 | 0.57 |
+| title cosine >= 0.90 | 65% | 0.53 | 0.80 | 0.64 |
+| title cosine >= 0.99 | 65% | 0.55 | 0.60 | 0.57 |
+| shared sponsor | 42% | 0.40 | 1.00 | 0.57 |
+| prior terminal | 88% | 0.89 | 0.80 | 0.84 |
+| parcel exact OR (cosine >= 0.97 AND prior terminal) | 100% | 1.00 | 1.00 | 1.00 |
+| parcel exact OR (cosine >= 0.900 AND prior terminal), threshold frozen from tune half | 96% | 0.91 | 1.00 | 0.95 |
+| Continuity Agent, cached decisions | 100% | 1.00 | 1.00 | 1.00 |
+
+The row above labelled 'threshold frozen from tune half' is the honest version of the tuned two clause rule: its threshold was never allowed to see the test half it is scored on. Compare its test accuracy to the 100% the same rule shape gets when tuned on all 50 pairs at once. Any drop here is the amount of that 100% that was an artefact of tuning on the evaluation set, not a property of the rule.
+
