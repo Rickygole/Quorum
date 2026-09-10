@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 import json
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -11,10 +12,18 @@ ROOT = Path(__file__).resolve().parent.parent / "data" / "cache"
 
 def _write(path: Path, payload: Any, fetched_at: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"fetched_at": fetched_at, "source": "legistar-webapi-v1-baltimore", "payload": payload}, indent=1))
+    body = {"fetched_at": fetched_at, "source": "legistar-webapi-v1-baltimore", "payload": payload}
+    with gzip.open(path.with_suffix(path.suffix + ".gz"), "wt") as fh:
+        json.dump(body, fh)
 
 def read(name: str) -> dict:
-    return json.loads((ROOT / name).read_text())
+    path = ROOT / name
+    if not path.exists():
+        path = path.with_suffix(path.suffix + ".gz")
+    if path.suffix == ".gz":
+        with gzip.open(path, "rt") as fh:
+            return json.load(fh)
+    return json.loads(path.read_text())
 
 def corpus_fetched_at() -> str:
     return read("matters.json")["fetched_at"]
