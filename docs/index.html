@@ -5,17 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quorum</title>
 <meta name="description" content="Quorum holds the thread on the civic issues that touch your address.">
+<meta name="theme-color" content="#0A0F0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="backdrop" aria-hidden="true"><span class="grid"></span><span class="glow"></span></div>
+
 <header class="top">
-  <div class="wrap">
-    <span class="brand">Quorum</span>
-    <nav id="nav">
+  <div class="wrap topbar">
+    <a class="brand" href="#thread">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Quorum</span>
+    </a>
+    <nav id="nav" aria-label="Sections">
       <a href="#thread" data-route="thread">Thread</a>
       <a href="#watch" data-route="watch">Watch an address</a>
       <a href="#feed" data-route="feed">Feed</a>
@@ -27,65 +35,97 @@
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
-  <section id="thread" data-active>
+  <section id="thread" data-active aria-labelledby="thread-h1">
     <div class="hero">
-      <h1>Your city decided this twice.<br>You heard about it once.</h1>
-      <div class="spine" id="spine"></div>
-      <p id="spine-caption" class="small muted"></p>
-      <p><a class="btn primary" href="#watch">Watch an address</a></p>
+      <p class="eyebrow" id="hero-eyebrow"></p>
+      <h1 id="thread-h1">Your city decided this twice.<br><em>You heard about it once.</em></h1>
+      <p class="lede" id="hero-lede"></p>
+      <div class="stage" id="spine"></div>
+      <p id="spine-caption" class="small muted caption"></p>
+      <div class="cta">
+        <a class="btn primary" href="#watch">Watch an address</a>
+        <a class="btn ghost" href="#evidence">See the evidence</a>
+      </div>
     </div>
-    <hr class="rule">
-    <h2>The thread</h2>
-    <p id="thread-intro" class="muted"></p>
+
+    <div class="section-head">
+      <h2>The thread</h2>
+      <p id="thread-intro" class="muted"></p>
+    </div>
     <div id="thread-body"></div>
   </section>
 
-  <section id="watch">
-    <h2>Watch an address</h2>
-    <p>Add an address and Quorum starts watching what the city decides about it.</p>
-    <label for="addr">Address</label>
-    <input type="text" id="addr" list="addr-list" placeholder="205 East Cold Spring Lane" autocomplete="off">
-    <datalist id="addr-list"></datalist>
-    <p class="small muted" style="margin-top:8px">Matched against Baltimore's parcel record, <span id="parcel-count" class="id"></span> parcels.</p>
-    <button class="primary" id="add-addr">Add address</button>
-    <hr class="rule">
-    <h3>Addresses you watch</h3>
-    <ul class="plain" id="watch-list"></ul>
+  <section id="watch" aria-labelledby="watch-h">
+    <div class="section-head">
+      <h2 id="watch-h">Watch an address</h2>
+      <p class="muted">Add an address and Quorum starts watching what the city decides about it.</p>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <label for="addr">Address</label>
+        <input type="text" id="addr" list="addr-list" placeholder="205 East Cold Spring Lane" autocomplete="off">
+        <datalist id="addr-list"></datalist>
+        <p class="small muted hint">Matched against Baltimore's parcel record, <span id="parcel-count" class="id"></span> parcels.</p>
+        <button class="primary" id="add-addr">Add address</button>
+        <p class="small" id="watch-status" role="status"></p>
+      </div>
+      <div class="panel">
+        <h3>Addresses you watch</h3>
+        <ul class="plain" id="watch-list"></ul>
+      </div>
+    </div>
+    <div id="watch-steps"></div>
   </section>
 
-  <section id="feed">
-    <h2>Feed</h2>
-    <p id="feed-empty" class="muted"></p>
+  <section id="feed" aria-labelledby="feed-h">
+    <div class="section-head">
+      <h2 id="feed-h">Feed</h2>
+      <p id="feed-empty" class="muted"></p>
+    </div>
     <div id="feed-body"></div>
   </section>
 
-  <section id="evidence">
-    <h2>Why am I seeing this?</h2>
-    <p class="muted">The agent's reasoning is on the page, not behind an expander.</p>
+  <section id="evidence" aria-labelledby="evidence-h">
+    <div class="section-head">
+      <h2 id="evidence-h">Why am I seeing this?</h2>
+      <p class="muted">The agent's reasoning is on the page, not behind an expander.</p>
+    </div>
     <div id="evidence-body"></div>
   </section>
 
-  <section id="comment">
-    <h2>Draft comment</h2>
+  <section id="comment" aria-labelledby="comment-h">
+    <div class="section-head">
+      <h2 id="comment-h">Draft comment</h2>
+      <p class="muted">Quorum can read what your city is deciding. It cannot speak for you.</p>
+    </div>
     <div id="comment-body"></div>
   </section>
 
-  <section id="run">
-    <h2>Agent run</h2>
-    <p class="muted">The Strands Graph as executed, with per node latency and token counts.</p>
+  <section id="run" aria-labelledby="run-h">
+    <div class="section-head">
+      <h2 id="run-h">Agent run</h2>
+      <p class="muted">The Strands Graph as executed. Every number on this screen comes from the exported run.</p>
+    </div>
     <div id="run-body"></div>
   </section>
 
-  <section id="evaluation">
-    <h2>Evaluation</h2>
-    <p class="muted">The labeled set, the results, and every miss named individually.</p>
+  <section id="evaluation" aria-labelledby="eval-h">
+    <div class="section-head">
+      <h2 id="eval-h">Evaluation</h2>
+      <p class="muted">The labeled set, the results, and every miss named individually.</p>
+    </div>
     <div id="eval-body"></div>
   </section>
 
 </main>
 
-<script src="app.js"></script>
+<footer class="wrap foot">
+  <p class="small muted" id="foot-note"></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>
