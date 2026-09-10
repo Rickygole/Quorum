@@ -10,8 +10,9 @@ Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [St
 
 **Live demo: https://rickygole.github.io/Quorum/**
 
-The published site runs entirely on a cached, timestamped corpus. It never touches the
-live internet, and the fetch timestamp is shown on screen.
+The published site runs entirely on a cached, timestamped corpus. No demo fetches civic
+data at runtime, and the fetch timestamp is shown on screen. The page itself loads a web
+font and one charting library from public CDNs, which is the only network traffic it makes.
 
 ---
 
@@ -33,7 +34,9 @@ and Quorum does not claim them. One source, one city, deep.
 ### Gate B: does the hero example exist?
 
 **Yes, and it is live right now.** Found by hand in the corpus before the Continuity Agent
-was written.
+was written. The commit history shows the 28 parcel tier labels landing before `agents/continuity.py`
+existed, and the 22 citywide labels landing after it, because that tier was built on purpose to
+cover what parcel matching cannot see.
 
 **205-209 East Cold Spring Lane, Kernewood**, owned by Loyola University Maryland.
 

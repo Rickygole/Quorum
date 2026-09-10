@@ -16,8 +16,8 @@
                            |
                   [R] Resolution node (code, not an agent)
                            |
-                  [2] Continuity Agent  <---> AgentCore Memory
-                           |                   (issue timelines)
+                  [2] Continuity Agent  <---> issue timelines
+                           |                   (in process, not persisted)
                   [3] Relevance Agent
                            |
                   [4] Action Agent
@@ -35,9 +35,11 @@ control back to a station behind it. That is what `Graph` is for.
 
 `Swarm` exists for dynamic handoff between agents that decide among themselves
 who works next. Quorum has no such decision to make. Reaching for a Swarm here
-would add nondeterminism to a pipeline whose value depends on being auditable,
-and would make the per node latency and token numbers on the agent run screen
-meaningless.
+would add nondeterminism to a pipeline whose value depends on being auditable.
+
+Per node latency and token deltas are collected by `QuorumRun.note` during a run.
+They are not exported to the published site yet, so the agent run screen reports
+records in, records dropped and the reason, which are numbers it does have.
 
 ## Why resolution is code and not an agent
 
@@ -59,7 +61,7 @@ The naive version asks a model whether two records are the same issue. The
 answer cannot be interrogated, and neither can an embedding similarity score.
 
 The weighted numeric alternative was also rejected. Weights cannot be honestly
-tuned against a population of 13 multi file cases, and "what does 0.4 mean"
+tuned against a population of 9 parcels that recur under more than one file number, and "what does 0.4 mean"
 has no good answer when a judge asks it.
 
 Quorum computes comparison features in code, hands the table to the agent as
@@ -100,13 +102,22 @@ item, and the zoning transition, and the agent is required to say so.
 a similarity scale, because two neighbouring lots are the single most common
 way for a naive matcher to be confidently wrong.
 
-## State
+## State, and what is not built
 
-Each resolved issue is a record in AgentCore Memory holding its id, first seen
-date, every appearance with file number and date, status transitions, current
-committee, next hearing, and which users watch it. The issue timeline is state
-that must survive between scheduled runs, which is the honest reason for a
-memory service rather than a checkbox one.
+Issue timelines are the state that would have to survive between scheduled runs:
+the issue id, first seen date, every appearance with its file number and date,
+status transitions, current committee, next hearing, and which users watch it.
+
+**That state is not persisted in this build.** `QuorumRun` in `agents/graph.py` is
+an in process dataclass and it dies with the process. Each scheduled run rebuilds
+its view of the corpus from the cached snapshot.
+
+AgentCore Memory is the intended home for it and is not wired up. The deployment
+config in this repo records `mode: NO_MEMORY`, and there is no memory client
+anywhere in the code. The interface that would sit in front of it is small
+(find an issue by parcel, read its timeline, append an appearance), so the
+substitution is not difficult, but it has not been done and nothing here should
+be read as saying otherwise.
 
 ## Why the eval set is not enough on its own, and what we did about it
 

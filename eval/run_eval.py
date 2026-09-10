@@ -113,17 +113,36 @@ def stratified_split(pairs):
 
 
 def tune_threshold(tune_pairs):
-    best_t, best_acc = SWEEP_THRESHOLDS[0], -1.0
-    for t in SWEEP_THRESHOLDS:
-        acc = confusion(tune_pairs, two_clause_rule(t))["accuracy"]
-        if acc > best_acc:
-            best_t, best_acc = t, acc
-    return best_t, best_acc
+    scored = [(t, confusion(tune_pairs, two_clause_rule(t))["accuracy"]) for t in SWEEP_THRESHOLDS]
+    best_acc = max(acc for _, acc in scored)
+    plateau = [t for t, acc in scored if acc == best_acc]
+    best_t = plateau[len(plateau) // 2]
+    return best_t, best_acc, plateau
+
+
+def mcnemar_exact(pairs, pred_a, pred_b):
+    b = c = 0
+    for row, older, newer, f in pairs:
+        truth = row["label"] == "continuation"
+        a_ok = pred_a(row, older, newer, f) == truth
+        b_ok = pred_b(row, older, newer, f) == truth
+        if a_ok and not b_ok:
+            b += 1
+        elif b_ok and not a_ok:
+            c += 1
+    n = b + c
+    if n == 0:
+        return b, c, 1.0
+    from math import comb
+
+    k = min(b, c)
+    tail = sum(comb(n, i) for i in range(0, k + 1)) / (2 ** n)
+    return b, c, min(1.0, 2 * tail)
 
 
 def heldout_report(pairs, agent_decisions):
     tune, test = stratified_split(pairs)
-    frozen_t, tune_acc = tune_threshold(tune)
+    frozen_t, tune_acc, plateau = tune_threshold(tune)
 
     baselines_on_test = {
         name: confusion(test, fn) for name, fn in BASELINES.items()
@@ -139,6 +158,28 @@ def heldout_report(pairs, agent_decisions):
                 lambda r, o, n, f: agent_decisions[r["pair_id"]].decision == "continuation",
             )
 
+    plateau_on_test = [
+        {"threshold": t, "accuracy": confusion(test, two_clause_rule(t))["accuracy"]}
+        for t in plateau
+    ]
+
+    mcnemar = None
+    discordant = []
+    if agent_decisions:
+        b, c, pval = mcnemar_exact(
+            test,
+            lambda r, o, n, f: agent_decisions[r["pair_id"]].decision == "continuation",
+            two_clause_rule(frozen_t),
+        )
+        mcnemar = {"agent_only_correct": b, "rule_only_correct": c, "p_value": round(pval, 4)}
+        for row, older, newer, f in test:
+            truth = row["label"] == "continuation"
+            a_ok = (agent_decisions[row["pair_id"]].decision == "continuation") == truth
+            r_ok = two_clause_rule(frozen_t)(row, older, newer, f) == truth
+            if a_ok != r_ok:
+                discordant.append({"pair_id": row["pair_id"], "a": row["a"], "b": row["b"],
+                                   "note": row["note"], "agent_correct": a_ok})
+
     return {
         "tune_ids": sorted(p[0]["pair_id"] for p in tune),
         "test_ids": sorted(p[0]["pair_id"] for p in test),
@@ -146,6 +187,10 @@ def heldout_report(pairs, agent_decisions):
         "test_size": len(test),
         "frozen_threshold": frozen_t,
         "tune_accuracy": tune_acc,
+        "plateau": plateau,
+        "plateau_on_test": plateau_on_test,
+        "mcnemar": mcnemar,
+        "discordant": discordant,
         "baselines_on_test": baselines_on_test,
         "frozen_rule_on_test": frozen_rule_on_test,
         "agent_on_test": agent_on_test,
@@ -355,11 +400,49 @@ def write_heldout_section(heldout):
             f"{a['recall']:.2f} | {a['f1']:.2f} |"
         )
     L.append(
-        "\nThe row above labelled 'threshold frozen from tune half' is the honest version of the tuned "
-        "two clause rule: its threshold was never allowed to see the test half it is scored on. Compare "
-        "its test accuracy to the 100% the same rule shape gets when tuned on all 50 pairs at once. Any "
-        "drop here is the amount of that 100% that was an artefact of tuning on the evaluation set, not "
-        "a property of the rule.\n"
+        "\n### What this experiment actually shows\n"
+    )
+    L.append(
+        f"Nothing. It does not separate the agent from the rule, and that is the finding.\n"
+    )
+    plateau = heldout.get("plateau") or []
+    if plateau:
+        L.append(
+            f"The tune half is {fmt_pct(heldout['tune_accuracy'])} accurate at every threshold in "
+            f"[{min(plateau):.3f}, {max(plateau):.3f}], a plateau {len(plateau)} points wide. There is "
+            "no single best threshold to freeze, so the choice inside that plateau is arbitrary, and it "
+            "changes the answer:\n"
+        )
+        L.append("| Frozen threshold | Accuracy on test half |")
+        L.append("|---|---|")
+        for row in heldout.get("plateau_on_test", []):
+            L.append(f"| {row['threshold']:.3f} | {fmt_pct(row['accuracy'])} |")
+        L.append(
+            f"\nAn earlier version of this file took the lowest point of the plateau, reported "
+            "96%, and drew the conclusion that the rule's advantage was an artefact of tuning. That "
+            "conclusion was wrong. It was an artefact of an undocumented argmax tie break inside this "
+            "harness. The threshold is now the plateau midpoint, chosen and stated in advance, and on "
+            "that choice the rule scores the same as the agent.\n"
+        )
+    mc = heldout.get("mcnemar")
+    if mc is not None:
+        L.append(
+            f"On the {heldout['test_size']} test pairs the agent and the frozen rule disagree on "
+            f"{mc['agent_only_correct'] + mc['rule_only_correct']} of them "
+            f"(agent right and rule wrong: {mc['agent_only_correct']}; rule right and agent wrong: "
+            f"{mc['rule_only_correct']}). McNemar exact two sided p = {mc['p_value']}. "
+            "With a test half this small, no difference of this size could reach significance even if "
+            "it existed.\n"
+        )
+    for d in heldout.get("discordant", []):
+        L.append(
+            f"The single discordant pair is {d['pair_id']} ({d['a']} and {d['b']}), and its own label "
+            f"note reads: {d['note']}\n"
+        )
+    L.append(
+        "This section is kept because a negative result that was expensive to obtain is worth more "
+        "than a positive one that was not tested. The claim it retires is 'the agent generalises "
+        "better than the rule'. There is no evidence here for that.\n"
     )
     return L
 

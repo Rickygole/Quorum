@@ -251,8 +251,9 @@ function threadDelta(thread) {
   if (!f) return [];
   const out = [];
   const la = f.parcel.lots_a || [], lb = f.parcel.lots_b || [];
-  const dropped = lb.filter(l => !la.includes(l));
-  const added = la.filter(l => !lb.includes(l));
+  const bothListLots = la.length > 0 && lb.length > 0;
+  const dropped = bothListLots ? lb.filter(l => !la.includes(l)) : [];
+  const added = bothListLots ? la.filter(l => !lb.includes(l)) : [];
   if (dropped.length) out.push(`<b>Lot ${esc(dropped.join(", "))} dropped</b> from the parcel this time.`);
   if (added.length) out.push(`<b>Lot ${esc(added.join(", "))} added</b> to the parcel this time.`);
   if (f.sponsor.overlap.length) out.push(`<b>Same sponsor</b>, ${esc(titleCase(f.sponsor.overlap.join(", ")))}.`);
@@ -1385,8 +1386,10 @@ function renderEval() {
 
     <div class="panel" style="margin-top:24px">
       <h3>The labeled set</h3>
-      <p class="small muted" style="margin:8px 0 0">${e.pairs} candidate pairs labeled by hand from the source documents before the
-      Continuity agent existed. Two tiers: pairs that share a parcel, and citywide bills that share no parcel at all.</p>
+      <p class="small muted" style="margin:8px 0 0">${e.pairs} candidate pairs labeled by hand from the source documents.
+      The 28 parcel tier pairs were labeled before any agent existed. The 22 citywide pairs were added afterwards,
+      chosen deliberately to sit in the blind spot of parcel matching, which is why that tier exists at all.
+      Both facts are checkable in the commit history.</p>
     </div>
 
     <h3 style="margin-top:32px">Deterministic baselines</h3>
@@ -1451,6 +1454,31 @@ window.addEventListener("resize", () => {
 });
 
 async function boot() {
+  try {
+    await bootInner();
+  } catch (err) {
+    renderBootFailure(err);
+  }
+}
+
+function renderBootFailure(err) {
+  const main = document.querySelector("main");
+  if (!main) return;
+  main.innerHTML = `
+    <section data-active>
+      <h2>This page could not load its data</h2>
+      <p>Quorum reads a single cached file, <span class="id">data/site.json</span>, and that request failed.
+      The usual cause is opening this file directly from disk, because browsers block local file reads.</p>
+      <p>Serve the folder over HTTP instead: run <span class="id">python3 -m http.server</span> inside
+      <span class="id">docs/</span> and open the address it prints. The published copy at
+      <a href="https://rickygole.github.io/Quorum/">rickygole.github.io/Quorum</a> works without any of that.</p>
+      <p class="small muted">${String(err && err.message ? err.message : err)}</p>
+    </section>`;
+  document.querySelectorAll("section").forEach(s => s.removeAttribute("data-active"));
+  main.querySelector("section").setAttribute("data-active", "");
+}
+
+async function bootInner() {
   const res = await fetch("data/site.json");
   state.data = await res.json();
   state.watched = [...state.data.watched];
