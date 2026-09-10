@@ -268,13 +268,18 @@ Thank you for your time.`;
       <p class="small" style="margin-top:16px">Quorum can read what your city is deciding. It cannot speak for you.
       Nothing is submitted until you send it.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="primary" id="send">Send to city</button>
+        <button class="primary" id="send">Open in your email</button>
         <button id="copy">Copy text</button>
       </div>
       <p class="small" id="send-status" role="status"></p>
     </div>`;
   $("#draft").value = draft;
-  $("#send").onclick = () => { $("#send-status").textContent = "Sent to city."; };
+  $("#send").onclick = () => {
+    const subject = encodeURIComponent(`Public comment on ${r.file_number}`);
+    const body = encodeURIComponent($("#draft").value);
+    window.location.href = `mailto:CityCouncil@baltimorecity.gov?subject=${subject}&body=${body}`;
+    $("#send-status").textContent = "Your email program is opening with the comment. Quorum has not sent anything.";
+  };
   $("#copy").onclick = async () => {
     try { await navigator.clipboard.writeText($("#draft").value); $("#send-status").textContent = "Copied."; }
     catch { $("#send-status").textContent = "Select the text and copy it."; }
