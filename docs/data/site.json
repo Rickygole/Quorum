@@ -1,6 +1,6 @@
 {
  "fetched_at": "2026-09-10T02:14:14+00:00",
- "generated_at": "2026-09-09T23:17:15",
+ "generated_at": "2026-09-10T12:00:03",
  "counts": {
   "matters": 1679,
   "parcel_resolvable": 270,
@@ -1170,6 +1170,165 @@
      ]
     }
    ]
+  },
+  "heldout": {
+   "tune_size": 24,
+   "test_size": 26,
+   "tune_ids": [
+    5,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    18,
+    19,
+    21,
+    23,
+    25,
+    27,
+    29,
+    31,
+    32,
+    37,
+    39,
+    41,
+    42,
+    45,
+    47,
+    48
+   ],
+   "test_ids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12,
+    16,
+    17,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    33,
+    34,
+    35,
+    36,
+    38,
+    40,
+    43,
+    44,
+    46,
+    49,
+    50
+   ],
+   "frozen_threshold": 0.95,
+   "tune_accuracy": 1.0,
+   "baselines_on_test": [
+    {
+     "rule": "always continuation",
+     "tp": 10,
+     "fp": 16,
+     "fn": 0,
+     "tn": 0,
+     "accuracy": 0.385,
+     "precision": 0.385,
+     "recall": 1.0,
+     "f1": 0.556
+    },
+    {
+     "rule": "parcel exact",
+     "tp": 4,
+     "fp": 0,
+     "fn": 6,
+     "tn": 16,
+     "accuracy": 0.769,
+     "precision": 1.0,
+     "recall": 0.4,
+     "f1": 0.571
+    },
+    {
+     "rule": "title cosine >= 0.90",
+     "tp": 8,
+     "fp": 7,
+     "fn": 2,
+     "tn": 9,
+     "accuracy": 0.654,
+     "precision": 0.533,
+     "recall": 0.8,
+     "f1": 0.64
+    },
+    {
+     "rule": "title cosine >= 0.99",
+     "tp": 6,
+     "fp": 5,
+     "fn": 4,
+     "tn": 11,
+     "accuracy": 0.654,
+     "precision": 0.545,
+     "recall": 0.6,
+     "f1": 0.571
+    },
+    {
+     "rule": "shared sponsor",
+     "tp": 10,
+     "fp": 15,
+     "fn": 0,
+     "tn": 1,
+     "accuracy": 0.423,
+     "precision": 0.4,
+     "recall": 1.0,
+     "f1": 0.571
+    },
+    {
+     "rule": "prior terminal",
+     "tp": 8,
+     "fp": 1,
+     "fn": 2,
+     "tn": 15,
+     "accuracy": 0.885,
+     "precision": 0.889,
+     "recall": 0.8,
+     "f1": 0.842
+    },
+    {
+     "rule": "parcel exact OR (cosine >= 0.97 AND prior terminal)",
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "tn": 16,
+     "accuracy": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   ],
+   "frozen_rule_on_test": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "tn": 16,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "agent_on_test": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "tn": 16,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   }
   }
  },
  "addresses": [
@@ -1863,6 +2022,13 @@
      "a": "22-0277",
      "b": "21-0035"
     }
+   },
+   "action": {
+    "headline": "The Reed Calloway House at 1316 North Carey Street has been designated a historical landmark, protecting its exterior.",
+    "what_changed": "This designation was enacted after an earlier version (21-0035) was withdrawn in 2021. The same sponsor, James Torrence, reintroduced the same landmark designation in 2022.",
+    "why_it_matters": "Historical landmark designation protects the exterior of the building from demolition or alteration without approval from the city's preservation commission. Property owners must follow special review procedures before making changes to the outside of the building.",
+    "draft_comment": "To the Economic and Community Development Committee:\n\nI am writing regarding file number 22-0277, the designation of the Reed Calloway House at 1316 North Carey Street as a historical landmark.\n\nI understand that an earlier bill, 21-0035, was withdrawn in 2021, and that this designation has now been enacted.\n\n[I support / I have concerns about / I have questions regarding] this landmark designation because: [ADD YOUR SPECIFIC REASONS HERE]\n\nThank you for considering my comment.\n\nSincerely,\n[Your name and address]",
+    "sources_cited": []
    }
   },
   {
@@ -2158,6 +2324,15 @@
      "a": "21-0064",
      "b": "21-0042R"
     }
+   },
+   "action": {
+    "headline": "A retail store with alcohol sales was approved for 3901 Boston Street",
+    "what_changed": "The earlier resolution 21-0042R approved moving a liquor license to this address; this ordinance 21-0064 granted the zoning permit needed to actually operate the retail store with alcohol sales at the same location, and has now been enacted",
+    "why_it_matters": "The business needed both a liquor license transfer and a conditional use permit to open. Both approvals are now complete, allowing the retail establishment to operate at this Boston Street location",
+    "draft_comment": "To the Economic and Community Development Committee:\n\nI am writing regarding file number 21-0064, which granted conditional use approval for a retail goods establishment with alcoholic beverages sales at 3901 Boston Street (also known as 3975 Boston Street). I understand this ordinance has been enacted and worked in tandem with the earlier resolution 21-0042R, which was adopted and approved the transfer of a liquor license to this same address.\n\n[I support / I have concerns about / I have questions about] this approval because: **[Please add your specific reasons, observations about the neighborhood, or questions here]**\n\nThank you for considering my input.\n\nSincerely,\n[Your name and address]",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=8735&GUID=10216FF9-873B-40CB-BDD6-B2AF411CAD6C"
+    ]
    }
   },
   {
@@ -2416,6 +2591,15 @@
      "a": "23-0417",
      "b": "22-0295"
     }
+   },
+   "action": {
+    "headline": "Two properties on West Forest Park Avenue would be rezoned from residential to open space.",
+    "what_changed": "This proposal failed at the end of the council term. An earlier version, file 22-0295, was withdrawn in 2022. Both versions sought the same rezoning for the same properties and were sponsored by Kristerfer Burnett.",
+    "why_it_matters": "The rezoning would change two residential parcels at 4911-4917 and 4919-4925 West Forest Park Avenue to open space zoning. This proposal is no longer active, having failed when the council term ended.",
+    "draft_comment": "To the Economic and Community Development Committee:\n\nI am writing about file 23-0417, which proposed rezoning 4911-4917 and 4919-4925 West Forest Park Avenue from R-1 to OS zoning. I understand this proposal failed at the end of the council term, and that an earlier version (file 22-0295) was withdrawn in 2022.\n\n[I support / oppose / have concerns about this rezoning because: ADD YOUR VIEW HERE]\n\nThank you for considering my input.\n\nSincerely,\n[Your name and address]",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9549&GUID=013AE8C8-6784-4EF7-A663-5A87F66C4BB1"
+    ]
    }
   },
   {
@@ -2658,6 +2842,15 @@
      "a": "26-0148",
      "b": "23-0411"
     }
+   },
+   "action": {
+    "headline": "The property at 205-209 East Cold Spring Lane would be rezoned from single-family residential to a commercial district that allows shops and apartments.",
+    "what_changed": "This is a reintroduction by the same sponsor, Mark Conway, after the identical rezoning request (file 23-0411) failed when the council term ended in 2023. The new proposal covers two lots (001 and 002) instead of the three lots (001, 002, and 003) included in the earlier version.",
+    "why_it_matters": "The EC-2 district allows mixed-use buildings with ground-floor retail and upper-floor housing, which would be a significant change from the current single-family zoning. The smaller lot coverage compared to the 2023 proposal suggests a reduced project scope.",
+    "draft_comment": "To the Land Use & Transportation Committee:\n\nI am writing regarding file number 26-0148, scheduled for hearing on September 24, 2026, which proposes to rezone 205-209 East Cold Spring Lane from R-1-C to EC-2.\n\nI understand this is a reintroduction of the same rezoning request that was previously considered as file 23-0411 and failed at the end of the last council term. I note that the current proposal covers two lots (001 and 002) rather than the three lots included in the earlier version.\n\n**[I support / I oppose / I have concerns about]** this rezoning because: **[Please add your specific reasons here, such as how this change would affect traffic, parking, neighborhood character, housing availability, or local businesses]**.\n\nI ask the committee to carefully consider the impact of changing this property from single-family residential zoning to a commercial district.\n\nThank you for your attention to resident input.\n\nSincerely,\n**[Your name and address]**",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=10424&GUID=DEECC729-ED42-4537-81A5-630832B576A3"
+    ]
    }
   },
   {
@@ -2952,6 +3145,15 @@
      "a": "23-0441",
      "b": "23-0437"
     }
+   },
+   "action": {
+    "headline": "A building at 1600 South Charles Street that was approved to convert from one home into three apartments gets an exception to the usual residential parking permit rules.",
+    "what_changed": "This follows bill 23-0437, which was enacted in October 2023 and allowed the conversion of the single-family home into 3 dwelling units. This new bill creates the parking permit exception needed for those units.",
+    "why_it_matters": "The parking exception changes how many residential permits can be issued for this property in the South Baltimore East parking area. Without this exception, the converted units would be subject to the standard permit limits that apply to other homes in RPP Area 30.",
+    "draft_comment": "To the Ways and Means Committee:\n\nI am writing about file number 23-0441, which amends the parking management plan for RPP Area 30 to create an exception for 1600 South Charles Street. This follows the October 2023 approval of bill 23-0437, which allowed the property to convert from a single-family home to 3 dwelling units.\n\n[I support / I have concerns about / I oppose] this parking exception because: [explain your view here, including any observations about parking availability, neighborhood impact, or how this exception should work].\n\nThank you for considering my comment.",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9600&GUID=BC48C282-30E8-4686-87B0-1788A31091C8"
+    ]
    }
   },
   {
@@ -3226,6 +3428,15 @@
      "a": "24-0550",
      "b": "24-0221R"
     }
+   },
+   "action": {
+    "headline": "A retail store at 3601 Elm Avenue has been approved to sell alcohol.",
+    "what_changed": "This conditional use ordinance (24-0550) has been enacted. It follows the earlier resolution (24-0221R) adopted in June 2024 that approved changing the liquor license type from Class B-D-7 to Class A-7 for the same address.",
+    "why_it_matters": "The business now has both the zoning permission and the liquor license approval it needs to operate as a retail store selling alcoholic beverages. Both approvals were sponsored by Councilmember Odette Ramos for the same property.",
+    "draft_comment": "To the Ways and Means Committee:\n\nI am writing about file number 24-0550, which grants conditional use approval for a retail goods establishment with alcoholic beverage sales at 3601 Elm Avenue. This follows the earlier resolution 24-0221R, which was adopted in June 2024 and approved the exchange of liquor license types for this same location.\n\n[I support / I have concerns about / I oppose] this approval because: [explain your reasoning here, including any specific conditions you think should apply or impacts on the neighborhood you want the committee to consider].\n\nThank you for considering my comments.",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9805&GUID=3E0F9975-F8C3-4396-8A3D-8F2825A173C9"
+    ]
    }
   },
   {
@@ -3497,6 +3708,16 @@
      "a": "25-0083",
      "b": "25-0071"
     }
+   },
+   "action": {
+    "headline": "Parking permit exception for 15 East West Street after conversion to two units",
+    "what_changed": "This ordinance has been enacted. It follows bill 25-0071, which was also enacted and approved converting the single-family home at 15 East West Street (lot 046) into two dwelling units.",
+    "why_it_matters": "The property can now receive additional residential parking permits to match the two-unit conversion that was previously approved. This adjusts the parking rules in RPP Area 30 (South Baltimore East) specifically for this address.",
+    "draft_comment": "To the Land Use & Transportation Committee:\n\nI am writing about file number 25-0083 concerning a parking permit exception for 15 East West Street in RPP Area 30. This follows the earlier approval of bill 25-0071, which permitted the conversion of this single-family home into two dwelling units.\n\n[I support / I have concerns about / I oppose] this parking exception because: [ADD YOUR SPECIFIC REASONS HERE \u2013 for example, how this affects parking availability on your block, whether the two-unit conversion changes the character of the street, or why the parking accommodation does or does not make sense for this location].\n\nThank you for considering my input.",
+    "sources_cited": [
+     "25-0083",
+     "25-0071"
+    ]
    }
   },
   {
@@ -3757,6 +3978,13 @@
      "a": "25-0074",
      "b": "25-0073"
     }
+   },
+   "action": {
+    "headline": "The city is removing an old industrial development designation from 1100 Wicomico Street to allow a banquet hall to open there.",
+    "what_changed": "This bill has been enacted. It was introduced on the same day as the companion bill (25-0073) that approved the banquet hall use, which has also been enacted.",
+    "why_it_matters": "The property has been governed by a 2006 planned development ordinance that is no longer compatible with the new banquet hall use. Repealing the old rules clears the way for the banquet hall that was approved under the companion legislation.",
+    "draft_comment": "To the Land Use & Transportation Committee:\n\nI am writing about file number 25-0074, which repeals Ordinance 06-222 for the property at 1100 Wicomico Street. I understand this bill was introduced alongside file number 25-0073, which approved a banquet hall at the same location, and that both bills have now been enacted.\n\n[I support / I have concerns about / I oppose] this change because: **[Please add your own reason here\u2014for example, how this development might affect parking, traffic, noise, or business activity in your neighbourhood].**\n\nThank you for considering my input.\n\nSincerely,\n[Your name]\n[Your address]",
+    "sources_cited": []
    }
   },
   {
@@ -4048,6 +4276,13 @@
      "a": "25-0059",
      "b": "21-0114"
     }
+   },
+   "action": {
+    "headline": "The city can buy vacant buildings that don't sell at court-ordered auctions.",
+    "what_changed": "This bill was reintroduced in 2025 after an identical version (21-0114) failed at the end of the council term in 2021. Eight of the original sponsors returned to support it. The current version has been enacted.",
+    "why_it_matters": "When a court appoints a receiver to sell a problem vacant building and no one bids at the public auction, the receiver currently has limited options. This law gives the city the right to purchase those properties at a capped price, potentially allowing the city to control what happens to buildings that the private market won't buy.",
+    "draft_comment": "To the Housing & Economic Development Committee:\n\nRegarding file number 25-0059, which has now been enacted:\n\nI am writing about the ordinance that allows vacant building receivers to offer properties to the city when they fail to sell at public auction. I understand this bill was previously introduced as 21-0114 in 2021 but failed at the end of that council term.\n\n[I support / I have concerns about / I have questions about] this approach to handling vacant buildings that don't attract private buyers because: **[Please add your own reasoning here, including any specific knowledge you have about vacant properties in your neighborhood or your views on whether the city should acquire properties that fail at auction]**.\n\nThank you for considering my input.\n\n[Your name]\n[Your address]",
+    "sources_cited": []
    }
   },
   {
@@ -4245,6 +4480,13 @@
      "a": "26-0199",
      "b": "22-0326"
     }
+   },
+   "action": {
+    "headline": "Charter amendment would remove term limits for the mayor, comptroller, and all city council positions and let voters decide.",
+    "what_changed": "This proposal was previously introduced as bill 22-0326 in December 2022 and failed at the end of that council term. The current version, 26-0199, has the same language but two new sponsors have joined: Antonio \"Tony\" Glover and Mark Parker now sponsor alongside returning sponsors Odette Ramos and Ryan Dorsey.",
+    "why_it_matters": "Baltimore currently limits how many terms elected officials can serve. If this charter amendment passes the council and then wins voter approval in a citywide referendum, those limits would be removed and officials could run for re-election indefinitely.",
+    "draft_comment": "To the Charter Review Special Committee:\n\nI am writing about file number 26-0199, the charter amendment to repeal term limits for Baltimore City elected officials.\n\nI understand this proposal was previously introduced as bill 22-0326 in 2022 and failed at the end of that council term. The current version would remove term limits for the Mayor, Comptroller, City Council President, and City Council members, and would place the question before city voters in a referendum.\n\n[I support / oppose / have concerns about this charter amendment because: ADD YOUR OWN POSITION AND REASONING HERE]\n\nThank you for considering my comment.",
+    "sources_cited": []
    }
   },
   {
@@ -4464,6 +4706,13 @@
      "a": "24-0509",
      "b": "24-0508"
     }
+   },
+   "action": {
+    "headline": "The city wanted to close certain streets and alleys in the area bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street, plus part of North Stockton Street.",
+    "what_changed": "This is the companion bill to 24-0508, which proposed opening streets in the same area. Both bills have now failed at the end of the term. Together they would have reconfigured the street grid in this neighborhood.",
+    "why_it_matters": "Closing and opening streets changes how people move through a neighborhood and can affect property access, traffic patterns, and development. Both parts of this street reconfiguration project failed, so the current street layout remains unchanged.",
+    "draft_comment": "To the Ways and Means Committee:\n\nI am writing about Bill 24-0509, which proposed closing certain streets and alleys bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street and a portion of North Stockton Street. This bill was introduced alongside Bill 24-0508, which proposed opening streets in the same area. Both bills have now failed at the end of the term.\n\n[INSERT YOUR POSITION: Explain whether you supported or opposed this street reconfiguration project and why it mattered to you or your neighborhood.]\n\nThank you for considering my comments.\n\nSincerely,\n[Your name and address]",
+    "sources_cited": []
    }
   },
   {
@@ -4689,6 +4938,15 @@
      "a": "24-0568",
      "b": "23-0415"
     }
+   },
+   "action": {
+    "headline": "The city is giving people more time to file discrimination complaints with the Community Relations Commission.",
+    "what_changed": "This bill was enacted after an identical version, 23-0415, was withdrawn in 2023. The new version was reintroduced in 2024 with the same sponsors and purpose.",
+    "why_it_matters": "Residents who experience unlawful discrimination will have a longer window to file formal complaints. The change affects how much time passes between an incident and when someone can still seek help from the city.",
+    "draft_comment": "To the Education Workforce and Youth Committee:\n\nI am writing about Bill 24-0568, which extends the complaint filing period for the Community Relations Commission. I understand that an earlier version of this bill, 23-0415, was withdrawn in 2023, and that this version has now been enacted.\n\n[I support / I have concerns about / I have questions about] this change because: [ADD YOUR OWN REASON HERE \u2013 for example, your experience with filing deadlines, your thoughts on access to the complaint process, or questions about how this will work in practice].\n\nThank you for considering my input.\n\n[Your name]\n[Your address]",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9843&GUID=2523AD2A-EC42-4C08-ADCE-E500B55FEB3C"
+    ]
    }
   },
   {
@@ -4898,6 +5156,13 @@
      "a": "25-0058",
      "b": "24-0556"
     }
+   },
+   "action": {
+    "headline": "A bill to gradually eliminate the tip credit that lets restaurants pay tipped workers below minimum wage, and require disclosure of service fees.",
+    "what_changed": "This bill was reintroduced after an identical version (24-0556) failed at the end of the 2024 council term. Three of the original six sponsors returned to sponsor the new version.",
+    "why_it_matters": "The bill would change how restaurants and other businesses pay servers, bartenders, and other tipped employees by requiring them to phase out the practice of counting tips toward the minimum wage. It would also require businesses to disclose service fees to customers before charging them and report quarterly to the city.",
+    "draft_comment": "Dear Members of the Baltimore City Council,\n\nI am writing regarding Bill 25-0058, Fair Wages for Tipped Employees. I understand this bill was previously introduced as Bill 24-0556, which failed at the end of the last council term.\n\n[I support / I oppose / I have concerns about] this proposal because: [ADD YOUR SPECIFIC REASONS HERE - for example, how you believe this would affect workers, restaurants, dining costs, or the local economy].\n\nThank you for considering my views.\n\nSincerely,\n[Your name]\n[Your address]",
+    "sources_cited": []
    }
   },
   {
@@ -5207,6 +5472,13 @@
      "a": "25-0003",
      "b": "24-0576"
     }
+   },
+   "action": {
+    "headline": "A new law creates conservation districts, a lighter form of historic protection that neighborhoods can apply for through a study and review process.",
+    "what_changed": "The bill has been enacted. It was previously introduced as 24-0576 with one sponsor (John Bullock) and failed at the end of the council term. The reintroduced version now has eleven sponsors including Cohen, Ramos, Glover, Jones, Blanchard, Porter, Gray, Torrence, Middleton, Conway, and Bullock.",
+    "why_it_matters": "Conservation districts would offer an alternative to full historic designation, potentially giving neighborhoods a way to manage change without the stricter rules that come with landmark status. The broad sponsorship suggests wide council support for giving communities this option.",
+    "draft_comment": "To the Housing & Economic Development Committee:\n\nI am writing regarding Council Bill 25-0003, which establishes Conservation Districts in Baltimore City. I understand this bill was previously introduced as 24-0576 and failed at the end of the last council term, and has now been reintroduced and enacted.\n\n[I support / I have concerns about / I have questions about] this legislation because: [ADD YOUR SPECIFIC REASONS HERE \u2013 for example, how you think conservation districts would affect your neighborhood, whether you believe this tool is needed, or what questions you have about how the study and review process would work].\n\nThank you for considering my input.\n\n[Your name]\n[Your address]",
+    "sources_cited": []
    }
   },
   {
@@ -5479,6 +5751,13 @@
      "a": "23-0195R",
      "b": "22-0111R"
     }
+   },
+   "action": {
+    "headline": "A request to hold a hearing on youth violence with police, schools, and city agencies was withdrawn",
+    "what_changed": "This resolution (23-0195R) was reintroduced in October 2023 after an identical version (22-0111R) was withdrawn in June 2022. Robert Stokes, Sr. is now the sole sponsor, where the earlier version had ten co-sponsors. This second version was also withdrawn.",
+    "why_it_matters": "The resolution would have brought together officials from police, schools, the health department, and several mayor's offices to discuss rising youth violence. Both attempts to hold this hearing were withdrawn without taking place.",
+    "draft_comment": "To the Baltimore City Council:\n\nI am writing regarding file number 23-0195R, which sought to hold an informational hearing on youth violence in Baltimore City. I understand this resolution has been withdrawn, and that an earlier version (22-0111R) was also withdrawn in June 2022.\n\n[I support/oppose/have concerns about the decision to withdraw this hearing request because: INSERT YOUR VIEW HERE]\n\nThank you for considering my comment.",
+    "sources_cited": []
    }
   },
   {
@@ -5691,6 +5970,15 @@
      "a": "24-0226R",
      "b": "22-0126R"
     }
+   },
+   "action": {
+    "headline": "Council asked for a briefing on the East Baltimore redevelopment project and a planned audit of the organization running it",
+    "what_changed": "This resolution was reintroduced after an identical 2022 version (22-0126R) was withdrawn. The new version added four sponsors (Sharon Green Middleton, James Torrence, Phylicia Porter, and Odette Ramos) to the two returning sponsors (Antonio Glover and Robert Stokes, Sr.). This version failed at the end of the council term.",
+    "why_it_matters": "East Baltimore Development Incorporated has been managing the redevelopment of 88 acres in East Baltimore for years. The resolution sought information about how that work is going and how a forensic audit of the organization would be conducted, including who would do it and how residents could participate.",
+    "draft_comment": "To the Ways and Means Committee:\n\nI am writing regarding file number 24-0226R, which sought an informational hearing on East Baltimore Development Incorporated and the planned forensic audit. I understand this resolution has failed at the end of term, and that an earlier version (22-0126R) was withdrawn in 2022.\n\n[INSERT YOUR VIEW: For example, explain whether you support transparency and accountability in the EBDI redevelopment process, whether you believe a forensic audit is necessary, or what questions you think the Council should ask about the 88-acre revitalization project and how it has affected your community.]\n\nThank you for considering my comments.",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9871&GUID=2D14A61A-1F18-4D9F-BB92-B078976BE05E"
+    ]
    }
   },
   {
@@ -5971,6 +6259,15 @@
      "a": "25-0003R",
      "b": "22-0140R"
     }
+   },
+   "action": {
+    "headline": "City council wants to hear from housing and fire officials about how to improve the permit process",
+    "what_changed": "The council introduced this informational hearing request in 2025 with fourteen sponsors, including six who co-sponsored the earlier version. The previous version, 22-0140R introduced in October 2022, failed when the council term ended.",
+    "why_it_matters": "The permit process affects how quickly homeowners, landlords, and developers can get approval for construction, renovation, and repair work. This hearing would ask city departments to explain what changes they are making or could make to speed up or simplify the process.",
+    "draft_comment": "To the Housing & Economic Development Committee:\n\nI am writing about Resolution 25-0003R, the informational hearing on permit reforms. The council previously introduced a similar resolution, 22-0140R, in October 2022, which failed at the end of that term.\n\n[I support / I oppose / I have concerns about] this informational hearing because: [explain your experience with the permit process, how delays or complexity have affected you or your neighborhood, or what specific reforms you think the committee should ask about].\n\nThank you for considering my comment.",
+    "sources_cited": [
+     "https://baltimore.legistar.com/LegislationDetail.aspx?ID=9970&GUID=23C3AB73-9997-4ED5-902F-DBF576D6B66D"
+    ]
    }
   },
   {
@@ -6234,6 +6531,13 @@
      "a": "25-0036R",
      "b": "22-0139R"
     }
+   },
+   "action": {
+    "headline": "The council wants to hold a hearing on how city, state, and federal agencies investigate and prosecute human trafficking cases and help victims.",
+    "what_changed": "This is a reintroduction of resolution 22-0139R, which failed at the end of the 2022 council term. The new version (25-0036R) invites the same agencies and organizations, including police, prosecutors, FBI, Homeland Security, and victim service providers. The current resolution has eight sponsors, including three who sponsored the original: Zeke Cohen, Odette Ramos, and Phylicia Porter. Five new sponsors have joined: Jermaine Jones, Zac Blanchard, John Bullock, Paris Gray, and Mark Parker.",
+    "why_it_matters": "The hearing would bring together law enforcement, prosecutors, social services, and advocacy groups to discuss how Baltimore handles human trafficking cases. No hearing date has been scheduled yet.",
+    "draft_comment": "To the Public Safety Committee:\n\nI am writing about file number 25-0036R, the informational hearing on human trafficking investigations and prosecutions. I understand this is a reintroduction of resolution 22-0139R, which was introduced in October 2022 but failed at the end of that council term.\n\n[I support / I oppose / I have concerns about] this hearing because: [ADD YOUR REASON HERE]\n\nThank you for considering my comment.",
+    "sources_cited": []
    }
   },
   {
@@ -6497,6 +6801,13 @@
      "a": "25-0015",
      "b": "24-0599"
     }
+   },
+   "action": {
+    "headline": "City council wants to create a separate zoning category for crematoriums",
+    "what_changed": "The same bill failed when the council term ended in 2024, and has now been reintroduced with four of the original five sponsors (Cohen, Ramos, Dorsey, and Conway returning; Parker replacing Glover). The bill has been assigned to the Land Use and Transportation Committee instead of the previous Ways and Means Committee.",
+    "why_it_matters": "Right now crematoriums don't have their own category in the zoning code, which means they may be treated like funeral homes or other uses. This bill would give them a separate designation and spell out where they can operate as a conditional use.",
+    "draft_comment": "Dear Land Use and Transportation Committee members,\n\nI am writing about Bill 25-0015, the zoning ordinance that would create a stand-alone use category for crematoriums in the city's Zoning Code. \n\nI understand this bill was previously introduced as Bill 24-0599 and failed at the end of the last council term. \n\nThis is a city-wide zoning change that would affect how crematoriums are regulated throughout Baltimore.\n\n[I support / oppose / have concerns about this bill because: ADD YOUR OWN VIEW HERE]\n\nThank you for considering my comment.\n\nSincerely,\n[Your name and address]",
+    "sources_cited": []
    }
   }
  ],
