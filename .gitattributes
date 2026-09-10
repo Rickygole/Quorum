@@ -1,0 +1,9 @@
+docs/app.js linguist-detectable=true
+docs/app.js linguist-documentation=false
+docs/styles.css linguist-detectable=true
+docs/styles.css linguist-documentation=false
+docs/index.html linguist-detectable=true
+docs/index.html linguist-documentation=false
+docs/data/*.json linguist-generated=true
+data/cache/* linguist-generated=true
+eval/*.json linguist-generated=true
