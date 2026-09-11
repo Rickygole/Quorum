@@ -130,7 +130,21 @@ def main():
             touches[0] if touches else None, action_cache, action_agent,
         )
 
+        closed = not newer.hearing_date and (newer.status or "") not in ("In Committee",)
         threads.append({
+            "comment_window": {
+                "open": bool(newer.hearing_date),
+                "status": newer.status,
+                "hearing_date": _iso(newer.hearing_date),
+                "closed_reason": None if newer.hearing_date else (
+                    f"{newer.status}. No comment window." if closed
+                    else "No hearing on the calendar yet."
+                ),
+            },
+            "sources": [
+                {"file_number": r.file_number, "url": r.source_url}
+                for r in (older, newer)
+            ],
             "pair_id": p["pair_id"],
             "label": p["note"],
             "tier": p.get("tier", "parcel"),

@@ -525,9 +525,36 @@ I would like the committee to consider the following before voting:
 Thank you for your time.`;
 }
 
+function renderClosedWindow(t, r) {
+  const w = t.comment_window || {};
+  const src = (t.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.file_number)}</a>`).join(" and ");
+  $("#comment-body").innerHTML = `
+    <div class="two-col">
+      <div class="doc">
+        <h3 style="margin-top:0">There is no comment window open on this one</h3>
+        <p>${mono(r.file_number)} is <strong>${esc(r.status || "closed")}</strong>.
+        ${esc(w.closed_reason || "")}</p>
+        <p>Quorum will not draft a comment for a decision that has already been taken. Writing to a
+        committee about a bill it finished with wastes the one thing a resident has least of, which is
+        time and standing.</p>
+        <h3>What is still worth doing</h3>
+        <ul class="plain">
+          <li>Read the record: ${src}</li>
+          <li>See who sponsored it: ${esc((r.sponsors || []).join(", ") || "not recorded")}</li>
+          <li>Note the committee that handled it: ${esc(r.committee || "Baltimore City Council")}</li>
+          <li>Watch the parcel. Items on the same land come back, and this thread shows they already have.</li>
+        </ul>
+      </div>
+    </div>`;
+}
+
 function renderComment() {
   const t = state.thread || state.data.threads[0];
   const r = t.records[t.records.length - 1];
+  if (t.comment_window && t.comment_window.open === false) {
+    renderClosedWindow(t, r);
+    return;
+  }
   const supplied = t.action && typeof t.action.draft_comment === "string" && t.action.draft_comment.trim();
   const draft = supplied ? t.action.draft_comment : fallbackDraft(t);
 
