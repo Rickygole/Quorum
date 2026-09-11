@@ -6,6 +6,7 @@ FN="${QUORUM_FN:-quorum-invoke-proxy}"
 ROLE="${QUORUM_ROLE:-quorum-invoke-proxy-role}"
 ORIGINS="${QUORUM_ALLOWED_ORIGINS:-https://rickygole.github.io,https://quorum-peach.vercel.app}"
 RUNTIME_ARN="${QUORUM_RUNTIME_ARN:-}"
+export ORIGINS RUNTIME_ARN
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ACCOUNT="$(aws sts get-caller-identity --query Account --output text)"
 
@@ -23,6 +24,17 @@ if ! aws iam get-role --role-name "$ROLE" >/dev/null 2>&1; then
 fi
 ROLE_ARN="arn:aws:iam::${ACCOUNT}:role/${ROLE}"
 
+CORSJSON="$(python3 -c "
+import json,os
+o=[x for x in os.environ.get('ORIGINS','').split(',') if x]
+print(json.dumps({'AllowOrigins':o,'AllowMethods':['GET','POST'],'AllowHeaders':['content-type'],'MaxAge':300}))
+")"
+
+ENVJSON="$(python3 -c "
+import json,os
+print(json.dumps({'Variables':{'QUORUM_RUNTIME_ARN':os.environ.get('RUNTIME_ARN',''),'QUORUM_ALLOWED_ORIGINS':os.environ.get('ORIGINS','')}}))
+")"
+
 BUILD="$(mktemp -d)"
 cp "$HERE/invoke_proxy.py" "$BUILD/"
 cp "$HERE/../eval/agent_decisions.json" "$BUILD/agent_decisions.json"
@@ -32,22 +44,24 @@ if aws lambda get-function --function-name "$FN" --region "$REGION" >/dev/null 2
   aws lambda update-function-code --function-name "$FN" --zip-file "fileb://$BUILD/package.zip" --region "$REGION" >/dev/null
   aws lambda wait function-updated --function-name "$FN" --region "$REGION"
   aws lambda update-function-configuration --function-name "$FN" --region "$REGION" \
-    --environment "Variables={QUORUM_RUNTIME_ARN=$RUNTIME_ARN,QUORUM_ALLOWED_ORIGINS=$ORIGINS}" \
+    --environment "$ENVJSON" \
     --timeout 60 --memory-size 512 >/dev/null
 else
   aws lambda create-function --function-name "$FN" --region "$REGION" \
     --runtime python3.12 --role "$ROLE_ARN" --handler invoke_proxy.handler \
     --zip-file "fileb://$BUILD/package.zip" --timeout 60 --memory-size 512 \
-    --environment "Variables={QUORUM_RUNTIME_ARN=$RUNTIME_ARN,QUORUM_ALLOWED_ORIGINS=$ORIGINS}" >/dev/null
+    --environment "$ENVJSON" >/dev/null
   aws lambda wait function-active --function-name "$FN" --region "$REGION"
 fi
 
-aws lambda put-function-concurrency --function-name "$FN" --region "$REGION" \
-  --reserved-concurrent-executions 2 >/dev/null
+if ! aws lambda put-function-concurrency --function-name "$FN" --region "$REGION" \
+  --reserved-concurrent-executions 2 >/dev/null 2>&1; then
+  echo "note: could not reserve concurrency, account limit too low. The runtime enforces its own per minute and per day caps."
+fi
 
 if ! aws lambda get-function-url-config --function-name "$FN" --region "$REGION" >/dev/null 2>&1; then
   aws lambda create-function-url-config --function-name "$FN" --region "$REGION" \
-    --auth-type NONE --cors "AllowOrigins=${ORIGINS//,/ },AllowMethods=GET POST OPTIONS,AllowHeaders=content-type" >/dev/null
+    --auth-type NONE --cors "$CORSJSON" >/dev/null
   aws lambda add-permission --function-name "$FN" --region "$REGION" \
     --statement-id public-url --action lambda:InvokeFunctionUrl \
     --principal '*' --function-url-auth-type NONE >/dev/null
