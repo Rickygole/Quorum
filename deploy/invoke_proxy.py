@@ -7,11 +7,58 @@ import time
 import boto3
 
 RUNTIME_ARN = os.environ.get("QUORUM_RUNTIME_ARN", "")
+COUNTER_BUCKET = os.environ.get("QUORUM_COUNTER_BUCKET", "")
+MAX_PER_DAY = int(os.environ.get("QUORUM_MAX_PER_DAY", "300"))
+MAX_BODY_BYTES = 4096
 REGION = os.environ.get("AWS_REGION", "us-east-1")
 ALLOWED_ORIGINS = [o for o in os.environ.get("QUORUM_ALLOWED_ORIGINS", "").split(",") if o]
 CACHED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "agent_decisions.json")
 
 _client = None
+_s3 = None
+
+
+def s3():
+    global _s3
+    if _s3 is None:
+        _s3 = boto3.client("s3", region_name=REGION)
+    return _s3
+
+
+def day_key():
+    import datetime
+
+    return f"counter/{datetime.datetime.now(datetime.timezone.utc).date().isoformat()}.txt"
+
+
+def take_daily_slot():
+    if not COUNTER_BUCKET:
+        return None
+    key = day_key()
+    for _ in range(6):
+        try:
+            obj = s3().get_object(Bucket=COUNTER_BUCKET, Key=key)
+            count = int(obj["Body"].read().decode().strip() or "0")
+            etag = obj["ETag"]
+        except s3().exceptions.NoSuchKey:
+            count, etag = 0, None
+        except Exception as exc:
+            print(f"rate limiter read failed: {type(exc).__name__}: {str(exc)[:200]}")
+            return None
+        if count >= MAX_PER_DAY:
+            return f"daily cap of {MAX_PER_DAY} live invocations reached"
+        try:
+            kwargs = {"Bucket": COUNTER_BUCKET, "Key": key, "Body": str(count + 1).encode()}
+            if etag:
+                kwargs["IfMatch"] = etag
+            else:
+                kwargs["IfNoneMatch"] = "*"
+            s3().put_object(**kwargs)
+            return None
+        except Exception as exc:
+            print(f"rate limiter write failed: {type(exc).__name__}: {str(exc)[:200]}")
+            continue
+    return "rate limiter contended, try again"
 
 
 def client():
@@ -69,10 +116,20 @@ def handler(event, context):
             "pairs": sorted(int(k) for k in cached_decisions()),
         }, origin)
 
+    raw = event.get("body") or "{}"
+    if len(raw) > MAX_BODY_BYTES:
+        return reply(413, {"live": False, "error": "body too large"}, origin)
+
     try:
-        body = json.loads(event.get("body") or "{}")
-        pair_id = int(body.get("pair_id"))
-    except (TypeError, ValueError):
+        body = json.loads(raw)
+    except Exception:
+        return reply(400, {"live": False, "error": "body must be JSON"}, origin)
+
+    if not isinstance(body, dict):
+        return reply(400, {"live": False, "error": "body must be a JSON object"}, origin)
+
+    pair_id = body.get("pair_id")
+    if isinstance(pair_id, bool) or not isinstance(pair_id, int):
         return reply(400, {"live": False, "error": "pair_id must be an integer from the labeled set"}, origin)
 
     if str(pair_id) not in cached_decisions():
@@ -80,6 +137,10 @@ def handler(event, context):
 
     if not RUNTIME_ARN:
         return fallback(pair_id, "runtime not configured", origin)
+
+    denied = take_daily_slot()
+    if denied:
+        return fallback(pair_id, denied, origin)
 
     started = time.time()
     try:

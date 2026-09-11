@@ -6,7 +6,9 @@ FN="${QUORUM_FN:-quorum-invoke-proxy}"
 ROLE="${QUORUM_ROLE:-quorum-invoke-proxy-role}"
 ORIGINS="${QUORUM_ALLOWED_ORIGINS:-https://rickygole.github.io,https://quorum-peach.vercel.app}"
 RUNTIME_ARN="${QUORUM_RUNTIME_ARN:-}"
-export ORIGINS RUNTIME_ARN
+COUNTER_BUCKET="${QUORUM_COUNTER_BUCKET:-quorum-ratelimit-162774483375}"
+MAX_PER_DAY="${QUORUM_MAX_PER_DAY:-300}"
+export ORIGINS RUNTIME_ARN COUNTER_BUCKET MAX_PER_DAY
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ACCOUNT="$(aws sts get-caller-identity --query Account --output text)"
 
@@ -32,7 +34,7 @@ print(json.dumps({'AllowOrigins':o,'AllowMethods':['GET','POST'],'AllowHeaders':
 
 ENVJSON="$(python3 -c "
 import json,os
-print(json.dumps({'Variables':{'QUORUM_RUNTIME_ARN':os.environ.get('RUNTIME_ARN',''),'QUORUM_ALLOWED_ORIGINS':os.environ.get('ORIGINS','')}}))
+print(json.dumps({'Variables':{'QUORUM_RUNTIME_ARN':os.environ.get('RUNTIME_ARN',''),'QUORUM_ALLOWED_ORIGINS':os.environ.get('ORIGINS',''),'QUORUM_COUNTER_BUCKET':os.environ.get('COUNTER_BUCKET',''),'QUORUM_MAX_PER_DAY':os.environ.get('MAX_PER_DAY','300')}}))
 ")"
 
 BUILD="$(mktemp -d)"
