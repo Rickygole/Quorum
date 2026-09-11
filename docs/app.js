@@ -1236,6 +1236,16 @@ function renderLiveInvoke() {
         body: JSON.stringify({ pair_id: pid }),
       });
       const d = await res.json();
+      if (!d || typeof d.decision !== "string") {
+        const why = (d && (d.error || d.message)) || `the endpoint returned ${res.status}`;
+        $("#live-status").textContent = "no decision came back";
+        $("#live-out").innerHTML = `
+          <hr class="rule">
+          <p class="small">Nothing ran. ${esc(String(why))}. This happens when the endpoint is busy or
+          rate limited. Every decision shown elsewhere on this site is cached and unaffected, and the
+          evaluation numbers do not come from this endpoint.</p>`;
+        return;
+      }
       const rt = Date.now() - t0;
       const ok = d.agreed === true;
       $("#live-status").textContent = d.live ? `answered in ${(rt / 1000).toFixed(1)}s` : "returned a cached decision";

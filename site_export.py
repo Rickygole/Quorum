@@ -8,6 +8,7 @@ from pathlib import Path
 from ingest.gazetteer import Gazetteer
 from ingest.normalize import load_corpus
 from features.continuity_features import compute
+from ingest.zoning import context_for
 from eval.base_rates import compute as compute_base_rates
 
 OUT = Path(__file__).resolve().parent / "docs" / "data"
@@ -39,7 +40,7 @@ def action_json(older, newer, continuity, watched_address, cache, agent):
     key = _action_cache_key(older, newer)
     if key in cache:
         return cache[key]
-    out = agent.compose(newer, older, continuity, watched_address)
+    out = agent.compose(newer, older, continuity, watched_address, zoning_context=context_for(newer.title))
     payload = {
         "headline": out.headline,
         "what_changed": out.what_changed,

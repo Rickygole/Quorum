@@ -92,7 +92,7 @@ A tuned two-clause rule, parcel exact or (title cosine at or above 0.97 and the 
 terminal), scores 100% on all 50 pairs. So does our Continuity Agent. We report that plainly
 and first, because it is the strongest argument against the whole project, not something to
 bury in a footnote. We also checked how fragile that rule's threshold is: swept from 0.80 to
-1.00, it scores 100% only between 0.94 and 0.97, a band six points wide, and drops to 96%
+1.00, it scores 100% only between 0.94 and 0.97, four points on the sweep and 0.03 of cosine, and drops to 96%
 immediately outside it. The margin between a right answer and a wrong one on this set is a
 single pair at cosine 0.934 and another at 0.971, thirty-seven thousandths apart. That is a
 property of this particular sample of fifty pairs, not a property of municipal legislation
@@ -197,8 +197,17 @@ documented public-access resource policy attached exactly as written in AWS's ow
 documentation, byte for byte. Recreating the URL configuration and the permission did not
 change the result. That appears to be an account-level restriction on public Lambda function
 URLs, not a bug in our configuration, and the fix is an HTTP API in front of the same
-Lambda instead of a bare function URL. We are recording that as an open item rather than
-routing around it in a way that would misrepresent what is actually running in production
-today.
+Lambda instead of a bare function URL, and that is what now runs:
+
+```
+https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com
+```
+
+Two caps sit in front of it, and the reason there are two is the interesting part. The runtime
+holds an in process counter behind a lock, and that counter cannot do the job on its own,
+because AgentCore isolates every invocation to its own execution environment and the counters
+never see each other. The real limits had to go outside the process: throttling at the API
+Gateway stage, and a shared daily counter in S3 incremented with a conditional write so two
+concurrent containers cannot claim the same slot.
 
 *(approximately 770 words)*

@@ -85,7 +85,7 @@ Every flip above happened without changing which parcel, sponsor, or status the 
 
 On direction abbreviation, the agent was re-run on all 50 perturbed pairs with real model calls. Accuracy went from 100% to 100%, a delta of +0.000.
 
-Confidence moved on 13 of 50 pairs, mean delta +0.0022, largest single move 0.100. Confidence moved in both directions on this set, not only downward, so this is not read as one-sided degradation; it is read as the model noticing the title changed and adjusting how much weight it gave it, without changing what it decided.
+Confidence moved on 7 of 50 pairs, mean delta -0.0006, largest single move 0.030. Confidence moved in both directions on this set, not only downward, so this is not read as one-sided degradation; it is read as the model noticing the title changed and adjusting how much weight it gave it, without changing what it decided.
 
 No individual decision flipped. Confidence may still have moved; decision, the number that accuracy is computed from, did not.
 

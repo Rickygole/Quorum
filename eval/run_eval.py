@@ -451,6 +451,44 @@ def load_ablation():
     return json.loads(path.read_text())
 
 
+def parcel_population():
+    import itertools
+    from collections import defaultdict
+
+    from ingest.gazetteer import Gazetteer
+    from ingest.normalize import load_corpus
+
+    labeled = set()
+    for line in LABELS.read_text().splitlines():
+        if line.strip():
+            row = json.loads(line)
+            labeled.add(tuple(sorted((row["a"], row["b"]))))
+
+    corpus = load_corpus(Gazetteer.load())
+    idx = {"parcel_id": defaultdict(set), "address": defaultdict(set), "block": defaultdict(set)}
+    for r in corpus:
+        for p in r.parcels:
+            if p.parcel_id:
+                idx["parcel_id"][p.parcel_id].add(r.file_number)
+            if p.address_normalized:
+                idx["address"][p.address_normalized].add(r.file_number)
+            if p.block:
+                idx["block"][p.block].add(r.file_number)
+
+    out = {"records": len(corpus)}
+    unlabeled = set()
+    for key, d in idx.items():
+        pairs = set()
+        for files in d.values():
+            if len(files) > 1:
+                pairs |= set(itertools.combinations(sorted(files), 2))
+        out[f"{key}_pairs"] = len(pairs)
+        unlabeled |= {p for p in pairs if tuple(sorted(p)) not in labeled}
+    out["unlabeled"] = len(unlabeled)
+    out["unlabeled_pairs"] = sorted(unlabeled)[:5]
+    return out
+
+
 def tier_report(pairs, agent_decisions):
     tiers = {}
     for p in pairs:
@@ -518,12 +556,26 @@ def write_tier_section(tiers, pairs):
     L.append(
         "### Why there are no adversarial parcel pairs here\n"
     )
+    pop = parcel_population()
     L.append(
         "The obvious attack on the parcel tier is that `parcel exact` never once produces a false "
         "positive, which suggests the set never tested it. That was checked exhaustively rather than "
-        "assumed. Across all 1,679 records there are **9 exact parcel pairs, 11 at address level and "
-        "28 at block level**, and every one of them is already labeled here. The population is not "
-        "sampled, it is complete.\n"
+        f"assumed. Across all {pop['records']:,} records there are **{pop['parcel_id_pairs']} exact "
+        f"parcel pairs, {pop['address_pairs']} at address level and {pop['block_pairs']} at block "
+        f"level**, and {pop['unlabeled']} of them are unlabeled. The population is not sampled, it is "
+        "complete, and these numbers are computed by `parcel_population()` in this harness rather "
+        "than typed in.\n"
+    )
+    L.append(
+        "The first time that search was run it returned one more exact pair than this, `23-0451` and "
+        "`25-0039`, a skybridge franchise on Greenmount Avenue and an alley closing in Sandtown "
+        "three miles away. They matched because the address parser read the generic phrase 'a 10 "
+        "foot alley' as a street address called 10 Foot Alley. It was a genuine false positive and "
+        "it was a parser bug, not a property of the corpus. `ingest/gazetteer.py` now refuses "
+        "dimension words as street names and refuses an address preceded by an article, and "
+        "`23-0451` resolves to 2444 Greenmount Avenue, which is the property it is actually about. "
+        "The pair is recorded here because a search that finds nothing is worth less than a search "
+        "that finds something and says what it was.\n"
     )
     L.append(
         "So the zero false positive rate is not an artefact of an easy sample. In this corpus, two "

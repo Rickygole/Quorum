@@ -68,14 +68,14 @@ Adding `parcel exact AND owner unchanged` as a baseline changes nothing: 18 of 2
 
 | Pair | Records | Tier | Label | Agent | Confidence | |
 |---|---|---|---|---|---|---|
-| 1 | `21-0006` to `21-0073` | parcel | new_issue | new_issue | 0.98 | ok |
+| 1 | `21-0006` to `21-0073` | parcel | new_issue | new_issue | 0.95 | ok |
 | 2 | `21-0013` to `21-0052` | parcel | new_issue | new_issue | 0.95 | ok |
 | 3 | `21-0026` to `26-0177` | parcel | new_issue | new_issue | 0.98 | ok |
 | 4 | `21-0031R` to `24-0577` | parcel | new_issue | new_issue | 0.98 | ok |
 | 5 | `21-0035` to `22-0277` | parcel | continuation | continuation | 0.98 | ok |
-| 6 | `21-0042R` to `21-0064` | parcel | continuation | continuation | 0.95 | ok |
+| 6 | `21-0042R` to `21-0064` | parcel | continuation | continuation | 0.98 | ok |
 | 7 | `21-0045` to `23-0374` | parcel | new_issue | new_issue | 0.95 | ok |
-| 8 | `21-0051R` to `24-0516` | parcel | new_issue | new_issue | 0.98 | ok |
+| 8 | `21-0051R` to `24-0516` | parcel | new_issue | new_issue | 0.95 | ok |
 | 9 | `21-0054` to `22-0217` | parcel | new_issue | new_issue | 0.95 | ok |
 | 10 | `21-0076` to `23-0408` | parcel | new_issue | new_issue | 0.98 | ok |
 | 11 | `21-0076` to `23-0469` | parcel | new_issue | new_issue | 0.98 | ok |
@@ -88,13 +88,13 @@ Adding `parcel exact AND owner unchanged` as a baseline changes nothing: 18 of 2
 | 18 | `22-0320` to `22-0325` | parcel | new_issue | new_issue | 0.98 | ok |
 | 19 | `23-0408` to `23-0469` | parcel | new_issue | new_issue | 0.98 | ok |
 | 20 | `23-0411` to `26-0148` | parcel | continuation | continuation | 0.98 | ok |
-| 21 | `23-0437` to `23-0441` | parcel | continuation | continuation | 0.95 | ok |
+| 21 | `23-0437` to `23-0441` | parcel | continuation | continuation | 0.98 | ok |
 | 22 | `23-0454` to `24-0549` | parcel | new_issue | new_issue | 0.98 | ok |
 | 23 | `24-0221R` to `24-0550` | parcel | continuation | continuation | 0.98 | ok |
 | 24 | `24-0533` to `25-0091` | parcel | new_issue | new_issue | 0.98 | ok |
 | 25 | `25-0055` to `25-0056` | parcel | new_issue | new_issue | 0.95 | ok |
 | 26 | `25-0071` to `25-0083` | parcel | continuation | continuation | 0.95 | ok |
-| 27 | `25-0073` to `25-0074` | parcel | continuation | continuation | 0.95 | ok |
+| 27 | `25-0073` to `25-0074` | parcel | continuation | continuation | 0.98 | ok |
 | 28 | `25-0089` to `25-0142` | parcel | new_issue | new_issue | 0.98 | ok |
 | 29 | `21-0014R` to `21-0015R` | citywide | new_issue | new_issue | 1.00 | ok |
 | 30 | `22-0096R` to `26-0048R` | citywide | new_issue | new_issue | 0.95 | ok |
@@ -102,7 +102,7 @@ Adding `parcel exact AND owner unchanged` as a baseline changes nothing: 18 of 2
 | 32 | `21-0114` to `25-0059` | citywide | continuation | continuation | 0.98 | ok |
 | 33 | `22-0194` to `25-0102` | citywide | new_issue | new_issue | 0.95 | ok |
 | 34 | `22-0326` to `26-0199` | citywide | continuation | continuation | 0.98 | ok |
-| 35 | `24-0508` to `24-0509` | citywide | continuation | continuation | 0.95 | ok |
+| 35 | `24-0508` to `24-0509` | citywide | continuation | continuation | 0.98 | ok |
 | 36 | `23-0415` to `24-0568` | citywide | continuation | continuation | 0.98 | ok |
 | 37 | `24-0556` to `25-0058` | citywide | continuation | continuation | 0.98 | ok |
 | 38 | `24-0576` to `25-0003` | citywide | continuation | continuation | 0.98 | ok |
@@ -110,14 +110,14 @@ Adding `parcel exact AND owner unchanged` as a baseline changes nothing: 18 of 2
 | 40 | `22-0126R` to `24-0226R` | citywide | continuation | continuation | 0.98 | ok |
 | 41 | `22-0140R` to `25-0003R` | citywide | continuation | continuation | 0.98 | ok |
 | 42 | `22-0139R` to `25-0036R` | citywide | continuation | continuation | 0.95 | ok |
-| 43 | `21-0058` to `23-0373` | citywide | new_issue | new_issue | 0.90 | ok |
-| 44 | `23-0452` to `24-0488` | citywide | new_issue | new_issue | 0.92 | ok |
+| 43 | `21-0058` to `23-0373` | citywide | new_issue | new_issue | 0.92 | ok |
+| 44 | `23-0452` to `24-0488` | citywide | new_issue | new_issue | 0.95 | ok |
 | 45 | `21-0168` to `22-0299` | citywide | new_issue | new_issue | 0.95 | ok |
 | 46 | `22-0299` to `24-0545` | citywide | new_issue | new_issue | 0.95 | ok |
 | 47 | `21-0168` to `24-0545` | citywide | new_issue | new_issue | 0.95 | ok |
-| 48 | `21-0056` to `21-0120` | citywide | new_issue | new_issue | 0.92 | ok |
+| 48 | `21-0056` to `21-0120` | citywide | new_issue | new_issue | 0.88 | ok |
 | 49 | `24-0599` to `25-0015` | citywide | continuation | continuation | 0.98 | ok |
-| 50 | `24-0544` to `25-0093` | citywide | new_issue | new_issue | 0.85 | ok |
+| 50 | `24-0544` to `25-0093` | citywide | new_issue | new_issue | 0.75 | ok |
 
 Of the 50 pairs, 31 are negatives. They are listed above alongside the positives so that the agent cannot be mistaken for one that says yes to everything.
 
@@ -192,7 +192,9 @@ The two clause rule reaches them only through its second clause, a hand tuned co
 
 ### Why there are no adversarial parcel pairs here
 
-The obvious attack on the parcel tier is that `parcel exact` never once produces a false positive, which suggests the set never tested it. That was checked exhaustively rather than assumed. Across all 1,679 records there are **9 exact parcel pairs, 11 at address level and 28 at block level**, and every one of them is already labeled here. The population is not sampled, it is complete.
+The obvious attack on the parcel tier is that `parcel exact` never once produces a false positive, which suggests the set never tested it. That was checked exhaustively rather than assumed. Across all 1,679 records there are **8 exact parcel pairs, 8 at address level and 28 at block level**, and 0 of them are unlabeled. The population is not sampled, it is complete, and these numbers are computed by `parcel_population()` in this harness rather than typed in.
+
+The first time that search was run it returned one more exact pair than this, `23-0451` and `25-0039`, a skybridge franchise on Greenmount Avenue and an alley closing in Sandtown three miles away. They matched because the address parser read the generic phrase 'a 10 foot alley' as a street address called 10 Foot Alley. It was a genuine false positive and it was a parser bug, not a property of the corpus. `ingest/gazetteer.py` now refuses dimension words as street names and refuses an address preceded by an article, and `23-0451` resolves to 2444 Greenmount Avenue, which is the property it is actually about. The pair is recorded here because a search that finds nothing is worth less than a search that finds something and says what it was.
 
 So the zero false positive rate is not an artefact of an easy sample. In this corpus, two council items on the same parcel are always the same project. That is a property of how Baltimore legislates, it is why the resolution node is deterministic, and it is reported as a finding rather than presented as a score.
 

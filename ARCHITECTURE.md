@@ -54,10 +54,10 @@ the deployed system prompt cannot drift from the one this evaluation is run agai
 A small Lambda fronts the runtime with a signed call, since a static page cannot sign a
 SigV4 request on its own. The Lambda is deployed and verified working by direct invocation.
 Its public function URL is blocked at the AWS account level, so the live public path needs
-an HTTP API in front of the same Lambda instead. Until that is in place, the published site
-shows cached decisions, labeled as cached, rather than claim a live call that did not happen.
-Full detail, including the exact error and the policy checked against AWS's own
-documentation, is in [deploy/README.md](deploy/README.md).
+an HTTP API in front of the same Lambda instead, and that is what is deployed. A judge can
+pick any of the 50 labeled pairs on the agent run screen and invoke the runtime directly. The
+response carries the runtime arn, the AgentCore session id, the model id and the measured
+latency, and the session id differs on every call.
 
 ## Why a Strands Graph and not a Swarm
 
@@ -175,7 +175,8 @@ two clause rule's accuracy by four points. Re-running the live Continuity
 Agent under a transform costs real model calls, so that arm is opt-in behind
 `--perturb-agent`, and it has now been run once, for real, on that one
 transform: 50 live Bedrock calls, accuracy unchanged at 100%, no individual
-decision flipped, and confidence moved on 13 of 50 pairs by a mean of +0.002
+decision flipped, and confidence moved on 7 of 50 pairs by a mean of -0.001,
+the largest single move being 0.030
 in both directions. That is a measured result, not an assumed one, and it is
 reported in `eval/PERTURBATIONS.md` next to the deterministic rows it is
 being compared against, not as a cached zero delta.

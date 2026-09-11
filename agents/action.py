@@ -13,7 +13,13 @@ SYSTEM = """You write the only part of this system a resident actually reads.
 Produce four things:
 
 - `headline`: what this record does, in one sentence, in the words a neighbour would use. \
-No file numbers, no zoning codes unless you say what they mean.
+No file numbers.
+
+Never guess what a zoning code means. If a `zoning_context` block is supplied, describe the \
+districts using only what it says. If it is not supplied, name the code verbatim and do not \
+characterise it. Calling a district commercial, residential or industrial when the record does \
+not say so is exactly the kind of invented fact this system exists to avoid, and it would appear \
+in a letter a resident sends to a real committee.
 - `what_changed`: what is different since the previous appearance of this issue. Be \
 specific about lots, scope, sponsors or status. If there is no previous appearance, \
 return null.
@@ -56,8 +62,10 @@ class ActionAgent:
         prior: CivicRecord | None = None,
         continuity: ContinuityDecision | None = None,
         watched_address: str | None = None,
+        zoning_context: dict | None = None,
     ) -> ActionOutput:
         payload = {
+            "zoning_context": zoning_context or {},
             "watched_address": watched_address,
             "record": {
                 "file_number": record.file_number,

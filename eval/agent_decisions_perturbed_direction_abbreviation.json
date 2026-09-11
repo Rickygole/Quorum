@@ -3,183 +3,183 @@
  "usage": [
   {
    "input_tokens": 2386,
-   "output_tokens": 400,
-   "total_tokens": 2786
+   "output_tokens": 408,
+   "total_tokens": 2794
   },
   {
    "input_tokens": 2673,
-   "output_tokens": 359,
-   "total_tokens": 3032
+   "output_tokens": 367,
+   "total_tokens": 3040
   },
   {
    "input_tokens": 2431,
-   "output_tokens": 332,
-   "total_tokens": 2763
+   "output_tokens": 364,
+   "total_tokens": 2795
   },
   {
    "input_tokens": 2440,
-   "output_tokens": 338,
-   "total_tokens": 2778
+   "output_tokens": 357,
+   "total_tokens": 2797
   },
   {
    "input_tokens": 2294,
-   "output_tokens": 326,
-   "total_tokens": 2620
+   "output_tokens": 341,
+   "total_tokens": 2635
   },
   {
    "input_tokens": 2704,
-   "output_tokens": 362,
-   "total_tokens": 3066
+   "output_tokens": 344,
+   "total_tokens": 3048
   },
   {
    "input_tokens": 2477,
-   "output_tokens": 341,
-   "total_tokens": 2818
+   "output_tokens": 392,
+   "total_tokens": 2869
   },
   {
    "input_tokens": 2349,
-   "output_tokens": 342,
-   "total_tokens": 2691
-  },
-  {
-   "input_tokens": 2356,
-   "output_tokens": 389,
-   "total_tokens": 2745
-  },
-  {
-   "input_tokens": 2531,
-   "output_tokens": 365,
-   "total_tokens": 2896
-  },
-  {
-   "input_tokens": 2521,
-   "output_tokens": 370,
-   "total_tokens": 2891
-  },
-  {
-   "input_tokens": 2479,
-   "output_tokens": 349,
-   "total_tokens": 2828
-  },
-  {
-   "input_tokens": 2634,
-   "output_tokens": 372,
-   "total_tokens": 3006
-  },
-  {
-   "input_tokens": 2440,
-   "output_tokens": 348,
-   "total_tokens": 2788
-  },
-  {
-   "input_tokens": 2443,
-   "output_tokens": 346,
-   "total_tokens": 2789
-  },
-  {
-   "input_tokens": 2542,
-   "output_tokens": 369,
-   "total_tokens": 2911
-  },
-  {
-   "input_tokens": 2383,
-   "output_tokens": 438,
-   "total_tokens": 2821
-  },
-  {
-   "input_tokens": 2506,
-   "output_tokens": 372,
-   "total_tokens": 2878
-  },
-  {
-   "input_tokens": 2535,
-   "output_tokens": 357,
-   "total_tokens": 2892
-  },
-  {
-   "input_tokens": 2467,
-   "output_tokens": 384,
-   "total_tokens": 2851
-  },
-  {
-   "input_tokens": 2390,
-   "output_tokens": 387,
-   "total_tokens": 2777
-  },
-  {
-   "input_tokens": 2523,
-   "output_tokens": 347,
-   "total_tokens": 2870
-  },
-  {
-   "input_tokens": 2444,
-   "output_tokens": 343,
-   "total_tokens": 2787
-  },
-  {
-   "input_tokens": 2538,
-   "output_tokens": 359,
-   "total_tokens": 2897
-  },
-  {
-   "input_tokens": 2511,
-   "output_tokens": 386,
-   "total_tokens": 2897
-  },
-  {
-   "input_tokens": 2415,
-   "output_tokens": 311,
-   "total_tokens": 2726
-  },
-  {
-   "input_tokens": 2426,
-   "output_tokens": 346,
-   "total_tokens": 2772
-  },
-  {
-   "input_tokens": 2501,
-   "output_tokens": 326,
-   "total_tokens": 2827
-  },
-  {
-   "input_tokens": 2562,
-   "output_tokens": 345,
-   "total_tokens": 2907
-  },
-  {
-   "input_tokens": 2227,
-   "output_tokens": 343,
-   "total_tokens": 2570
-  },
-  {
-   "input_tokens": 2416,
-   "output_tokens": 365,
-   "total_tokens": 2781
-  },
-  {
-   "input_tokens": 2601,
-   "output_tokens": 375,
-   "total_tokens": 2976
-  },
-  {
-   "input_tokens": 2240,
-   "output_tokens": 390,
-   "total_tokens": 2630
-  },
-  {
-   "input_tokens": 2307,
-   "output_tokens": 310,
-   "total_tokens": 2617
-  },
-  {
-   "input_tokens": 2341,
-   "output_tokens": 363,
+   "output_tokens": 355,
    "total_tokens": 2704
   },
   {
-   "input_tokens": 2317,
+   "input_tokens": 2356,
+   "output_tokens": 395,
+   "total_tokens": 2751
+  },
+  {
+   "input_tokens": 2531,
+   "output_tokens": 406,
+   "total_tokens": 2937
+  },
+  {
+   "input_tokens": 2521,
+   "output_tokens": 347,
+   "total_tokens": 2868
+  },
+  {
+   "input_tokens": 2479,
+   "output_tokens": 325,
+   "total_tokens": 2804
+  },
+  {
+   "input_tokens": 2586,
+   "output_tokens": 406,
+   "total_tokens": 2992
+  },
+  {
+   "input_tokens": 2440,
+   "output_tokens": 347,
+   "total_tokens": 2787
+  },
+  {
+   "input_tokens": 2443,
+   "output_tokens": 388,
+   "total_tokens": 2831
+  },
+  {
+   "input_tokens": 2542,
    "output_tokens": 335,
-   "total_tokens": 2652
+   "total_tokens": 2877
+  },
+  {
+   "input_tokens": 2383,
+   "output_tokens": 418,
+   "total_tokens": 2801
+  },
+  {
+   "input_tokens": 2506,
+   "output_tokens": 351,
+   "total_tokens": 2857
+  },
+  {
+   "input_tokens": 2535,
+   "output_tokens": 363,
+   "total_tokens": 2898
+  },
+  {
+   "input_tokens": 2467,
+   "output_tokens": 420,
+   "total_tokens": 2887
+  },
+  {
+   "input_tokens": 2390,
+   "output_tokens": 376,
+   "total_tokens": 2766
+  },
+  {
+   "input_tokens": 2523,
+   "output_tokens": 365,
+   "total_tokens": 2888
+  },
+  {
+   "input_tokens": 2444,
+   "output_tokens": 381,
+   "total_tokens": 2825
+  },
+  {
+   "input_tokens": 2538,
+   "output_tokens": 335,
+   "total_tokens": 2873
+  },
+  {
+   "input_tokens": 2511,
+   "output_tokens": 352,
+   "total_tokens": 2863
+  },
+  {
+   "input_tokens": 2415,
+   "output_tokens": 339,
+   "total_tokens": 2754
+  },
+  {
+   "input_tokens": 2426,
+   "output_tokens": 367,
+   "total_tokens": 2793
+  },
+  {
+   "input_tokens": 2501,
+   "output_tokens": 337,
+   "total_tokens": 2838
+  },
+  {
+   "input_tokens": 2562,
+   "output_tokens": 322,
+   "total_tokens": 2884
+  },
+  {
+   "input_tokens": 2227,
+   "output_tokens": 341,
+   "total_tokens": 2568
+  },
+  {
+   "input_tokens": 2416,
+   "output_tokens": 362,
+   "total_tokens": 2778
+  },
+  {
+   "input_tokens": 2601,
+   "output_tokens": 344,
+   "total_tokens": 2945
+  },
+  {
+   "input_tokens": 2240,
+   "output_tokens": 356,
+   "total_tokens": 2596
+  },
+  {
+   "input_tokens": 2307,
+   "output_tokens": 349,
+   "total_tokens": 2656
+  },
+  {
+   "input_tokens": 2341,
+   "output_tokens": 354,
+   "total_tokens": 2695
+  },
+  {
+   "input_tokens": 2317,
+   "output_tokens": 338,
+   "total_tokens": 2655
   },
   {
    "input_tokens": 2393,
@@ -188,68 +188,68 @@
   },
   {
    "input_tokens": 2330,
-   "output_tokens": 469,
-   "total_tokens": 2799
+   "output_tokens": 409,
+   "total_tokens": 2739
   },
   {
    "input_tokens": 2515,
-   "output_tokens": 400,
-   "total_tokens": 2915
+   "output_tokens": 384,
+   "total_tokens": 2899
   },
   {
    "input_tokens": 2371,
-   "output_tokens": 328,
-   "total_tokens": 2699
+   "output_tokens": 378,
+   "total_tokens": 2749
   },
   {
    "input_tokens": 2557,
-   "output_tokens": 353,
-   "total_tokens": 2910
+   "output_tokens": 334,
+   "total_tokens": 2891
   },
   {
    "input_tokens": 2644,
-   "output_tokens": 365,
-   "total_tokens": 3009
+   "output_tokens": 402,
+   "total_tokens": 3046
   },
   {
    "input_tokens": 2452,
-   "output_tokens": 358,
-   "total_tokens": 2810
+   "output_tokens": 403,
+   "total_tokens": 2855
   },
   {
    "input_tokens": 2263,
-   "output_tokens": 342,
-   "total_tokens": 2605
+   "output_tokens": 377,
+   "total_tokens": 2640
   },
   {
    "input_tokens": 2592,
-   "output_tokens": 339,
-   "total_tokens": 2931
+   "output_tokens": 363,
+   "total_tokens": 2955
   },
   {
    "input_tokens": 2338,
-   "output_tokens": 364,
-   "total_tokens": 2702
+   "output_tokens": 400,
+   "total_tokens": 2738
   },
   {
    "input_tokens": 2374,
-   "output_tokens": 369,
-   "total_tokens": 2743
+   "output_tokens": 394,
+   "total_tokens": 2768
   },
   {
    "input_tokens": 2257,
-   "output_tokens": 320,
-   "total_tokens": 2577
+   "output_tokens": 343,
+   "total_tokens": 2600
   },
   {
    "input_tokens": 2435,
-   "output_tokens": 346,
-   "total_tokens": 2781
+   "output_tokens": 415,
+   "total_tokens": 2850
   },
   {
    "input_tokens": 2254,
-   "output_tokens": 371,
-   "total_tokens": 2625
+   "output_tokens": 365,
+   "total_tokens": 2619
   }
  ],
  "decisions": {
@@ -340,21 +340,20 @@
      "b": "21-0006"
     }
    },
-   "rationale": "These are two different properties on the same block. The earlier record rezoned 407 Benninghaus Road (Block 5014C, Lot 004A) from R-3 to OR-1. The new record seeks a conditional use permit for a banquet hall at 5600 York Road (Block 5014C, Lot 001). The parcel comparison shows \"adjacent\" status, meaning same block but different lots, which in Baltimore almost always indicates two genuinely different properties. The properties have different owners (GOVMOCO, LLC vs. SCF RC FUNDING IV LLC), different addresses on different streets (Benninghaus Road vs. York Road), and involve completely different zoning actions (rezoning vs. conditional use). These are separate development projects that happen to be on the same block.",
+   "rationale": "These are two different properties on the same block. The earlier record rezoned 407 Benninghaus Road (Block 5014C, Lot 004A) from R-3 to OR-1. The new record seeks a conditional use permit for a banquet hall at 5600 York Road (Block 5014C, Lot 001). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means genuinely different properties. The properties have different owners (GOVMOCO, LLC vs. SCF RC FUNDING IV LLC) and different addresses on different streets. The legislative instruments serve different purposes: one is a rezoning, the other is a conditional use permit for a specific business type. While both are sponsored by Mark Conway and are in the same council term, the parcel evidence is decisive.",
    "drivers": [
     "parcel match: adjacent",
-    "different lots (001 vs 004A)",
-    "different addresses (5600 York Road vs 407 Benninghaus Road)",
+    "different lots: 001 vs 004A",
+    "different addresses: 5600 York Road vs 407 Benninghaus Road",
     "different owners",
-    "different zoning actions (conditional use vs rezoning)"
+    "different legislative purposes: conditional use vs rezoning"
    ],
    "non_drivers": [
-    "sponsor overlap (Mark Conway both times, but he represents the district)",
-    "title cosine 0.312 (low, reflects different subject matter)",
-    "same council term",
-    "same record type (ordinance)"
+    "sponsor overlap (Mark Conway on both, but represents the district)",
+    "title cosine 0.312, low and reflects only generic zoning boilerplate",
+    "same council term, not probative for adjacent parcels"
    ],
-   "confidence": 0.98
+   "confidence": 0.95
   },
   "2": {
    "candidate_record_id": "8716",
@@ -449,16 +448,16 @@
      "b": "21-0013"
     }
    },
-   "rationale": "These are two separate rezoning projects affecting different properties in the same neighborhood. The parcel comparison shows they are adjacent (same block 6458 but different lots: lot 004 vs lot 003), which in Baltimore almost always means different properties and different issues. The earlier record rezoned lot 003 from I-2 to IMU-2, while the new record rezones lot 004 from I-2 to R-8 - completely different zoning transitions. The properties also have different owners (BREWERS ROCK, LLC vs DOTCO, LLC and GC4015, LLC). Both records were enacted successfully in the same council term with the same sponsor, which is consistent with multiple development projects happening in the same industrial area around the same time, but they are distinct legislative actions on distinct parcels.",
+   "rationale": "These are two separate rezoning projects affecting different properties in the same neighborhood. The parcel comparison shows they are \"adjacent\" - Block 6458 Lot 004 versus Block 6458 Lot 003 - which in Baltimore means different lots on the same block and almost always indicates different properties and different issues. The properties have different owners (BREWERS ROCK, LLC versus DOTCO, LLC and GC4015, LLC). Most importantly, the zoning transitions are completely different: the new record converts I-2 to R-8 (industrial to residential), while the earlier record converted I-1 and I-2 to IMU-2 (industrial to mixed-use). These are distinct development projects that happen to be near each other and share the same sponsor.",
    "drivers": [
-    "parcel",
-    "zoning_transition",
-    "owner"
+    "parcel match: adjacent",
+    "owner: changed",
+    "zoning_transition: I2->R8 vs I1->IMU2"
    ],
    "non_drivers": [
-    "title cosine 0.599, heavy boilerplate in rezoning ordinances",
-    "sponsor jaccard 1.0, same councilmember represents the district",
-    "committee_progression, both enacted successfully"
+    "title cosine 0.599, heavy rezoning boilerplate",
+    "sponsor overlap: same sponsor Zeke Cohen represents the district",
+    "same committee: both Economic and Community Development"
    ],
    "confidence": 0.95
   },
@@ -554,15 +553,17 @@
      "b": "21-0026"
     }
    },
-   "rationale": "These are two separate rezoning projects on different properties. The parcel comparison shows they are adjacent parcels on the same block (2108C) but different lots: the new record concerns Lot 001 at 901 South Caton Avenue, while the earlier record concerns Lot 002 at 1201 South Caton Avenue. The properties have different owners (GIBBONS COMMONS, LLC vs COMREF CITY LOGISTICS LLC) and are undergoing completely different zoning transitions (OR-2 to C-2 versus EC-1 to I-1). The records are separated by over five years and different council terms. These are two unrelated development projects that happen to be on neighboring parcels.",
+   "rationale": "These are two different properties on the same block. The parcel comparison shows \"adjacent\" lots: the new record concerns Block 2108C Lot 001 at 901 South Caton Avenue, while the earlier record concerns Block 2108C Lot 002 at 1201 South Caton Avenue. The properties have different owners (GIBBONS COMMONS, LLC vs COMREF CITY LOGISTICS LLC) and are undergoing different zoning transitions (OR-2 to C-2 versus EC-1 to I-1). The records are separated by over five years and different council terms. This is simply two separate rezoning projects that happen to be on neighboring parcels on the same street.",
    "drivers": [
-    "parcel",
-    "owner",
-    "zoning_transition"
+    "parcel match: adjacent",
+    "owner: changed",
+    "zoning_transition: different (OR2->C2 vs EC1->I1)",
+    "different addresses"
    ],
    "non_drivers": [
-    "title cosine 0.812, heavy boilerplate from rezoning ordinance template",
-    "temporal gap of 1918 days, not relevant given different parcels"
+    "title cosine 0.812, heavy boilerplate from rezoning template",
+    "temporal gap of 1918 days, not relevant given different parcels",
+    "committee progression, not relevant for different properties"
    ],
    "confidence": 0.98
   },
@@ -647,16 +648,17 @@
      "b": "21-0031R"
     }
    },
-   "rationale": "These records concern two different properties on the same block. The new record is about establishing a parking lot at 1032 Homewood Avenue (Block 1182, Lot 042), while the earlier record approved a liquor license exchange at 1041 Greenmount Avenue (Block 1182, Lot 017). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always indicates two genuinely different properties. The properties have different owners (Housing Authority vs. Pinewood Investment, LLC) and different addresses on different streets. The legislative instruments are also unrelated: a conditional use permit for parking versus a liquor license exchange. These are separate real estate projects with no connection beyond being in the same neighborhood block.",
+   "rationale": "These records concern two different properties on the same block. The new record is about establishing a parking lot at 1032 Homewood Avenue (Block 1182, Lot 042), while the earlier record approved a liquor license exchange at 1041 Greenmount Avenue (Block 1182, Lot 017). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means genuinely different properties. The properties have different owners (Housing Authority vs. Pinewood Investment LLC) and different addresses on different streets. The legislative instruments are also completely different: a conditional use permit for parking versus a liquor license exchange. The 3.5 year gap and different council terms are consistent with unrelated matters.",
    "drivers": [
-    "parcel",
-    "owner",
-    "record_type",
-    "title"
+    "parcel match: adjacent",
+    "different addresses",
+    "different owners",
+    "different legislative purposes (parking lot vs liquor license)"
    ],
    "non_drivers": [
-    "sponsor overlap (Robert Stokes, Sr. sponsors both, but represents the district)",
-    "title cosine 0.092, minimal overlap due to boilerplate only"
+    "sponsor overlap (Stokes on both, but represents the district)",
+    "title cosine 0.092 (very low, reflects different subject matter)",
+    "temporal gap of 1267 days"
    ],
    "confidence": 0.98
   },
@@ -749,16 +751,18 @@
      "b": "21-0035"
     }
    },
-   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 21-0035 was withdrawn in 2021. The new ordinance 22-0277 was introduced in September 2022, about 19 months later. Both records seek to designate the exact same property\u2014the Reed Calloway House at 1316 North Carey Street, parcel 0036A010\u2014as a historical landmark. The same sponsor, James Torrence, introduced both ordinances. The property owner remained the same throughout. The file numbers differ because the records span different council terms. After the withdrawal, the sponsor reintroduced the same landmark designation proposal for the same house, and this time it was enacted.",
+   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 21-0035 was withdrawn in 2021. The new ordinance 22-0277 was introduced in September 2022, about 19 months later. Both records concern the exact same parcel (0036A010) at 1316 North Carey Street, with the same property owner. Both seek to designate the Reed Calloway House as a historical landmark for its exterior. The same sponsor, James Torrence, introduced both ordinances. The file numbers differ because they span different council terms. After the withdrawal, the sponsor reintroduced the same landmark designation for the same property.",
    "drivers": [
     "parcel exact match",
-    "same owner",
-    "same sponsor",
-    "committee_progression restart from terminal status",
-    "same council term false with different file numbers"
+    "owner same",
+    "sponsor jaccard 1.0",
+    "committee_progression restart from terminal",
+    "prior_status Withdrawn",
+    "same_council_term false"
    ],
    "non_drivers": [
-    "title cosine 0.979, expected for identical landmark designation language"
+    "title cosine 0.979, expected for identical landmark designation language",
+    "token_jaccard 0.917, boilerplate"
    ],
    "confidence": 0.98
   },
@@ -848,20 +852,20 @@
      "b": "21-0042R"
     }
    },
-   "rationale": "These records describe the same development project at 3901 Boston Street (also known as 3975 Boston Street) moving through different required approvals. The earlier resolution 21-0042R approves exchanging a liquor license from a different location (3501 Boston Street) to this property. The new ordinance 21-0064 grants the conditional use permit needed to operate a retail establishment with alcohol sales at the same property. Both records share the exact same parcel (6505 009A), were introduced on the same day by the same sponsor, and went through the same committee. This is a single real-world project requiring both liquor license approval and zoning approval to operate legally.",
+   "rationale": "These records describe the same real-world project at 3901 Boston Street (also known as 3975 Boston Street). The earlier resolution approves exchanging a liquor license from a different location to this address. The new ordinance grants the conditional use permit needed to operate a retail establishment with alcohol sales at the same address. Both were introduced on the same day by the same sponsor and involve the exact same parcel (6505 009A). This is a single business opening that requires two separate approvals: liquor license transfer approval and zoning conditional use. The different record types (resolution vs. ordinance) and different file numbers reflect the different legal instruments needed, not separate issues.",
    "drivers": [
-    "parcel exact match on 6505 009A",
-    "same introduction date",
-    "same sponsor Zeke Cohen",
-    "same committee",
-    "different legislative instruments for same project",
-    "committee progression from resolution to ordinance"
+    "parcel match: exact",
+    "shared_parcel_ids: 6505 009A",
+    "record_type: different instruments for same project",
+    "temporal: same introduction date",
+    "sponsor overlap: complete",
+    "owner: same"
    ],
    "non_drivers": [
-    "title cosine 0.521, different subjects (liquor license exchange vs conditional use)",
-    "file numbers differ (21-0042R vs 21-0064), expected for different instrument types"
+    "title cosine 0.521, different legal purposes",
+    "file_number different, expected for different instrument types"
    ],
-   "confidence": 0.95
+   "confidence": 0.98
   },
   "7": {
    "candidate_record_id": "9457",
@@ -954,17 +958,19 @@
      "b": "21-0045"
     }
    },
-   "rationale": "These records concern two different properties on the same block. The new record is about selling city-owned property at lot 076, while the earlier record rezoned lot 013 (privately owned by Robert Edwards). The parcel comparison shows \"adjacent\" - same block 4053 but different lots. The records involve completely different legislative actions: a property sale versus a rezoning from O-S to R-7. The owner changed from private (Edwards) to city ownership. While both records share sponsor Odette Ramos, this is explained by her representing the same district. The 798-day gap and different council terms are consistent with unrelated matters. The title similarity of 0.234 is low and reflects only shared boilerplate terms like \"block,\" \"lot,\" and \"special effective date.\"",
+   "rationale": "These records concern two different properties on the same block. The new record is a sale of city-owned property at Block 4053, Lot 076 (707 E 34th Street). The earlier record rezoned Block 4053, Lot 013 from Open Space to R-7 residential. The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means genuinely different properties. The records also involve different legislative instruments: one is a property sale, the other is a rezoning. The owner changed from a private individual (Robert Edwards) to the city, and the committees are different (Ways and Means for sales vs. Economic and Community Development for zoning). While both records share sponsor Odette Ramos, this reflects her representing the same district, not a continuation of the same project.",
    "drivers": [
-    "parcel",
-    "owner",
-    "zoning_transition",
-    "title"
+    "parcel match: adjacent",
+    "different lots: 076 vs 013",
+    "different legislative instruments: sale vs rezoning",
+    "committee change: Ways and Means vs Economic and Community Development",
+    "owner changed"
    ],
    "non_drivers": [
-    "sponsor overlap (Odette Ramos on both, district representative)",
-    "temporal gap of 798 days",
-    "committee progression"
+    "title cosine 0.234, low and expected given different purposes",
+    "sponsor overlap (Odette Ramos), reflects district representation",
+    "798 day gap",
+    "both enacted"
    ],
    "confidence": 0.95
   },
@@ -1045,15 +1051,16 @@
      "b": "21-0051R"
     }
    },
-   "rationale": "These are two different issues in the same block. The new record is a conditional use permit for a parking lot at 1211 Jefferson Street (parcel 1295 001G). The earlier record was a resolution to rename a park at 500 North Central Avenue (parcel 1295 001). The parcel comparison shows \"adjacent\" - same block 1295 but different lots - which in Baltimore almost always means two genuinely different properties. The record types are completely different: one is a zoning ordinance for parking, the other is a park naming resolution. The titles share no meaningful content (cosine 0.0). The three-year gap and different council terms are consistent with unrelated matters. While both were sponsored by Robert Stokes Sr., that reflects his district representation, not issue continuity.",
+   "rationale": "These are two different issues in the same block. The new record is a conditional use permit for a parking lot at 1211 Jefferson Street (parcel 1295 001G). The earlier record was a resolution to rename a park at 500 North Central Avenue (parcel 1295 001). The parcel comparison shows \"adjacent\" - same block 1295 but different lots - which in Baltimore almost always means two genuinely different properties. The record types are completely different: an ordinance for parking versus a resolution for park naming. The titles share no meaningful content (cosine 0.0). The owners are different entities. These are unrelated legislative matters that happen to involve properties on the same city block.",
    "drivers": [
-    "parcel",
-    "title",
-    "record_type"
+    "parcel match: adjacent",
+    "record type mismatch: ordinance vs resolution",
+    "title cosine: 0.0",
+    "different subject matter: parking lot vs park naming"
    ],
    "non_drivers": [
-    "sponsor jaccard 1.0, reflects district representation not issue linkage",
-    "temporal gap 994 days, consistent with unrelated matters"
+    "sponsor overlap: Robert Stokes Sr. on both, but he represents the district",
+    "temporal gap: 994 days, not relevant given different parcels and subjects"
    ],
    "confidence": 0.98
   },
@@ -1139,19 +1146,20 @@
      "b": "21-0054"
     }
    },
-   "rationale": "These are two different properties on the same block pursuing separate development projects. The earlier record rezoned 605 South Caton Avenue (parcel 2113 001) from commercial to industrial zoning. The new record grants a storm drain franchise for 707 South Caton Avenue (parcel 2113 023), a different lot number on the same block. The parcel comparison shows \"adjacent\" not \"exact,\" meaning these are genuinely different properties. The properties have different owners (BREX Investment LLC vs. TREA SP V Baltimore MD LLC). The legislative instruments serve completely different purposes: one is a zoning change, the other is infrastructure franchise approval. While both properties are on South Caton Avenue and went through the same committee, there is no evidence these are phases of a single project\u2014they are separate properties with separate owners pursuing separate approvals.",
+   "rationale": "These are two different properties on the same block pursuing separate development projects. The earlier record rezoned 605 South Caton Avenue (parcel 2113 001) from commercial to industrial. The new record grants a franchise for a storm drain outfall at 707 South Caton Avenue (parcel 2113 023) in Lower Gwynns Falls Park. The parcel comparison shows \"adjacent\" - same block 2113 but different lots - which in Baltimore almost always indicates genuinely different properties. The properties have different owners (BREX Investment LLC vs. a different entity requesting through the Department of Recreation and Parks). The legislative instruments serve completely different purposes: one is a zoning change, the other is a franchise agreement for stormwater infrastructure. While a storm drain might theoretically serve a nearby development, there is no evidence these are coordinated approvals for a single project.",
    "drivers": [
     "parcel match: adjacent",
-    "different parcel IDs (2113 023 vs 2113 001)",
     "different owners",
-    "different legislative purposes (franchise vs rezoning)"
+    "different legislative purposes (rezoning vs. franchise)",
+    "different addresses (605 vs. 707)"
    ],
    "non_drivers": [
-    "title cosine 0.261, low and reflects only street name overlap",
-    "same committee, common for area zoning matters",
-    "same block 2113, but different lots"
+    "title cosine 0.261, only shares generic boilerplate terms",
+    "same committee, not distinctive",
+    "378-day gap, not informative",
+    "both enacted, not a reintroduction pattern"
    ],
-   "confidence": 0.95
+   "confidence": 0.92
   },
   "10": {
    "candidate_record_id": "9520",
@@ -1247,18 +1255,18 @@
      "b": "21-0076"
     }
    },
-   "rationale": "These are two different properties on the same block of Brantley Avenue. The earlier record concerns 1049 Brantley Avenue (Block 0115, Lot 069), while the new record concerns 1046 Brantley Avenue (Block 0115, Lot 071). The parcel comparison shows \"adjacent\" lots, meaning different properties. Although both properties are owned by the same person (Ronald E. Anderson) and both seek the same type of zoning relief (converting single-family homes to 2-unit dwellings in R-8 with lot area variances), they are separate real estate parcels requiring separate legislative approvals. The earlier ordinance was already enacted in 2021, so this is not a reintroduction. This is the same owner pursuing the same development strategy on a second property he owns on the same street.",
+   "rationale": "These are two different properties on the same block of Brantley Avenue. The earlier record concerns 1049 Brantley Avenue (Block 0115, Lot 069), while the new record concerns 1046 Brantley Avenue (Block 0115, Lot 071). The parcel comparison shows \"adjacent\" lots, meaning different properties. Although both properties are owned by the same person (Ronald E. Anderson) and both seek the same type of zoning relief (converting single-family homes to 2-unit dwellings in R-8 with lot area variances), they are separate real estate parcels requiring separate legislative approvals. The earlier ordinance was already enacted in 2021, so this is not a reintroduction of a failed measure. This is simply the same owner pursuing the same type of development on a different property he owns on the same street.",
    "drivers": [
     "parcel match: adjacent",
     "different addresses",
     "different lot numbers",
-    "prior status: Enacted"
+    "prior status: Enacted (not terminal failure)"
    ],
    "non_drivers": [
     "title cosine 0.846, heavy boilerplate for similar zoning actions",
-    "same owner",
-    "same sponsor",
-    "same committee"
+    "sponsor overlap 1.0, same council member for same neighborhood",
+    "owner match: same, one owner with multiple properties",
+    "temporal gap 784 days, not relevant when parcels differ"
    ],
    "confidence": 0.98
   },
@@ -1356,18 +1364,17 @@
      "b": "21-0076"
     }
    },
-   "rationale": "These are two different properties. The earlier record concerns 1049 Brantley Avenue (Block 0115, Lot 069), while the new record concerns 1014 Edmondson Avenue (Block 0115, Lot 037). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means two genuinely different properties. The properties have different owners: AMG INVESTING LLC owns the Edmondson Avenue property, while RONALD E ANDERSON owned the Brantley Avenue property. Although both are identical conditional use requests (converting single-family homes to 2 units in R-8 with lot area variances) sponsored by the same council member, they are separate projects on separate parcels nearly three years apart.",
+   "rationale": "These are two different properties. The earlier record concerns 1049 Brantley Avenue (Block 0115, Lot 069), while the new record concerns 1014 Edmondson Avenue (Block 0115, Lot 037). The parcel comparison shows \"adjacent\" - they are on the same block but different lots. In Baltimore, adjacent parcels on the same block almost always represent genuinely different properties and therefore different issues. Both happen to be the same type of zoning request (converting a single-family home to 2 units in R-8 with a lot area variance), sponsored by the same council member representing that district, which explains the high title similarity. But they are separate projects on separate properties owned by different people.",
    "drivers": [
     "parcel match: adjacent",
     "different addresses",
-    "different owners",
-    "different lots (037 vs 069)"
+    "different lot numbers",
+    "different owners"
    ],
    "non_drivers": [
-    "title cosine 0.852, heavy boilerplate for identical zoning actions",
-    "sponsor overlap 1.0, same council member represents the district",
-    "same committee, standard routing for this type of request",
-    "945 day gap"
+    "title cosine 0.852, boilerplate from identical zoning request type",
+    "sponsor overlap 1.0, same district representative",
+    "same committee, typical for zoning matters"
    ],
    "confidence": 0.98
   },
@@ -1465,16 +1472,15 @@
      "b": "21-0077"
     }
    },
-   "rationale": "These are two different properties on the same block. The earlier record concerns 1110 West Lafayette Avenue (Block 0079, Lot 004A), while the new record concerns 1100 West Lafayette Avenue (Block 0079, Lot 001). The parcel comparison shows \"adjacent\" - same block but different lots. The properties also have different owners: SMITH FAMILY LIVING TRUST for 1110 and WESLEAF, LLC for 1100. Although both seek the same type of zoning relief (conversion to 5 dwelling units in R-8) and share the same sponsor, they are separate development projects on separate parcels. In Baltimore, adjacent parcels almost always represent genuinely different properties and different issues.",
+   "rationale": "These are two different properties on the same block. The earlier record concerns 1110 West Lafayette Avenue (Block 0079, Lot 004A), while the new record concerns 1100 West Lafayette Avenue (Block 0079, Lot 001). The parcel comparison shows \"adjacent\" - same block but different lots. In Baltimore, adjacent parcels almost always represent genuinely different properties and therefore different issues. The properties also have different owners: WESLEAF, LLC owns the new record's property while SMITH FAMILY LIVING TRUST owns the earlier record's property. Although both are similar conversion projects sponsored by the same council member, they are separate real estate projects on separate parcels.",
    "drivers": [
     "parcel",
     "owner"
    ],
    "non_drivers": [
-    "title cosine 0.927, heavy boilerplate from identical zoning request type",
-    "sponsor overlap, same council member represents the area",
-    "temporal gap 42 days, not dispositive",
-    "committee progression shows restart pattern but not relevant given different parcels"
+    "title cosine 0.927, heavy boilerplate from similar zoning actions",
+    "sponsor overlap, same council member for adjacent properties",
+    "committee_progression restart pattern, not relevant when parcels differ"
    ],
    "confidence": 0.98
   },
@@ -1561,17 +1567,16 @@
      "b": "21-0170"
     }
    },
-   "rationale": "The parcel comparison shows these are adjacent properties on the same block but different lots, which in Baltimore almost always means different properties and different issues. The new record concerns lots 012 and 013 at 1732-1736 Gorsuch Avenue, while the earlier record concerned lot 042 at 2658 Harford Road (and many other Harford Road addresses). These are physically different properties. The new record seeks a conditional use permit for a parking lot in an already R-6 district, while the earlier record was a large-scale rezoning of multiple Harford Road properties from C-1 to R-6 that failed at end of term. The ownership is different (city-owned vs. private owner). The legislative instruments serve completely different purposes for different parcels.",
+   "rationale": "These are two different issues. The earlier record (21-0170) was a rezoning ordinance for dozens of properties along Harford Road, including 2658 Harford Road (Block 4127, Lot 042). The new record (26-0206) is a conditional use permit for a parking lot at 1732-1736 Gorsuch Avenue (Block 4127, Lots 012 and 013). The parcel comparison shows \"adjacent\" - they share the same block but have completely different lot numbers, which in Baltimore almost always means genuinely different properties. The earlier record involved lot 042, while the new record involves lots 012 and 013. The properties also have different addresses on different streets (Harford Road vs. Gorsuch Avenue), different owners, and serve different purposes (a large-scale rezoning of commercial properties vs. a parking lot conditional use). The legislative instruments are also different: one is a rezoning, the other is a conditional use permit.",
    "drivers": [
-    "parcel match: adjacent",
-    "lots_a: 012, 013 vs lots_b: 042",
-    "different addresses",
-    "different legislative purpose"
+    "parcel",
+    "owner",
+    "zoning_transition"
    ],
    "non_drivers": [
-    "title cosine 0.116, minimal overlap just generic zoning terms",
+    "title cosine 0.116, minimal overlap due to generic zoning terminology",
     "sponsor overlap 1.0, same council member represents the district",
-    "temporal gap 1680 days"
+    "temporal gap 1680 days, not relevant given different parcels"
    ],
    "confidence": 0.95
   },
@@ -1660,16 +1665,16 @@
      "b": "21-0171"
     }
    },
-   "rationale": "These records concern two different properties on the same block. The new record is about selling city-owned property at 2405 Linden Avenue (Block 3463A, Lot 008A). The earlier record approved a zoning conversion for a privately-owned dwelling at 811 Chauncey Avenue (Block 3463A, Lot 013C). The parcel comparison shows \"adjacent\" parcels\u2014same block but different lots\u2014which in Baltimore almost always means genuinely different properties. The owners are different (city-owned versus privately-owned by Angela P. Veney). The legislative purposes are completely different: one is a property sale, the other is a conditional use permit for residential conversion. These are separate issues affecting different properties that happen to be on the same block.",
+   "rationale": "These are two different properties on the same block. The earlier record (21-0171) concerns 811 Chauncey Avenue (Block 3463A, Lot 013C), a zoning conversion for a private owner to create a two-unit dwelling. The new record (25-0104) concerns 2405 Linden Avenue (Block 3463A, Lot 008A), a city-owned property being sold. The parcel comparison shows \"adjacent\" status, meaning same block but different lots, which in Baltimore almost always indicates two genuinely different properties. The properties have different addresses on different streets, different owners (city vs. private), and completely different legislative purposes (property sale vs. zoning conversion). The 1449-day gap and different council terms are consistent with unrelated matters.",
    "drivers": [
     "parcel",
     "owner",
-    "title"
+    "temporal"
    ],
    "non_drivers": [
-    "title cosine 0.162, different subject matter",
-    "sponsor overlap 0.0, different sponsors but not dispositive",
-    "temporal gap of 1449 days, not relevant given different parcels"
+    "title cosine 0.162, low and uninformative",
+    "sponsor overlap, different sponsors expected for unrelated properties",
+    "committee progression, both enacted but different purposes"
    ],
    "confidence": 0.98
   },
@@ -1761,15 +1766,16 @@
    },
    "rationale": "These are two different properties on the same block. The earlier record is a city sale of publicly-owned land at 711 North Arlington Avenue (Block 0104, Lot 062). The new record is a conditional use permit for a private conversion of a dwelling at 1005 West Lanvale Street (Block 0104, Lot 003). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means genuinely different properties. The owners are different (city-owned versus private LLC), the sponsors are different, the committees are different (Ways and Means versus Economic and Community Development), and the legislative purposes are completely unrelated (property sale versus zoning conversion). There is no connection between these two parcels or projects.",
    "drivers": [
-    "parcel",
-    "owner",
-    "committee_progression",
-    "title"
+    "parcel: adjacent, different lots (003 vs 062)",
+    "owner: changed (city vs private)",
+    "committee: Ways and Means vs Economic and Community Development",
+    "legislative purpose: property sale vs conditional use permit"
    ],
    "non_drivers": [
-    "title cosine 0.154, low similarity and different subject matter",
-    "record_type match, both ordinances but routine",
-    "same block 0104, but different lots means different properties"
+    "title cosine 0.154, low and only shares boilerplate terms",
+    "same block 0104, but different lots",
+    "both ordinances, not meaningful here",
+    "651 day gap, not relevant for unrelated properties"
    ],
    "confidence": 0.98
   },
@@ -1864,17 +1870,17 @@
      "b": "22-0295"
     }
    },
-   "rationale": "This is a classic reintroduction pattern. The earlier record 22-0295 was withdrawn in 2022. Nine months later, the same sponsor (Kristerfer Burnett) reintroduced the identical rezoning request for the exact same two parcels (8393G002F and 8393G003) at 4911-4917 and 4919-4925 West Forest Park Avenue. Both records seek to rezone from R-1 to OS district. The property owner remains Unity Lane Investments, LLC. The file numbers differ because the records span different council terms (2022 vs 2023). This is one real-world rezoning project that was withdrawn and then refiled.",
+   "rationale": "This is a classic reintroduction. The earlier rezoning ordinance 22-0295 was withdrawn in 2022. Nine months later, the same sponsor (Kristerfer Burnett) reintroduced the identical rezoning request for the exact same two parcels (8393G002F and 8393G003) at 4911-4917 and 4919-4925 West Forest Park Avenue. Both ordinances seek to rezone from R-1 to OS district. The property owner remains Unity Lane Investments, LLC. The file numbers differ because the records span different council terms (2022 vs 2023). This is one real-world rezoning project that was withdrawn and then refiled.",
    "drivers": [
-    "parcel match: exact",
-    "zoning_transition: R1->OS identical",
-    "owner: same (Unity Lane Investments)",
-    "committee_progression: restart after terminal status",
-    "sponsor overlap: Kristerfer Burnett"
+    "parcel",
+    "zoning_transition",
+    "owner",
+    "committee_progression",
+    "temporal"
    ],
    "non_drivers": [
-    "title cosine 0.93, expected due to identical rezoning language",
-    "file numbers differ (22-0295 vs 23-0417), expected across council terms"
+    "title cosine 0.93, expected boilerplate for rezoning ordinances",
+    "file_number mismatch, expected across council terms"
    ],
    "confidence": 0.98
   },
@@ -1960,19 +1966,19 @@
      "b": "22-0302"
     }
    },
-   "rationale": "These are two different properties on the same block. The earlier record (22-0302) authorized the sale of city property at 2801 Harford Road, parcel 4199 001. The new record (23-0375) renames a school field at 2555 Harford Road, parcel 4199 010. The parcel comparison shows \"adjacent\" - same block 4199 but different lots - which in Baltimore almost always means genuinely different properties and different issues. The purposes are also completely unrelated: one is a property sale handled by Real Estate through Ways and Means committee, the other is renaming a school field handled through Education committee. The title similarity is very low (0.106 cosine) with only generic words shared like \"Harford\" and \"Road.\" These are two separate city actions on two different parcels that happen to be on the same block.",
+   "rationale": "These are two different properties on the same block. The earlier record (22-0302) authorized the sale of city property at 2801 Harford Road, parcel 4199 001. The new record (23-0375) renames a school athletic field at 2555 Harford Road, parcel 4199 010. The parcel comparison shows \"adjacent\" - same block 4199 but different lots - which in Baltimore almost always means genuinely different properties. The purposes are completely unrelated: one is a real estate sale, the other is renaming a school facility. They went to different committees (Ways and Means vs. Education Workforce and Youth), which is consistent with their different subject matter. The low title similarity (0.106 cosine) reflects that these records share only generic location words like \"Harford Road.\"",
    "drivers": [
     "parcel match: adjacent",
-    "different parcel IDs (4199 010 vs 4199 001)",
-    "different addresses (2555 vs 2801 Harford Road)",
-    "different committees (Education vs Ways and Means)",
-    "different purposes (renaming vs property sale)"
+    "different parcels: 4199 010 vs 4199 001",
+    "different addresses: 2555 vs 2801 Harford Road",
+    "unrelated purposes: field renaming vs property sale",
+    "different committees: Education vs Ways and Means"
    ],
    "non_drivers": [
-    "title cosine 0.106, only generic location words shared",
-    "sponsor overlap (Odette Ramos on both, but represents the district)",
-    "same owner (both city property)",
-    "same record type (both ordinances, common)"
+    "title cosine 0.106, reflects only shared street name",
+    "sponsor overlap (Odette Ramos), represents same district",
+    "same owner (city property)",
+    "both enacted"
    ],
    "confidence": 0.98
   },
@@ -2070,18 +2076,15 @@
      "b": "22-0320"
     }
    },
-   "rationale": "These are two different properties. The earlier record concerns 427 Gusryan Street (Block 6345, Lot 037) and the new record concerns 466 Hornel Street (Block 6345, Lot 023). The parcel comparison shows \"adjacent\" - same block but different lots. In Baltimore, adjacent lots almost always represent genuinely different properties and different issues. The properties also have different owners: AU, HONG owns the new property while LI, HUIFEN owned the earlier property. Both are similar zoning requests (converting single-family homes to 2 units in R-7 districts) sponsored by the same councilmember on the same date, which explains the high title similarity, but this is characteristic boilerplate for this type of zoning action, not evidence of continuation.",
+   "rationale": "These are two different properties. The earlier record concerns 427 Gusryan Street (Block 6345, Lot 037) and the new record concerns 466 Hornel Street (Block 6345, Lot 023). The parcel comparison shows \"adjacent\" - same block but different lots. In Baltimore, adjacent parcels almost always represent genuinely different properties and therefore different issues. The properties also have different owners: AU, HONG owns 466 Hornel Street while LI, HUIFEN owns 427 Gusryan Street. Both are similar conditional use applications for converting single-family homes to duplexes in the R-7 district, introduced on the same day by the same sponsor, but they are separate real estate projects on separate parcels.",
    "drivers": [
-    "parcel match: adjacent",
-    "different lots (023 vs 037)",
-    "different owners",
-    "different addresses"
+    "parcel",
+    "owner"
    ],
    "non_drivers": [
-    "title cosine 0.881, boilerplate for R-7 conversion requests",
-    "sponsor overlap (same councilmember handles multiple properties)",
-    "same introduction date (batch processing)",
-    "committee progression"
+    "title cosine 0.881, heavy boilerplate for conditional use conversions",
+    "sponsor overlap, same councilmember sponsoring multiple bills on same day",
+    "temporal gap 0 days, batch introduction"
    ],
    "confidence": 0.98
   },
@@ -2179,7 +2182,7 @@
      "b": "23-0408"
     }
    },
-   "rationale": "These are two separate conversion projects on different properties. The parcel comparison shows \"adjacent\" - same block 0115 but different lots (037 vs 071). In Baltimore, adjacent parcels almost always mean different properties and different issues. The addresses confirm this: 1014 Edmondson Avenue versus 1046 Brantley Avenue - completely different streets. The properties also have different owners (AMG INVESTING LLC vs ANDERSON, RONALD E). While both are conditional use conversions in the R-8 district with similar variance needs, they are separate real estate projects that happen to be on the same block. The high title similarity (0.859 cosine) is pure boilerplate from the identical zoning action type, not evidence of continuation.",
+   "rationale": "These are two separate properties on the same block. The parcel comparison shows \"adjacent\" - same block 0115 but different lots (037 vs 071). The new record is for 1014 Edmondson Avenue while the earlier record is for 1046 Brantley Avenue, which are different street addresses. The properties also have different owners (AMG INVESTING LLC vs ANDERSON, RONALD E). While both ordinances seek the same type of zoning relief (converting single-family to 2 units in R-8 with variances), they are separate development projects on different parcels. The high title similarity (0.859 cosine) reflects heavy boilerplate language common to this type of conditional use application, not a continuation of the same issue.",
    "drivers": [
     "parcel match: adjacent",
     "different addresses",
@@ -2187,9 +2190,9 @@
     "different lot numbers"
    ],
    "non_drivers": [
-    "title cosine 0.859, boilerplate from identical zoning action type",
-    "sponsor overlap (John Bullock sponsors many conversions in his district)",
-    "same committee (standard routing for all conditional use cases)"
+    "title cosine 0.859, boilerplate for conditional use conversions",
+    "sponsor overlap (John Bullock sponsors both, likely represents the district)",
+    "same committee and record type (standard routing for this ordinance type)"
    ],
    "confidence": 0.98
   },
@@ -2290,18 +2293,19 @@
      "b": "23-0411"
     }
    },
-   "rationale": "This is a classic reintroduction after failure at end of term. The 2023 rezoning ordinance for 205-209 E Cold Spring Lane failed when the council term ended. In 2026, the same sponsor (Mark Conway) reintroduced the same rezoning request for the same property owned by Loyola University Maryland. Both ordinances seek to rezone from R-1-C to EC-2 district. The parcel match is exact (5053I001), and the zoning transition is identical. The new ordinance covers lots 001 and 002, while the earlier one included lot 003 as well, but this is a minor scope adjustment to the same underlying project. The file numbers differ because they are from different council terms (23-0411 vs 26-0148), which is standard practice.",
+   "rationale": "This is a classic reintroduction after failure at end of term. The earlier record 23-0411 sought to rezone 205-209 East Cold Spring Lane from R-1-C to EC-2 but failed when the council term ended in 2023. The new record 26-0148 seeks the identical rezoning (R1C to EC2) for the same property (exact parcel match on 5053I001), with the same sponsor (Mark Conway) and same owner (Loyola University Maryland). The lot coverage is slightly different (lots 001-002 versus 001-003), but this is the same parcel ID pursuing the same zoning change. The file numbers differ because this is a new council term. The 938-day gap and restart from committee stage are consistent with a fresh introduction after the prior attempt failed.",
    "drivers": [
-    "parcel exact match",
-    "zoning_transition R1C->EC2",
-    "same owner Loyola University Maryland",
-    "same sponsor Mark Conway",
-    "prior terminal status Failed - End of Term",
-    "committee_progression restart pattern"
+    "parcel match: exact",
+    "zoning_transition match: R1C->EC2",
+    "owner: same (Loyola University Maryland)",
+    "sponsor overlap: Mark Conway",
+    "committee_progression: restart after terminal status",
+    "prior_status: Failed - End of Term",
+    "same_council_term: false"
    ],
    "non_drivers": [
     "title cosine 0.943, expected boilerplate for rezoning ordinances",
-    "file numbers differ due to different council terms"
+    "file_number different (26-0148 vs 23-0411), expected across council terms"
    ],
    "confidence": 0.98
   },
@@ -2390,18 +2394,20 @@
      "b": "23-0437"
     }
    },
-   "rationale": "This is a single real-world project moving through multiple required approvals. The earlier record (23-0437) approved converting a single-family home at 1600 South Charles Street into 3 dwelling units. The new record (23-0441) adds a parking permit exception for those same dwelling units at the same address. Both records concern the exact same parcel (1013 065), have the same owner (Batie Jr, Leon), and the same sponsor (Eric T. Costello). The parking exception was introduced 14 days after the zoning conversion was introduced, which is the typical sequence: first get zoning approval for the conversion, then handle the parking requirements that conversion creates. These are two different legislative instruments addressing different aspects of one development project.",
+   "rationale": "This is a single real-world project moving through multiple required approvals. The earlier record (23-0437) approved converting a single-family home at 1600 South Charles Street into 3 dwelling units. The new record (23-0441) adds a parking permit exception for those same dwelling units at the same address. Both records concern the exact same parcel (1013 065), same owner, same sponsor, and were introduced 14 days apart. The conversion from one unit to three units triggers the need for a parking management exception, which is what the second ordinance provides. This is the classic pattern of a development requiring multiple complementary approvals from different committees.",
    "drivers": [
     "parcel match: exact",
-    "owner: same",
+    "shared_parcel_ids: 1013 065",
+    "owner match: same",
+    "sponsor overlap: complete",
     "temporal gap: 14 days",
-    "same parcel different instruments (zoning conversion + parking exception)",
-    "logical sequence: conversion approval followed by parking accommodation"
+    "different committees handling related aspects",
+    "logical dependency: zoning conversion requires parking exception"
    ],
    "non_drivers": [
-    "title cosine 0.263, different legislative purposes",
-    "file numbers 23-0437 vs 23-0441, sequential introductions expected",
-    "different committees (Economic and Community Development vs Ways and Means), appropriate for different approval types"
+    "title cosine 0.263, different subject matter but same project",
+    "file numbers differ (23-0437 vs 23-0441), expected for separate ordinances",
+    "no zoning transition in parking ordinance"
    ],
    "confidence": 0.98
   },
@@ -2499,15 +2505,18 @@
      "b": "23-0454"
     }
    },
-   "rationale": "These are two different properties on the same block of West Lanvale Street. The earlier record concerns 1022 West Lanvale (Block 0092, Lot 030) while the new record concerns 1002 West Lanvale (Block 0092, Lot 040). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means two genuinely different properties. The properties also have different owners: VRJ Business Solutions LLC owns 1002, while Kwesi Sedrick Sam owns 1022. Both are similar conditional use conversions from single-family to 2-unit dwellings in the R-8 district, sponsored by the same council member, but they are separate real estate projects on different parcels.",
+   "rationale": "These are two different properties on the same block of West Lanvale Street. The earlier record concerns 1022 West Lanvale (Block 0092, Lot 030) while the new record concerns 1002 West Lanvale (Block 0092, Lot 040). The parcel comparison shows \"adjacent\" - same block, different lots - which in Baltimore almost always means two genuinely different properties. The properties also have different owners: VRJ Business Solutions LLC owns 1002, while Kwesi Sedrick Sam owns 1022. Both are similar conditional use conversions from single-family to 2-unit dwellings in the R-8 district, sponsored by the same council member representing that area, but they are separate development projects on separate parcels.",
    "drivers": [
-    "parcel",
-    "owner"
+    "parcel match: adjacent",
+    "different lots (040 vs 030)",
+    "different owners",
+    "different addresses"
    ],
    "non_drivers": [
-    "title cosine 0.853, heavy boilerplate from identical zoning action type",
-    "sponsor overlap, same district council member",
-    "zoning_transition null for both, not applicable to conditional use"
+    "title cosine 0.853, heavy boilerplate for conditional use conversions",
+    "sponsor overlap 1.0, same district representative",
+    "same record type",
+    "similar zoning purpose"
    ],
    "confidence": 0.98
   },
@@ -2594,18 +2603,18 @@
      "b": "24-0221R"
     }
    },
-   "rationale": "These records describe the same real-world project at 3601 Elm Avenue moving through two different required approvals. The earlier record (24-0221R) is a resolution approving the exchange of a liquor license from Class B-D-7 to Class A-7. The new record (24-0550) is an ordinance granting conditional use approval for a retail goods establishment with alcoholic beverage sales. Both were introduced on the same day by the same sponsor for the exact same parcel owned by the same entity. This is a single retail alcohol project obtaining both its zoning approval and its liquor license approval through separate legislative instruments, which is the standard approval pathway for such establishments in Baltimore.",
+   "rationale": "Both records concern the same property at 3601 Elm Avenue (exact parcel match: 3537 049) and the same owner, Wells Enterprises LLC. They were introduced on the same day by the same sponsor. The earlier record is a resolution approving the exchange of a liquor license from Class B-D-7 to Class A-7. The new record is an ordinance granting conditional use approval for a retail goods establishment with alcoholic beverage sales. This is a classic continuation pattern: a single business project requiring multiple distinct approvals from the council. The liquor license exchange (resolution) and the zoning conditional use permit (ordinance) are both necessary components of the same real-world project to operate a retail establishment selling alcohol at this location. The different record types and file numbers reflect the different legal instruments required, not separate issues.",
    "drivers": [
     "parcel match: exact",
-    "owner: same",
-    "sponsor overlap: 100%",
-    "temporal: same introduction date",
-    "record_type: different instruments (ordinance vs resolution)",
+    "owner match: same",
+    "sponsor overlap: 1.0",
+    "temporal gap: 0 days",
+    "record_type: different instruments for same project",
     "committee: same"
    ],
    "non_drivers": [
-    "title cosine 0.127, different legislative purposes",
-    "file numbers different, expected for different instrument types"
+    "title cosine: 0.127, different legal instruments use different boilerplate",
+    "file_number: different because different record types"
    ],
    "confidence": 0.98
   },
@@ -2703,15 +2712,16 @@
      "b": "24-0533"
     }
    },
-   "rationale": "These are two separate conversion projects on different properties. The parcel comparison shows \"adjacent\" - same block 0197 but different lots (013 vs 020). In Baltimore, adjacent parcels almost always mean different properties and different issues. The new record concerns 1425 W Fayette Street (lot 013) while the earlier record concerns 15 North Stricker Street (lot 020). The properties also have different owners: PROPERLAND, LLC vs 15 N STRICKER ST, LLC. Both happen to be similar R-8 conditional use conversions from single-family to 4 units, which explains the high title similarity, but this is standard boilerplate language for this type of zoning action. The same sponsor (John Bullock) representing both projects is not unusual for a council member handling multiple properties in the same neighborhood.",
+   "rationale": "These are two separate conversion projects on different properties. The parcel comparison shows \"adjacent\" lots (Lot 013 vs. Lot 020) on the same block, which in Baltimore almost always means two genuinely different properties. The addresses confirm this: 1425 W Fayette Street versus 15 North Stricker Street. The properties have different owners (PROPERLAND, LLC vs. 15 N STRICKER ST, LLC). While both ordinances involve converting single-family dwellings to 4 units in the R-8 district and share the same sponsor, these are common boilerplate features in this neighborhood. Each ordinance addresses a distinct real estate project requiring its own conditional use approval and variances.",
    "drivers": [
     "parcel",
-    "owner"
+    "owner",
+    "address"
    ],
    "non_drivers": [
-    "title cosine 0.779, boilerplate for R-8 conversions",
-    "sponsor overlap, same district representative",
-    "same_council_term false, not relevant for different parcels"
+    "title cosine 0.779, heavy boilerplate for conversion projects",
+    "sponsor overlap, same council member represents the area",
+    "same zoning district and unit count, common pattern in neighborhood"
    ],
    "confidence": 0.98
   },
@@ -2809,21 +2819,18 @@
      "b": "25-0055"
     }
    },
-   "rationale": "These are two separate parking lot projects on different properties. The parcels are adjacent (same block 1155, but different lots: 101 vs. 070), which in Baltimore almost always means two genuinely different properties. The addresses confirm this: 702 Mura Street versus 701 Mura Street. Each ordinance grants conditional use approval and variances for its own distinct parcel. While both are part of the same development initiative (same owner \"Rebuild Johnston Square Phase 1\"), same sponsor, and introduced simultaneously, they are separate legislative actions for separate real estate parcels requiring separate approvals. The file numbers are sequential (25-0055 and 25-0056), indicating they were processed together as related but distinct items.",
+   "rationale": "These are two separate parking lot projects on different properties. The parcel comparison shows \"adjacent\" status: both are on Block 1155 but different lots (Lot 101 vs. Lot 70). The new record addresses 702 Mura Street while the earlier record addresses 701 Mura Street. In Baltimore's system, adjacent parcels on the same block with different lot numbers almost always represent genuinely different properties and therefore different issues. While both ordinances were introduced simultaneously by the same sponsor for the same owner (Rebuild Johnston Square Phase 1) and seek identical conditional use approvals and variances for parking lots, each ordinance governs a distinct legal parcel requiring its own legislative approval. These are companion bills for a coordinated development project, not a continuation of the same legislative matter.",
    "drivers": [
-    "parcel match: adjacent",
-    "lots_a: 101",
-    "lots_b: 070",
-    "addresses: 702 vs 701 Mura Street",
-    "file_number: sequential but distinct"
+    "parcel",
+    "file_number",
+    "owner"
    ],
    "non_drivers": [
-    "title cosine 0.944, heavy boilerplate for conditional use parking lots",
-    "same owner, indicates coordinated development not continuation",
-    "sponsor overlap 1.0, both sponsored by same councilmember",
-    "same introduction date, batch processing"
+    "title cosine 0.944, heavy boilerplate for conditional use parking lot applications",
+    "sponsor overlap, same sponsor for coordinated project",
+    "temporal gap 0 days, simultaneous introduction"
    ],
-   "confidence": 0.98
+   "confidence": 0.95
   },
   "26": {
    "candidate_record_id": "10175",
@@ -2909,17 +2916,17 @@
      "b": "25-0071"
     }
    },
-   "rationale": "Both records concern the same property at 15 East West Street (parcel 0965 046) owned by the same person. The earlier record approved converting a single-family home into 2 dwelling units. The new record adds a parking permit exception for that same property. This is a classic pattern where a zoning conversion requires a follow-on parking accommodation. The two ordinances are different legislative instruments addressing different aspects of the same real-world development project. Both were sponsored by the same council member and enacted within 70 days of each other.",
+   "rationale": "Both records concern the same property at 15 East West Street (parcel 0965 046) owned by the same person. The earlier record approved converting a single-family home into 2 dwelling units. The new record adds a parking permit exception for that same property. This is a classic pattern where a residential conversion requires multiple approvals: first the zoning/conditional use approval to allow the conversion, then a parking management exception to handle the increased parking needs. The records are 70 days apart, both sponsored by the same council member, and both enacted. This represents one real-world project (the conversion) moving through the different approvals it needs.",
    "drivers": [
-    "parcel exact match",
-    "owner same",
+    "parcel match: exact",
+    "owner: same",
     "sponsor overlap",
-    "temporal gap 70 days",
-    "related legislative instruments (zoning conversion + parking exception)"
+    "temporal gap: 70 days, ordered",
+    "complementary legislative instruments (zoning conversion + parking exception)"
    ],
    "non_drivers": [
-    "title cosine 0.211, different subjects (zoning vs parking)",
-    "file numbers different (25-0071 vs 25-0083), sequential legislation"
+    "title cosine 0.211, different legislative purposes",
+    "file numbers different (25-0071 vs 25-0083), expected for sequential approvals"
    ],
    "confidence": 0.95
   },
@@ -3010,17 +3017,17 @@
      "b": "25-0073"
     }
    },
-   "rationale": "Both records concern the exact same parcel (0811 060, 1100 Wicomico Street) and were introduced on the same day by the same sponsor. The earlier record (25-0073) grants conditional use approval for a banquet hall with parking variances. The new record (25-0074) repeals an old 2006 ordinance that had designated the property as an Industrial Planned Unit Development. This is a classic pattern where a property owner must clear old zoning designations before or alongside obtaining new approvals. The repeal of the outdated PUD designation and the new banquet hall approval are two complementary legislative instruments needed for the same real-world development project.",
+   "rationale": "Both records concern the exact same parcel (0811 060, 1100 Wicomico Street) and were introduced on the same day by the same sponsor. The earlier record (25-0073) grants conditional use approval for a banquet hall with parking variances. The new record (25-0074) repeals an old 2006 Planned Unit Development designation on the same property. This is a single real-world project: the owner is clearing away the old PUD zoning framework (Ordinance 06-222) so the new banquet hall approval can take effect. These are complementary legislative instruments required for one development to proceed. The property owner is the same (TTV WICOMICO, LLC) for both actions.",
    "drivers": [
     "parcel match: exact",
     "same owner: TTV WICOMICO, LLC",
-    "same sponsor: Phylicia Porter",
     "same introduction date",
-    "complementary zoning instruments"
+    "same sponsor",
+    "complementary zoning instruments for one project"
    ],
    "non_drivers": [
-    "title cosine 0.399, different purposes described",
-    "file numbers sequential but different (25-0073 vs 25-0074)"
+    "title cosine 0.399, different purposes (repeal vs. conditional use)",
+    "file numbers differ by 1 (25-0073 vs 25-0074), sequential companion bills"
    ],
    "confidence": 0.98
   },
@@ -3118,7 +3125,7 @@
      "b": "25-0089"
     }
    },
-   "rationale": "These are two different properties on the same block. The new record concerns 3605 Hickory Avenue (Block 3539, Lot 003), while the earlier record concerns 1029 West 37th Street (Block 3539, Lot 014). The parcel comparison shows \"adjacent\" - same block but different lots - which in Baltimore almost always means two genuinely different properties. The properties have different owners (3605 HICKORY AVE, LLC vs HMS ARC, LLC) and different zoning transitions (R-7 to IMU-1 vs R-6 to R-7). These are separate development projects that happen to be on the same city block.",
+   "rationale": "These are two different properties on the same block. The new record concerns 3605 Hickory Avenue (Block 3539, Lot 003), while the earlier record concerns 1029 West 37th Street (Block 3539, Lot 014). The parcel comparison shows \"adjacent\" status, meaning same block but different lots, which in Baltimore almost always indicates two genuinely different properties. The properties have different owners (3605 HICKORY AVE, LLC vs HMS ARC, LLC) and involve different zoning transitions (R-7 to IMU-1 vs R-6 to R-7). These are separate development projects that happen to be on the same city block.",
    "drivers": [
     "parcel",
     "owner",
@@ -3127,7 +3134,7 @@
    "non_drivers": [
     "title cosine 0.51, generic rezoning boilerplate",
     "sponsor overlap (James Torrence appears on both, but represents the district)",
-    "committee_progression"
+    "committee_progression advance, reflects different lifecycle stages not continuation"
    ],
    "confidence": 0.98
   },
@@ -3225,17 +3232,15 @@
      "b": "21-0014R"
     }
    },
-   "rationale": "These are two different liquor license exchanges for two different properties. The parcel comparison shows \"adjacent\" which means they share Pennsylvania Avenue but are on different blocks (0307 vs 3403) with different lot numbers. The addresses are 2139 Pennsylvania Avenue versus 2733 Pennsylvania Avenue - nearly 600 numbers apart. The property owners are completely different (CHOI, GOYA versus JC STAR REAL ESTATE, LLC). Each resolution authorizes a separate business at a separate location to exchange their liquor license from Class B-D-7 to Class A-7. These are separate legislative actions for separate establishments introduced on the same day by the same sponsor, which is common for batch processing of similar administrative matters.",
+   "rationale": "These are two different liquor license exchanges for two different properties. The parcel comparison shows \"adjacent\" which means they share Pennsylvania Avenue but are on different blocks (0307 vs 3403) with different lot numbers. The new record is for 2139 Pennsylvania Avenue owned by CHOI, GOYA, while the earlier record is for 2733 Pennsylvania Avenue owned by JC STAR REAL ESTATE, LLC. These are separate businesses seeking the same type of license exchange (B-D-7 to A-7) and were introduced on the same day by the same sponsor, but they are distinct real-world projects at different locations.",
    "drivers": [
     "parcel",
-    "owner",
-    "addresses_a",
-    "addresses_b"
+    "owner"
    ],
    "non_drivers": [
-    "title cosine 0.973, heavy boilerplate for liquor license exchanges",
-    "sponsor overlap 1.0, same sponsor handles multiple unrelated items",
-    "temporal gap 0 days, batch introduction"
+    "title cosine 0.973, heavy boilerplate from identical license exchange language",
+    "sponsor overlap, same sponsor introducing multiple similar resolutions on same day",
+    "temporal gap 0 days, simultaneous introduction does not indicate continuation"
    ],
    "confidence": 1.0
   },
@@ -3323,16 +3328,16 @@
      "b": "22-0096R"
     }
    },
-   "rationale": "These are two separate administrative actions four years apart. Both records concern the same recurring administrative task: applying to the State of Maryland to redesignate the city's Enterprise Zone. This is a periodic requirement that must be repeated every few years. The earlier resolution was adopted in 2022; the new one was introduced in 2026. Each represents a distinct application cycle to the state. The 1,449-day gap and different council terms confirm these are separate instances of the same type of administrative action, not a continuation of the same application process. Both prior and candidate resolutions were successfully adopted, meaning the 2022 application was completed. The 2026 resolution starts a new redesignation cycle.",
+   "rationale": "These are two separate administrative actions four years apart. Both records concern the same recurring administrative task\u2014applying to the State of Maryland to redesignate the city's Enterprise Zone\u2014but each represents a distinct application cycle. The 2022 resolution was adopted and completed its purpose. The 2026 resolution is a new application for a new redesignation period, not a continuation of the 2022 application. This is analogous to annual budget resolutions: they address the same subject matter but each is a separate legislative action. The 1,449-day gap, different council terms, and the fact that the prior resolution was already adopted all confirm these are separate instances of a periodic administrative requirement, not one ongoing issue.",
    "drivers": [
     "temporal",
     "committee_progression",
     "file_number"
    ],
    "non_drivers": [
-    "title cosine 1.0 - identical wording reflects standard administrative boilerplate for this recurring task",
-    "sponsor overlap - same sponsor expected for recurring administrative resolutions",
-    "parcel match none - Enterprise Zone redesignations are citywide policy actions without specific parcels"
+    "title cosine 1.0 - identical boilerplate for recurring administrative task",
+    "sponsor overlap - same administration sponsor expected for this type of resolution",
+    "parcel match none - enterprise zone resolutions are citywide policy actions without specific parcels"
    ],
    "confidence": 0.95
   },
@@ -3420,7 +3425,7 @@
      "b": "22-0233"
     }
    },
-   "rationale": "These are two separate annual bond authorizations for the city's Affordable Housing program, enacted four years apart. The 2022 ordinance authorized $14 million in borrowing pursuant to 2022 General Assembly resolutions, while the 2026 ordinance authorized $22 million pursuant to 2026 General Assembly resolutions. Each bond authorization is a distinct legislative act tied to a specific fiscal year and requires separate General Assembly approval. Both ordinances have been enacted and completed their legislative lifecycle. There are no parcels involved in either record. This is routine municipal finance: the city returns to the General Assembly and Council each cycle to authorize new borrowing for ongoing programs, but each authorization is a separate issue, not a continuation of the prior one.",
+   "rationale": "These are two separate annual bond authorizations for the city's Affordable Housing program, enacted four years apart. The 2022 ordinance authorized $14 million in borrowing pursuant to 2022 General Assembly resolutions, while the 2026 ordinance authorized $22 million pursuant to 2026 General Assembly resolutions. Each bond authorization is a distinct legislative act tied to a specific fiscal year and requires separate General Assembly approval. Both ordinances have been enacted and completed their legislative lifecycle. This is routine recurring municipal finance, not a continuation of the same issue\u2014each year's bond authorization is its own discrete matter, similar to how annual budget ordinances are separate issues even though they serve the same ongoing program.",
    "drivers": [
     "temporal.gap_days",
     "temporal.same_council_term",
@@ -3429,11 +3434,11 @@
     "parcel.match"
    ],
    "non_drivers": [
-    "title.cosine 0.976, expected for annual bond authorizations with identical program names",
+    "title.cosine 0.976, heavy boilerplate in bond authorizations",
     "sponsor.jaccard 1.0, administration sponsors all bond issues",
-    "record_type.match"
+    "record_type.match, both ordinances as expected"
    ],
-   "confidence": 0.95
+   "confidence": 0.98
   },
   "32": {
    "candidate_record_id": "10095",
@@ -3546,16 +3551,18 @@
      "b": "21-0114"
     }
    },
-   "rationale": "This is a classic reintroduction. The earlier ordinance 21-0114 failed at the end of the council term in 2021. The new ordinance 25-0059 was introduced in 2025 with identical legislative text about vacant building receivers and failure to sell at auction. Both are policy ordinances with no parcels attached\u2014they amend citywide building code procedures. Eight of the original sponsors returned to co-sponsor the reintroduced version. The file numbers differ because they are from different council terms (2021 vs 2025). The committee assignment changed from Rules to Housing & Economic Development, which is consistent with the same policy issue being routed differently in a new term. This is the same legislative proposal being attempted again after the first effort expired.",
+   "rationale": "This is a classic reintroduction. The earlier ordinance 21-0114 failed at the end of the council term in 2021. The new ordinance 25-0059 was introduced in 2025 with an identical title and purpose: both permit vacant building receivers to offer properties to the city if they fail to sell at public auction, with limitations on sale price. Eight sponsors from the original bill returned to sponsor the reintroduction. The file numbers differ because the council term changed. Both are policy ordinances affecting the vacant building receiver process citywide, not site-specific legislation, so the absence of parcels is expected and not evidence against continuation. The new version has now been enacted, completing what the earlier attempt could not.",
    "drivers": [
-    "committee_progression: restart with prior_terminal true",
-    "title token_jaccard 1.0 and cosine 1.0",
-    "temporal: different council terms, 1351 day gap",
-    "sponsor jaccard 0.571 with 8 overlapping members",
-    "record_type: both ordinance",
-    "parcel: none for either record (policy ordinance)"
+    "title",
+    "committee_progression",
+    "temporal",
+    "sponsor",
+    "record_type"
    ],
-   "non_drivers": [],
+   "non_drivers": [
+    "parcel match: none, but both are citywide policy ordinances with no parcels",
+    "file_number: different (21-0114 vs 25-0059), expected across council terms"
+   ],
    "confidence": 0.98
   },
   "33": {
@@ -3645,17 +3652,18 @@
      "b": "22-0194"
     }
    },
-   "rationale": "This is a periodic renewal of the Charles Village Community Benefits District, not a continuation of the 2022 renewal. Community Benefits Districts require regular reauthorization by the City Council. The earlier record was enacted in 2022 and reached terminal status. The new record, introduced in 2025 (over 3.5 years later), is a fresh renewal cycle for the same district. The identical titles reflect statutory language required for district renewals, not a continuation of the same legislative matter. Both resolutions completed their full lifecycle independently: the 2022 renewal was enacted and closed, and the 2025 renewal is a new administrative action to extend the district's authority for another term.",
+   "rationale": "This is a periodic renewal of the Charles Village Community Benefits District, not a continuation of the 2022 renewal. Community Benefits Districts require regular reauthorization by the City Council. The earlier record was enacted in 2022 and reached terminal status. The new record, introduced in 2025 (over 3.5 years later), is a fresh renewal resolution for the same district. Both resolutions use identical boilerplate language about \"renewing and continuing\" the district. The prior resolution completed its lifecycle successfully, and this is the next scheduled renewal cycle. These are separate administrative actions for the same ongoing district, not one legislative issue continuing across multiple filings.",
    "drivers": [
-    "committee_progression: prior_terminal false but prior_status Enacted",
-    "temporal: gap_days 1351, same_council_term false",
-    "record_type: both resolution",
-    "title: distinctive_shared terms are statutory boilerplate for district renewals"
+    "temporal gap of 1351 days",
+    "prior_status Enacted (terminal)",
+    "identical title language indicating periodic renewal",
+    "different council terms",
+    "different file numbers"
    ],
    "non_drivers": [
-    "title cosine 1.0 - this is required statutory language for all Charles Village CBD renewals, not evidence of continuation",
-    "parcel match none - district resolutions typically have no parcels",
-    "sponsor overlap: Odette Ramos on both - expected for district representative"
+    "title cosine 1.0 - identical boilerplate for periodic renewals",
+    "parcel match none - districts don't have single parcels",
+    "sponsor overlap (Odette Ramos) - expected for district renewals in same area"
    ],
    "confidence": 0.95
   },
@@ -3750,7 +3758,7 @@
      "b": "22-0326"
     }
    },
-   "rationale": "This is a classic reintroduction pattern. The earlier resolution (22-0326) failed at the end of the council term in 2022. The new resolution (26-0199) was introduced in 2026, a different council term, proposing the identical policy: repealing term limits for Baltimore City elected officials. The titles are identical except for minor formatting. Two of the original sponsors (Odette Ramos and Ryan Dorsey) returned to sponsor the reintroduced version. The committee progression shows a restart pattern with the prior record reaching a terminal status. This represents the same policy issue being brought back for a new attempt after the previous effort failed.",
+   "rationale": "This is a classic reintroduction pattern. The earlier resolution 22-0326 failed at the end of the council term in 2022. The new resolution 26-0199 was introduced in 2026, a different council term, with identical substantive content: both seek to repeal term limits for the same set of Baltimore City elected officials (Mayor, Comptroller, City Council President, and Council members). The titles are identical except for minor formatting. Two of the original sponsors (Odette Ramos and Ryan Dorsey) returned to sponsor the new version. The file numbers differ because these are different council terms. The committee progression shows a restart pattern consistent with reintroduction after terminal failure. This is the same policy issue being brought back for a new attempt.",
    "drivers": [
     "committee_progression",
     "title",
@@ -3759,7 +3767,7 @@
    ],
    "non_drivers": [
     "parcel match: none, but this is a citywide charter amendment with no property component",
-    "file_number: different because different council terms"
+    "file_number: different (22-0326 vs 26-0199), expected for different council terms"
    ],
    "confidence": 0.98
   },
@@ -3850,20 +3858,20 @@
      "b": "24-0508"
     }
    },
-   "rationale": "These are companion ordinances for the same street reconfiguration project. Both records address the identical geographic area (bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street, plus a portion of North Stockton Street). They were introduced on the same day by the same sponsors and failed together at the end of term. The only substantive difference is that 24-0508 opens certain streets while 24-0509 closes others within the same boundary. This is a single infrastructure project requiring two complementary legal actions\u2014one to close existing rights-of-way and another to open new ones. The sequential file numbers (24-0508 and 24-0509) confirm they are paired legislation for one real-world issue.",
+   "rationale": "These are companion ordinances for the same street reconfiguration project. Both records address the identical geographic area (streets and alleys bounded by North Avenue, Pennsylvania Avenue, Cumberland Street, and North Carey Street plus a portion of North Stockton Street). They were introduced on the same day by the same sponsors and both failed at the end of term. The only substantive difference is that 24-0508 opens the streets while 24-0509 closes them. This is a standard pattern where a street reconfiguration requires both closing certain segments and opening others as part of a single development or infrastructure project. The two ordinances are procedurally linked components of one real-world issue.",
    "drivers": [
-    "temporal gap_days: 0",
-    "sponsor overlap: identical",
-    "geographic area: identical boundaries",
-    "file numbers: sequential",
-    "committee: same",
-    "status: both failed end of term"
+    "temporal gap_days 0",
+    "sponsor overlap 100%",
+    "geographic area identical",
+    "committee identical",
+    "companion legislation pattern"
    ],
    "non_drivers": [
-    "title cosine 0.826, reflects the opening vs. closing distinction but same project",
-    "parcel match: none, street vacation/opening ordinances typically lack parcel identifiers"
+    "title cosine 0.826, expected high similarity for street opening/closing boilerplate",
+    "parcel match none, street legislation typically lacks parcel identifiers",
+    "file numbers sequential 24-0508 and 24-0509, administrative distinction only"
    ],
-   "confidence": 0.98
+   "confidence": 0.95
   },
   "36": {
    "candidate_record_id": "9843",
@@ -3957,17 +3965,17 @@
      "b": "23-0415"
     }
    },
-   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 23-0415 was withdrawn in 2023. The new ordinance 24-0568 was introduced in 2024 with identical title and purpose: both seek to increase the time period for filing complaints with the Community Relations Commission. Both records come from the same requester (Office of Civil Rights and Wage Enforcement). The file numbers differ because the records span different council terms. Neither record involves parcels\u2014this is citywide policy legislation about administrative procedures. The prior record reached a terminal status (Withdrawn), and the same policy initiative was reintroduced approximately 11 months later with broader sponsor support.",
+   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 23-0415 was withdrawn in 2023. The new ordinance 24-0568 was introduced in 2024 with identical title and purpose: both seek to increase the time period for filing complaints with the Community Relations Commission. The same city office (Office of Civil Rights and Wage Enforcement) requested both. The file numbers differ because the records span different council terms. One of the original sponsors (Phylicia Porter) returned to sponsor the reintroduced version, which gained additional co-sponsors. This is the same policy initiative being attempted again after the first attempt was withdrawn.",
    "drivers": [
-    "title",
-    "requester",
-    "committee_progression",
-    "temporal",
-    "record_type"
+    "title token_jaccard 1.0",
+    "requester match",
+    "committee_progression restart from terminal Withdrawn",
+    "temporal same issue different terms",
+    "record_type match ordinance"
    ],
    "non_drivers": [
-    "parcel match: none, but both records are parcel-free policy ordinances",
-    "sponsor Jaccard: 0.111, low overlap but expected when administration reintroduces with expanded council support"
+    "parcel match none - policy ordinance has no parcels",
+    "sponsor jaccard 0.111 - expanded sponsorship on reintroduction"
    ],
    "confidence": 0.98
   },
@@ -4066,18 +4074,18 @@
      "b": "24-0556"
     }
    },
-   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 24-0556 failed at the end of the council term in 2024. The new ordinance 25-0058 was introduced in April 2025 in the new term with identical legislative language about phasing out tip credits and requiring service fee disclosures. The titles are identical (cosine 1.0), sharing all distinctive policy language about tip credits, employer deductions, service fees, and quarterly reporting requirements. Three of the original sponsors (Phylicia Porter, Odette Ramos, and John Bullock) returned to sponsor the reintroduced version. The file numbers differ because this crosses council terms (24-xxxx to 25-xxxx). This is the same policy initiative being brought back after the previous attempt expired.",
+   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 24-0556 failed at the end of the council term in 2024. The new ordinance 25-0058 was introduced in April 2025 in the new council term with identical legislative language about phasing out tip credits and requiring service fee disclosures. The titles are word-for-word identical (cosine 1.0) with highly distinctive shared language about tip credits, service fees, and quarterly reports to the Director of Finance. Three of the original sponsors (Phylicia Porter, Odette Ramos, and John Bullock) returned to sponsor the reintroduced version. The file numbers differ because this crosses council terms (24-xxxx to 25-xxxx). This is the same policy issue being brought back after failing to pass before the term ended.",
    "drivers": [
     "committee_progression",
     "title",
-    "temporal",
     "sponsor",
-    "record_type"
+    "temporal",
+    "file_number"
    ],
    "non_drivers": [
-    "parcel match: none, this is citywide labor policy not property-specific legislation",
-    "owner match: unknown/no parcel, not applicable to this type of ordinance",
-    "file_number: different as expected when crossing council terms"
+    "parcel match: none, policy ordinance with no parcels",
+    "owner match: unknown, not applicable to citywide legislation",
+    "zoning_transition: null, not a zoning matter"
    ],
    "confidence": 0.98
   },
@@ -4175,22 +4183,17 @@
      "b": "24-0576"
     }
    },
-   "rationale": "This is a classic reintroduction after end-of-term failure. The earlier ordinance 24-0576 failed at the end of the 2024 council term. The new ordinance 25-0003 was introduced in January 2025 at the start of the new term with identical legislative language establishing Conservation Districts. The titles are identical (token jaccard 1.0, cosine 1.0) and share all distinctive terms. Both are city-wide policy ordinances with no parcels, so the absence of parcel data is expected and not evidence against continuation. John Bullock, the original sole sponsor, remains a sponsor on the reintroduced version alongside ten additional co-sponsors. The file numbers differ because they reflect different council terms (24- vs 25-). The committee assignment changed from Rules to Housing & Economic Development, but this is a procedural restart, not a substantive change in the underlying policy issue. This is the same conservation district legislation being given a second attempt.",
+   "rationale": "This is a classic reintroduction pattern. The earlier ordinance 24-0576 failed at the end of the 2024 council term. The new ordinance 25-0003 was introduced 140 days later in the new 2025 term with identical legislative language establishing Conservation Districts for historic preservation. The titles are identical (token jaccard 1.0, cosine 1.0) and share all distinctive terms. Both are city-wide policy ordinances with no parcels, so the absence of parcel data is expected and not evidence against continuation. John Bullock, the sole sponsor of the earlier bill, remains a sponsor on the new version alongside ten additional co-sponsors. The file numbers differ because they are from different council terms (24-xxxx vs 25-xxxx). The committee assignment changed from Rules to Housing & Economic Development, but the restart pattern is consistent with a failed bill being reintroduced. This is the same policy initiative being attempted again after the previous attempt failed.",
    "drivers": [
     "title token_jaccard 1.0",
     "title cosine 1.0",
-    "committee_progression shape: restart",
-    "prior_terminal: Failed - End of Term",
-    "temporal same_council_term: false",
-    "sponsor overlap: john bullock",
-    "record_type match: ordinance",
-    "parcel match: none (both empty, city-wide policy)"
+    "committee_progression restart pattern",
+    "prior_terminal status Failed - End of Term",
+    "temporal gap 140 days across council terms",
+    "sponsor overlap John Bullock",
+    "no parcels expected for city-wide policy"
    ],
-   "non_drivers": [
-    "sponsor jaccard 0.091 - low score reflects expanded co-sponsorship, not a different issue",
-    "temporal gap_days 140 - expected for term transition",
-    "file_number different - expected across terms"
-   ],
+   "non_drivers": [],
    "confidence": 0.98
   },
   "39": {
@@ -4286,20 +4289,17 @@
      "b": "22-0111R"
     }
    },
-   "rationale": "This is a reintroduction of the same informational hearing resolution. The earlier record 22-0111R was withdrawn in 2022. The new record 23-0195R was introduced in October 2023, approximately 16 months later, in a different council term. The titles are identical (token jaccard and cosine both 1.0), calling for the exact same informational hearing with the same list of city officials to address youth violence. Robert Stokes Sr., who was a co-sponsor on the earlier resolution, is now the sole sponsor reintroducing it. Both records are resolutions with no parcels involved. The committee progression shows a restart pattern with both records ending in withdrawn status. This is the classic pattern of a council member reintroducing a withdrawn resolution in a new term to pursue the same policy objective.",
+   "rationale": "This is a reintroduction of the same informational hearing resolution. The earlier resolution 22-0111R was withdrawn in 2022. The new resolution 23-0195R was introduced in October 2023, approximately 16 months later, with identical title text calling for the same informational hearing on youth violence with the same list of city officials. Robert Stokes Sr., who was a co-sponsor on the earlier resolution, is now the sole sponsor of the reintroduced version. Both resolutions address the same policy issue\u2014youth violence in Baltimore\u2014and seek the same action: an informational hearing with specific city representatives. The file numbers differ because the resolutions were introduced in different council terms (2022 vs 2023). This follows the classic reintroduction pattern where a withdrawn resolution is brought back in a new term with a new file number.",
    "drivers": [
     "title token_jaccard 1.0",
-    "title cosine 1.0",
-    "committee_progression restart pattern",
-    "prior_terminal Withdrawn",
-    "same_council_term false",
-    "record_type match resolution",
-    "sponsor overlap Robert Stokes Sr."
+    "committee_progression restart with prior terminal Withdrawn",
+    "temporal same issue different council terms",
+    "sponsor overlap Robert Stokes Sr.",
+    "record_type match resolution"
    ],
    "non_drivers": [
-    "parcel match none - informational hearings have no parcels",
-    "owner match unknown - not applicable to policy resolutions",
-    "zoning_transition - not applicable"
+    "parcel match none - informational hearing resolutions do not involve parcels",
+    "owner match unknown - not applicable to policy resolutions"
    ],
    "confidence": 0.98
   },
@@ -4394,15 +4394,17 @@
      "b": "22-0126R"
     }
    },
-   "rationale": "This is a classic reintroduction after terminal status. The earlier resolution (22-0126R) was withdrawn in 2022. Two years later, the same two original sponsors plus four additional council members reintroduced essentially the identical resolution (24-0226R) requesting an informational hearing on the East Baltimore Development Incorporated audit. Both resolutions request EBDI representatives brief the Council on the 88-acre East Baltimore revitalization and the forensic audit, with identical language about auditor selection, community involvement, and financial outlay clarification. The file numbers differ because they span different council terms. The new record failed at end of term in 2024. This is the same policy issue being pursued again after the first attempt was withdrawn.",
+   "rationale": "This is a classic reintroduction after the earlier resolution was withdrawn. Both resolutions request an informational hearing about the same East Baltimore Development Incorporated (EBDI) forensic audit and 88-acre revitalization project. The titles are nearly identical, describing the same briefing topics: auditor selection, community involvement, and financial outlay clarification. The earlier resolution was withdrawn in 2022, and this new resolution was introduced in 2024 in a different council term, which explains the different file numbers (22-0126R vs 24-0226R). Two of the original sponsors (Glover and Stokes) returned to sponsor the new version along with four additional council members. Both resolutions go to the same committee (Ways and Means). The committee progression shows a restart pattern consistent with reintroduction after a terminal status. This is the same policy issue being pursued again.",
    "drivers": [
     "committee_progression",
-    "temporal",
     "title",
-    "sponsor"
+    "temporal",
+    "sponsor",
+    "record_type"
    ],
    "non_drivers": [
-    "parcel match: none, but both records have no parcels because these are informational hearing resolutions about an organization rather than property-specific legislation"
+    "parcel match: none, but both records have no parcels because these are informational hearing resolutions about an organization rather than property-specific legislation",
+    "file_number: different because different council terms"
    ],
    "confidence": 0.98
   },
@@ -4513,7 +4515,7 @@
      "b": "22-0140R"
     }
    },
-   "rationale": "This is a reintroduction of the same informational hearing resolution after the earlier one failed at the end of the council term. The titles are identical (token jaccard 1.0, cosine 1.0), describing the exact same informational hearing on DHCD permit reforms with the same agencies invited. The earlier resolution failed at end of term in 2022, and this new resolution was introduced in January 2025 at the start of a new council term with a new file number (25-0003R vs 22-0140R), which is the standard pattern for reintroductions across terms. Six of the original sponsors remain on the new resolution. Both are resolutions for informational hearings on the same policy topic. There are no parcels involved because this is a policy hearing, not a property-specific matter.",
+   "rationale": "This is a reintroduction of the same informational hearing request after the earlier resolution failed at the end of the council term. The titles are identical, both requesting the same departments (Housing and Community Development, City Administrator, Fire Department, Fire Marshal) to provide information on the same topic: reforms to DHCD's permit process. The earlier resolution failed at end of term in 2022, and this new resolution was introduced in 2025 in a different council term with a new file number, which is the expected pattern for reintroductions. Six of the original sponsors remain on the new resolution. While there are no parcels involved (these are policy hearings, not property-specific matters), the substantive issue being addressed is identical.",
    "drivers": [
     "title",
     "committee_progression",
@@ -4522,8 +4524,8 @@
     "sponsor"
    ],
    "non_drivers": [
-    "parcel match: none, but both records have no parcels because these are policy hearings",
-    "file_number: different due to new council term"
+    "parcel match: none, but both records are policy resolutions with no parcels",
+    "file_number: different, expected for cross-term reintroduction"
    ],
    "confidence": 0.98
   },
@@ -4629,7 +4631,7 @@
      "b": "22-0139R"
     }
    },
-   "rationale": "This is a reintroduction of the same investigative hearing on human trafficking. The earlier resolution (22-0139R) failed at the end of the council term in 2022. Three years later, the new resolution (25-0036R) calls for essentially the same hearing with the same agencies and organizations. Both resolutions invite representatives from the State's Attorney, Baltimore Police, Fire Department, school police, Sheriff's Office, FBI, Homeland Security, State Police, US Attorney, Social Services, Juvenile Services, The Hope Center, and other human trafficking collaborators. The nearly identical titles (97% cosine similarity) reflect genuinely identical subject matter here, not boilerplate. Three sponsors carried over (Cohen, Ramos, Porter). The committee progression shows a restart pattern consistent with reintroduction after terminal failure. There are no parcels involved because these are policy hearings, not property matters.",
+   "rationale": "This is a reintroduction of the same investigative hearing on human trafficking. The earlier resolution (22-0139R) failed at the end of the council term in 2022. Three years later, in 2025, the council is calling for essentially the same hearing with the same agencies and organizations. Both resolutions invite identical representatives (State's Attorney, BPD, Fire Department, School Police, Sheriff, FBI, Homeland Security, State Police, US Attorney, Social Services, Juvenile Services, The Hope Center, BlueDOT, and human trafficking collaborative members) to discuss investigations and prosecutions. The titles are nearly identical (97% cosine similarity) with substantive shared terms like \"trafficking,\" \"investigations,\" \"prosecutions,\" and the specific agency names. Three sponsors carried over (Cohen, Ramos, Porter). The committee progression shows a restart pattern consistent with reintroduction after terminal failure. This is the classic pattern: a resolution fails at term end, then the same policy initiative is reintroduced in a new term with a new file number.",
    "drivers": [
     "committee_progression",
     "title",
@@ -4638,10 +4640,9 @@
     "sponsor"
    ],
    "non_drivers": [
-    "parcel match: none, but both records are policy resolutions with no property component",
-    "file_number: different because different council terms"
+    "parcel match: none, but both resolutions have no parcels because they are investigative hearings on a policy topic, not property-specific legislation"
    ],
-   "confidence": 0.95
+   "confidence": 0.98
   },
   "43": {
    "candidate_record_id": "9448",
@@ -4739,18 +4740,19 @@
      "b": "21-0058"
     }
    },
-   "rationale": "These are two separate citywide policy ordinances, not a continuation. The earlier record (21-0058) was enacted in 2021, establishing a general installment plan for real property taxes. The new record (23-0373) addresses a different scope: it specifically targets \"taxes in arrears\" on \"qualifying properties\" rather than the broader \"certain properties\" language in the earlier bill. This is a policy amendment or expansion, not a reintroduction. The earlier bill succeeded and became law, so there is no failed-then-reintroduced pattern. Both records have no parcels because they are citywide tax policy changes, not property-specific matters. The committee progression shows regression from enacted status to failed status, which is consistent with a new legislative attempt that did not succeed. The 756-day gap and different council terms support these being distinct legislative efforts.",
+   "rationale": "These are two separate citywide policy ordinances, not a continuation. The earlier record (21-0058) was enacted in 2021, establishing a general installment plan program for real property taxes. The new record (23-0373) is a distinct 2023 ordinance specifically focused on taxes in arrears (\"Tax in Arrears\" appears in the title), introduced 756 days later. The committee progression shows regression: the prior ordinance was enacted (terminal success), while the new one failed at end of term without even a committee assignment. This is not a reintroduction pattern because the earlier bill succeeded and became law. There are no parcels involved in either record\u2014these are citywide tax policy measures. The high title similarity (0.978 cosine) reflects heavy boilerplate language common to tax installment legislation, not continuation of the same issue. The new ordinance appears to be an amendment or expansion addressing a specific subset (arrears) of the already-enacted installment plan framework.",
    "drivers": [
     "committee_progression",
-    "title",
     "temporal",
-    "parcel"
+    "title content (arrears distinction)",
+    "no parcels"
    ],
    "non_drivers": [
-    "title cosine 0.978, heavy boilerplate in tax policy language",
-    "sponsor overlap of 2 people, weak signal for citywide policy"
+    "title cosine 0.978, boilerplate for tax policy",
+    "sponsor overlap (Conway and Ramos), common for related policy areas",
+    "record_type match, both ordinances"
    ],
-   "confidence": 0.85
+   "confidence": 0.92
   },
   "44": {
    "candidate_record_id": "9712",
@@ -4836,18 +4838,19 @@
      "b": "23-0452"
     }
    },
-   "rationale": "These are two separate budget appropriations for the same city department in different fiscal periods. The earlier record (23-0452) was introduced in November 2023 and enacted. The new record (24-0488) was introduced in February 2024, 84 days later, and also enacted. Both appropriate exactly $581,334 to Arts and Culture Service 824 for general operations. This is not a reintroduction of failed legislation\u2014the prior record was successfully enacted. These are distinct appropriation actions, likely representing separate budget cycles or fiscal year allocations. The identical dollar amount and language reflect standard budgetary practice for recurring departmental funding, not continuation of the same legislative issue. No parcels are involved in either record.",
+   "rationale": "These are two separate budget appropriations for the same city department in different fiscal periods. The earlier record (23-0452) was enacted in November 2023, providing $581,334 to Arts and Culture. The new record (24-0488) was introduced 84 days later in February 2024, requesting the identical dollar amount for the same service. Both records reached enacted status independently. This is not a reintroduction pattern\u2014the prior record was already enacted, not failed or withdrawn. These are distinct appropriation actions, likely representing separate budget cycles or fiscal year allocations. The identical language reflects standard budget appropriation boilerplate for the same department and service line, not a continuation of the same legislative issue.",
    "drivers": [
-    "committee_progression",
-    "temporal",
-    "record_type"
+    "committee_progression: prior_terminal false, prior_status Enacted",
+    "temporal: gap_days 84, same_council_term false",
+    "record_type: ordinance (budget appropriation)",
+    "parcel: match none"
    ],
    "non_drivers": [
-    "title cosine 1.0 - identical boilerplate budget language",
-    "parcel match none - no parcels involved in budget appropriations",
-    "sponsor overlap 1.0 - administration sponsors all budget bills"
+    "title cosine 1.0 - identical budget boilerplate for same department",
+    "sponsor jaccard 1.0 - administration sponsors all budget appropriations",
+    "requester match - same department requests its own funding"
    ],
-   "confidence": 0.95
+   "confidence": 0.92
   },
   "45": {
    "candidate_record_id": "9258",
@@ -4962,16 +4965,16 @@
      "b": "21-0168"
     }
    },
-   "rationale": "These are two separate annual extensions of the same citywide tax credit program. The earlier record (21-0168) was enacted in 2021 to extend the application deadline for historic improvement tax credits. The new record (22-0299) was introduced a year later in 2022 to extend the same deadline again. Both ordinances have identical titles because they perform the same administrative function each year. Neither record references specific parcels\u2014these are general policy ordinances affecting all eligible historic properties citywide. The prior record reached terminal status (Enacted) and closed. This is not a reintroduction of the same legislation; it is a new ordinance performing the same recurring administrative task in a new council term.",
+   "rationale": "These are two separate annual extensions of the same citywide tax credit program. The earlier record (21-0168) was enacted in 2021 to extend the application deadline for historic improvement tax credits. The new record (22-0299) was introduced a year later in 2022 to extend that same deadline again. Both records have no parcels because they are general policy ordinances affecting the entire city, not site-specific legislation. The prior record reached terminal status (Enacted) and closed the 2021 issue. The 2022 ordinance is a new legislative action to continue the same program policy for another period. This is routine legislative maintenance of a standing program, not a continuation of the same legislative issue. The different file numbers (21-0168 vs 22-0299) reflect different council terms and separate legislative actions.",
    "drivers": [
     "committee_progression",
     "temporal",
-    "parcel",
-    "record_type"
+    "file_number",
+    "parcel"
    ],
    "non_drivers": [
-    "title cosine 1.0 and token jaccard 1.0 - identical titles reflect identical administrative function, not continuation",
-    "sponsor jaccard 0.833 - high overlap expected for broad policy measures"
+    "title cosine 1.0 - identical titles are expected for annual extensions of the same program",
+    "sponsor jaccard 0.833 - high overlap is typical for popular citywide policy"
    ],
    "confidence": 0.95
   },
@@ -5070,16 +5073,16 @@
      "b": "22-0299"
     }
    },
-   "rationale": "These are two separate enactments of the same city-wide policy extension. The earlier record 22-0299 was fully enacted in 2022, completing its legislative lifecycle. The new record 24-0545, introduced 581 days later in a different council term, is a fresh ordinance extending the same historic improvement tax credit application deadline again. Both records affect no specific parcels\u2014they are general policy measures that apply city-wide. This is not a reintroduction of failed legislation; the prior ordinance succeeded and this is a subsequent policy renewal. The identical titles reflect the recurring administrative need to extend the same program deadline, not a continuation of the same legislative effort.",
+   "rationale": "These are two separate enactments of the same citywide policy extension. The earlier record 22-0299 was fully enacted in 2022, completing its legislative lifecycle. The new record 24-0545, introduced 581 days later in a different council term, is a fresh ordinance extending the same historic tax credit application deadline again. Both records have no parcels because they are citywide policy measures, not property-specific legislation. This is not a reintroduction of failed legislation\u2014the prior ordinance succeeded and was enacted. Instead, this is a new legislative action to extend a deadline that presumably needed extending again after the 2022 extension expired or was set to expire. The identical titles reflect that both ordinances serve the same administrative function, but they are distinct legislative acts separated by completion of the first.",
    "drivers": [
-    "committee_progression: prior_terminal false, prior_status Enacted",
-    "temporal: same_council_term false, gap_days 581",
-    "parcel: match none, no parcels in either record",
-    "record nature: city-wide policy extension"
+    "committee_progression - prior status Enacted, not terminal failure",
+    "temporal - 581 day gap across council terms",
+    "parcel - none in either record, citywide policy",
+    "file_number - different, reflecting separate legislative actions"
    ],
    "non_drivers": [
-    "title cosine 1.0 - reflects identical boilerplate for recurring policy extensions",
-    "sponsor jaccard 0.2 - partial overlap is common for general policy measures"
+    "title cosine 1.0 - identical because both extend the same program, but this is boilerplate for administrative extensions",
+    "sponsor overlap - Costello and Bullock on both, but citywide policy often has recurring sponsors"
    ],
    "confidence": 0.95
   },
@@ -5180,17 +5183,16 @@
      "b": "21-0168"
     }
    },
-   "rationale": "These are two separate ordinances that extend the same citywide historic improvement tax credit program at different points in time. The 2021 ordinance extended the application deadline for the program and was enacted. Nearly three years later, the 2024 ordinance extends the deadline again. Both records have zero parcels because they are general legislative policy changes affecting the entire city's historic tax credit program, not site-specific zoning or development approvals. This is not a reintroduction pattern\u2014the earlier record was enacted successfully, not withdrawn or failed. Instead, this is routine legislative maintenance where the council periodically renews or extends a citywide program. Each extension is a distinct legislative action addressing the program at a different moment in time.",
+   "rationale": "These are two separate enactments of the same type of citywide policy extension. Both records have zero parcels, meaning neither addresses a specific property. The earlier record (21-0168) was fully enacted in 2021. Nearly three years later, the new record (24-0545) extends the same historic improvement tax credit application deadline again. This is not a continuation of the 2021 legislation working through the approval process - that process already concluded successfully. Instead, this is a new legislative action to extend the same program deadline in 2024. The identical titles reflect that both ordinances serve the same administrative function (extending application deadlines for the historic tax credit program), but they are distinct legislative acts separated by different council terms. This pattern is typical for periodic extensions of program deadlines or temporary provisions.",
    "drivers": [
-    "parcel match: none (both empty, citywide policy)",
-    "committee_progression: prior_terminal false, prior enacted",
-    "temporal: 966 day gap, different council terms",
-    "record context: general tax credit program extensions"
+    "parcel match: none",
+    "committee_progression: prior_terminal false but prior_status Enacted",
+    "temporal: gap_days 966, same_council_term false",
+    "record addresses citywide policy not specific property"
    ],
    "non_drivers": [
-    "title cosine 1.0 - identical boilerplate for same program type",
-    "sponsor overlap - common for citywide policy",
-    "file_number different - expected for separate ordinances"
+    "title cosine 1.0 - reflects identical administrative function, not continuation",
+    "sponsor overlap - Costello and Bullock on both, but 2021 had 12 sponsors vs 2 in 2024"
    ],
    "confidence": 0.95
   },
@@ -5278,18 +5280,18 @@
      "b": "21-0056"
     }
    },
-   "rationale": "Both records amend the Canton Industrial Area Urban Renewal Plan to remove a property from the boundary, but they are two separate amendments removing different properties. The file numbers are different (21-0120 vs 21-0056), introduced 147 days apart in the same council term. Both were enacted, meaning the earlier ordinance completed its legislative journey successfully. The new record is not a reintroduction or continuation of the prior one; it is a second, independent boundary amendment to the same urban renewal plan. The identical sponsor, committee, and highly similar boilerplate language reflect the fact that both are administrative amendments to the same underlying plan, not that they address the same property or issue.",
+   "rationale": "Both records amend the Canton Industrial Area Urban Renewal Plan to remove a property from the boundary, but they are two separate amendments removing different properties. The file numbers are different (21-0120 vs 21-0056), indicating distinct legislative actions. The earlier record was already enacted in March 2021, completing its legislative journey. The new record, introduced five months later in August 2021, is a second, separate boundary amendment to the same urban renewal plan. No parcels are identified in either record, so we cannot verify whether the same property is involved, but the temporal pattern\u2014one enacted ordinance followed by a new introduction months later\u2014indicates two distinct amendments rather than a continuation of the same legislative matter.",
    "drivers": [
     "file_number",
     "temporal",
-    "committee_progression",
-    "parcel"
+    "committee_progression"
    ],
    "non_drivers": [
-    "title cosine 0.972, boilerplate for urban renewal amendments",
-    "sponsor overlap 1.0, same councilmember represents Canton"
+    "title cosine 0.972, nearly identical boilerplate for urban renewal amendments",
+    "sponsor overlap 1.0, same councilmember sponsors both amendments to plan in their district",
+    "parcel match none, no parcels listed in either record"
    ],
-   "confidence": 0.92
+   "confidence": 0.85
   },
   "49": {
    "candidate_record_id": "9983",
@@ -5386,17 +5388,18 @@
      "b": "24-0599"
     }
    },
-   "rationale": "This is a classic reintroduction after failure at end of term. The earlier ordinance 24-0599 failed when the council term ended in 2024. The new ordinance 25-0015 was introduced in January 2025 with virtually identical text\u2014both create a stand-alone \"crematorium\" use in the Zoning Code with the same amendments and definitions. The title match is perfect (1.0 cosine, sharing all distinctive tokens). Four of five sponsors carried over between the two records (Jaccard 0.667). The 119-day gap and different file numbers are explained by the council term change. This is the same legislative policy initiative being reintroduced in the new term after the previous attempt failed.",
+   "rationale": "This is a classic reintroduction after end-of-term failure. The earlier ordinance 24-0599 failed at the end of the council term in September 2024. The new ordinance 25-0015 was introduced in January 2025, 119 days later, in the new council term. Both records propose identical citywide zoning code amendments to create a stand-alone crematorium use category. The titles are identical (cosine 1.0), but this is meaningful here because both describe the same legislative text creating the same zoning code change, not site-specific boilerplate. Four of five sponsors carried over between attempts (Jaccard 0.667). There are no parcels because this is a text amendment to the zoning code itself, not a site-specific conditional use application. The different file numbers (24-0599 vs 25-0015) reflect the new council term. This is the same policy initiative being reintroduced after failing to pass before the term ended.",
    "drivers": [
     "committee_progression",
     "title",
-    "sponsor",
     "temporal",
+    "sponsor",
     "record_type"
    ],
    "non_drivers": [
-    "parcel comparison: none (both records have no parcels; this is citywide zoning policy, not site-specific)",
-    "zoning_transition: null (not applicable to legislative text amendments)"
+    "parcel match: none, but both records have no parcels because this is a citywide text amendment",
+    "zoning_transition: null, not applicable to text amendments",
+    "file_number: different, expected for cross-term reintroduction"
    ],
    "confidence": 0.98
   },
@@ -5484,18 +5487,18 @@
      "b": "24-0544"
     }
    },
-   "rationale": "The earlier record (24-0544) was enacted in 2024, meaning it successfully became law and established the Harford Road Overlay District. The new record (25-0093) appears to be a separate legislative action introduced over a year later in 2025. When an ordinance has been enacted and achieved its purpose, a subsequent filing with identical language does not continue that issue\u2014it represents a new legislative action, possibly an amendment, revision, or re-establishment of the overlay district. The committee regression from Ways and Means back to Land Use & Transportation, combined with the enacted terminal status of the prior record, indicates this is a fresh legislative initiative rather than the continuation of the 2024 effort. The identical titles suggest related subject matter, but an enacted law followed by new legislation on the same topic constitutes a new issue, not a continuation of the original enactment process.",
+   "rationale": "The earlier record 24-0544 was enacted in 2024, meaning the Harford Road Overlay District was successfully established and became law. The new record 25-0093, introduced 434 days later in a different council term, uses identical language to establish the same overlay district. However, because the prior ordinance was enacted (not failed or withdrawn), this cannot be a reintroduction of the same legislative effort. The committee regression from Ways and Means back to Land Use & Transportation, combined with the enacted status of the earlier record, indicates this is either an amendment, replacement, or separate legislative action concerning the already-established district. Without evidence of the same parcel or a clear continuation pattern following a terminal failure, and given the prior success, these represent distinct legislative episodes even though they concern the same geographic overlay district.",
    "drivers": [
     "committee_progression",
     "temporal",
     "prior_status"
    ],
    "non_drivers": [
-    "title cosine 1.0 - identical boilerplate overlay district language",
-    "sponsor overlap 1.0 - same sponsor on related district legislation",
-    "parcel match none - overlay districts affect multiple properties"
+    "title cosine 1.0 - identical boilerplate for same overlay district",
+    "sponsor overlap 1.0 - same sponsor expected for related district legislation",
+    "parcel match none - overlay districts typically have no specific parcels"
    ],
-   "confidence": 0.92
+   "confidence": 0.75
   }
  }
 }

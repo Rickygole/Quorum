@@ -50,7 +50,7 @@ generated from the real modules by `build_bundle.py` so the system prompt stays 
 sourced. The corpus and the 237,092 parcel gazetteer are not needed at runtime, because
 the endpoint only ever accepts a pair id from that set.
 
-## The public endpoint, and why it is not live
+## The public endpoint
 
 A static page cannot sign a SigV4 request, so a judge clicking a button needs a signer in
 front of the runtime. `invoke_proxy.py` and `deploy_proxy.sh` build that: a Lambda that

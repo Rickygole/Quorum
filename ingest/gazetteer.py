@@ -30,11 +30,14 @@ _DIR = {"n": "North", "s": "South", "e": "East", "w": "West",
 
 _SUFFIX_RE = "|".join(sorted(_SUFFIX, key=len, reverse=True))
 _ADDR_RE = re.compile(
+    r"(?<![A-Za-z])(?<!\ba\s)(?<!\ban\s)"
     r"\b(?P<num>\d{1,5})(?:\s*-\s*(?P<num2>\d{1,5}))?\s+"
     r"(?P<rest>(?:[A-Za-z'\.]+\s+){1,4}?)"
     r"(?P<suf>" + _SUFFIX_RE + r")\b\.?",
     re.IGNORECASE,
 )
+
+_DIMENSION_WORDS = {"foot", "feet", "ft", "inch", "inches", "square", "wide", "width"}
 
 _BLOCK_RE = re.compile(
     r"Block\s+(?P<block>[0-9]{3,5}[A-Z]?)\s*,?\s*Lots?\s+(?P<lots>[0-9A-Z]{1,4}(?:\s*(?:,|and|&)\s*[0-9A-Z]{1,4})*)",
@@ -47,6 +50,8 @@ def normalize_address(raw: str) -> str | None:
         return None
     words = [w for w in m.group("rest").replace(".", " ").split() if w]
     if not words:
+        return None
+    if any(w.lower() in _DIMENSION_WORDS for w in words):
         return None
     out = []
     if words[0].lower() in _DIR:

@@ -10,7 +10,13 @@ It never submits anything on a person's behalf.
 
 Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [Strands Agents SDK](https://strandsagents.com), on Amazon Bedrock.
 
-**Live demo: https://quorum-peach.vercel.app** (mirrored at https://rickygole.github.io/Quorum/)
+**Live demo: https://quorum-peach.vercel.app**
+
+**Run the agent yourself:** the agent run screen has a button that invokes the deployed
+AgentCore runtime against Amazon Bedrock on any of the 50 labeled pairs, and returns the
+runtime identifier, the AgentCore session id, the model id and the measured latency. The
+session id is different on every call, which is how you can tell it is not a replay. The
+endpoint is `https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com`. (mirrored at https://rickygole.github.io/Quorum/)
 
 The published site runs entirely on a cached, timestamped corpus. No demo fetches civic
 data at runtime, and the fetch timestamp is shown on screen. The page itself loads a web
@@ -168,11 +174,11 @@ Written before a judge finds them.
 - **AgentCore Memory is not wired up.** The Continuity Agent is deployed to Bedrock
   AgentCore Runtime, but issue timelines are rebuilt from the cached corpus on every run and
   do not persist between runs. See [ARCHITECTURE.md](ARCHITECTURE.md).
-- **The deployed runtime is not reachable from a browser yet.** It is verified live by
-  direct invocation. The Lambda meant to front it with a signed call is deployed and working,
-  but its public function URL is blocked at the AWS account level, so the site presents
-  cached decisions, labeled as cached, until an HTTP API route is in place. See
-  [deploy/README.md](deploy/README.md).
+- **The live endpoint is capped and is not a general service.** Anyone can run the agent from
+  the site, but only on one of the 50 labeled pairs, at 0.1 requests per second and 300 live
+  invocations a day, after which it returns the cached decision and says so. It exists to let a
+  judge verify the system runs, not to serve traffic.
+
 
 ## Setup
 

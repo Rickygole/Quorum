@@ -154,9 +154,9 @@ Stated here rather than left for a judge to find.
 - **AgentCore Memory is not wired up.** Issue timelines are rebuilt from the cached corpus
   on every run and do not persist between runs. The deployment config records
   `mode: NO_MEMORY`.
-- **The public AgentCore invocation is not reachable from the browser yet.** The Lambda that
-  fronts it is deployed and verified by direct invocation; its function URL is blocked at
-  the AWS account level, and the site presents cached decisions, labeled as cached, until an
-  HTTP API route is in place.
+- **The live endpoint is deliberately small.** Anyone can invoke the deployed agent from the
+  site, but only on one of the 50 labeled pairs, at 0.1 requests a second and 300 live calls a
+  day, after which it returns the cached decision and says so. It is there so a judge can check
+  that the system runs, not to serve traffic.
 - **Quorum never submits.** It drafts a comment and stops. That is a design decision, not a
   missing feature.
