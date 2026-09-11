@@ -9,39 +9,25 @@ from functools import lru_cache
 
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 
-from agents.continuity import ContinuityAgent
-from features.continuity_features import compute
-from ingest.gazetteer import Gazetteer
-from ingest.normalize import load_corpus
-
 app = BedrockAgentCoreApp()
 
-LABELS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "eval", "labeled_set.jsonl")
+HERE = os.path.dirname(os.path.abspath(__file__))
+BUNDLE = os.path.join(HERE, "pairs_bundle.json")
 
-
-@lru_cache(maxsize=1)
-def _corpus():
-    gaz = Gazetteer.load()
-    return {r.file_number: r for r in load_corpus(gaz)}
-
-
-@lru_cache(maxsize=1)
-def _pairs():
-    out = {}
-    with open(LABELS) as fh:
-        for line in fh:
-            if line.strip():
-                row = json.loads(line)
-                out[int(row["pair_id"])] = row
-    return out
-
-
+MODEL_ID = os.environ.get("QUORUM_MODEL_ID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0")
+REGION = os.environ.get("AWS_REGION", "us-east-1")
 MAX_PER_MINUTE = int(os.environ.get("QUORUM_MAX_PER_MINUTE", "12"))
 MAX_PER_DAY = int(os.environ.get("QUORUM_MAX_PER_DAY", "400"))
 
 _calls = deque()
 _day = {"start": time.time(), "count": 0}
 _lock = threading.Lock()
+
+
+@lru_cache(maxsize=1)
+def _bundle():
+    with open(BUNDLE) as fh:
+        return json.load(fh)
 
 
 def _take_slot():
@@ -61,86 +47,102 @@ def _take_slot():
         return None
 
 
-def _agent():
-    return ContinuityAgent()
+def _decide(prompt, system_prompt):
+    from pydantic import BaseModel, Field
+    from strands import Agent
+    from strands.models import BedrockModel
+
+    class ContinuityOutput(BaseModel):
+        decision: str = Field(description="continuation, new_issue, or uncertain")
+        rationale: str
+        drivers: list[str] = Field(default_factory=list)
+        non_drivers: list[str] = Field(default_factory=list)
+        confidence: float = 0.0
+
+    agent = Agent(
+        model=BedrockModel(model_id=MODEL_ID, region_name=REGION, temperature=0.2),
+        system_prompt=system_prompt,
+        structured_output_model=ContinuityOutput,
+        name="continuity",
+        callback_handler=None,
+    )
+    result = agent(prompt)
+    out = result.structured_output
+    usage = getattr(getattr(result, "metrics", None), "accumulated_usage", None) or {}
+    get = (lambda k: usage.get(k)) if isinstance(usage, dict) else (lambda k: getattr(usage, k, None))
+    return out, {
+        "input_tokens": get("inputTokens") or get("input_tokens"),
+        "output_tokens": get("outputTokens") or get("output_tokens"),
+    }
 
 
-@lru_cache(maxsize=1)
-def _cached_decisions():
-    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "eval", "agent_decisions.json")
-    try:
-        with open(path) as fh:
-            return json.load(fh)["decisions"]
-    except (OSError, KeyError, ValueError):
-        return {}
-
-
-def _order(a, b):
-    return (a, b) if (a.introduced_date <= b.introduced_date) else (b, a)
+def _cached_reply(entry, pair_id, reason):
+    cached = entry.get("cached")
+    if not cached:
+        return {"error": reason, "live": False, "pair_id": pair_id}
+    return {
+        "pair_id": pair_id, "live": False, "cached": True, "reason": reason,
+        "decision": cached["decision"], "confidence": cached["confidence"],
+        "rationale": cached["rationale"], "drivers": cached["drivers"],
+        "non_drivers": cached["non_drivers"],
+        "older": entry["older"], "newer": entry["newer"],
+        "features": entry["features"], "label": entry["label"],
+    }
 
 
 @app.entrypoint
 def invoke(payload):
-    pairs = _pairs()
-    corpus = _corpus()
+    bundle = _bundle()
+    pairs = bundle["pairs"]
 
     if payload.get("action") == "list":
-        return {
-            "pairs": [
-                {"pair_id": pid, "a": row["a"], "b": row["b"],
-                 "tier": row.get("tier", "parcel"), "hard": row["hard"]}
-                for pid, row in sorted(pairs.items())
-            ]
-        }
+        return {"pairs": [
+            {"pair_id": v["pair_id"], "a": v["older"]["file_number"],
+             "b": v["newer"]["file_number"], "tier": v["tier"]}
+            for v in sorted(pairs.values(), key=lambda x: x["pair_id"])
+        ]}
 
     try:
         pair_id = int(payload.get("pair_id"))
     except (TypeError, ValueError):
-        return {"error": "pair_id must be an integer from the labeled set"}
+        return {"error": "pair_id must be an integer from the labeled set", "live": False}
 
-    row = pairs.get(pair_id)
-    if row is None:
-        return {"error": f"unknown pair_id {pair_id}", "valid": sorted(pairs)}
-
-    a, b = corpus.get(row["a"]), corpus.get(row["b"])
-    if not a or not b:
-        return {"error": f"records not in cached corpus: {row['a']}, {row['b']}"}
-
-    older, newer = _order(a, b)
+    entry = pairs.get(str(pair_id))
+    if entry is None:
+        return {"error": f"unknown pair_id {pair_id}", "live": False,
+                "valid": sorted(int(k) for k in pairs)}
 
     denied = _take_slot()
     if denied:
-        cached = _cached_decisions().get(str(pair_id))
-        if not cached:
-            return {"error": denied, "live": False}
-        return {
-            "pair_id": pair_id, "live": False, "cached": True, "reason": denied,
-            "decision": cached["decision"], "confidence": cached["confidence"],
-            "rationale": cached["rationale"], "drivers": cached["drivers"],
-            "non_drivers": cached["non_drivers"],
-        }
+        return _cached_reply(entry, pair_id, denied)
 
     started = time.time()
-    decision = _agent().decide(newer, older)
+    try:
+        out, usage = _decide(entry["prompt"], bundle["system_prompt"])
+    except Exception as exc:
+        return _cached_reply(entry, pair_id, f"{type(exc).__name__}: {str(exc)[:160]}")
+
+    decision = out.decision.strip().lower()
+    if decision not in ("continuation", "new_issue", "uncertain"):
+        decision = "uncertain"
 
     return {
         "pair_id": pair_id,
         "live": True,
         "latency_ms": round((time.time() - started) * 1000),
-        "region": os.environ.get("AWS_REGION", "us-east-1"),
-        "model_id": os.environ.get("QUORUM_MODEL_ID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0"),
-        "older": {"file_number": older.file_number, "title": older.title[:400],
-                  "status": older.status, "introduced": str(older.introduced_date)},
-        "newer": {"file_number": newer.file_number, "title": newer.title[:400],
-                  "status": newer.status, "introduced": str(newer.introduced_date)},
-        "decision": decision.decision,
-        "confidence": decision.confidence,
-        "rationale": decision.rationale,
-        "drivers": decision.drivers,
-        "non_drivers": decision.non_drivers,
-        "features": compute(newer, older),
-        "label": row["label"],
-        "agreed": (decision.decision == "continuation") == (row["label"] == "continuation"),
+        "region": REGION,
+        "model_id": MODEL_ID,
+        "usage": usage,
+        "older": entry["older"],
+        "newer": entry["newer"],
+        "decision": decision,
+        "confidence": max(0.0, min(1.0, out.confidence)),
+        "rationale": out.rationale.strip(),
+        "drivers": out.drivers,
+        "non_drivers": out.non_drivers,
+        "features": entry["features"],
+        "label": entry["label"],
+        "agreed": (decision == "continuation") == (entry["label"] == "continuation"),
     }
 
 
