@@ -605,3 +605,94 @@ details.drivers li { font-size: var(--t-sm); color: var(--ink-2); }
   border: 1px solid var(--line-2); border-left: 3px solid var(--thread); border-radius: var(--r);
   background: var(--surface); padding: var(--s4); margin: 0; font-size: var(--t-sm);
 }
+
+.block-gap { margin-top: var(--s8); }
+
+.cd {
+  margin-top: var(--s5);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  background: linear-gradient(120deg, rgba(233,195,119,.09), rgba(19,28,26,.6) 46%);
+  padding: var(--s5);
+  max-width: 720px;
+}
+.cd.closed { border-left-color: var(--line-2); background: linear-gradient(120deg, rgba(124,177,255,.05), rgba(19,28,26,.6) 46%); }
+.cd.past { border-left-color: var(--ink-3); }
+.cd p { margin: 0; max-width: 62ch; }
+.cd-k {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: var(--t-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+}
+.cd.closed .cd-k, .cd.past .cd-k { color: var(--ink-3); }
+.cd-n { display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s2) !important; }
+.cd-n span {
+  font-size: clamp(52px, 10vw, 104px); line-height: .92; font-weight: 700;
+  letter-spacing: -0.05em; color: var(--gold);
+}
+.cd-n em { font-style: normal; font-size: var(--t-lg); font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.cd.closed .cd-n span, .cd.past .cd-n span {
+  font-size: clamp(24px, 3.6vw, 34px); line-height: 1.15; letter-spacing: -0.03em; color: var(--ink);
+}
+.cd-meta {
+  margin-top: var(--s3) !important;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: var(--t-xs); color: var(--ink-2); letter-spacing: .01em;
+}
+.cd-note { margin-top: var(--s3) !important; font-size: var(--t-xs); line-height: 1.6; color: var(--ink-3); }
+
+.chip .dotmark.square { border-radius: 1px; }
+
+.cw h3 { max-width: 34ch; }
+.cw button.mini { margin-top: var(--s4); }
+
+.refusal .verdict { margin-top: 0; }
+.refusal p { max-width: 74ch; }
+.cos-flip {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s4);
+  align-items: center; margin: var(--s5) 0;
+}
+.cos-flip > div { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--bg-2); padding: var(--s4); }
+.cos-flip > div.op {
+  border: 0; background: none; padding: 0; text-align: center;
+  font-size: var(--t-xl); color: var(--ink-3); font-weight: 600;
+}
+.cos-flip .k { display: block; font-size: var(--t-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+.cos-flip .n {
+  display: block; margin-top: var(--s2);
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: var(--t-2xl); line-height: 1.1; letter-spacing: -0.03em; color: var(--flag);
+}
+.cos-flip > div:last-child .n { color: var(--thread); }
+.cos-flip .t { display: block; margin-top: var(--s2); font-size: var(--t-xs); color: var(--ink-2); }
+
+.arc-group + .arc-group { margin-top: var(--s6); }
+.arc-group h3 { display: flex; align-items: baseline; gap: var(--s2); }
+.arc-group h3 .dim { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: var(--t-sm); }
+.arc-group > p { margin: var(--s2) 0 var(--s4); }
+.arc-list { border-top: 1px solid var(--line); }
+.arc-row {
+  display: grid; grid-template-columns: 1fr auto; gap: var(--s4);
+  align-items: start; padding: var(--s4) var(--s4) var(--s4) var(--s3);
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+}
+.arc-row:hover { background: rgba(124,177,255,.04); }
+.arc-row.live { border-left-color: var(--gold); background: rgba(233,195,119,.06); }
+.arc-row h4 { max-width: 52ch; }
+.arc-row p { max-width: 78ch; }
+.arc-side { padding-top: var(--s5); }
+
+.entry.live .stub { background: linear-gradient(180deg, var(--gold), #B98F3F); }
+
+@media (max-width: 700px) {
+  .cd { padding: var(--s4); }
+  .cos-flip { grid-template-columns: 1fr; }
+  .cos-flip > div.op { transform: rotate(90deg); }
+  .arc-row { grid-template-columns: 1fr; }
+  .arc-side { padding-top: 0; }
+}
+
+.cd.soon { border-left-color: var(--flag); background: linear-gradient(120deg, rgba(255,129,99,.1), rgba(19,28,26,.6) 46%); }
+.cd.soon .cd-k, .cd.soon .cd-n span { color: var(--flag); }
+.cd.soon .cd-n span { font-size: clamp(40px, 7vw, 76px); }

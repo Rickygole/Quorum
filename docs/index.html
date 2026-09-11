@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quorum</title>
-<meta name="description" content="Quorum holds the thread on the civic issues that touch your address.">
+<meta name="description" content="Quorum holds the thread on the civic issues that touch your address. One Baltimore rezoning is back before the council with a hearing on the calendar.">
 <meta name="theme-color" content="#0A0F0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,11 +31,11 @@
       <span>Quorum</span>
     </a>
     <nav id="nav" aria-label="Sections">
-      <a href="#thread" data-route="thread">Thread</a>
-      <a href="#watch" data-route="watch">Watch an address</a>
-      <a href="#feed" data-route="feed">Feed</a>
-      <a href="#evidence" data-route="evidence">Evidence</a>
+      <a href="#thread" data-route="thread">The live case</a>
       <a href="#comment" data-route="comment">Draft comment</a>
+      <a href="#evidence" data-route="evidence">Evidence</a>
+      <a href="#feed" data-route="feed">Feed and archive</a>
+      <a href="#watch" data-route="watch">Watch an address</a>
       <a href="#run" data-route="run">Agent run</a>
       <a href="#evaluation" data-route="evaluation">Evaluation</a>
     </nav>
@@ -47,27 +47,67 @@
   <section id="thread" data-active aria-labelledby="thread-h1">
     <div class="hero">
       <p class="eyebrow" id="hero-eyebrow"></p>
-      <h1 id="thread-h1">Your city took this up twice.<br><em>Nobody on the block was told either time.</em></h1>
+      <h1 id="thread-h1">One address in Baltimore has a hearing coming, and the same request already died once.</h1>
+      <div id="countdown"></div>
       <p class="lede" id="hero-lede"></p>
       <div class="stage" id="spine"></div>
       <p id="spine-caption" class="small muted caption"></p>
-      <div class="cta">
-        <a class="btn primary" href="#watch">Watch an address</a>
-        <a class="btn ghost" href="#evidence">See the evidence</a>
-      </div>
+      <div class="cta" id="hero-cta"></div>
     </div>
 
     <div class="section-head">
-      <h2>The thread</h2>
+      <h2 id="thread-h">The thread</h2>
       <p id="thread-intro" class="muted"></p>
     </div>
     <div id="thread-body"></div>
+
+    <div class="section-head block-gap">
+      <h2 id="citywide-h">The half an address lookup cannot reach</h2>
+      <p id="citywide-intro" class="muted"></p>
+    </div>
+    <div id="citywide-body"></div>
+
+    <div class="section-head block-gap">
+      <h2 id="refusal-h">Where Quorum says no</h2>
+      <p class="muted">A system that only ever agrees is not judging anything. The hardest pair in the labeled set was refused, and nobody was shown a thread for it.</p>
+    </div>
+    <div id="refusal-body"></div>
+  </section>
+
+  <section id="comment" aria-labelledby="comment-h">
+    <div class="section-head">
+      <h2 id="comment-h">Draft comment</h2>
+      <p class="muted">Quorum can read what your city is taking up. It cannot speak for you.</p>
+    </div>
+    <div id="comment-body"></div>
+  </section>
+
+  <section id="evidence" aria-labelledby="evidence-h">
+    <div class="section-head">
+      <h2 id="evidence-h">Why am I seeing this?</h2>
+      <p class="muted">The agent's reasoning is on the page, not behind an expander.</p>
+    </div>
+    <div id="evidence-body"></div>
+  </section>
+
+  <section id="feed" aria-labelledby="feed-h">
+    <div class="section-head">
+      <h2 id="feed-h">Feed</h2>
+      <p id="feed-empty" class="muted"></p>
+    </div>
+    <div id="feed-body"></div>
+
+    <div class="section-head block-gap">
+      <h2 id="archive-h">The archive</h2>
+      <p id="archive-intro" class="muted"></p>
+    </div>
+    <div id="archive-body"></div>
   </section>
 
   <section id="watch" aria-labelledby="watch-h">
     <div class="section-head">
       <h2 id="watch-h">Watch an address</h2>
-      <p class="muted">Add an address and Quorum starts watching what the city decides about it.</p>
+      <p class="muted">Add an address and Quorum starts watching what the city takes up about it.</p>
     </div>
     <div class="two-col">
       <div class="panel">
@@ -86,35 +126,12 @@
     <div id="watch-steps"></div>
   </section>
 
-  <section id="feed" aria-labelledby="feed-h">
-    <div class="section-head">
-      <h2 id="feed-h">Feed</h2>
-      <p id="feed-empty" class="muted"></p>
-    </div>
-    <div id="feed-body"></div>
-  </section>
-
-  <section id="evidence" aria-labelledby="evidence-h">
-    <div class="section-head">
-      <h2 id="evidence-h">Why am I seeing this?</h2>
-      <p class="muted">The agent's reasoning is on the page, not behind an expander.</p>
-    </div>
-    <div id="evidence-body"></div>
-  </section>
-
-  <section id="comment" aria-labelledby="comment-h">
-    <div class="section-head">
-      <h2 id="comment-h">Draft comment</h2>
-      <p class="muted">Quorum can read what your city is deciding. It cannot speak for you.</p>
-    </div>
-    <div id="comment-body"></div>
-  </section>
-
   <section id="run" aria-labelledby="run-h">
     <div class="section-head">
       <h2 id="run-h">Agent run</h2>
       <p class="muted">The Strands Graph as executed. Every number on this screen comes from the exported run.</p>
     </div>
+    <div id="live-invoke"></div>
     <div id="run-body"></div>
   </section>
 

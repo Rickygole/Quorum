@@ -24,6 +24,11 @@ STAGE_ORDER = {
 _ZONE = re.compile(r"\b([A-Z]{1,4})[\s-]?(\d{1,2})?[\s-]?([A-Z])?\s+Zoning District\b")
 _ZONE_PAIR = re.compile(r"from the (.{2,12}?) Zoning District to the (.{2,12}?) Zoning District", re.I)
 
+OWNER_SUFFIX_CANON = {
+    "INCORPORATED": "INC", "CORPORATION": "CORP", "COMPANY": "CO",
+    "LIMITED": "LTD", "LC": "LLC",
+}
+
 def _tokens(text: str) -> Counter:
     words = re.findall(r"[a-z0-9']+", (text or "").lower())
     return Counter(w for w in words if w not in STOPWORDS and len(w) > 2)
@@ -42,6 +47,24 @@ def _jaccard(a: Counter, b: Counter) -> float:
 
 def _norm_zone(z: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", (z or "").upper())
+
+def _norm_owner(o: str) -> str:
+    s = re.sub(r"[.,]", "", (o or "").upper())
+    s = re.sub(r"\s+", " ", s).strip()
+    return " ".join(OWNER_SUFFIX_CANON.get(t, t) for t in s.split())
+
+def compare_owners(a: list[ParcelRef], b: list[ParcelRef]) -> dict:
+    if not a or not b:
+        return {"match": "unknown", "reason": "no parcel", "a": [], "b": []}
+    owners_a = sorted({p.owner for p in a if p.owner})
+    owners_b = sorted({p.owner for p in b if p.owner})
+    if not owners_a or not owners_b:
+        return {"match": "unknown", "reason": "parcel not in gazetteer", "a": owners_a, "b": owners_b}
+    norm_a = {_norm_owner(o) for o in owners_a}
+    norm_b = {_norm_owner(o) for o in owners_b}
+    if norm_a & norm_b:
+        return {"match": "same", "a": owners_a, "b": owners_b}
+    return {"match": "changed", "a": owners_a, "b": owners_b}
 
 def zoning_transition(text: str) -> tuple[str, str] | None:
     m = _ZONE_PAIR.search(text or "")
@@ -105,6 +128,7 @@ def compute(candidate: CivicRecord, prior: CivicRecord) -> dict:
 
     return {
         "parcel": compare_parcels(candidate.parcels, prior.parcels),
+        "owner": compare_owners(candidate.parcels, prior.parcels),
         "sponsor": {
             "overlap": sorted(sp_a & sp_b),
             "jaccard": round(len(sp_a & sp_b) / len(sp_a | sp_b), 3) if (sp_a | sp_b) else 0.0,

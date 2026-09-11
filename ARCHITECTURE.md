@@ -1,5 +1,7 @@
 # Architecture
 
+See [docs/architecture.svg](docs/architecture.svg) for the diagram version of this pipeline.
+
 ```
               Legistar Web API (cached, timestamped)
                             |
@@ -26,6 +28,36 @@
                            |
                        (stops here)
 ```
+
+## Deployment
+
+The Continuity Agent runs as a Strands agent against Amazon Bedrock (Sonnet 4.5 by default,
+Haiku 4.5 available as a faster model) and is also deployed to **Bedrock AgentCore Runtime**,
+with OpenTelemetry instrumentation enabled on the runtime for observability. It is verified
+live by direct invocation: given the hero pair, it returns a continuation decision at 0.95
+confidence, agreeing with the hand label, in roughly nine seconds, with real Bedrock usage
+numbers on the response.
+
+Getting there surfaced three bugs that only appear once the code leaves a laptop, none of
+which reproduce locally. Cold start on the runtime has a 30 second limit, and importing
+Strands, boto3, pydantic and the OpenTelemetry distribution at module load time exceeded it;
+every heavy import in `deploy/agentcore_runtime.py` is now lazy, and module load is 0.3
+seconds. Direct code deploy flattens the entrypoint into the root of its own image rather
+than one level below a repository root, which broke a path assumption built for local
+development. Direct code deploy also only packages the entrypoint's own directory, so the
+`agents`, `ingest`, `eval` and `features` packages, along with the full corpus and the
+237,092 parcel gazetteer, were never present at runtime; the deployed entrypoint now ships a
+self contained 329 KB bundle holding the 50 labeled pairs with their prompts, feature tables
+and cached decisions, generated from the same source modules by `deploy/build_bundle.py` so
+the deployed system prompt cannot drift from the one this evaluation is run against.
+
+A small Lambda fronts the runtime with a signed call, since a static page cannot sign a
+SigV4 request on its own. The Lambda is deployed and verified working by direct invocation.
+Its public function URL is blocked at the AWS account level, so the live public path needs
+an HTTP API in front of the same Lambda instead. Until that is in place, the published site
+shows cached decisions, labeled as cached, rather than claim a live call that did not happen.
+Full detail, including the exact error and the policy checked against AWS's own
+documentation, is in [deploy/README.md](deploy/README.md).
 
 ## Why a Strands Graph and not a Swarm
 
@@ -135,9 +167,18 @@ code spacing, lot list order, boilerplate presence) to the newer record's
 title in every pair, recomputes the comparison features, and rescores every
 rule in `BASELINES` against the unchanged labels. Every transform is required
 to cite a real file number where that exact variance occurs; a transform that
-cannot cite one is deleted rather than kept for effect. Re-running the live
-Continuity Agent under perturbation costs real model calls, so that arm is
-opt-in behind `--perturb-agent` and is not run by default.
+cannot cite one is deleted rather than kept for effect. Four of the five
+transforms move nothing in the feature table on this corpus and are kept as
+documented negative controls. The fifth, direction word abbreviation, is the
+one that actually moves title cosine, and it is the one that drops the tuned
+two clause rule's accuracy by four points. Re-running the live Continuity
+Agent under a transform costs real model calls, so that arm is opt-in behind
+`--perturb-agent`, and it has now been run once, for real, on that one
+transform: 50 live Bedrock calls, accuracy unchanged at 100%, no individual
+decision flipped, and confidence moved on 13 of 50 pairs by a mean of +0.002
+in both directions. That is a measured result, not an assumed one, and it is
+reported in `eval/PERTURBATIONS.md` next to the deterministic rows it is
+being compared against, not as a cached zero delta.
 
 The second is a held out split. `eval/run_eval.py` partitions the 50 pairs
 into a tune half and a test half, stratified on (tier, label) and assigned by
@@ -147,6 +188,26 @@ swept on the tune half only, frozen, and every rule, including the frozen
 rule and the cached agent decisions, is then scored on the test half the
 threshold never saw. The frozen rule's test accuracy is the honest number;
 the 100% in the main table is not.
+
+The third check is a split by tier. A parcel lookup alone finds all 8 true
+continuations on the parcel tier, because a parcel match is deterministic and
+this is exactly what deterministic code is for. On the citywide tier, the
+same lookup finds 0 of the 11 true continuations, because those records name
+no property at all. 11 of the 19 true continuations in the full set, 58%,
+carry no parcel. That is the actual argument for a model in this pipeline,
+not the tied 100% on the full set: a lookup where a lookup is exact, and an
+agent reasoning over the feature table where the alternative is a single
+brittle threshold.
+
+The fourth check is an ablation. `eval/ablation.py` strips every domain
+specific hint out of the Continuity Agent's prompt, keeping only the task,
+the output schema, and an instruction not to invent facts, then reruns it on
+the same 50 pairs. Accuracy falls from 100% to 94% (47 of 50), not down to
+the 78% the best single deterministic feature (parcel exact) manages alone.
+The three misses are cases a feature table alone does not flag as one issue:
+a liquor licence tied to its own zoning approval, a charter amendment
+returning after a failed term, and one street condemnation filed as two file
+numbers. The prompt is worth exactly those three pairs, and no more.
 
 ## Agents deliberately not built
 

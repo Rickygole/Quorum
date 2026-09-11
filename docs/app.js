@@ -6,6 +6,7 @@ const el = (t, c, h) => { const n = document.createElement(t); if (c) n.classNam
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const mono = s => `<span class="id">${esc(s)}</span>`;
 const num = n => Number(n).toLocaleString("en-US");
+const cos = v => Number(v).toFixed(3);
 function reduced() {
   try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; }
 }
@@ -29,9 +30,62 @@ function shortDate(iso) {
   const d = new Date(iso + "T00:00:00");
   return `${MONTHS[d.getMonth()].toUpperCase()} ${d.getFullYear()}`;
 }
+const LOADED_AT = new Date();
+
 function daysUntil(iso) {
   if (!iso) return null;
-  return Math.round((new Date(iso + "T00:00:00") - new Date()) / 86400000);
+  const target = new Date(iso + "T00:00:00");
+  if (isNaN(target.getTime())) return null;
+  const today = new Date(LOADED_AT.getFullYear(), LOADED_AT.getMonth(), LOADED_AT.getDate());
+  return Math.round((target - today) / 86400000);
+}
+
+function hearingOf(thread) {
+  if (!thread || !thread.records || !thread.records.length) return null;
+  const last = thread.records[thread.records.length - 1];
+  return last && last.hearing_date ? last.hearing_date : null;
+}
+
+function countdownOf(thread) {
+  const iso = hearingOf(thread);
+  if (!iso) return null;
+  const days = daysUntil(iso);
+  if (days === null) return null;
+  return { iso: iso, days: days, past: days < 0 };
+}
+
+function hearingPhrase(c) {
+  if (!c) return "";
+  if (c.days > 1) return "in " + num(c.days) + " days";
+  if (c.days === 1) return "tomorrow";
+  if (c.days === 0) return "today";
+  if (c.days === -1) return "yesterday";
+  return num(Math.abs(c.days)) + " days ago";
+}
+
+function loadStamp() {
+  const d = LOADED_AT;
+  const hh = String(d.getHours()).padStart(2, "0");
+  const mm = String(d.getMinutes()).padStart(2, "0");
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} at ${hh}:${mm}`;
+}
+
+function isLive(thread) {
+  if (!thread || !thread.comment_window || thread.comment_window.open !== true) return false;
+  const c = countdownOf(thread);
+  return !(c && c.past);
+}
+
+function sourceUrl(thread, rec) {
+  const hit = (thread.sources || []).find(x => x.file_number === rec.file_number);
+  return (hit && hit.url) || rec.source_url || "";
+}
+
+function sourceLinks(thread) {
+  const list = (thread.sources || []).length
+    ? thread.sources
+    : thread.records.map(r => ({ file_number: r.file_number, url: r.source_url }));
+  return list.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.file_number)}</a>`).join(" and ");
 }
 function titleCase(s) {
   return String(s || "").toLowerCase().replace(/\b\w/g, m => m.toUpperCase());
@@ -104,18 +158,18 @@ function spineStops(thread) {
     kicker: shortDate(r.introduced_date),
     label: statusLine(r),
     kind: statusKind(r),
-    parcel: parcelLine(r),
+    parcel: parcelLine(r) || r.committee || titleCase(r.record_type || ""),
     rec: r
   }));
   const last = thread.records[thread.records.length - 1];
-  if (last.hearing_date) {
-    const d = daysUntil(last.hearing_date);
+  const c = countdownOf(thread);
+  if (c) {
     stops.push({
-      date: last.hearing_date,
+      date: c.iso,
       file: last.file_number,
-      kicker: shortDate(last.hearing_date),
-      label: d !== null && d >= 0 ? `public hearing, in ${d} days` : "public hearing",
-      kind: "future",
+      kicker: shortDate(c.iso),
+      label: `public hearing, ${hearingPhrase(c)}`,
+      kind: c.past ? "done" : "future",
       parcel: last.committee || "",
       rec: last
     });
@@ -256,32 +310,137 @@ function threadDelta(thread) {
   const added = bothListLots ? la.filter(l => !lb.includes(l)) : [];
   if (dropped.length) out.push(`<b>Lot ${esc(dropped.join(", "))} dropped</b> from the parcel this time.`);
   if (added.length) out.push(`<b>Lot ${esc(added.join(", "))} added</b> to the parcel this time.`);
-  if (f.sponsor.overlap.length) out.push(`<b>Same sponsor</b>, ${esc(titleCase(f.sponsor.overlap.join(", ")))}.`);
+  if (thread.tier === "citywide") out.push(`<b>Neither record names a property</b>, so no parcel lookup can reach this one.`);
+  if (f.sponsor.overlap.length) out.push(`<b>${f.sponsor.overlap.length === (f.sponsor.a || []).length && f.sponsor.overlap.length === (f.sponsor.b || []).length ? "Same sponsor" : "Sponsors carried over"}</b>, ${esc(titleCase(f.sponsor.overlap.join(", ")))}.`);
   if (f.zoning_transition.match && f.zoning_transition.a) out.push(`<b>Same zoning change</b>, ${mono(f.zoning_transition.a.replace("->", " to "))}.`);
   if (f.file_number && !f.file_number.identical) out.push(`<b>File number changed</b>, ${mono(f.file_number.b)} became ${mono(f.file_number.a)}.`);
   if (f.temporal && f.temporal.gap_days !== null) out.push(`<b>${num(f.temporal.gap_days)} days apart</b>, ${f.temporal.same_council_term ? "same council term" : "a different council term"}.`);
-  if (f.title) out.push(`Titles are <b>${f.title.cosine}</b> similar by cosine, which is not what decided it.`);
+  if (f.committee_progression && f.committee_progression.prior_status) out.push(`<b>The earlier record ended as ${esc(f.committee_progression.prior_status)}</b>, so this is a restart rather than a later step.`);
+  if (f.title) out.push(thread.tier === "citywide"
+    ? `Titles are <b>${cos(f.title.cosine)}</b> similar by cosine, which here is one signal among the sponsors, the record type and the terminal status of the earlier record.`
+    : `Titles are <b>${cos(f.title.cosine)}</b> similar by cosine, which is not what decided it.`);
   return out;
+}
+
+const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+function weekday(iso) {
+  const d = new Date(iso + "T00:00:00");
+  return isNaN(d.getTime()) ? "" : WEEKDAYS[d.getDay()];
+}
+
+function subjectOf(thread) {
+  const b = thread.records[thread.records.length - 1];
+  const addr = (b.parcels[0] || {}).address;
+  if (addr) return addr;
+  const t = plainTitle(b.title).replace(/\s*[-\u2013]\s*/g, ", ").replace(/,\s*$/, "").trim();
+  return t.length > 62 ? t.slice(0, 59).trim() + "..." : t;
+}
+
+function countdownBlock(thread) {
+  const c = countdownOf(thread);
+  const b = thread.records[thread.records.length - 1];
+  const w = thread.comment_window || {};
+  const where = `${esc(b.committee || "Baltimore City Council")} &middot; file ${esc(b.file_number)}`;
+  const computed = `Computed when this page loaded, at ${esc(loadStamp())}, from the hearing date on the source record and the clock on your machine.`;
+  if (c && !c.past) {
+    const word = c.days === 0 ? "Today" : c.days === 1 ? "Tomorrow" : num(c.days);
+    return `
+      <div class="cd${c.days <= 1 ? " soon" : ""}">
+        <p class="cd-k">Public hearing</p>
+        <p class="cd-n"><span>${word}</span>${c.days <= 1 ? "" : `<em>days away</em>`}</p>
+        <p class="cd-meta">${esc(weekday(c.iso))}, ${esc(fmtDate(c.iso))} &middot; ${where}</p>
+        <p class="cd-note">${computed} Nothing here is typed in by hand, so it reads one day lower each time the page is opened.</p>
+      </div>`;
+  }
+  if (c && c.past) {
+    return `
+      <div class="cd past">
+        <p class="cd-k">Public hearing</p>
+        <p class="cd-n"><span>The hearing has happened</span></p>
+        <p class="cd-meta">It was held on ${esc(weekday(c.iso))}, ${esc(fmtDate(c.iso))} &middot; ${where}</p>
+        <p class="cd-note">${computed} What follows is the record as it stood when the corpus was fetched, which was before that date.</p>
+      </div>`;
+  }
+  return `
+    <div class="cd closed">
+      <p class="cd-k">Comment window</p>
+      <p class="cd-n"><span>Closed</span></p>
+      <p class="cd-meta">${esc(b.status || "closed")} &middot; ${where}</p>
+      <p class="cd-note">${esc(w.closed_reason || "No hearing on the calendar.")} Quorum does not draft a comment for this one.</p>
+    </div>`;
+}
+
+function renderHero(thread) {
+  const recs = thread.records;
+  const a = recs[0], b = recs[recs.length - 1];
+  const live = isLive(thread);
+  const c = countdownOf(thread);
+  const addr = (b.parcels[0] || {}).address || "";
+  const openCount = state.data.threads.filter(isLive).length;
+  const yearA = String(a.introduced_date).slice(0, 4);
+
+  const eyebrow = $("#hero-eyebrow");
+  if (eyebrow) {
+    eyebrow.innerHTML = `${esc(a.file_number)} &nbsp;/&nbsp; ${esc(b.file_number)} &nbsp;&middot;&nbsp; Baltimore City Council` +
+      ` &nbsp;&middot;&nbsp; ${live ? "comment window open" : "comment window closed"}`;
+  }
+
+  const h1 = $("#thread-h1");
+  if (h1) {
+    if (live && c && !c.past) {
+      h1.innerHTML = `${esc(subjectOf(thread))} is back before the council.<br><em>The hearing is ${esc(hearingPhrase(c))}.</em>`;
+    } else if (live && c) {
+      h1.innerHTML = `${esc(subjectOf(thread))} was back before the council.<br><em>The hearing has happened.</em>`;
+    } else {
+      const fresh = thread.features.file_number && !thread.features.file_number.identical;
+      h1.innerHTML = `The council has taken this up ${recs.length === 2 ? "twice" : num(recs.length) + " times"}.` +
+        `<br><em>${fresh ? "The second time, it arrived as a new file number." : "The same file number came back."}</em>`;
+    }
+  }
+
+  const cd = $("#countdown");
+  if (cd) cd.innerHTML = countdownBlock(thread);
+
+  const lede = $("#hero-lede");
+  if (lede) {
+    lede.innerHTML = `${esc(plainLanguage(b))} The earlier version, ${mono(a.file_number)}, ${esc(statusClause(a))} in ${esc(yearA)}. ` +
+      (live
+        ? `It is one of ${num(state.data.threads.length)} threads in this corpus and the only ${openCount === 1 ? "one" : `${openCount} of them`} a resident can still comment on.`
+        : `The current file ${mono(b.file_number)} ${esc(statusClause(b))}.`);
+  }
+
+  $("#spine-caption").innerHTML =
+    (addr ? `${esc(addr)}${b.neighborhood ? ", " + esc(titleCase(b.neighborhood)) : ""}. Owner of record ${esc(titleCase(b.owner || "not listed"))}. `
+          : `${esc(titleCase(b.record_type || "record"))} with no property named on either record, so it carries no address and no owner. `) +
+    `Records ${sourceLinks(thread)} on Legistar. Corpus fetched ${mono(String(a.fetched_at).slice(0, 16).replace("T", " "))} UTC.`;
+
+  const cta = $("#hero-cta");
+  if (cta) {
+    cta.innerHTML = live
+      ? `<a class="btn primary" href="#comment">Draft a comment</a>
+         <a class="btn ghost" href="#evidence">See the evidence</a>
+         <a class="btn ghost" href="#feed">The archive</a>`
+      : `<a class="btn primary" href="#evidence">See the evidence</a>
+         <a class="btn ghost" href="#feed">The archive</a>
+         <button type="button" id="to-live" class="btn ghost">Back to the live case</button>`;
+    const back = $("#to-live");
+    if (back) back.onclick = () => {
+      const t = state.data.threads.find(isLive);
+      if (t) { selectThread(t); go("thread"); }
+    };
+  }
 }
 
 function renderThread(thread) {
   const gap = thread.features.temporal.gap_days;
   const recs = thread.records;
-  const a = recs[0], b = recs[recs.length - 1];
-  const addr = (b.parcels[0] || {}).address || "";
-  const eyebrow = $("#hero-eyebrow");
-  if (eyebrow) eyebrow.innerHTML = `${esc(a.file_number)} &nbsp;/&nbsp; ${esc(b.file_number)} &nbsp;&middot;&nbsp; Baltimore City Council`;
-  const lede = $("#hero-lede");
-  if (lede) {
-    lede.innerHTML = `${esc(plainLanguage(b))} It died once already. Quorum matched the two records on the parcel, not the title, and it is on the calendar again.`;
-  }
-  $("#spine-caption").innerHTML =
-    `${esc(addr)}${b.neighborhood ? ", " + esc(titleCase(b.neighborhood)) : ""}. ` +
-    `Owner of record ${esc(titleCase(b.owner || "not listed"))}. Corpus fetched ${mono(String(a.fetched_at).slice(0, 16).replace("T", " "))} UTC.`;
+  renderHero(thread);
 
   $("#thread-intro").innerHTML =
     `One issue, ${recs.length} appearances, ${recs.length} file numbers, ${gap ? num(Math.round(gap / 30)) + " months apart" : ""}. ` +
-    `Quorum matched them on the parcel, not the title.`;
+    (thread.tier === "citywide"
+      ? `There is no parcel on either record, so Quorum matched them on the text, the sponsors and the way the earlier one ended.`
+      : `Quorum matched them on the parcel, not the title.`);
 
   const host = $("#thread-body");
   host.innerHTML = "";
@@ -301,33 +460,220 @@ function renderThread(thread) {
           <span class="chip ${kind === "dead" ? "warn" : kind === "live" ? "on" : ""}">${esc(statusLine(r))}</span>
         </div>
         <h3>${esc(plainLanguage(r))}</h3>
-        <p class="small muted">Sponsored by ${esc(r.sponsors.join(", ") || "unknown")}. ${esc(parcelLine(r))}. ${esc(r.committee || "Baltimore City Council")}.</p>
+        <p class="small muted">Sponsored by ${esc(r.sponsors.join(", ") || "unknown")}. ${parcelLine(r) ? esc(parcelLine(r)) + ". " : "No property named on the record. "}${esc(r.committee || "Baltimore City Council")}.</p>
         ${delta.length ? `<div class="delta"><ul>${delta.map(d => `<li>${d}</li>`).join("")}</ul></div>` : ""}
-        <p class="small" style="margin:16px 0 0"><a href="${esc(r.source_url)}" target="_blank" rel="noopener">Source record ${esc(r.file_number)}</a></p>
+        <p class="small" style="margin:16px 0 0"><a href="${esc(sourceUrl(thread, r))}" target="_blank" rel="noopener">Source record ${esc(r.file_number)}</a></p>
       </div>`;
     wrap.append(g, body);
     host.appendChild(wrap);
   });
 
   const last = recs[recs.length - 1];
-  if (last.hearing_date) {
-    const d = daysUntil(last.hearing_date);
-    const wrap = el("div", "appearance future");
+  const c = countdownOf(thread);
+  if (c) {
+    const wrap = el("div", "appearance" + (c.past ? "" : " future"));
     const g = el("div", "gutter"); g.appendChild(el("span", "dot"));
     const body = el("div", "body");
     body.innerHTML = `
       <div class="card">
         <div class="meta">
-          <span class="chip gold"><span class="dotmark"></span>${esc(fmtDate(last.hearing_date))}</span>
+          <span class="chip ${c.past ? "" : "gold"}"><span class="dotmark"></span>${esc(fmtDate(c.iso))}</span>
           <span class="chip">${esc(last.committee || "Baltimore City Council")}</span>
         </div>
-        <h3${d !== null && d <= 3 ? ' class="flag"' : ""}>Public hearing${d !== null && d >= 0 ? `, in ${d} days` : ""}</h3>
-        <p class="small muted">This has not happened yet. It is the moment a comment can change something.</p>
-        <p style="margin:0"><a class="btn primary" href="#comment">Draft a comment</a></p>
+        <h3${!c.past && c.days <= 3 ? ' class="flag"' : ""}>Public hearing, ${esc(hearingPhrase(c))}</h3>
+        <p class="small muted">${c.past
+          ? "This date has passed. The cached record was fetched before it, so what happened at the hearing is not in this corpus."
+          : "This has not happened yet. It is the moment a comment can reach the committee before a vote."}</p>
+        ${c.past ? "" : `<p style="margin:0"><a class="btn primary" href="#comment">Draft a comment</a></p>`}
       </div>`;
     wrap.append(g, body);
     host.appendChild(wrap);
   }
+}
+
+function decisionFor(pairId) {
+  const a = (state.data.evaluation || {}).agent;
+  if (!a || !a.decisions) return null;
+  return a.decisions.find(d => d.pair_id === pairId) || null;
+}
+
+function pickThreads(ids) {
+  const all = state.data.threads;
+  const wanted = ids.map(id => all.find(t => t.pair_id === id)).filter(Boolean);
+  const rest = all.filter(t => t.tier === "citywide" && !wanted.includes(t));
+  return wanted.concat(rest).slice(0, 2);
+}
+
+function citywideCard(thread) {
+  const recs = thread.records;
+  const a = recs[0], b = recs[recs.length - 1];
+  const f = thread.features;
+  const d = decisionFor(thread.pair_id);
+  const sponsorLine = f.sponsor.overlap.length
+    ? `${f.sponsor.overlap.length} of the ${(f.sponsor.b || []).length} original sponsors are back on it, including ${esc(titleCase(f.sponsor.overlap[0]))}.`
+    : `No sponsor carried over.`;
+  const panel = el("div", "panel cw");
+  panel.innerHTML = `
+    <div class="chips" style="margin-bottom:12px">
+      <span class="chip warn"><span class="dotmark square"></span>No parcel on either record</span>
+      <span class="chip">${esc(titleCase(b.record_type || "record"))}</span>
+      <span class="chip ${statusKind(b) === "live" ? "on" : ""}">${esc(statusLine(b))}</span>
+    </div>
+    <h3>${esc(plainTitle(b.title))}</h3>
+    <p class="small muted" style="margin-top:8px">${esc((thread.action || {}).what_changed || thread.label)}</p>
+    <div class="fx" style="margin-top:16px">
+      <span class="m na" aria-hidden="true">&middot;</span><span class="k">Earlier record</span>
+      <span class="v">${mono(a.file_number)}, introduced ${esc(fmtDate(a.introduced_date))}, ${esc(statusClause(a))}</span>
+      <span class="m na" aria-hidden="true">&middot;</span><span class="k">This record</span>
+      <span class="v">${mono(b.file_number)}, introduced ${esc(fmtDate(b.introduced_date))}, ${esc(statusClause(b))}</span>
+      <span class="m same" aria-hidden="true">=</span><span class="k">Title cosine</span>
+      <span class="v"><strong>${cos(f.title.cosine)}</strong>, and the record type matches</span>
+      <span class="m ${f.sponsor.overlap.length ? "same" : "diff"}" aria-hidden="true">${f.sponsor.overlap.length ? "=" : "\u2260"}</span><span class="k">Sponsors</span>
+      <span class="v">${sponsorLine}</span>
+      <span class="m diff" aria-hidden="true">&times;</span><span class="k">Parcel</span>
+      <span class="v">None on either record</span>
+    </div>
+    ${d ? `<p class="small muted" style="margin-top:16px">The Continuity agent called this a continuation at ${d.confidence.toFixed(2)} confidence. The first driver it recorded, in its own words: <q>${esc((d.drivers || [])[0] || "the record text")}</q></p>` : ""}
+    <hr class="rule">
+    <p class="small" style="margin:0">Records ${sourceLinks(thread)} on Legistar.</p>`;
+  const btn = el("button", "mini", "Open this thread");
+  btn.onclick = () => { selectThread(thread); go("thread"); };
+  panel.appendChild(btn);
+  return panel;
+}
+
+function renderCitywide() {
+  const host = $("#citywide-body");
+  if (!host) return;
+  host.innerHTML = "";
+  const all = state.data.threads;
+  const cityCount = all.filter(t => t.tier === "citywide").length;
+  const intro = $("#citywide-intro");
+  if (intro) {
+    intro.innerHTML =
+      `${num(cityCount)} of the ${num(all.length)} threads in this corpus name no property at all. ` +
+      `They carry no address, so there is no parcel to match and no property search can return them. ` +
+      `They are the half of the public record a lookup cannot reach, and they are where the agent is doing work a lookup does not do.`;
+  }
+  const pair = el("div", "compare");
+  pickThreads([34, 40]).forEach(t => pair.appendChild(citywideCard(t)));
+  host.appendChild(pair);
+  const reasons = pickThreads([34, 40]).map(t => {
+    const b = t.records[t.records.length - 1];
+    return `${mono(b.file_number)}, ${esc((t.comment_window || {}).closed_reason || "no hearing on the calendar")}`;
+  }).join(" ");
+  const tail = el("div", "callout");
+  tail.innerHTML = `<p class="small" style="margin:0">Neither of these can be commented on today. ${reasons} They are on this page because they are the threads a resident has no other way of finding, not because there is anything to send.</p>`;
+  host.appendChild(tail);
+}
+
+function renderRefusal() {
+  const host = $("#refusal-body");
+  if (!host) return;
+  const neg = state.data.negatives.find(n => n.pair_id === 25) || state.data.negatives[0];
+  const live = state.data.threads.find(isLive) || state.data.threads[0];
+  const f = neg.features;
+  const a = neg.records[0], b = neg.records[1];
+  const d = decisionFor(neg.pair_id);
+  const addrA = (a.parcels[0] || {}).address || a.file_number;
+  const addrB = (b.parcels[0] || {}).address || b.file_number;
+  const higher = f.title.cosine > live.features.title.cosine;
+  host.innerHTML = `
+    <div class="panel refusal">
+      <div class="verdict no">
+        <span class="mark" aria-hidden="true">&times;</span>
+        <h3>Not a continuation. Nothing was surfaced.</h3>
+      </div>
+      <p>${mono(a.file_number)} covers ${esc(addrA)} and ${mono(b.file_number)} covers ${esc(addrB)}.
+      Same sponsor, ${esc(titleCase((f.sponsor.overlap[0] || "")))}. Introduced on the same day,
+      ${esc(fmtDate(a.introduced_date))}. Same block, ${mono(f.parcel.shared_blocks ? f.parcel.shared_blocks.join(", ") : "")}.
+      Near identical titles. Both enacted.</p>
+      <div class="cos-flip">
+        <div>
+          <span class="k">This pair, refused</span>
+          <span class="n">${cos(f.title.cosine)}</span>
+          <span class="t">${esc(addrA)} and ${esc(addrB)}</span>
+        </div>
+        <div class="op" aria-hidden="true">&gt;</div>
+        <div>
+          <span class="k">The live thread, accepted</span>
+          <span class="n">${cos(live.features.title.cosine)}</span>
+          <span class="t">${esc(live.records[0].file_number)} and ${esc(live.records[1].file_number)}</span>
+        </div>
+      </div>
+      <p class="small muted">${higher
+        ? "Title similarity puts these in the wrong order. The pair that is not a continuation scores higher than the one that is, so any system ranking on title text alone shows a resident the wrong item and hides the right one."
+        : "Title similarity is close enough on both pairs that it cannot separate them on its own."}</p>
+      <p>What separated them was the lot. ${mono(a.file_number)} names lot ${esc((f.parcel.lots_b || []).join(", ") || "unknown")}
+      and ${mono(b.file_number)} names lot ${esc((f.parcel.lots_a || []).join(", ") || "unknown")}. Two neighbouring properties, two separate decisions.
+      ${d ? `The Continuity agent set the pair aside at ${d.confidence.toFixed(2)} confidence.` : ""}</p>
+      <hr class="rule">
+      <div class="two-col">
+        <div>
+          <h4>What the system did with it</h4>
+          <p class="small muted" style="margin:8px 0 0">Nothing. No thread was built, no feed entry was written, and no comment was drafted.
+          A resident watching ${esc(addrA)} was never told about ${esc(addrB)}.</p>
+        </div>
+        <div>
+          <h4>Read the records</h4>
+          <p class="small muted" style="margin:8px 0 0">
+            <a href="${esc(a.source_url)}" target="_blank" rel="noopener">${esc(a.file_number)}</a> and
+            <a href="${esc(b.source_url)}" target="_blank" rel="noopener">${esc(b.file_number)}</a> on Legistar.
+            The full feature by feature comparison is on the <a href="#evidence">evidence screen</a>.</p>
+        </div>
+      </div>
+    </div>`;
+}
+
+function archiveRow(t) {
+  const recs = t.records;
+  const a = recs[0], b = recs[recs.length - 1];
+  const c = countdownOf(t);
+  const row = el("div", "arc-row" + (isLive(t) ? " live" : ""));
+  const main = el("div");
+  main.innerHTML = `
+    <div class="chips" style="margin-bottom:8px">
+      <span class="chip ${isLive(t) ? "gold" : ""}">${isLive(t) && c && !c.past ? `Hearing ${esc(hearingPhrase(c))}` : "Window closed"}</span>
+      <span class="chip ${t.tier === "citywide" ? "warn" : ""}">${t.tier === "citywide" ? "No parcel" : "Parcel"}</span>
+      <span class="chip">${esc(statusLine(b))}</span>
+    </div>
+    <h4>${esc(subjectOf(t))}</h4>
+    <p class="small muted" style="margin:6px 0 0">${mono(a.file_number)} ${esc(fmtDate(a.introduced_date))}, ${esc(statusClause(a))}.
+    ${mono(b.file_number)} ${esc(fmtDate(b.introduced_date))}, ${esc(statusClause(b))}.
+    ${num(t.features.temporal.gap_days)} days apart.</p>
+    <p class="small muted" style="margin:6px 0 0">Records ${sourceLinks(t)}.</p>`;
+  const side = el("div", "arc-side");
+  const btn = el("button", "mini", "Open the thread");
+  btn.onclick = () => { selectThread(t); go("thread"); };
+  side.appendChild(btn);
+  row.append(main, side);
+  return row;
+}
+
+function renderArchive() {
+  const host = $("#archive-body");
+  if (!host) return;
+  host.innerHTML = "";
+  const all = state.data.threads;
+  const groups = [
+    { name: "Open comment window", note: "A hearing is on the calendar and a comment can still reach the committee.", items: all.filter(isLive) },
+    { name: "Citywide, no parcel on either record", note: "No address, so no property search can return these.", items: all.filter(t => t.tier === "citywide" && !isLive(t)) },
+    { name: "Parcel, window closed", note: "No date left to write to. Kept on the record because the same land comes back.", items: all.filter(t => t.tier === "parcel" && !isLive(t)) }
+  ];
+  const intro = $("#archive-intro");
+  if (intro) {
+    intro.textContent = `${all.length} threads, ${all.filter(isLive).length} with a comment window open. ` +
+      `The rest are here to be read, not acted on.`;
+  }
+  groups.forEach(g => {
+    if (!g.items.length) return;
+    const wrap = el("div", "arc-group");
+    wrap.innerHTML = `<h3>${esc(g.name)} <span class="dim">${g.items.length}</span></h3><p class="small muted">${esc(g.note)}</p>`;
+    const list = el("div", "arc-list");
+    g.items.forEach(t => list.appendChild(archiveRow(t)));
+    wrap.appendChild(list);
+    host.appendChild(wrap);
+  });
 }
 
 function renderFeed() {
@@ -335,8 +681,10 @@ function renderFeed() {
   host.innerHTML = "";
   const counts = state.data.counts;
   const watchedThreads = state.data.threads.filter(t => (t.watched || []).some(w => state.watched.includes(w)));
+  const openHere = watchedThreads.filter(isLive).length;
   $("#feed-empty").textContent =
-    `Most weeks nothing here affects your addresses, and that is the point. Quorum read ${num(counts.matters)} records and surfaced ${watchedThreads.length}.`;
+    `Most weeks nothing here affects your addresses, and that is the point. Quorum read ${num(counts.matters)} records and surfaced ${watchedThreads.length}. ` +
+    `${openHere ? `${openHere} of them can still be commented on. The rest are on the record and closed.` : "None of them can be commented on today."}`;
 
   if (!watchedThreads.length) {
     host.innerHTML = `<div class="panel"><h3>Nothing to show</h3><p class="small muted" style="margin:8px 0 0">No record in this corpus touches an address you watch. Add one on the watch screen and the feed fills from the same data.</p></div>`;
@@ -344,24 +692,24 @@ function renderFeed() {
   }
 
   const ranked = watchedThreads.slice().sort((a, b) => {
-    const ha = a.records[a.records.length - 1].hearing_date ? 1 : 0;
-    const hb = b.records[b.records.length - 1].hearing_date ? 1 : 0;
+    const ha = isLive(a) ? 1 : 0;
+    const hb = isLive(b) ? 1 : 0;
     if (ha !== hb) return hb - ha;
     return String(b.records[b.records.length - 1].introduced_date).localeCompare(String(a.records[a.records.length - 1].introduced_date));
   });
 
   ranked.forEach(t => {
     const r = t.records[t.records.length - 1];
-    const entry = el("div", "entry cont");
+    const entry = el("div", "entry cont" + (isLive(t) ? " live" : ""));
     entry.appendChild(el("div", "stub"));
     const body = el("div");
-    const d = daysUntil(r.hearing_date);
+    const c = countdownOf(t);
     body.innerHTML = `
       <div class="meta" style="margin-bottom:12px">
         <span class="chip"><span class="id">${esc(r.file_number)}</span></span>
-        <span class="chip">${esc((r.parcels[0] || {}).address || "")}</span>
-        ${r.hearing_date
-          ? `<span class="chip ${d !== null && d <= 3 ? "warn" : "gold"}"><span class="dotmark"></span>Hearing ${esc(fmtDate(r.hearing_date))}</span>`
+        <span class="chip">${esc((r.parcels[0] || {}).address || "No address on the record")}</span>
+        ${c && !c.past
+          ? `<span class="chip ${c.days <= 3 ? "warn" : "gold"}"><span class="dotmark"></span>Hearing ${esc(hearingPhrase(c))}, ${esc(fmtDate(c.iso))}</span>`
           : `<span class="chip">${esc(r.status || "")}</span>`}
       </div>
       <h3>${esc(plainLanguage(r))}</h3>
@@ -382,23 +730,33 @@ function selectThread(t) {
   renderComment();
 }
 
-function featureRows(f) {
+function featureRows(f, tier) {
   const rows = [];
   const pm = f.parcel.match;
   rows.push([
-    pm === "exact" ? "same" : pm === "adjacent" ? "diff" : "diff",
+    pm === "exact" ? "same" : "diff",
     "Parcel",
     pm === "exact"
       ? `Exact match, ${mono((f.parcel.shared_parcel_ids || f.parcel.shared_addresses || []).join(", "))}`
       : pm === "adjacent"
         ? `Adjacent only. ${f.parcel.shared_blocks ? "Same block " + mono(f.parcel.shared_blocks.join(", ")) + ", different lots" : "Same street, different number"}`
-        : "No shared parcel"
+        : tier === "citywide"
+          ? "Neither record names a property, so there is nothing here to match"
+          : "No shared parcel"
   ]);
-  rows.push(["na", "Lots named", `${esc((f.parcel.lots_b || []).join(", ") || "none")} then ${esc((f.parcel.lots_a || []).join(", ") || "none")}`]);
+  if (tier !== "citywide") {
+    rows.push(["na", "Lots named", `${esc((f.parcel.lots_b || []).join(", ") || "none")} then ${esc((f.parcel.lots_a || []).join(", ") || "none")}`]);
+  }
+  const sa = f.sponsor.a || [], sb = f.sponsor.b || [];
+  const full = f.sponsor.overlap.length && f.sponsor.overlap.length === sa.length && f.sponsor.overlap.length === sb.length;
   rows.push([
-    f.sponsor.overlap.length ? "same" : "diff",
+    full ? "same" : f.sponsor.overlap.length ? "na" : "diff",
     "Sponsor",
-    f.sponsor.overlap.length ? `Same, ${esc(titleCase(f.sponsor.overlap.join(", ")))}` : `Different, ${esc(titleCase(f.sponsor.b.join(", ")))} then ${esc(titleCase(f.sponsor.a.join(", ")))}`
+    full
+      ? `Same, ${esc(titleCase(f.sponsor.overlap.join(", ")))}`
+      : f.sponsor.overlap.length
+        ? `${f.sponsor.overlap.length} of the ${sb.length} carried over, ${esc(titleCase(f.sponsor.overlap.join(", ")))}`
+        : `Different, ${esc(titleCase(sb.join(", ")))} then ${esc(titleCase(sa.join(", ")))}`
   ]);
   rows.push([
     f.zoning_transition.match ? "same" : (f.zoning_transition.a || f.zoning_transition.b) ? "diff" : "na",
@@ -420,7 +778,7 @@ function featureRows(f) {
     f.temporal.gap_days !== null ? `${num(f.temporal.gap_days)} days, ${f.temporal.same_council_term ? "same" : "different"} council term` : "unknown"
   ]);
   rows.push([f.file_number.identical ? "same" : "diff", "File numbers", `${mono(f.file_number.b)} then ${mono(f.file_number.a)}`]);
-  rows.push(["na", "Title cosine", `<strong>${f.title.cosine}</strong>`]);
+  rows.push(["na", "Title cosine", `<strong>${cos(f.title.cosine)}</strong>`]);
   return rows;
 }
 
@@ -428,12 +786,13 @@ const MARK = { same: "=", diff: "≠", na: "·" };
 
 function evidencePanel(item, isCont) {
   const f = item.features;
-  const rows = featureRows(f).map(([m, k, v]) =>
+  const rows = featureRows(f, item.tier).map(([m, k, v]) =>
     `<span class="m ${m}" aria-hidden="true">${MARK[m]}</span><span class="k">${esc(k)}</span><span class="v">${v}</span>`
   ).join("");
   return `
     <div class="panel">
       <div class="small muted">${mono(item.records[0].file_number)} compared with ${mono(item.records[1].file_number)}</div>
+      ${item.tier ? `<div class="chips" style="margin-top:10px"><span class="chip ${item.tier === "citywide" ? "warn" : ""}">${item.tier === "citywide" ? "Citywide tier, no parcel" : "Parcel tier"}</span></div>` : ""}
       <div class="verdict ${isCont ? "yes" : "no"}">
         <span class="mark" aria-hidden="true">${isCont ? "✓" : "✕"}</span>
         <h3>${isCont ? "Continuation" : "Not a continuation"}</h3>
@@ -466,18 +825,19 @@ function renderEvidence() {
     <div class="panel" style="margin-top:16px">
       <h3>What the agent did not rely on</h3>
       <p class="small muted" style="margin-top:8px">Title similarity puts these two pairs in the wrong order. The pair that is
-      <em>not</em> a continuation scores <strong>${n_cos}</strong>. The true continuation scores <strong>${t_cos}</strong>,
+      <em>not</em> a continuation scores <strong>${cos(n_cos)}</strong>. The true continuation scores <strong>${cos(t_cos)}</strong>,
       slightly lower. Any system deciding on title text alone gets both of these wrong.</p>
       <div class="cosine">
         <div class="track">
           ${bandLo !== null ? `<span class="band" style="left:${pos(bandLo)}%;width:${Math.max(1, pos(bandHi) - pos(bandLo))}%"></span>` : ""}
-          <span class="tick below" style="left:${pos(n_cos)}%;background:var(--flag)"><i style="color:var(--flag)">${n_cos} not a continuation</i></span>
-          <span class="tick" style="left:${pos(t_cos)}%;background:var(--thread)"><i style="color:var(--thread)">${t_cos} continuation</i></span>
+          <span class="tick below" style="left:${pos(n_cos)}%;background:var(--flag)"><i style="color:var(--flag)">${cos(n_cos)} not a continuation</i></span>
+          <span class="tick" style="left:${pos(t_cos)}%;background:var(--thread)"><i style="color:var(--thread)">${cos(t_cos)} continuation</i></span>
         </div>
         <div class="scale"><span>${lo.toFixed(2)}</span><span>cosine similarity of titles</span><span>${hi.toFixed(2)}</span></div>
       </div>
-      <p class="small muted" style="margin-top:24px">What separates them is the parcel comparison, the terminal status of the
-      earlier record, and the zoning transition. The shaded band is the only range of a cosine threshold that
+      <p class="small muted" style="margin-top:24px">${t.tier === "citywide"
+      ? "This thread carries no parcel, so what separates it from a coincidence is the record type, the sponsors carried over and the terminal status of the earlier record."
+      : "What separates them is the parcel comparison, the terminal status of the earlier record, and the zoning transition."} The shaded band is the only range of a cosine threshold that
       classifies this whole set correctly, and it is ${bandLo !== null ? `${bandHi - bandLo < 0.05 ? "narrow" : "wide"}, ${bandLo} to ${bandHi}` : "reported on the evaluation screen"}.</p>
     </div>`;
   host.appendChild(tail);
@@ -525,18 +885,22 @@ I would like the committee to consider the following before voting:
 Thank you for your time.`;
 }
 
-function renderClosedWindow(t, r) {
+function renderClosedWindow(t, r, override) {
   const w = t.comment_window || {};
+  const past = countdownOf(t);
+  const reason = (override && override.reason) || w.closed_reason || "";
   const src = (t.sources || []).map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.file_number)}</a>`).join(" and ");
   $("#comment-body").innerHTML = `
     <div class="two-col">
       <div class="doc">
         <h3 style="margin-top:0">There is no comment window open on this one</h3>
         <p>${mono(r.file_number)} is <strong>${esc(r.status || "closed")}</strong>.
-        ${esc(w.closed_reason || "")}</p>
-        <p>Quorum will not draft a comment for a decision that has already been taken. Writing to a
-        committee about a bill it finished with wastes the one thing a resident has least of, which is
-        time and standing.</p>
+        ${esc(reason)}</p>
+        <p>${past && past.past
+          ? "The hearing on the calendar has been and gone. Quorum drafts a comment while there is still a date ahead of it to reach, and there is not one here."
+          : /In Committee/i.test(r.status || "")
+            ? "Quorum drafts a comment only when there is a hearing on the calendar for it to reach. This bill is still with a committee and no date has been set, so there is nothing to write to yet."
+            : "Quorum will not draft a comment for a decision that has already been taken. Writing to a committee about a bill it finished with wastes the one thing a resident has least of, which is time and standing."}</p>
         <h3>What is still worth doing</h3>
         <ul class="plain">
           <li>Read the record: ${src}</li>
@@ -551,12 +915,16 @@ function renderClosedWindow(t, r) {
 function renderComment() {
   const t = state.thread || state.data.threads[0];
   const r = t.records[t.records.length - 1];
-  if (t.comment_window && t.comment_window.open === false) {
-    renderClosedWindow(t, r);
+  if (!isLive(t)) {
+    const c0 = countdownOf(t);
+    renderClosedWindow(t, r, c0 && c0.past
+      ? { reason: `The hearing was held on ${fmtDate(c0.iso)}, and this corpus was fetched before that date.` }
+      : null);
     return;
   }
   const supplied = t.action && typeof t.action.draft_comment === "string" && t.action.draft_comment.trim();
   const draft = supplied ? t.action.draft_comment : fallbackDraft(t);
+  const c = countdownOf(t);
 
   $("#comment-body").innerHTML = `
     <div class="two-col">
@@ -565,6 +933,7 @@ function renderComment() {
         <div class="locked">
           <span class="chip">File <span class="id">${esc(r.file_number)}</span></span>
           <span class="chip">Hearing ${esc(fmtDate(r.hearing_date))}</span>
+          ${c && !c.past ? `<span class="chip">${esc(hearingPhrase(c))}</span>` : ""}
           <span class="chip">${esc(r.committee || "Baltimore City Council")}</span>
         </div>
         <label for="draft">Your comment</label>
@@ -589,11 +958,11 @@ function renderComment() {
             <dt>Earlier outcome</dt><dd>${esc(t.records[0].status || "unknown")}</dd>
             <dt>Sponsor</dt><dd>${esc(r.sponsors.join(", ") || "unknown")}</dd>
             <dt>Parcel</dt><dd>${esc(parcelLine(r))}</dd>
-            <dt>Hearing</dt><dd>${esc(fmtDate(r.hearing_date))}</dd>
+            <dt>Hearing</dt><dd>${esc(fmtDate(r.hearing_date))}${c && !c.past ? `, ${esc(hearingPhrase(c))}` : ""}</dd>
           </dl>
           <hr class="rule">
-          <p class="small muted" style="margin:0">Source: <a href="${esc(r.source_url)}" target="_blank" rel="noopener">record ${esc(r.file_number)}</a>
-          and <a href="${esc(t.records[0].source_url)}" target="_blank" rel="noopener">record ${esc(t.records[0].file_number)}</a>.</p>
+          <p class="small muted" style="margin:0">Source: <a href="${esc(sourceUrl(t, r))}" target="_blank" rel="noopener">record ${esc(r.file_number)}</a>
+          and <a href="${esc(sourceUrl(t, t.records[0]))}" target="_blank" rel="noopener">record ${esc(t.records[0].file_number)}</a>.</p>
         </div>
         <div class="callout">
           <p class="small" style="margin:0">A comment carries more weight when it names the earlier bill. It tells the
@@ -619,7 +988,7 @@ function renderWatch() {
   const list = $("#watch-list");
   list.innerHTML = "";
   if (!state.watched.length) {
-    list.innerHTML = `<li class="muted small">No addresses yet. Add one and Quorum starts watching what the city decides about it.</li>`;
+    list.innerHTML = `<li class="muted small">No addresses yet. Add one and Quorum starts watching what the city takes up about it.</li>`;
   }
   state.watched.forEach((a, i) => {
     const li = el("li");
@@ -827,6 +1196,72 @@ function showDecision(pairId) {
     </div>`;
 }
 
+function renderLiveInvoke() {
+  const live = state.data.live;
+  const host = $("#live-invoke");
+  if (!host) return;
+  if (!live || !live.endpoint) {
+    host.innerHTML = `<p class="small muted">No live endpoint is published in this build, so every decision shown on this site is a cached one.</p>`;
+    return;
+  }
+  const opts = (state.data.evaluation && state.data.evaluation.agent && state.data.evaluation.agent.decisions || [])
+    .map(d => `<option value="${d.pair_id}">${esc(d.a)} and ${esc(d.b)} (${esc(d.tier)}, labeled ${esc(d.label)})</option>`).join("");
+  host.innerHTML = `
+    <div class="panel">
+      <h3 style="margin-top:0">Run it yourself</h3>
+      <p class="small">This posts a pair id to a public endpoint, which invokes the Continuity Agent on
+      AgentCore Runtime against Amazon Bedrock. Nothing here is replayed. The answer comes back with the
+      runtime identifier, the AgentCore session id and the measured latency, and the session id is
+      different every time, which is how you can tell.</p>
+      <label for="live-pair">Pick any pair, including ones the write up does not discuss</label>
+      <select id="live-pair">${opts}</select>
+      <p style="margin-top:12px">
+        <button class="primary" id="live-go">Run the agent</button>
+        <span class="small muted" id="live-status" role="status"></span>
+      </p>
+      <div id="live-out"></div>
+    </div>`;
+
+  $("#live-go").onclick = async () => {
+    const pid = Number($("#live-pair").value);
+    const btn = $("#live-go");
+    btn.disabled = true;
+    $("#live-status").textContent = "calling the runtime, this takes about ten seconds";
+    $("#live-out").innerHTML = "";
+    const t0 = Date.now();
+    try {
+      const res = await fetch(live.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pair_id: pid }),
+      });
+      const d = await res.json();
+      const rt = Date.now() - t0;
+      const ok = d.agreed === true;
+      $("#live-status").textContent = d.live ? `answered in ${(rt / 1000).toFixed(1)}s` : "returned a cached decision";
+      $("#live-out").innerHTML = `
+        <hr class="rule">
+        <div class="meta small muted">${d.live ? "live call" : "cached, " + esc(d.reason || "")}</div>
+        <h3 style="margin:8px 0">${esc(d.decision || "no decision")} ${d.confidence !== undefined ? `at ${Number(d.confidence).toFixed(2)}` : ""}</h3>
+        <p class="small">Labeled <strong>${esc(d.label || "?")}</strong>. The agent ${ok ? "agreed" : "did not agree"} with the label.</p>
+        <p>${esc(d.rationale || "")}</p>
+        <dl class="evidence">
+          <dt>Drove the decision</dt><dd>${(d.drivers || []).map(esc).join("<br>") || "none given"}</dd>
+          <dt>Explicitly set aside</dt><dd>${(d.non_drivers || []).map(esc).join("<br>") || "none given"}</dd>
+          <dt>Session</dt><dd class="id">${esc(d.session_id || "n/a")}</dd>
+          <dt>Runtime</dt><dd class="id" style="word-break:break-all">${esc(d.runtime_arn || live.runtime_arn || "n/a")}</dd>
+          <dt>Model</dt><dd class="id">${esc(d.model_id || "n/a")}</dd>
+          <dt>Runtime latency</dt><dd class="id">${d.latency_ms !== undefined ? d.latency_ms + " ms" : "n/a"}</dd>
+        </dl>`;
+    } catch (err) {
+      $("#live-status").textContent = "the endpoint did not answer";
+      $("#live-out").innerHTML = `<p class="small">${esc(String(err && err.message || err))}. Every decision shown elsewhere on this site is cached and unaffected.</p>`;
+    } finally {
+      btn.disabled = false;
+    }
+  };
+}
+
 function renderRun() {
   const d = state.data;
   const stats = nodeStats();
@@ -918,7 +1353,8 @@ function mountPipeline(stats) {
   legend.innerHTML = `
     <span class="chip on"><span class="dotmark"></span>Agent gate, makes a model call</span>
     <span class="chip square"><span class="dotmark"></span>Resolution is deterministic, no model call</span>
-    <span class="chip"><span class="dotmark" style="background:var(--flag)"></span>Records dropped at a gate</span>`;
+    <span class="chip"><span class="dotmark" style="background:var(--flag)"></span>Records dropped at a gate</span>
+    <span class="chip"><span class="dotmark" style="background:var(--paper)"></span>The figure on the road is one resident, and stands for no quantity</span>`;
 
   const flatNote = "Static view. Counts on each stage are exact and come from the exported run.";
 
@@ -953,9 +1389,10 @@ function mountPipeline(stats) {
     }
     const sample = state.pipe.sample;
     const shares = `${num(f.resolved)} of ${num(f.read)} records clear Resolution, ${f.continuations} of the ${f.pairs} judged pairs are called continuations, and ${f.watched} of ${f.continuations} threads sit on a watched address.`;
+    const figure = "The person running the track is a single resident and is drawn for the same reason a map draws a person: to show whose route this is. They are not a count of anything, and the records stay as objects.";
     note.textContent = reduced()
-      ? `Motion is switched off because your system asks for reduced motion, so the run is drawn as one still frame. Use the gate buttons below to move the frame from one gate to the next. Every count on a gate is exact, and so is every share: ${shares}`
-      : `${sample} record shapes run ahead of the camera at a time, standing in for the ${num(f.read)} records read. The share that clears each gate is exact: ${shares}`;
+      ? `Motion is switched off because your system asks for reduced motion, so the run is drawn as one still frame. Use the gate buttons below to move the frame from one gate to the next. Every count on a gate is exact, and so is every share: ${shares} ${figure}`
+      : `${sample} record shapes run ahead of the camera at a time, standing in for the ${num(f.read)} records read. The share that clears each gate is exact: ${shares} ${figure}`;
   } catch (e) {
     stage.classList.remove("gl");
     stage.classList.add("flat");
@@ -1041,6 +1478,85 @@ function glowTexture() {
     g.fillStyle = rad;
     g.fillRect(0, 0, 128, 128);
   });
+}
+
+function shadowTexture() {
+  return makeTex(128, 128, g => {
+    const rad = g.createRadialGradient(64, 64, 0, 64, 64, 62);
+    rad.addColorStop(0, "rgba(0,0,0,.72)");
+    rad.addColorStop(0.55, "rgba(0,0,0,.28)");
+    rad.addColorStop(1, "rgba(0,0,0,0)");
+    g.fillStyle = rad;
+    g.fillRect(0, 0, 128, 128);
+  });
+}
+
+function makeResident() {
+  const coat = new THREE.MeshStandardMaterial({ color: 0xF1F4EE, roughness: 0.62, metalness: 0.08 });
+  const leg = new THREE.MeshStandardMaterial({ color: 0x1E3350, roughness: 0.7, metalness: 0.1 });
+  const skin = new THREE.MeshStandardMaterial({ color: 0xC98A5E, roughness: 0.75, metalness: 0.05 });
+  const shoe = new THREE.MeshStandardMaterial({ color: 0x0E181C, roughness: 0.6, metalness: 0.2 });
+  const bagMat = new THREE.MeshStandardMaterial({ color: 0x1F7A70, roughness: 0.55, metalness: 0.2 });
+
+  const group = new THREE.Group();
+  group.rotation.x = -0.07;
+  group.scale.setScalar(1.22);
+
+  const hips = new THREE.Mesh(roundedBoxGeo(0.88, 0.46, 0.54, 0.16), leg);
+  hips.position.set(0, 1.66, 0);
+  group.add(hips);
+
+  const torso = new THREE.Mesh(roundedBoxGeo(1.02, 1.3, 0.58, 0.22), coat);
+  torso.position.set(0, 2.48, 0);
+  group.add(torso);
+
+  const neck = new THREE.Mesh(roundedBoxGeo(0.3, 0.24, 0.3, 0.1), skin);
+  neck.position.set(0, 3.2, 0);
+  group.add(neck);
+
+  const head = new THREE.Mesh(roundedBoxGeo(0.64, 0.68, 0.62, 0.22), skin);
+  head.position.set(0, 3.6, 0);
+  group.add(head);
+
+  const hair = new THREE.Mesh(roundedBoxGeo(0.68, 0.26, 0.66, 0.12), new THREE.MeshStandardMaterial({ color: 0x241A14, roughness: 0.8 }));
+  hair.position.set(0, 3.88, 0);
+  group.add(hair);
+
+  const bag = new THREE.Mesh(roundedBoxGeo(0.66, 0.78, 0.3, 0.14), bagMat);
+  bag.position.set(0, 2.52, 0.44);
+  group.add(bag);
+
+  const legGeo = roundedBoxGeo(0.38, 1.5, 0.42, 0.16);
+  const shoeGeo = roundedBoxGeo(0.44, 0.24, 0.66, 0.1);
+  const armGeo = roundedBoxGeo(0.3, 1.14, 0.32, 0.13);
+  const handGeo = roundedBoxGeo(0.3, 0.28, 0.32, 0.12);
+
+  function limb(x, y, geo, mat, len, endGeo, endMat) {
+    const pivot = new THREE.Group();
+    pivot.position.set(x, y, 0);
+    const m = new THREE.Mesh(geo, mat);
+    m.position.y = -len / 2;
+    pivot.add(m);
+    const e = new THREE.Mesh(endGeo, endMat);
+    e.position.set(0, -len - 0.06, 0.1);
+    pivot.add(e);
+    group.add(pivot);
+    return pivot;
+  }
+
+  const legL = limb(-0.27, 1.62, legGeo, leg, 1.5, shoeGeo, shoe);
+  const legR = limb(0.27, 1.62, legGeo, leg, 1.5, shoeGeo, shoe);
+  const armL = limb(-0.66, 2.94, armGeo, coat, 1.14, handGeo, skin);
+  const armR = limb(0.66, 2.94, armGeo, coat, 1.14, handGeo, skin);
+
+  const shade = new THREE.Mesh(
+    new THREE.PlaneGeometry(2.6, 3),
+    new THREE.MeshBasicMaterial({ map: shadowTexture(), transparent: true, opacity: 0.75, depthWrite: false })
+  );
+  shade.rotation.x = -Math.PI / 2;
+  shade.position.y = 0.03;
+
+  return { group: group, shade: shade, legL: legL, legR: legR, armL: armL, armR: armR };
 }
 
 function quotaGate(pass, total) {
@@ -1277,10 +1793,59 @@ function buildRunner(stage, layer, stats, f) {
   const passRelevance = quotaGate(f.watched, f.continuations);
   const passAction = quotaGate(f.drafts, Math.max(1, f.watched));
 
+  const RUN_AHEAD = 11;
+  const JUMP_LEAD = 8;
+  const JUMP_DUR = 0.58;
+  const JUMP_H = 4.1;
+  const resident = makeResident();
+  scene.add(resident.group);
+  scene.add(resident.shade);
+  let jumpT = 0;
+  let lastCross = 0;
+
   const LANES = [-5.1, 0, 5.1];
   const TOKENS = 200;
   const toks = [];
   let travel = 0;
+
+  function stepResident(dt) {
+    const cross = Math.floor((travel + RUN_AHEAD + JUMP_LEAD) / SEG);
+    if (cross > lastCross) {
+      lastCross = cross;
+      if (jumpT === 0) jumpT = 0.0001;
+    }
+    if (jumpT > 0) {
+      jumpT += dt;
+      if (jumpT >= JUMP_DUR) jumpT = 0;
+    }
+  }
+
+  function poseResident(sway, px) {
+    const air = jumpT > 0 ? Math.sin(Math.PI * (jumpT / JUMP_DUR)) : 0;
+    const lift = JUMP_H * air;
+    const ph = clock * 9.4;
+    const swing = Math.sin(ph);
+    const x = sway * 0.9 + px * 2.2;
+    const z = CAM_Z - RUN_AHEAD;
+    resident.group.position.set(x, 0.14 + lift + Math.abs(Math.cos(ph)) * 0.15 * (1 - air), z);
+    resident.group.rotation.x = -0.07 - air * 0.16;
+    resident.group.rotation.y = -px * 0.22;
+    if (air > 0.02) {
+      resident.legL.rotation.x = 0.95 - air * 0.25;
+      resident.legR.rotation.x = -0.45 + air * 0.2;
+      resident.armL.rotation.x = -1.5 * air - 0.2;
+      resident.armR.rotation.x = -1.5 * air - 0.2;
+    } else {
+      resident.legL.rotation.x = swing * 0.98;
+      resident.legR.rotation.x = -swing * 0.98;
+      resident.armL.rotation.x = -swing * 0.88;
+      resident.armR.rotation.x = swing * 0.88;
+    }
+    resident.shade.position.set(x, 0.03, z + 0.2);
+    resident.shade.material.opacity = 0.75 * (1 - air * 0.8);
+    const sc = 1.35 * (1 - air * 0.28);
+    resident.shade.scale.set(sc, sc, sc);
+  }
 
   function gateZ(index) {
     const ui = Math.floor(travel / SEG);
@@ -1508,6 +2073,8 @@ function buildRunner(stage, layer, stats, f) {
       t.rz += t.sx * 0.4 * dt;
     }
 
+    stepResident(dt);
+
     for (let i = 0; i < STREAKS; i++) {
       const s = sdata[i];
       s.z += s.v * dt;
@@ -1586,6 +2153,7 @@ function buildRunner(stage, layer, stats, f) {
     camera.position.set(sway + pointer.x * 2.6, 4.1 + bob - pointer.y * 0.9, CAM_Z);
     camera.lookAt(sway * 0.3 + pointer.x * 1.4, 3.4 - pointer.y * 1.4, CAM_Z - 44);
     camera.rotation.z = -sway * 0.02 - pointer.x * 0.012;
+    poseResident(sway, pointer.x);
     unit = 44;
 
     gates.forEach(g => {
@@ -1928,12 +2496,16 @@ async function bootInner() {
 
   renderSpine(state.thread);
   renderThread(state.thread);
+  renderCitywide();
+  renderRefusal();
+  renderArchive();
   renderFeed();
   renderEvidence();
   renderComment();
   renderWatch();
   renderEval();
   renderRun();
+  renderLiveInvoke();
 
   window.addEventListener("hashchange", () => go(location.hash.slice(1) || "thread"));
   go(location.hash.slice(1) || "thread");

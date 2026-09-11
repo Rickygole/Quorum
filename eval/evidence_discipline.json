@@ -1,0 +1,367 @@
+{
+ "high_cosine_new_issue": {
+  "n": 13,
+  "rate": 1.0,
+  "pairs": [
+   {
+    "pair_id": 12,
+    "cosine": 0.934,
+    "cites_title": true
+   },
+   {
+    "pair_id": 25,
+    "cosine": 0.944,
+    "cites_title": true
+   },
+   {
+    "pair_id": 29,
+    "cosine": 0.973,
+    "cites_title": true
+   },
+   {
+    "pair_id": 30,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 31,
+    "cosine": 0.976,
+    "cites_title": true
+   },
+   {
+    "pair_id": 33,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 43,
+    "cosine": 0.978,
+    "cites_title": true
+   },
+   {
+    "pair_id": 44,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 45,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 46,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 47,
+    "cosine": 1.0,
+    "cites_title": true
+   },
+   {
+    "pair_id": 48,
+    "cosine": 0.972,
+    "cites_title": true
+   },
+   {
+    "pair_id": 50,
+    "cosine": 1.0,
+    "cites_title": true
+   }
+  ]
+ },
+ "parcel_exact_continuation": {
+  "n": 8,
+  "rate": 1.0,
+  "pairs": [
+   {
+    "pair_id": 5,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 6,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 16,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 20,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 21,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 23,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 26,
+    "names_parcel": true
+   },
+   {
+    "pair_id": 27,
+    "names_parcel": true
+   }
+  ]
+ },
+ "driver_hygiene": {
+  "n": 50,
+  "rate": 1.0,
+  "pairs": [
+   {
+    "pair_id": 1,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 2,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 3,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 4,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 5,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 6,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 7,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 8,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 9,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 10,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 11,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 12,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 13,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 14,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 15,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 16,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 17,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 18,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 19,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 20,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 21,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 22,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 23,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 24,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 25,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 26,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 27,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 28,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 29,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 30,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 31,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 32,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 33,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 34,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 35,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 36,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 37,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 38,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 39,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 40,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 41,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 42,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 43,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 44,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 45,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 46,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 47,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 48,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 49,
+    "drivers_nonempty": true,
+    "disjoint": true
+   },
+   {
+    "pair_id": 50,
+    "drivers_nonempty": true,
+    "disjoint": true
+   }
+  ]
+ }
+}

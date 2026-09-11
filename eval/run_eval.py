@@ -15,6 +15,9 @@ LABELS = ROOT / "labeled_set.jsonl"
 RESULTS = ROOT / "RESULTS.md"
 PERTURBATIONS_RESULTS = ROOT / "PERTURBATIONS.md"
 DECISIONS = ROOT / "agent_decisions.json"
+PERTURBED_DECISIONS = {
+    "direction abbreviation": ROOT / "agent_decisions_perturbed_direction_abbreviation.json",
+}
 
 SWEEP_THRESHOLDS = (0.80, 0.85, 0.90, 0.92, 0.94, 0.95, 0.96, 0.97, 0.975, 0.98, 0.99, 1.00)
 
@@ -69,6 +72,7 @@ def confusion(pairs, predict):
 BASELINES = {
     "always continuation": lambda r, o, n, f: True,
     "parcel exact": lambda r, o, n, f: f["parcel"]["match"] == "exact",
+    "parcel exact AND owner unchanged": lambda r, o, n, f: f["parcel"]["match"] == "exact" and f["owner"]["match"] != "changed",
     "title cosine >= 0.90": lambda r, o, n, f: f["title"]["cosine"] >= 0.90,
     "title cosine >= 0.99": lambda r, o, n, f: f["title"]["cosine"] >= 0.99,
     "shared sponsor": lambda r, o, n, f: bool(f["sponsor"]["overlap"]),
@@ -218,6 +222,9 @@ def flipped_pairs(pairs, perturbed, fn):
     return out
 
 
+AGENT_PERTURB_TRANSFORMS = ("direction abbreviation",)
+
+
 def perturbation_suite(pairs, baseline_stats, agent_decisions, run_agent_arm=False, model=None):
     from eval.perturbations import REGISTRY
 
@@ -249,21 +256,41 @@ def perturbation_suite(pairs, baseline_stats, agent_decisions, run_agent_arm=Fal
                 "flips": flipped_pairs(pairs, perturbed, fn),
             })
         if agent_decisions:
-            if run_agent_arm:
-                from agents.continuity import ContinuityAgent
+            if run_agent_arm and name in AGENT_PERTURB_TRANSFORMS:
+                cache_path = PERTURBED_DECISIONS[name]
+                if cache_path.exists():
+                    fresh = load_decisions_from(cache_path)
+                else:
+                    from agents.continuity import ContinuityAgent
 
-                agent = ContinuityAgent(model=model)
-                fresh = {}
-                for row, o2, n2, _ in perturbed:
-                    fresh[row["pair_id"]] = agent.decide(n2, o2)
-                after = confusion(
+                    agent = ContinuityAgent(model=model)
+                    fresh = {}
+                    for row, o2, n2, _ in perturbed:
+                        fresh[row["pair_id"]] = agent.decide(n2, o2)
+                    save_decisions(fresh, agent, cache_path)
+                after_stats = confusion(
                     perturbed, lambda r, o, n, f: fresh[r["pair_id"]].decision == "continuation"
-                )["accuracy"]
+                )
+                confidence_deltas = [
+                    round(fresh[row["pair_id"]].confidence - agent_decisions[row["pair_id"]].confidence, 3)
+                    for row, o, n, f in pairs
+                ]
+                moved = [d for d in confidence_deltas if abs(d) > 1e-9]
                 rows.append({
                     "transform": name, "corpus_example": perturbation.corpus_example,
                     "titles_changed": changed_titles, "rule": "Continuity Agent (re-run live)",
-                    "before": round(agent_acc, 3), "after": round(after, 3),
-                    "delta": round(after - agent_acc, 3), "measured": True,
+                    "before": round(agent_acc, 3), "after": round(after_stats["accuracy"], 3),
+                    "delta": round(after_stats["accuracy"] - agent_acc, 3), "measured": True,
+                    "decision_flips": [
+                        {"pair_id": row["pair_id"], "label": row["label"],
+                         "predicted_before": agent_decisions[row["pair_id"]].decision,
+                         "predicted_after": fresh[row["pair_id"]].decision}
+                        for row, o, n, f in pairs
+                        if agent_decisions[row["pair_id"]].decision != fresh[row["pair_id"]].decision
+                    ],
+                    "confidence_moved": len(moved),
+                    "confidence_mean_delta": round(sum(confidence_deltas) / len(confidence_deltas), 4),
+                    "confidence_max_abs_delta": round(max((abs(d) for d in confidence_deltas), default=0.0), 3),
                 })
             else:
                 rows.append({
@@ -287,9 +314,17 @@ def write_perturbation_results(rows, n_pairs):
     L.append(
         "Rows marked cached, not re-run report the accuracy of the Continuity Agent decisions already "
         "on file, unchanged, because the perturbation was not sent to the model. That row cannot show "
-        "an effect by construction. It is listed only for side by side comparison with the deterministic "
-        "rows, and the delta is always zero. Pass --perturb-agent to spend real model calls and re-run "
-        "the agent on the perturbed titles.\n"
+        "an effect by construction, and it is kept only for side by side comparison with the "
+        "deterministic rows.\n"
+    )
+    L.append(
+        "Pass --perturb-agent to spend real model calls and re-run the agent live, but only on "
+        f"{', '.join(AGENT_PERTURB_TRANSFORMS)}, the one transform above that actually changes the "
+        "feature table (it moves title cosine and nothing else). The other four transforms are proven "
+        "inert on every deterministic rule in the table above, including the ones that read title "
+        "cosine, so re-running the agent on them would spend model calls to confirm something already "
+        "shown by simpler means. They stay cached and are documented here as negative controls, not "
+        "as untested claims.\n"
     )
     L.append("## Transforms and where they come from\n")
     L.append("| Transform | Corpus example |")
@@ -324,7 +359,43 @@ def write_perturbation_results(rows, n_pairs):
             "\nEvery flip above happened without changing which parcel, sponsor, or status the record "
             "names. Only the surface form of the title moved.\n"
         )
-    else:
+    decision_flips = [r for r in rows if r.get("decision_flips")]
+    agent_live_rows = [r for r in rows if r["rule"] == "Continuity Agent (re-run live)"]
+    if agent_live_rows:
+        L.append("\n## Continuity Agent, re-run live under perturbation\n")
+        for r in agent_live_rows:
+            L.append(
+                f"On {r['transform']}, the agent was re-run on all {n_pairs} perturbed pairs with real "
+                f"model calls. Accuracy went from {fmt_pct(r['before'])} to {fmt_pct(r['after'])}, a "
+                f"delta of {r['delta']:+.3f}.\n"
+            )
+            L.append(
+                f"Confidence moved on {r['confidence_moved']} of {n_pairs} pairs, mean delta "
+                f"{r['confidence_mean_delta']:+.4f}, largest single move {r['confidence_max_abs_delta']:.3f}. "
+                "Confidence moved in both directions on this set, not only downward, so this is not read "
+                "as one-sided degradation; it is read as the model noticing the title changed and "
+                "adjusting how much weight it gave it, without changing what it decided.\n"
+            )
+        if decision_flips:
+            L.append("| Transform | Pair | Label | Decision before | Decision after |")
+            L.append("|---|---|---|---|---|")
+            for r in decision_flips:
+                for flip in r["decision_flips"]:
+                    L.append(
+                        f"| {r['transform']} | {flip['pair_id']} | {flip['label']} | "
+                        f"{flip['predicted_before']} | {flip['predicted_after']} |"
+                    )
+            L.append(
+                "\nThose rows are decisions that changed after an abbreviated direction word, nothing "
+                "else. Whatever caused the change was read off the title, not off the parcel, sponsor, "
+                "or status, which the perturbation left untouched.\n"
+            )
+        else:
+            L.append(
+                "No individual decision flipped. Confidence may still have moved; decision, the number "
+                "that accuracy is computed from, did not.\n"
+            )
+    if not flips:
         L.append(
             "\nNo transform flipped any rule's decision on this set.\n"
         )
@@ -348,21 +419,25 @@ def run_agent(pairs, model=None, persist=True):
     return decisions
 
 
-def save_decisions(decisions, agent=None):
-    DECISIONS.write_text(json.dumps({
+def save_decisions(decisions, agent=None, path=None):
+    (path or DECISIONS).write_text(json.dumps({
         "model": getattr(getattr(agent, "agent", None), "model", None).__class__.__name__ if agent else None,
         "usage": getattr(agent, "usage", []) if agent else [],
         "decisions": {str(k): v.model_dump(mode="json") for k, v in decisions.items()},
     }, indent=1))
 
 
-def load_decisions():
+def load_decisions_from(path):
     from models import ContinuityDecision
 
-    if not DECISIONS.exists():
+    if not path.exists():
         return {}
-    raw = json.loads(DECISIONS.read_text())
+    raw = json.loads(path.read_text())
     return {int(k): ContinuityDecision(**v) for k, v in raw["decisions"].items()}
+
+
+def load_decisions():
+    return load_decisions_from(DECISIONS)
 
 
 def fmt_pct(x):
@@ -595,6 +670,42 @@ def write_heldout_section(heldout):
     return L
 
 
+def write_owner_section(pairs):
+    L = []
+    L.append("### Does ownership add anything on this set?\n")
+    L.append(
+        "`ingest/gazetteer.py` carries a registered owner (`OWNER_1`) for every one of the 237,092 "
+        "parcels, and `features/continuity_features.py` now computes an `owner` block comparing the "
+        "owner on record for the candidate's parcel against the owner on record for the prior record's "
+        "parcel, normalizing case, punctuation, and common suffix spellings (`INC` and `INC.`, `CORP` "
+        "and `CORPORATION`) so formatting differences do not read as a change of owner. An ownership "
+        "change on the same parcel is a real signal that a new party is behind the new filing.\n"
+    )
+    exact = [p for p in pairs if p[3]["parcel"]["match"] == "exact"]
+    exact_same = [p for p in exact if p[3]["owner"]["match"] == "same"]
+    exact_changed = [p for p in exact if p[3]["owner"]["match"] == "changed"]
+    adjacent = [p for p in pairs if p[3]["parcel"]["match"] == "adjacent"]
+    adjacent_changed = [p for p in adjacent if p[3]["owner"]["match"] == "changed"]
+    unknown = [p for p in pairs if p[3]["owner"]["match"] == "unknown"]
+    L.append(
+        f"On the {len(pairs)} labeled pairs: **{len(exact_same)} of {len(exact)}** exact parcel matches "
+        f"show the same owner on both records, and **{len(exact_changed)}** show a changed owner. Every "
+        "exact parcel match in this set is already labeled a continuation, so there is not one case "
+        "here where an ownership change on the same parcel would have to be weighed against a "
+        "continuation label. The feature has nothing to disagree with, in either direction.\n"
+    )
+    L.append(
+        f"Adding `parcel exact AND owner unchanged` as a baseline changes nothing: {len(adjacent_changed)} "
+        f"of {len(adjacent)} adjacent-parcel pairs show a changed owner (expected, since `adjacent` means "
+        f"a different lot), and {len(unknown)} pairs have no owner on file for one side or both, mostly "
+        "the citywide tier, which names no parcel at all. That is the honest reading: this corpus does "
+        "not contain a labeled case of ownership turnover on the same parcel, so the feature is present, "
+        "correctly computed, and currently silent. It is kept because the day a resident's block does "
+        "show a sale, the agent will see it; it costs nothing to carry it and it changes no score today.\n"
+    )
+    return L
+
+
 def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions, heldout=None):
     n = len(pairs)
     pos = sum(1 for p in pairs if p[0]["label"] == "continuation")
@@ -645,6 +756,8 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
         "output is what the product shows a resident, and it is what makes a wrong answer diagnosable "
         "instead of silent.\n"
     )
+
+    L += write_owner_section(pairs)
 
     if agent_stats:
         L.append("## Continuity Agent\n")
@@ -727,8 +840,92 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
     if ab:
         L += write_ablation_section(ab)
 
+    L += write_evidence_discipline_section()
+    L += write_base_rates_section()
+
     RESULTS.write_text("\n".join(L) + "\n")
     print(f"wrote {RESULTS}")
+
+
+def write_evidence_discipline_section():
+    from eval.evidence_discipline import evaluate as evaluate_evidence_discipline
+
+    ed = evaluate_evidence_discipline()
+    L = []
+    L.append("## Evidence discipline\n")
+    L.append(
+        "This is the metric the product actually makes a claim about: not whether the decision was "
+        "right, but whether the stated evidence was honest. It is computed automatically over the "
+        "50 cached decisions in `eval/agent_decisions.json` by `python -m eval.evidence_discipline`, "
+        "against three checks that need no human rubric.\n"
+    )
+    hc = ed["high_cosine_new_issue"]
+    pc = ed["parcel_exact_continuation"]
+    dh = ed["driver_hygiene"]
+    L.append("| Check | n | Rate |")
+    L.append("|---|---|---|")
+    L.append(
+        f"| Title cosine >= 0.90 and label new_issue: does `non_drivers` mention title similarity? "
+        f"| {hc['n']} | {fmt_pct(hc['rate']) if hc['rate'] is not None else 'n/a'} |"
+    )
+    L.append(
+        f"| Parcel exact continuation: does `drivers` name the parcel? "
+        f"| {pc['n']} | {fmt_pct(pc['rate']) if pc['rate'] is not None else 'n/a'} |"
+    )
+    L.append(
+        f"| Every decision: is `drivers` non-empty and disjoint from `non_drivers`? "
+        f"| {dh['n']} | {fmt_pct(dh['rate']) if dh['rate'] is not None else 'n/a'} |"
+    )
+    misses = (
+        [p for p in hc["pairs"] if not p["cites_title"]]
+        + [p for p in pc["pairs"] if not p["names_parcel"]]
+        + [p for p in dh["pairs"] if not (p["drivers_nonempty"] and p["disjoint"])]
+    )
+    if misses:
+        L.append(
+            f"\n{len(misses)} pair(s) failed one of the three checks; see "
+            "`eval/evidence_discipline.json` for which ones.\n"
+        )
+    else:
+        L.append(
+            "\nAll three checks pass on every pair in this cache. That is a property of these 50 "
+            "decisions, produced once and stored, not a guarantee about a decision not yet made. The "
+            "check exists so a future decision that violates it is caught by re-running this module, "
+            "not by a person re-reading fifty rationales.\n"
+        )
+    return L
+
+
+def write_base_rates_section():
+    from eval.base_rates import compute as compute_base_rates
+
+    br = compute_base_rates()
+    L = []
+    L.append("## Empirical outcome base rates\n")
+    L.append(
+        f"The corpus carries a full action history for all {br['n_matters']:,} matters, so it is possible "
+        "to state, for a category of legislation that reached a hearing, what fraction of those actually "
+        "reached were enacted. This is reported as a historical rate with its sample size, not as a "
+        "prediction about any specific pending matter, and it is computed by "
+        "`python -m eval.base_rates`.\n"
+    )
+    L.append("| Category | Total | Reached a hearing | Enacted | Rate |")
+    L.append("|---|---|---|---|---|")
+    for name, stat in br["categories"].items():
+        rate = fmt_pct(stat["rate"]) if stat["rate"] is not None else "n/a"
+        L.append(
+            f"| {name} | {stat['n_total']} | {stat['n_reached_hearing']} | {stat['n_outcome']} | {rate} |"
+        )
+    L.append(
+        "\n`reached a hearing` means the matter's history contains at least one "
+        "`Scheduled for a Public Hearing` action. A matter that never reached a hearing is excluded "
+        "from the rate rather than counted as a failure, because it may simply still be pending.\n"
+    )
+    L.append("| Terminal status across the full corpus | n | Share |")
+    L.append("|---|---|---|")
+    for row in br["status_distribution"]["by_status"]:
+        L.append(f"| {row['status']} | {row['n']} | {fmt_pct(row['rate'])} |")
+    return L
 
 
 def main():

@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import date, datetime
 from pathlib import Path
 
 from ingest.gazetteer import Gazetteer
 from ingest.normalize import load_corpus
 from features.continuity_features import compute
+from eval.base_rates import compute as compute_base_rates
 
 OUT = Path(__file__).resolve().parent / "docs" / "data"
 ACTION_CACHE = Path(__file__).resolve().parent / "data" / "action_cache.json"
@@ -244,6 +246,11 @@ def main():
         ),
     }
 
+    live_endpoint = os.environ.get(
+        "QUORUM_LIVE_ENDPOINT",
+        "https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com",
+    )
+
     fetched = corpus[0].fetched_at if corpus else None
     payload = {
         "fetched_at": _iso(fetched),
@@ -255,7 +262,13 @@ def main():
             "labeled_pairs": len(pairs),
         },
         "watched": WATCHED,
+        "live": {
+            "endpoint": live_endpoint,
+            "runtime_arn": "arn:aws:bedrock-agentcore:us-east-1:162774483375:runtime/quorum_continuity-eEoCT98tX4",
+            "note": "Posting a pair id runs the Continuity Agent on AgentCore Runtime against Amazon Bedrock. The response carries the runtime arn, the AgentCore session id, the model id and the measured latency, so a live call can be told apart from a cached one.",
+        },
         "evaluation": evaluation,
+        "base_rates": compute_base_rates(corpus),
         "addresses": addresses,
         "graph": [
             {"node": "Civic Analyst", "kind": "agent"},

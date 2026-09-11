@@ -64,6 +64,10 @@ def blocklot_key(block: str, lot: str) -> str:
 def _norm_key(addr: str) -> str:
     return re.sub(r"[^a-z0-9 ]", "", (addr or "").lower()).strip()
 
+def clean_owner(raw: str | None) -> str | None:
+    s = re.sub(r"\s+", " ", (raw or "")).strip()
+    return s or None
+
 def parse_parcel_refs(text: str) -> list[ParcelRef]:
     text = re.sub(r"\s+", " ", text or "")
     refs: list[ParcelRef] = []
@@ -127,6 +131,7 @@ class Gazetteer:
         out.block = out.block or (hit.get("BLOCK") or "").strip().upper() or None
         addr = normalize_address(hit.get("FULLADDR") or "")
         out.address_normalized = out.address_normalized or addr
+        out.owner = clean_owner(hit.get("OWNER_1"))
         return out
 
     def autocomplete(self, prefix: str, limit: int = 8) -> list[str]:

@@ -1,0 +1,97 @@
+{
+ "n_matters": 1679,
+ "categories": {
+  "rezoning ordinance": {
+   "n_total": 72,
+   "n_reached_hearing": 55,
+   "n_outcome": 48,
+   "outcome_status": "Enacted",
+   "rate": 0.873
+  },
+  "conditional use petition": {
+   "n_total": 92,
+   "n_reached_hearing": 77,
+   "n_outcome": 70,
+   "outcome_status": "Enacted",
+   "rate": 0.909
+  },
+  "sale of property ordinance": {
+   "n_total": 44,
+   "n_reached_hearing": 41,
+   "n_outcome": 35,
+   "outcome_status": "Enacted",
+   "rate": 0.854
+  }
+ },
+ "status_distribution": {
+  "n_total": 1679,
+  "n_terminal": 1533,
+  "by_status": [
+   {
+    "status": "Enacted",
+    "n": 609,
+    "rate": 0.363
+   },
+   {
+    "status": "Confirmed",
+    "n": 308,
+    "rate": 0.183
+   },
+   {
+    "status": "Adopted",
+    "n": 168,
+    "rate": 0.1
+   },
+   {
+    "status": "Failed - End of Term",
+    "n": 147,
+    "rate": 0.088
+   },
+   {
+    "status": "In Committee",
+    "n": 137,
+    "rate": 0.082
+   },
+   {
+    "status": "Confirmed after 3 Meetings without Council Action",
+    "n": 117,
+    "rate": 0.07
+   },
+   {
+    "status": "Withdrawn",
+    "n": 111,
+    "rate": 0.066
+   },
+   {
+    "status": "Matter Concluded",
+    "n": 69,
+    "rate": 0.041
+   },
+   {
+    "status": "3rd Reader, final passage",
+    "n": 4,
+    "rate": 0.002
+   },
+   {
+    "status": "2nd Reader",
+    "n": 3,
+    "rate": 0.002
+   },
+   {
+    "status": "Introduced In Council",
+    "n": 2,
+    "rate": 0.001
+   },
+   {
+    "status": "Failed",
+    "n": 2,
+    "rate": 0.001
+   },
+   {
+    "status": "Vetoed by Mayor",
+    "n": 2,
+    "rate": 0.001
+   }
+  ]
+ }
+}

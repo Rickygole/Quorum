@@ -14,6 +14,7 @@ class ParcelRef(BaseModel):
     block: str | None = None
     lots: list[str] = Field(default_factory=list)
     parcel_id: str | None = None
+    owner: str | None = None
 
 class Appearance(BaseModel):
 

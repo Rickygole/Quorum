@@ -14,12 +14,14 @@ FAST_MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
 def bedrock(model_id: str | None = None, temperature: float = 0.2) -> Model:
+    from botocore.config import Config
     from strands.models import BedrockModel
 
     return BedrockModel(
         model_id=model_id or os.environ.get("QUORUM_MODEL_ID", DEFAULT_MODEL_ID),
         region_name=os.environ.get("AWS_REGION", "us-east-1"),
         temperature=temperature,
+        boto_client_config=Config(read_timeout=180, connect_timeout=20, retries={"max_attempts": 4, "mode": "adaptive"}),
     )
 
 
@@ -82,7 +84,22 @@ def usage_of(result) -> dict:
     }
 
 
-def run_structured(agent, prompt: str, stateless: bool = True):
+def run_structured(agent, prompt: str, stateless: bool = True, attempts: int = 4):
+    import time as _time
+
+    last = None
+    for attempt in range(attempts):
+        try:
+            return _run_structured_once(agent, prompt, stateless)
+        except Exception as exc:
+            last = exc
+            if attempt == attempts - 1:
+                raise
+            _time.sleep(2 ** attempt * 3)
+    raise last
+
+
+def _run_structured_once(agent, prompt: str, stateless: bool = True):
     if stateless:
         agent.messages = []
     before = getattr(agent, "_quorum_usage_total", {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0})

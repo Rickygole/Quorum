@@ -11,6 +11,7 @@ Every number on this page is produced by `python -m eval.run_eval`.
 |---|---|---|---|---|
 | always continuation | 38% | 0.38 | 1.00 | 0.55 |
 | parcel exact | 78% | 1.00 | 0.42 | 0.59 |
+| parcel exact AND owner unchanged | 78% | 1.00 | 0.42 | 0.59 |
 | title cosine >= 0.90 | 64% | 0.52 | 0.74 | 0.61 |
 | title cosine >= 0.99 | 70% | 0.61 | 0.58 | 0.59 |
 | shared sponsor | 46% | 0.41 | 1.00 | 0.58 |
@@ -42,6 +43,14 @@ The rule is perfect between 0.94 and 0.97 and wrong on either side. The margin i
 
 So the honest claim is narrow: **a tuned two clause rule matches these labels, and the Continuity Agent is not required to beat it on accuracy.** What the agent does that the rule cannot is state, in checkable language, which evidence drove each decision and which it explicitly set aside. That output is what the product shows a resident, and it is what makes a wrong answer diagnosable instead of silent.
 
+### Does ownership add anything on this set?
+
+`ingest/gazetteer.py` carries a registered owner (`OWNER_1`) for every one of the 237,092 parcels, and `features/continuity_features.py` now computes an `owner` block comparing the owner on record for the candidate's parcel against the owner on record for the prior record's parcel, normalizing case, punctuation, and common suffix spellings (`INC` and `INC.`, `CORP` and `CORPORATION`) so formatting differences do not read as a change of owner. An ownership change on the same parcel is a real signal that a new party is behind the new filing.
+
+On the 50 labeled pairs: **8 of 8** exact parcel matches show the same owner on both records, and **0** show a changed owner. Every exact parcel match in this set is already labeled a continuation, so there is not one case here where an ownership change on the same parcel would have to be weighed against a continuation label. The feature has nothing to disagree with, in either direction.
+
+Adding `parcel exact AND owner unchanged` as a baseline changes nothing: 18 of 21 adjacent-parcel pairs show a changed owner (expected, since `adjacent` means a different lot), and 21 pairs have no owner on file for one side or both, mostly the citywide tier, which names no parcel at all. That is the honest reading: this corpus does not contain a labeled case of ownership turnover on the same parcel, so the feature is present, correctly computed, and currently silent. It is kept because the day a resident's block does show a sale, the agent will see it; it costs nothing to carry it and it changes no score today.
+
 ## Continuity Agent
 
 | Metric | Value |
@@ -63,50 +72,50 @@ So the honest claim is narrow: **a tuned two clause rule matches these labels, a
 | 2 | `21-0013` to `21-0052` | parcel | new_issue | new_issue | 0.95 | ok |
 | 3 | `21-0026` to `26-0177` | parcel | new_issue | new_issue | 0.98 | ok |
 | 4 | `21-0031R` to `24-0577` | parcel | new_issue | new_issue | 0.98 | ok |
-| 5 | `21-0035` to `22-0277` | parcel | continuation | continuation | 1.00 | ok |
+| 5 | `21-0035` to `22-0277` | parcel | continuation | continuation | 0.98 | ok |
 | 6 | `21-0042R` to `21-0064` | parcel | continuation | continuation | 0.95 | ok |
 | 7 | `21-0045` to `23-0374` | parcel | new_issue | new_issue | 0.95 | ok |
 | 8 | `21-0051R` to `24-0516` | parcel | new_issue | new_issue | 0.98 | ok |
 | 9 | `21-0054` to `22-0217` | parcel | new_issue | new_issue | 0.95 | ok |
 | 10 | `21-0076` to `23-0408` | parcel | new_issue | new_issue | 0.98 | ok |
 | 11 | `21-0076` to `23-0469` | parcel | new_issue | new_issue | 0.98 | ok |
-| 12 | `21-0077` to `21-0098` | parcel | new_issue | new_issue | 0.95 | ok |
+| 12 | `21-0077` to `21-0098` | parcel | new_issue | new_issue | 0.98 | ok |
 | 13 | `21-0170` to `26-0206` | parcel | new_issue | new_issue | 0.95 | ok |
 | 14 | `21-0171` to `25-0104` | parcel | new_issue | new_issue | 0.98 | ok |
 | 15 | `22-0240` to `24-0497` | parcel | new_issue | new_issue | 0.98 | ok |
-| 16 | `22-0295` to `23-0417` | parcel | continuation | continuation | 1.00 | ok |
+| 16 | `22-0295` to `23-0417` | parcel | continuation | continuation | 0.98 | ok |
 | 17 | `22-0302` to `23-0375` | parcel | new_issue | new_issue | 0.98 | ok |
 | 18 | `22-0320` to `22-0325` | parcel | new_issue | new_issue | 0.98 | ok |
 | 19 | `23-0408` to `23-0469` | parcel | new_issue | new_issue | 0.98 | ok |
 | 20 | `23-0411` to `26-0148` | parcel | continuation | continuation | 0.98 | ok |
-| 21 | `23-0437` to `23-0441` | parcel | continuation | continuation | 0.98 | ok |
+| 21 | `23-0437` to `23-0441` | parcel | continuation | continuation | 0.95 | ok |
 | 22 | `23-0454` to `24-0549` | parcel | new_issue | new_issue | 0.98 | ok |
-| 23 | `24-0221R` to `24-0550` | parcel | continuation | continuation | 0.95 | ok |
+| 23 | `24-0221R` to `24-0550` | parcel | continuation | continuation | 0.98 | ok |
 | 24 | `24-0533` to `25-0091` | parcel | new_issue | new_issue | 0.98 | ok |
 | 25 | `25-0055` to `25-0056` | parcel | new_issue | new_issue | 0.95 | ok |
-| 26 | `25-0071` to `25-0083` | parcel | continuation | continuation | 0.98 | ok |
+| 26 | `25-0071` to `25-0083` | parcel | continuation | continuation | 0.95 | ok |
 | 27 | `25-0073` to `25-0074` | parcel | continuation | continuation | 0.95 | ok |
-| 28 | `25-0089` to `25-0142` | parcel | new_issue | new_issue | 0.95 | ok |
-| 29 | `21-0014R` to `21-0015R` | citywide | new_issue | new_issue | 0.98 | ok |
+| 28 | `25-0089` to `25-0142` | parcel | new_issue | new_issue | 0.98 | ok |
+| 29 | `21-0014R` to `21-0015R` | citywide | new_issue | new_issue | 1.00 | ok |
 | 30 | `22-0096R` to `26-0048R` | citywide | new_issue | new_issue | 0.95 | ok |
 | 31 | `22-0233` to `26-0179` | citywide | new_issue | new_issue | 0.95 | ok |
 | 32 | `21-0114` to `25-0059` | citywide | continuation | continuation | 0.98 | ok |
 | 33 | `22-0194` to `25-0102` | citywide | new_issue | new_issue | 0.95 | ok |
 | 34 | `22-0326` to `26-0199` | citywide | continuation | continuation | 0.98 | ok |
-| 35 | `24-0508` to `24-0509` | citywide | continuation | continuation | 0.98 | ok |
+| 35 | `24-0508` to `24-0509` | citywide | continuation | continuation | 0.95 | ok |
 | 36 | `23-0415` to `24-0568` | citywide | continuation | continuation | 0.98 | ok |
 | 37 | `24-0556` to `25-0058` | citywide | continuation | continuation | 0.98 | ok |
 | 38 | `24-0576` to `25-0003` | citywide | continuation | continuation | 0.98 | ok |
 | 39 | `22-0111R` to `23-0195R` | citywide | continuation | continuation | 0.98 | ok |
 | 40 | `22-0126R` to `24-0226R` | citywide | continuation | continuation | 0.98 | ok |
 | 41 | `22-0140R` to `25-0003R` | citywide | continuation | continuation | 0.98 | ok |
-| 42 | `22-0139R` to `25-0036R` | citywide | continuation | continuation | 0.98 | ok |
-| 43 | `21-0058` to `23-0373` | citywide | new_issue | new_issue | 0.95 | ok |
-| 44 | `23-0452` to `24-0488` | citywide | new_issue | new_issue | 0.95 | ok |
+| 42 | `22-0139R` to `25-0036R` | citywide | continuation | continuation | 0.95 | ok |
+| 43 | `21-0058` to `23-0373` | citywide | new_issue | new_issue | 0.90 | ok |
+| 44 | `23-0452` to `24-0488` | citywide | new_issue | new_issue | 0.92 | ok |
 | 45 | `21-0168` to `22-0299` | citywide | new_issue | new_issue | 0.95 | ok |
 | 46 | `22-0299` to `24-0545` | citywide | new_issue | new_issue | 0.95 | ok |
 | 47 | `21-0168` to `24-0545` | citywide | new_issue | new_issue | 0.95 | ok |
-| 48 | `21-0056` to `21-0120` | citywide | new_issue | new_issue | 0.85 | ok |
+| 48 | `21-0056` to `21-0120` | citywide | new_issue | new_issue | 0.92 | ok |
 | 49 | `24-0599` to `25-0015` | citywide | continuation | continuation | 0.98 | ok |
 | 50 | `24-0544` to `25-0093` | citywide | new_issue | new_issue | 0.85 | ok |
 
@@ -134,6 +143,7 @@ Test pair ids: [1, 2, 3, 4, 6, 8, 12, 16, 17, 20, 22, 24, 26, 28, 30, 33, 34, 35
 |---|---|---|---|---|
 | always continuation | 38% | 0.38 | 1.00 | 0.56 |
 | parcel exact | 77% | 1.00 | 0.40 | 0.57 |
+| parcel exact AND owner unchanged | 77% | 1.00 | 0.40 | 0.57 |
 | title cosine >= 0.90 | 65% | 0.53 | 0.80 | 0.64 |
 | title cosine >= 0.99 | 65% | 0.55 | 0.60 | 0.57 |
 | shared sponsor | 42% | 0.40 | 1.00 | 0.57 |
@@ -212,3 +222,42 @@ Those three are the cases that need domain knowledge: a liquor licence and the z
 
 The honest reading of this project is therefore: the deterministic features do most of the work, the model generalises from them better than any single feature does, and the domain guidance buys the last three cases. That is a hybrid, and it is worth saying so rather than claiming the agent is doing something magical.
 
+## Evidence discipline
+
+This is the metric the product actually makes a claim about: not whether the decision was right, but whether the stated evidence was honest. It is computed automatically over the 50 cached decisions in `eval/agent_decisions.json` by `python -m eval.evidence_discipline`, against three checks that need no human rubric.
+
+| Check | n | Rate |
+|---|---|---|
+| Title cosine >= 0.90 and label new_issue: does `non_drivers` mention title similarity? | 13 | 100% |
+| Parcel exact continuation: does `drivers` name the parcel? | 8 | 100% |
+| Every decision: is `drivers` non-empty and disjoint from `non_drivers`? | 50 | 100% |
+
+All three checks pass on every pair in this cache. That is a property of these 50 decisions, produced once and stored, not a guarantee about a decision not yet made. The check exists so a future decision that violates it is caught by re-running this module, not by a person re-reading fifty rationales.
+
+## Empirical outcome base rates
+
+The corpus carries a full action history for all 1,679 matters, so it is possible to state, for a category of legislation that reached a hearing, what fraction of those actually reached were enacted. This is reported as a historical rate with its sample size, not as a prediction about any specific pending matter, and it is computed by `python -m eval.base_rates`.
+
+| Category | Total | Reached a hearing | Enacted | Rate |
+|---|---|---|---|---|
+| rezoning ordinance | 72 | 55 | 48 | 87% |
+| conditional use petition | 92 | 77 | 70 | 91% |
+| sale of property ordinance | 44 | 41 | 35 | 85% |
+
+`reached a hearing` means the matter's history contains at least one `Scheduled for a Public Hearing` action. A matter that never reached a hearing is excluded from the rate rather than counted as a failure, because it may simply still be pending.
+
+| Terminal status across the full corpus | n | Share |
+|---|---|---|
+| Enacted | 609 | 36% |
+| Confirmed | 308 | 18% |
+| Adopted | 168 | 10% |
+| Failed - End of Term | 147 | 9% |
+| In Committee | 137 | 8% |
+| Confirmed after 3 Meetings without Council Action | 117 | 7% |
+| Withdrawn | 111 | 7% |
+| Matter Concluded | 69 | 4% |
+| 3rd Reader, final passage | 4 | 0% |
+| 2nd Reader | 3 | 0% |
+| Introduced In Council | 2 | 0% |
+| Failed | 2 | 0% |
+| Vetoed by Mayor | 2 | 0% |

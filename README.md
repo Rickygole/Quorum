@@ -2,17 +2,27 @@
 
 **Cities decide slowly, across many meetings, under changing labels. Residents lose because nobody can hold the thread. Quorum holds the thread.**
 
-Quorum maintains a persistent model of the civic issues that touch a specific address. It ingests Baltimore City Council's published legislative record, resolves each item to a parcel, decides whether the item is a *continuation of an issue it has already seen*, explains what changed since the last appearance, and drafts a public comment carrying the correct file number and hearing date.
+Quorum maintains a persistent model of the civic issues that touch a specific address. It ingests Baltimore City Council's published legislative record, resolves each item to a parcel, decides whether the item is a *continuation of an issue it has already seen*, explains what changed since the last appearance, and drafts a public comment carrying the correct file number and hearing date, only when a comment window is actually open on that item.
+
+If the underlying record is already decided, enacted, withdrawn or failed, Quorum does not draft a comment at all. It shows the status, the date, the sponsors, the committee and the source records instead, and says plainly why there is nothing left to send. Of the 19 continuation threads published on the site today, only 1 has an open comment window.
 
 It never submits anything on a person's behalf.
 
-Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [Strands Agents SDK](https://strandsagents.com).
+Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [Strands Agents SDK](https://strandsagents.com), on Amazon Bedrock.
 
-**Live demo: https://rickygole.github.io/Quorum/**
+**Live demo: https://quorum-peach.vercel.app** (mirrored at https://rickygole.github.io/Quorum/)
 
 The published site runs entirely on a cached, timestamped corpus. No demo fetches civic
 data at runtime, and the fetch timestamp is shown on screen. The page itself loads a web
 font and one charting library from public CDNs, which is the only network traffic it makes.
+
+The Continuity Agent is also deployed to **Bedrock AgentCore Runtime** and verified live by
+direct invocation, with OpenTelemetry tracing enabled. See
+[ARCHITECTURE.md](ARCHITECTURE.md) and [deploy/README.md](deploy/README.md) for what is
+deployed, what it returns on a real call, and the three bugs that only showed up once it
+left a laptop.
+
+![Quorum pipeline architecture: cached sources into ingestion, into a Strands Graph of five fixed order nodes on Bedrock AgentCore Runtime, into a static site, stopping at a human approval gate](docs/architecture.svg)
 
 ---
 
@@ -96,6 +106,25 @@ that die at end of term and return under a new file number with no parcel anywhe
 Sitting immediately beside them are recurring annual bills with identical titles that are
 **not** continuations. See [eval/RESULTS.md](eval/RESULTS.md).
 
+**What the split shows.** On the parcel tier, matching on the parcel alone finds all 8 true
+continuations, because a parcel match is deterministic code doing exactly the job it was
+built for. On the citywide tier, the same parcel lookup finds **0 of the 11** true
+continuations, because those records name no property Quorum can resolve: a charter
+amendment, a tipped wage bill, a conservation district. **11 of the 19 true continuations
+in this set, 58%, carry no parcel at all.** That is the majority of the problem a parcel
+lookup is structurally blind to, and it is where the Continuity Agent, reasoning over the
+full feature table rather than a single field, earns its place.
+
+**What the domain guidance is worth.** The Continuity Agent's prompt tells the model, in
+prose, which features matter and why. With every domain hint stripped out and only the
+task, the schema, and an instruction not to invent facts left in place, accuracy on the
+50 pairs falls from 100% to **94% (47/50)**, not down to the **78%** the best single
+deterministic feature (parcel exact) gets on its own. The three misses are cases a feature
+table alone does not flag as one issue: a liquor licence tied to its own zoning approval,
+a charter amendment returning after a failed term, and one street condemnation filed as two
+file numbers. See [eval/RESULTS.md](eval/RESULTS.md) for the full ablation and the held out
+split it is checked against.
+
 ---
 
 ## Data sources
@@ -130,6 +159,20 @@ Written before a judge finds them.
   rather than guessing.
 - **Quorum never submits.** It drafts a comment and stops. The human sends it or does not.
   This is a design decision, not a missing feature.
+- **A comment window is not always open.** Quorum will not draft a comment for a decision
+  that has already been taken. Only 1 of the 19 threads published today has an open window;
+  the rest show the record and its history instead of a letter nobody could still send.
+- **A parcel lookup alone misses most citywide continuations.** It finds all 8 true
+  continuations on the parcel tier and 0 of 11 on the citywide tier, where 58% of this
+  set's true continuations live. See the per tier table in [eval/RESULTS.md](eval/RESULTS.md).
+- **AgentCore Memory is not wired up.** The Continuity Agent is deployed to Bedrock
+  AgentCore Runtime, but issue timelines are rebuilt from the cached corpus on every run and
+  do not persist between runs. See [ARCHITECTURE.md](ARCHITECTURE.md).
+- **The deployed runtime is not reachable from a browser yet.** It is verified live by
+  direct invocation. The Lambda meant to front it with a signed call is deployed and working,
+  but its public function URL is blocked at the AWS account level, so the site presents
+  cached decisions, labeled as cached, until an HTTP API route is in place. See
+  [deploy/README.md](deploy/README.md).
 
 ## Setup
 
@@ -146,8 +189,13 @@ The cached corpus and gazetteer are committed, so the first two commands are onl
 to refresh them. `site_export.py` regenerates `docs/data/site.json`, which is what the
 published site reads.
 
-The site is plain static files in `docs/`, published by GitHub Pages from the `main`
-branch. There is no build step and no framework.
+The site is plain static files in `docs/`, published from the `main` branch to both GitHub
+Pages and Vercel. There is no build step and no framework.
+
+The Continuity Agent can also run as a Strands agent against Amazon Bedrock directly, or be
+deployed to Bedrock AgentCore Runtime. See [deploy/README.md](deploy/README.md) for the
+deploy commands, what is verified live, and the deployment only bugs that do not show up
+locally.
 
 ## License
 

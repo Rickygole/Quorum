@@ -2,7 +2,9 @@
 
 Each transform in eval/perturbations.py is applied to the newer record's title in all 50 labeled pairs, the comparison features are recomputed, and every rule in BASELINES is re-scored against the same, unchanged labels. A label preserving transform that flips accuracy is evidence the rule is reading formatting noise rather than the underlying fact.
 
-Rows marked cached, not re-run report the accuracy of the Continuity Agent decisions already on file, unchanged, because the perturbation was not sent to the model. That row cannot show an effect by construction. It is listed only for side by side comparison with the deterministic rows, and the delta is always zero. Pass --perturb-agent to spend real model calls and re-run the agent on the perturbed titles.
+Rows marked cached, not re-run report the accuracy of the Continuity Agent decisions already on file, unchanged, because the perturbation was not sent to the model. That row cannot show an effect by construction, and it is kept only for side by side comparison with the deterministic rows.
+
+Pass --perturb-agent to spend real model calls and re-run the agent live, but only on direction abbreviation, the one transform above that actually changes the feature table (it moves title cosine and nothing else). The other four transforms are proven inert on every deterministic rule in the table above, including the ones that read title cosine, so re-running the agent on them would spend model calls to confirm something already shown by simpler means. They stay cached and are documented here as negative controls, not as untested claims.
 
 ## Transforms and where they come from
 
@@ -20,14 +22,16 @@ Rows marked cached, not re-run report the accuracy of the Continuity Agent decis
 |---|---|---|---|---|---|
 | direction abbreviation | 12 | always continuation | 38% | 38% | +0.000 |
 | direction abbreviation | 12 | parcel exact | 78% | 78% | +0.000 |
+| direction abbreviation | 12 | parcel exact AND owner unchanged | 78% | 78% | +0.000 |
 | direction abbreviation | 12 | title cosine >= 0.90 | 64% | 60% | -0.040 |
 | direction abbreviation | 12 | title cosine >= 0.99 | 70% | 64% | -0.060 |
 | direction abbreviation | 12 | shared sponsor | 46% | 46% | +0.000 |
 | direction abbreviation | 12 | prior terminal | 84% | 84% | +0.000 |
 | direction abbreviation | 12 | parcel exact OR (cosine >= 0.97 AND prior terminal) | 100% | 96% | -0.040 |
-| direction abbreviation | 12 | Continuity Agent (cached, not re-run) | 100% | 100% | +0.000 |
+| direction abbreviation | 12 | Continuity Agent (re-run live) | 100% | 100% | +0.000 |
 | dash style normalization | 16 | always continuation | 38% | 38% | +0.000 |
 | dash style normalization | 16 | parcel exact | 78% | 78% | +0.000 |
+| dash style normalization | 16 | parcel exact AND owner unchanged | 78% | 78% | +0.000 |
 | dash style normalization | 16 | title cosine >= 0.90 | 64% | 64% | +0.000 |
 | dash style normalization | 16 | title cosine >= 0.99 | 70% | 70% | +0.000 |
 | dash style normalization | 16 | shared sponsor | 46% | 46% | +0.000 |
@@ -36,6 +40,7 @@ Rows marked cached, not re-run report the accuracy of the Continuity Agent decis
 | dash style normalization | 16 | Continuity Agent (cached, not re-run) | 100% | 100% | +0.000 |
 | zoning code spacing | 0 | always continuation | 38% | 38% | +0.000 |
 | zoning code spacing | 0 | parcel exact | 78% | 78% | +0.000 |
+| zoning code spacing | 0 | parcel exact AND owner unchanged | 78% | 78% | +0.000 |
 | zoning code spacing | 0 | title cosine >= 0.90 | 64% | 64% | +0.000 |
 | zoning code spacing | 0 | title cosine >= 0.99 | 70% | 70% | +0.000 |
 | zoning code spacing | 0 | shared sponsor | 46% | 46% | +0.000 |
@@ -44,6 +49,7 @@ Rows marked cached, not re-run report the accuracy of the Continuity Agent decis
 | zoning code spacing | 0 | Continuity Agent (cached, not re-run) | 100% | 100% | +0.000 |
 | lot list reorder | 2 | always continuation | 38% | 38% | +0.000 |
 | lot list reorder | 2 | parcel exact | 78% | 78% | +0.000 |
+| lot list reorder | 2 | parcel exact AND owner unchanged | 78% | 78% | +0.000 |
 | lot list reorder | 2 | title cosine >= 0.90 | 64% | 64% | +0.000 |
 | lot list reorder | 2 | title cosine >= 0.99 | 70% | 70% | +0.000 |
 | lot list reorder | 2 | shared sponsor | 46% | 46% | +0.000 |
@@ -52,6 +58,7 @@ Rows marked cached, not re-run report the accuracy of the Continuity Agent decis
 | lot list reorder | 2 | Continuity Agent (cached, not re-run) | 100% | 100% | +0.000 |
 | boilerplate preamble stripped | 19 | always continuation | 38% | 38% | +0.000 |
 | boilerplate preamble stripped | 19 | parcel exact | 78% | 78% | +0.000 |
+| boilerplate preamble stripped | 19 | parcel exact AND owner unchanged | 78% | 78% | +0.000 |
 | boilerplate preamble stripped | 19 | title cosine >= 0.90 | 64% | 64% | +0.000 |
 | boilerplate preamble stripped | 19 | title cosine >= 0.99 | 70% | 70% | +0.000 |
 | boilerplate preamble stripped | 19 | shared sponsor | 46% | 46% | +0.000 |
@@ -72,4 +79,13 @@ Rows marked cached, not re-run report the accuracy of the Continuity Agent decis
 | direction abbreviation | parcel exact OR (cosine >= 0.97 AND prior terminal) | 40 | continuation | 1.0 | 0.899 |
 
 Every flip above happened without changing which parcel, sponsor, or status the record names. Only the surface form of the title moved.
+
+
+## Continuity Agent, re-run live under perturbation
+
+On direction abbreviation, the agent was re-run on all 50 perturbed pairs with real model calls. Accuracy went from 100% to 100%, a delta of +0.000.
+
+Confidence moved on 13 of 50 pairs, mean delta +0.0022, largest single move 0.100. Confidence moved in both directions on this set, not only downward, so this is not read as one-sided degradation; it is read as the model noticing the title changed and adjusting how much weight it gave it, without changing what it decided.
+
+No individual decision flipped. Confidence may still have moved; decision, the number that accuracy is computed from, did not.
 
