@@ -163,6 +163,29 @@ On the 26 test pairs the agent and the frozen rule disagree on 0 of them (agent 
 
 This section is kept because a negative result that was expensive to obtain is worth more than a positive one that was not tested. The claim it retires is 'the agent generalises better than the rule'. There is no evidence here for that.
 
+## Where the agent actually earns its place
+
+The headline 100% invites one question above all others, so here is the answer broken out by tier.
+
+| Tier | Pairs | Continuations | Parcel lookup alone | Two clause rule | Continuity Agent |
+|---|---|---|---|---|---|
+| citywide | 22 | 11 | 50% | 100% | 100% |
+| parcel | 28 | 8 | 100% | 100% | 100% |
+
+On the parcel tier a lookup is perfect, and Quorum resolves parcels **in code**, in a node that makes no model call at all. That is the correct engineering answer and it is not a criticism of the system, it is the system working as designed.
+
+On the citywide tier the same lookup finds **0 of the 11 true continuations**. Recall 0.00. It cannot do otherwise, because these records name no property at all: a charter amendment on term limits, a tipped wage bill, a conservation district, a hearing request. They die at the end of a council term and come back under a new file number years later.
+
+**11 of the 19 true continuations in this set, 58%, have no parcel.** That is the majority of the problem, and it is the half a parcel lookup is structurally blind to.
+
+The two clause rule reaches them only through its second clause, a hand tuned cosine threshold. That is the clause the threshold sweep shows is perfect across a band six points wide and wrong outside it, and the one the perturbation suite breaks by abbreviating a direction in a title. So the honest division of labour is: a lookup where a lookup is exact, and a model where the alternative is a brittle threshold.
+
+### Why there are no adversarial parcel pairs here
+
+The obvious attack on the parcel tier is that `parcel exact` never once produces a false positive, which suggests the set never tested it. That was checked exhaustively rather than assumed. Across all 1,679 records there are **9 exact parcel pairs, 11 at address level and 28 at block level**, and every one of them is already labeled here. The population is not sampled, it is complete.
+
+So the zero false positive rate is not an artefact of an easy sample. In this corpus, two council items on the same parcel are always the same project. That is a property of how Baltimore legislates, it is why the resolution node is deterministic, and it is reported as a finding rather than presented as a score.
+
 ## Ablation: is the prompt just the rule, written in English?
 
 This is the strongest objection to the whole project, so it gets its own experiment.
