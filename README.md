@@ -12,6 +12,17 @@ Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [St
 
 **Live demo: https://quorum-peach.vercel.app**
 
+**Demo video: https://youtu.be/Lj1kMZdy7xk**
+
+[![The live case: 205 East Cold Spring Lane is back before the council, with the hearing ten days away](docs/screenshots/live-case.png)](https://quorum-peach.vercel.app)
+
+| | |
+|---|---|
+| ![Draft comment with the file number and hearing date filled in from the source record](docs/screenshots/draft-comment.png) | ![Why am I seeing this: the evidence the agent relied on and the evidence it set aside](docs/screenshots/evidence.png) |
+| **Draft comment.** File number and hearing date come from the record. Quorum never sends it. | **Evidence.** What drove the decision, and what the agent explicitly set aside. |
+| ![A live call to the deployed agent returning continuation at 0.95 with its session id and runtime](docs/screenshots/agent-run.png) | ![Evaluation: 50 labeled pairs, baselines, and every miss named](docs/screenshots/evaluation.png) |
+| **Run it yourself.** A real call to the AgentCore runtime, with a new session id every time. | **Evaluation.** 50 hand labeled pairs, the baselines that tie the agent, and where they break. |
+
 **Run the agent yourself:** the agent run screen has a button that invokes the deployed
 AgentCore runtime against Amazon Bedrock on any of the 50 labeled pairs, and returns the
 runtime identifier, the AgentCore session id, the model id and the measured latency. The
