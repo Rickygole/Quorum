@@ -189,8 +189,8 @@ roughly 2,400 input tokens and 400 output tokens. Calling it with our hardest la
 negative returns new_issue, also agreeing with the label, in a comparable time. Both calls
 carry real usage numbers back from Bedrock, not simulated ones.
 
-One more finding worth recording honestly: the public-facing side of this is not fully live
-yet. A static page cannot sign a SigV4 request on its own, so we put a small AWS Lambda in
+One more finding worth recording honestly: getting the public side live took a detour.
+A static page cannot sign a SigV4 request on its own, so we put a small AWS Lambda in
 front of the runtime to act as a signer. The Lambda itself works, verified by direct
 invocation. Its public function URL returns a 403 in this AWS account even with the
 documented public-access resource policy attached exactly as written in AWS's own

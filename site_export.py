@@ -9,6 +9,23 @@ from ingest.gazetteer import Gazetteer
 from ingest.normalize import load_corpus
 from features.continuity_features import compute
 from ingest.zoning import context_for
+
+ENTITY_MARKERS = (
+    "LLC", "L.L.C", "INC", "CORP", "TRUST", "UNIVERSITY", "COLLEGE", "SCHOOL",
+    "CITY OF", "STATE OF", "MAYOR", "AUTHORITY", "CHURCH", "MINISTRIES",
+    "COMPANY", "ASSOCIATES", "PARTNERS", "PROPERTIES", "HOLDINGS", "GROUP",
+    "FOUNDATION", "HOSPITAL", "BANK", "DEVELOPMENT", "HOUSING", "LP", "LTD",
+    "COMMISSION", "DEPARTMENT", "BOARD", "ASSOCIATION", "SOCIETY", "CENTER",
+)
+
+
+def public_owner(owner):
+    if not owner:
+        return None
+    upper = owner.upper()
+    if any(m in upper for m in ENTITY_MARKERS):
+        return owner
+    return "private individual"
 from eval.base_rates import compute as compute_base_rates
 
 OUT = Path(__file__).resolve().parent / "docs" / "data"
@@ -79,7 +96,7 @@ def record_json(r, gaz):
             for p in r.parcels
         ],
         "neighborhood": (hit or {}).get("NEIGHBOR"),
-        "owner": ((hit or {}).get("OWNER_1") or "").strip() or None,
+        "owner": public_owner(((hit or {}).get("OWNER_1") or "").strip() or None),
         "zone": (hit or {}).get("ZONECODE"),
         "history": [
             {"date": _iso(a.action_date), "action": a.action, "body": a.body}

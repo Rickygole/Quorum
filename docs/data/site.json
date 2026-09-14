@@ -1,6 +1,6 @@
 {
  "fetched_at": "2026-09-10T02:14:14+00:00",
- "generated_at": "2026-09-11T10:44:31",
+ "generated_at": "2026-09-13T22:22:03",
  "counts": {
   "matters": 1679,
   "parcel_resolvable": 266,
@@ -1927,7 +1927,7 @@
       }
      ],
      "neighborhood": "SANDTOWN-WINCHESTER",
-     "owner": "HERNANDEZ, HUMBERTO CASIMIRO",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -2000,7 +2000,7 @@
       }
      ],
      "neighborhood": "SANDTOWN-WINCHESTER",
-     "owner": "HERNANDEZ, HUMBERTO CASIMIRO",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -3123,7 +3123,7 @@
       }
      ],
      "neighborhood": "SOUTH BALTIMORE",
-     "owner": "BATIE JR, LEON",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -3236,7 +3236,7 @@
       }
      ],
      "neighborhood": "SOUTH BALTIMORE",
-     "owner": "BATIE JR, LEON",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -3761,7 +3761,7 @@
       }
      ],
      "neighborhood": "FEDERAL HILL",
-     "owner": "ABDALLA, BASHEER",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -3854,7 +3854,7 @@
       }
      ],
      "neighborhood": "FEDERAL HILL",
-     "owner": "ABDALLA, BASHEER",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -8011,7 +8011,7 @@
       }
      ],
      "neighborhood": "HARLEM PARK",
-     "owner": "ANDERSON, RONALD E",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -8126,7 +8126,7 @@
       }
      ],
      "neighborhood": "HARLEM PARK",
-     "owner": "ANDERSON, RONALD E",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -8337,7 +8337,7 @@
       }
      ],
      "neighborhood": "HARLEM PARK",
-     "owner": "ANDERSON, RONALD E",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -8964,7 +8964,7 @@
       }
      ],
      "neighborhood": "BAYVIEW",
-     "owner": "LI, HUIFEN",
+     "owner": "private individual",
      "zone": "R-7",
      "history": [
       {
@@ -9049,7 +9049,7 @@
       }
      ],
      "neighborhood": "BAYVIEW",
-     "owner": "AU, HONG",
+     "owner": "private individual",
      "zone": "R-7",
      "history": [
       {
@@ -9265,7 +9265,7 @@
       }
      ],
      "neighborhood": "HARLEM PARK",
-     "owner": "ANDERSON, RONALD E",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -9591,7 +9591,7 @@
       }
      ],
      "neighborhood": "HARLEM PARK",
-     "owner": "SAM, KWESI SEDRICK",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -9932,7 +9932,7 @@
       }
      ],
      "neighborhood": "JOHNSTON SQUARE",
-     "owner": "REBUILD JOHNSTON SQUARE PHASE 1,",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -10032,7 +10032,7 @@
       }
      ],
      "neighborhood": "JOHNSTON SQUARE",
-     "owner": "REBUILD JOHNSTON SQUARE PHASE 1,",
+     "owner": "private individual",
      "zone": "R-8",
      "history": [
       {
@@ -10329,7 +10329,7 @@
       }
      ],
      "neighborhood": "DRUID HEIGHTS",
-     "owner": "CHOI, GOYA",
+     "owner": "private individual",
      "zone": "C-1",
      "history": [
       {

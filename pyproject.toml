@@ -4,12 +4,15 @@ version = "0.1.0"
 description = "Quorum holds the thread on civic issues that touch an address."
 requires-python = ">=3.10"
 dependencies = [
-    "strands-agents>=0.1.0",
+    "strands-agents>=1.0.0",
     "strands-agents-tools>=0.1.0",
     "pydantic>=2.7",
     "httpx>=0.27",
     "boto3>=1.34",
 ]
+
+[tool.setuptools]
+py-modules = ["models", "site_export"]
 
 [tool.setuptools.packages.find]
 include = ["ingest*", "agents*", "features*", "eval*", "deploy*"]

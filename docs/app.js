@@ -861,8 +861,8 @@ function fallbackDraft(t) {
   const noun = measureNoun(r);
 
   const opening = r.hearing_date
-    ? `I live near ${addr} and I am writing about ${r.file_number}, scheduled for a public hearing on ${fmtDate(r.hearing_date)}.`
-    : `I live near ${addr} and I am writing about ${r.file_number}, which is currently ${statusClause(r)}.`;
+    ? `[ I live near / I own property near / I work near ] ${addr} and I am writing about ${r.file_number}, scheduled for a public hearing on ${fmtDate(r.hearing_date)}.`
+    : `[ I live near / I own property near / I work near ] ${addr} and I am writing about ${r.file_number}, which is currently ${statusClause(r)}.`;
 
   const lotsNow = (t.features.parcel.lots_a || []);
   const lotsBefore = (t.features.parcel.lots_b || []);
@@ -938,7 +938,7 @@ function renderComment() {
         </div>
         <label for="draft">Your comment</label>
         <textarea id="draft" rows="18"></textarea>
-        <div class="promise">Quorum has not sent anything and cannot. The button below opens your own email
+        <div class="promise">Quorum has not sent anything and cannot. Quorum is not legal advice and does not represent you. Check the file number and hearing date against the source record before you send. The button below opens your own email
         program with this text in it, and you decide whether to send it.</div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
           <button class="primary" id="send">Open in your email</button>

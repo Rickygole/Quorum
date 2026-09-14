@@ -52,34 +52,6 @@ the endpoint only ever accepts a pair id from that set.
 
 ## The public endpoint
 
-A static page cannot sign a SigV4 request, so a judge clicking a button needs a signer in
-front of the runtime. `invoke_proxy.py` and `deploy_proxy.sh` build that: a Lambda that
-accepts only a pair id from the labeled set, returns the runtime ARN, region, session id
-and latency so a live call is distinguishable from a cached one, and falls back to the
-cached decision rather than erroring.
-
-The Lambda is deployed and verified working by direct invocation. **Its public Function
-URL returns 403 and the cause is account level.** The function URL is created with
-`AuthType: NONE` and the resource policy is byte identical to the public access statement
-in the AWS documentation:
-
-```json
-{"Sid":"FunctionURLAllowPublicAccess","Effect":"Allow","Principal":"*",
- "Action":"lambda:InvokeFunctionUrl",
- "Condition":{"StringEquals":{"lambda:FunctionUrlAuthType":"NONE"}}}
-```
-
-Recreating the URL config, widening CORS to `*` and recreating the permission under the
-documented statement id all produce the same result. This account does not permit public
-Lambda function URLs.
-
-The remaining route is an HTTP API in front of the same Lambda, which needs
-`apigateway:*` on the deploying identity. Until that is granted the site reports cached
-decisions and labels them as cached, which is the honest presentation. Nothing on the
-site claims a live invocation that did not happen.
-
-## The public endpoint
-
 ```
 https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com
 ```

@@ -20,7 +20,8 @@ endpoint is `https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com`. (mirrored 
 
 The published site runs entirely on a cached, timestamped corpus. No demo fetches civic
 data at runtime, and the fetch timestamp is shown on screen. The page itself loads a web
-font and one charting library from public CDNs, which is the only network traffic it makes.
+font and three.js from public CDNs, and it calls Quorum's own endpoint when you press Run on
+the agent screen. It never calls Legistar or the city's GIS at page load.
 
 The Continuity Agent is also deployed to **Bedrock AgentCore Runtime** and verified live by
 direct invocation, with OpenTelemetry tracing enabled. See
@@ -145,6 +146,24 @@ displayed in the product. **No demo touches the live internet.**
 
 ---
 
+## Data and attribution
+
+Both sources are public and open, and the cached copies in `data/cache/` are redistributed
+under those terms.
+
+- **Legislative record**: the Legistar Web API for the City of Baltimore, a Granicus product.
+  The content is Baltimore's own legislative record. The fields cached here are file numbers,
+  titles, dates, sponsors, statuses and action histories.
+- **Parcel gazetteer**: the City of Baltimore's open property layer, published by Baltimore
+  eGIS.
+
+Quorum is not affiliated with, endorsed by, or connected to the City of Baltimore or Granicus.
+
+The cached parcel layer carries an owner name for every parcel because the source layer does.
+The published site shows that name only when the owner is an organisation. Where the owner is
+a private individual the site says so instead of naming them, which is why the hero case reads
+Loyola University Maryland and a rowhouse does not.
+
 ## Limitations
 
 Written before a judge finds them.
@@ -190,6 +209,18 @@ python -m ingest.cache 2021-01-01
 python -m ingest.gazetteer
 python site_export.py
 ```
+
+Nothing above needs AWS. The corpus and the gazetteer are committed, the evaluation reproduces
+from cached decisions, and the offline graph test runs with no credentials:
+
+```bash
+python -m eval.run_eval --from-cache     # regenerates eval/RESULTS.md exactly
+python -m tests.test_graph_offline       # full five node Graph, offline stub
+```
+
+To run the agents for real you need AWS credentials, `AWS_REGION=us-east-1`, and model access
+granted in Bedrock for Claude Sonnet 4.5 and Haiku 4.5. Without that, every command above still
+works and only the live model calls are unavailable.
 
 The cached corpus and gazetteer are committed, so the first two commands are only needed
 to refresh them. `site_export.py` regenerates `docs/data/site.json`, which is what the

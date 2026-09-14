@@ -132,8 +132,6 @@ running.
 
 ## What is next
 
-An HTTP API in front of the Lambda so a judge's browser can trigger a live invocation
-instead of viewing a cached decision. Persisted issue timelines, likely on AgentCore Memory,
 since the current build recomputes its view of the corpus from the cached snapshot on every
 run and keeps no state between runs. A larger, independently labeled evaluation set, since
 50 pairs assembled by one person is what our corpus of 1,679 records supports honestly, not
