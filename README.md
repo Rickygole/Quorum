@@ -12,7 +12,7 @@ Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [St
 
 **Live demo: https://quorum-peach.vercel.app**
 
-**Demo video: https://youtu.be/Lj1kMZdy7xk**
+**Demo video: https://youtu.be/d4mJJAkWwK8**
 
 [![The live case: 205 East Cold Spring Lane is back before the council, with the hearing ten days away](docs/screenshots/live-case.png)](https://quorum-peach.vercel.app)
 
