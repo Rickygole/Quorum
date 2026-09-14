@@ -8,23 +8,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#05080A;--ink:#F2F6F4;--ink-2:#AFC0BA;--ink-3:#778A85;--line:#20302E;--line-2:#33474A;--accent:#7CB1FF;--accent-2:#3D6FD1;--flag:#FF8163;--gold:#E9C377;--good:#79D6A8}
+:root{--bg:#F6F1E7;--bg-2:#EFE7D6;--surface:#FFFCF5;--ink:#1D1B18;--ink-2:#4F4A42;--ink-3:#6B645A;--line:#DDD2BE;--line-2:#BFB29B;--accent:#1F5673;--accent-2:#2E7396;--thread-dim:#DCE8EE;--flag:#A63D26;--brick:#B4442C;--brick-dim:#F5DDD4;--gold:#8A5A0F;--marigold:#E8A93A;--marigold-dim:#F8E3B5;--good:#2F6B4C;--good-dim:#DCEBDF}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;background:#000;overflow:hidden}
+html,body{width:100%;height:100%;background:#EFE7D6;overflow:hidden}
 body{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;color:var(--ink);cursor:none}
 .mono{font-family:"IBM Plex Mono",Menlo,monospace}
-#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:radial-gradient(1200px 700px at 50% 38%,#0B1720 0%,var(--bg) 62%);overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(1100px 640px at 50% 34%,rgba(232,169,58,.1) 0%,rgba(232,169,58,0) 70%);overflow:hidden}
 .b{position:absolute;opacity:0;will-change:opacity,transform}
 #title{left:180px;top:78px;font-size:64px;font-weight:600;letter-spacing:-0.02em}
 #sub{left:182px;top:160px;font-size:28px;color:var(--ink-2)}
-#bedrock{left:690px;top:130px;width:540px;height:78px;border:1.5px solid var(--line-2);border-radius:14px;background:#0A1318;display:flex;align-items:center;justify-content:center;gap:16px;font-size:28px;font-weight:600}
-#bedrock .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+#bedrock{left:690px;top:130px;width:540px;height:78px;border:1.5px solid var(--line-2);border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;gap:16px;font-size:28px;font-weight:600}
+#bedrock .dot{width:14px;height:14px;border-radius:50%;background:var(--accent)}
 #bedrock .tag{font-size:17px;color:var(--ink-3);font-weight:400;letter-spacing:.06em}
 #frame{left:170px;top:282px;width:1340px;height:290px;border:2px dashed var(--line-2);border-radius:22px}
 #frameLabel{left:196px;top:298px;font-size:18px;letter-spacing:.08em;color:var(--ink-3)}
 svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
 .node{position:absolute;width:210px;margin-left:-105px;top:372px;text-align:center}
-.disc{width:104px;height:104px;margin:0 auto;border-radius:50%;border:2px solid var(--accent-2);background:#08121A;display:flex;align-items:center;justify-content:center;position:relative}
+.disc{width:104px;height:104px;margin:0 auto;border-radius:50%;border:2px solid var(--accent-2);background:var(--surface);display:flex;align-items:center;justify-content:center;position:relative}
 .disc .core{width:26px;height:26px;border-radius:50%;background:var(--accent)}
 .node.code .disc{border-radius:18px;border-color:var(--gold)}
 .node.code .disc .core{width:30px;height:30px;border-radius:4px;background:var(--gold);transform:rotate(45deg)}
@@ -33,13 +33,13 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
 .node.code .kd{color:var(--gold)}
 .ring{position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--accent);opacity:0}
 .node.code .ring{border-radius:26px;border-color:var(--gold)}
-#token{left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 30px 8px rgba(124,177,255,.75),0 0 80px 20px rgba(124,177,255,.25)}
+#token{left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--marigold);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
 #tokLabel{font-size:17px;color:var(--ink-2);letter-spacing:.04em;white-space:nowrap}
 #gate{left:1620px;top:352px;width:190px;text-align:center}
-#gate .oct{width:132px;height:132px;margin:0 auto;background:#1C0E0A;border:2.5px solid var(--flag);clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:var(--flag);letter-spacing:.06em}
+#gate .oct{width:132px;height:132px;margin:0 auto;background:var(--brick);border:2.5px solid var(--flag);clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#FFFCF5;letter-spacing:.06em}
 #gate .nm{margin-top:16px;font-size:26px;font-weight:600}
 #gate .kd{margin-top:6px;font-size:16px;letter-spacing:.14em;color:var(--flag)}
-#panel{left:170px;top:628px;width:1580px;height:380px;border:1.5px solid var(--line);border-radius:20px;background:rgba(9,16,20,.86)}
+#panel{left:170px;top:628px;width:1580px;height:380px;border:1.5px solid var(--line);border-radius:20px;background:var(--surface)}
 .pane{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0}
 .pane .h{position:absolute;left:52px;top:44px;font-size:44px;font-weight:600;letter-spacing:-0.01em}
 .pane .k{position:absolute;left:54px;top:106px;font-size:17px;letter-spacing:.14em;color:var(--ink-3)}
@@ -53,7 +53,7 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
 .row .v.gold{color:var(--gold)}
 .verdict{position:absolute;left:700px;top:322px;font-size:30px;font-weight:600;color:var(--good);opacity:0}
 .badge{position:absolute;left:54px;top:300px;padding:10px 18px;border:1.5px solid var(--gold);border-radius:10px;color:var(--gold);font-size:22px;opacity:0}
-.mail{position:absolute;left:700px;top:46px;width:830px;border:1.5px solid var(--line-2);border-radius:14px;background:#0B151A;padding:26px 30px;opacity:0}
+.mail{position:absolute;left:700px;top:46px;width:830px;border:1.5px solid var(--line-2);border-radius:14px;background:var(--surface);padding:26px 30px;opacity:0}
 .mail .s{font-size:28px;font-weight:600;line-height:1.3}
 .mail .m{margin-top:14px;font-size:21px;color:var(--ink-2);line-height:1.5}
 .chip{display:inline-block;margin:18px 12px 0 0;padding:8px 14px;border:1px solid var(--line-2);border-radius:8px;font-size:19px;color:var(--ink-2)}
@@ -217,11 +217,11 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
   function drawWires() {
     var svg = $("#wires"), NS = "http://www.w3.org/2000/svg", html = "";
     for (var i = 0; i < NODE_X.length - 1; i++) {
-      html += '<line id="w' + i + '" x1="' + (NODE_X[i] + 56) + '" y1="' + ROW_Y + '" x2="' + (NODE_X[i + 1] - 56) + '" y2="' + ROW_Y + '" stroke="#3D6FD1" stroke-width="3" stroke-linecap="round"/>';
+      html += '<line id="w' + i + '" x1="' + (NODE_X[i] + 56) + '" y1="' + ROW_Y + '" x2="' + (NODE_X[i + 1] - 56) + '" y2="' + ROW_Y + '" stroke="#1F5673" stroke-width="3.5" stroke-linecap="round"/>';
     }
-    html += '<line id="wg" x1="' + (NODE_X[4] + 56) + '" y1="' + ROW_Y + '" x2="' + (GATE_X - 70) + '" y2="' + ROW_Y + '" stroke="#FF8163" stroke-width="3" stroke-dasharray="10 10" stroke-linecap="round"/>';
+    html += '<line id="wg" x1="' + (NODE_X[4] + 56) + '" y1="' + ROW_Y + '" x2="' + (GATE_X - 70) + '" y2="' + ROW_Y + '" stroke="#B4442C" stroke-width="3.5" stroke-dasharray="10 10" stroke-linecap="round"/>';
     [0, 2, 3, 4].forEach(function (i) {
-      html += '<path id="bw' + i + '" d="M 960 208 C 960 290, ' + NODE_X[i] + ' 290, ' + NODE_X[i] + ' 372" fill="none" stroke="#7CB1FF" stroke-width="2" stroke-dasharray="6 8"/>';
+      html += '<path id="bw' + i + '" d="M 960 208 C 960 290, ' + NODE_X[i] + ' 290, ' + NODE_X[i] + ' 372" fill="none" stroke="#2E7396" stroke-width="2.5" stroke-dasharray="6 8"/>';
     });
     svg.innerHTML = html;
   }
@@ -273,7 +273,7 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
     });
     var bd = $("#bedrock .dot");
     bd.style.opacity = t < 4.2 ? 0 : (modelActive ? 1 : 0.25);
-    $("#bedrock").style.borderColor = modelActive ? "#7CB1FF" : "#33474A";
+    $("#bedrock").style.borderColor = modelActive ? "#1F5673" : "#BFB29B";
 
     for (var n = 0; n < 5; n++) {
       var ring = $("#n" + n + " .ring");
@@ -281,7 +281,7 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
       ring.style.opacity = on2 ? (0.5 + 0.5 * Math.abs(Math.sin(t * 2.6))) : 0;
       ring.style.transform = "scale(" + (on2 ? 1 + 0.06 * Math.sin(t * 2.6) : 1) + ")";
       var disc = $("#n" + n + " .disc");
-      disc.style.boxShadow = on2 ? (n === 1 ? "0 0 40px rgba(233,195,119,.45)" : "0 0 40px rgba(124,177,255,.5)") : "none";
+      disc.style.boxShadow = on2 ? (n === 1 ? "0 0 0 10px rgba(232,169,58,.3)" : "0 0 0 10px rgba(31,86,115,.14)") : "none";
     }
 
     var tk = $("#token"), tl = $("#tokLabel");
@@ -319,7 +319,7 @@ svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:vis
     var aside = $("#c_aside"); aside.style.opacity = ease((t - 43.6) / 0.6);
     var goodRows = document.querySelectorAll("#p2 .v.good");
     var glow = ease((t - 40.2) / 0.8);
-    for (var g = 0; g < goodRows.length; g++) goodRows[g].style.textShadow = glow ? "0 0 " + (18 * glow) + "px rgba(121,214,168,.55)" : "none";
+    for (var g = 0; g < goodRows.length; g++) goodRows[g].style.textShadow = glow ? "0 0 " + (14 * glow) + "px rgba(47,107,76,.22)" : "none";
     var verdict = $("#c_verdict"), vk = ease((t - 38.4) / 0.7);
     verdict.style.opacity = vk; verdict.style.transform = "translateY(" + ((1 - vk) * 14) + "px)";
 
