@@ -2,45 +2,85 @@
 
 **Cities decide slowly, across many meetings, under changing labels. Residents lose because nobody can hold the thread. Quorum holds the thread.**
 
-Quorum maintains a persistent model of the civic issues that touch a specific address. It ingests Baltimore City Council's published legislative record, resolves each item to a parcel, decides whether the item is a *continuation of an issue it has already seen*, explains what changed since the last appearance, and drafts a public comment carrying the correct file number and hearing date, only when a comment window is actually open on that item.
-
-If the underlying record is already decided, enacted, withdrawn or failed, Quorum does not draft a comment at all. It shows the status, the date, the sponsors, the committee and the source records instead, and says plainly why there is nothing left to send. Of the 19 continuation threads published on the site today, only 1 has an open comment window.
-
-It never submits anything on a person's behalf.
-
-Built for the **Agents for Humans Hackathon**, Good Neighbor track, with the [Strands Agents SDK](https://strandsagents.com), on Amazon Bedrock.
-
-**Live demo: https://quorum-peach.vercel.app**
-
-**Demo video: https://youtu.be/d4mJJAkWwK8**
-
-[![The live case: 205 East Cold Spring Lane is back before the council, with the hearing ten days away](docs/screenshots/live-case.png)](https://quorum-peach.vercel.app)
+[![Quorum front page: 205 East Cold Spring Lane is back before the council, with the public hearing ten days away](docs/screenshots/01-front-page.jpg)](https://quorum-peach.vercel.app)
 
 | | |
 |---|---|
-| ![Draft comment with the file number and hearing date filled in from the source record](docs/screenshots/draft-comment.png) | ![Why am I seeing this: the evidence the agent relied on and the evidence it set aside](docs/screenshots/evidence.png) |
-| **Draft comment.** File number and hearing date come from the record. Quorum never sends it. | **Evidence.** What drove the decision, and what the agent explicitly set aside. |
-| ![A live call to the deployed agent returning continuation at 0.95 with its session id and runtime](docs/screenshots/agent-run.png) | ![Evaluation: 50 labeled pairs, baselines, and every miss named](docs/screenshots/evaluation.png) |
-| **Run it yourself.** A real call to the AgentCore runtime, with a new session id every time. | **Evaluation.** 50 hand labeled pairs, the baselines that tie the agent, and where they break. |
+| **Demo video** (3:52) | https://youtu.be/d4mJJAkWwK8 |
+| **Live demo**, no login | https://quorum-peach.vercel.app (mirror: https://rickygole.github.io/Quorum/) |
+| **Hackathon** | Agents for Humans, **Good Neighbor Agents** track |
+| **Built with** | [Strands Agents SDK](https://strandsagents.com), Amazon Bedrock, Amazon Bedrock AgentCore Runtime |
+| **Architecture diagram** | [docs/architecture.png](docs/architecture.png) |
+| **License** | MIT, see [LICENSE](LICENSE) |
 
-**Run the agent yourself:** the agent run screen has a button that invokes the deployed
-AgentCore runtime against Amazon Bedrock on any of the 50 labeled pairs, and returns the
-runtime identifier, the AgentCore session id, the model id and the measured latency. The
-session id is different on every call, which is how you can tell it is not a replay. The
-endpoint is `https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com`. (mirrored at https://rickygole.github.io/Quorum/)
+---
 
-The published site runs entirely on a cached, timestamped corpus. No demo fetches civic
-data at runtime, and the fetch timestamp is shown on screen. The page itself loads a web
-font and three.js from public CDNs, and it calls Quorum's own endpoint when you press Run on
-the agent screen. It never calls Legistar or the city's GIS at page load.
+## The problem, who it is for, and why it matters
 
-The Continuity Agent is also deployed to **Bedrock AgentCore Runtime** and verified live by
-direct invocation, with OpenTelemetry tracing enabled. See
-[ARCHITECTURE.md](ARCHITECTURE.md) and [deploy/README.md](deploy/README.md) for what is
-deployed, what it returns on a real call, and the three bugs that only showed up once it
-left a laptop.
+**The problem.** Baltimore publishes every council bill, but a decision about a street rarely arrives in one piece. Bill `23-0411` proposed rezoning 205 to 209 East Cold Spring Lane in July 2023 and died at the end of the council term without a vote. In February 2026 the same sponsor filed it again as `26-0148`, with a new file number, a differently written title, and one lot fewer. Nothing told the people on that block that it was the same request coming back. Connecting the two means somebody watching the record for two and a half years.
 
-![Quorum architecture: cached sources into ingestion, into a Strands Graph of five fixed order nodes on Bedrock AgentCore Runtime, into a static site, stopping at a human approval gate](docs/architecture.png)
+**Who it is for.** Residents, neighborhood associations and the people who help them, such as community organizers and digital navigators, who care about what the council decides about a specific address but cannot read every agenda.
+
+**Why it matters.** Public comment only counts while a window is open. The hearing on `26-0148` is on **24 September 2026**, and a resident who misses the connection misses the only moment their voice can change the outcome. Quorum finds that moment, explains what changed, and drafts the comment. **It never sends anything on a person's behalf.** The button opens their own email.
+
+## What Quorum does
+
+1. **Reads** Baltimore City Council's legislative record from Legistar, cached with a fetch timestamp.
+2. **Resolves** each record to a parcel in the city's own property layer, in plain code with no model call.
+3. **Decides** whether a new record continues an issue Quorum has already seen, and names the evidence it relied on and the evidence it set aside.
+4. **Filters** to the addresses a person actually watches. Most weeks nothing surfaces, and that is the point.
+5. **Explains and drafts.** It writes a notice of what changed and, only when a comment window is still open, a public comment with the correct file number and hearing date.
+6. **Stops.** A person decides whether to send it.
+
+If the underlying record is already decided, enacted, withdrawn or failed, Quorum does not draft a comment at all. It shows the status, the dates, the sponsors, the committee and the source records instead. Of the 19 continuation threads published on the site today, only 1 has an open comment window.
+
+## Screenshots
+
+| | |
+|---|---|
+| ![The thread: bill 23-0411 died in 2023 and returned as 26-0148 in 2026](docs/screenshots/02-the-thread.jpg) | ![What arrives: the notice a watched address receives](docs/screenshots/03-what-arrives.jpg) |
+| **The thread.** Same parcel, same sponsor, one lot dropped, two council terms apart. | **What arrives.** Quorum is not a site you check. This is the notice it sends. |
+| ![Draft comment with file number and hearing date from the record](docs/screenshots/05-draft-comment.jpg) | ![Evidence: what the agent relied on and what it set aside](docs/screenshots/06-evidence.jpg) |
+| **Draft comment.** Filled in from the record. Quorum never sends it. | **Evidence.** Every decision shows its drivers and what it set aside. |
+| ![A live call to the deployed agent on AgentCore](docs/screenshots/09-live-agent-run.jpg) | ![Evaluation: 50 labeled pairs and the baselines](docs/screenshots/10-evaluation.jpg) |
+| **Run it yourself.** A real call to AgentCore Runtime with a new session id every time. | **Evaluation.** 50 hand labeled pairs, the baselines that tie the agent, and where they break. |
+| ![Citywide threads a parcel lookup cannot reach](docs/screenshots/04-citywide-and-refusal.jpg) | ![Feed of surfaced threads](docs/screenshots/07-feed.jpg) |
+| **The half a lookup cannot reach.** 11 of 19 threads name no property at all. | **Feed.** Of 1,679 records, 3 surfaced and 1 is still open for comment. |
+| ![Watch an address](docs/screenshots/08-watch-an-address.jpg) | |
+| **Watch an address.** Matched against 237,092 Baltimore parcels. | |
+
+## Architecture
+
+![Quorum architecture: two cached public sources feed plain code ingestion, then a Strands Graph on Amazon Bedrock AgentCore Runtime with Civic Analyst, Resolution (code, no model), Continuity, Relevance and Action, then a static site and a human approval gate](docs/architecture.png)
+
+Four Strands agents and one deterministic node, wired as a Strands `GraphBuilder` graph in fixed order and deployed to Amazon Bedrock AgentCore Runtime with OpenTelemetry tracing. More detail in [ARCHITECTURE.md](ARCHITECTURE.md) and [deploy/README.md](deploy/README.md).
+
+### How Strands Agents is used
+
+| Node | Kind | Where | What it does |
+|---|---|---|---|
+| Civic Analyst | Strands `Agent`, structured output | [agents/civic_analyst.py](agents/civic_analyst.py) | Reads a record into typed facts and leaves a field blank rather than guess |
+| Resolution | Custom `MultiAgentBase` node, **no model call** | [agents/resolution_node.py](agents/resolution_node.py) | Turns an address into a parcel id against the city gazetteer |
+| Continuity | Strands `Agent`, structured output | [agents/continuity.py](agents/continuity.py) | Receives a feature table computed in [features/continuity_features.py](features/continuity_features.py) and decides same issue or new, with drivers and non drivers |
+| Relevance | Strands `Agent` | [agents/relevance.py](agents/relevance.py) | Checks whether the record touches a watched address |
+| Action | Strands `Agent` | [agents/action.py](agents/action.py) | Writes the notice and drafts the comment when a window is open |
+| Graph | `strands.multiagent.GraphBuilder` | [agents/graph.py](agents/graph.py) | Wires the five nodes in order |
+| Model | `strands.models.BedrockModel` | [agents/model.py](agents/model.py) | Amazon Bedrock in `us-east-1` |
+| Runtime | `BedrockAgentCoreApp` entrypoint | [deploy/agentcore_runtime.py](deploy/agentcore_runtime.py) | The deployed Continuity Agent behind the live demo |
+
+### The live path
+
+The site is static files in `docs/`, read from one cached file, `docs/data/site.json`. When a visitor presses **Run the agent**, the page calls an API Gateway HTTP API (`https://1gpbm1pph4.execute-api.us-east-1.amazonaws.com`), which invokes a Lambda proxy ([deploy/invoke_proxy.py](deploy/invoke_proxy.py)), which invokes the Continuity Agent on AgentCore Runtime against Amazon Bedrock. The response carries the runtime identifier, the AgentCore session id, the model id and the measured latency. The session id is different on every call, which is how you can tell it is not a replay. Edge throttling and a shared S3 daily counter keep it to 300 live calls a day.
+
+## Testing instructions for judges
+
+No login and no install are needed.
+
+1. Open https://quorum-peach.vercel.app. The front page is the live case. Check it against Baltimore's own Legistar records for `23-0411` and `26-0148`.
+2. **Draft comment** shows the letter Quorum drafts. Nothing is sent.
+3. **Evidence** shows what the agent relied on and what it set aside.
+4. **Agent run**: pick any of the 50 labeled pairs, including ones this README never mentions, and press **Run the agent**. It answers in about 10 to 15 seconds. If the daily cap is reached, it says so and shows the cached decision.
+5. **Evaluation** lists every labeled pair and every baseline. To reproduce the numbers yourself, follow [Setup](#setup). No AWS credentials are needed.
 
 ---
 
@@ -136,37 +176,25 @@ full feature table rather than a single field, earns its place.
 **What the domain guidance is worth.** The Continuity Agent's prompt tells the model, in
 prose, which features matter and why. With every domain hint stripped out and only the
 task, the schema, and an instruction not to invent facts left in place, accuracy on the
-50 pairs falls from 100% to **94% (47/50)**, still above the **84%** of the best single
-deterministic feature (parcel exact) gets on its own. The three misses are cases a feature
-table alone does not flag as one issue: a liquor licence tied to its own zoning approval,
+50 pairs falls from 100% to **94% (47/50)**, still above the **84%** the best single
+deterministic feature (prior terminal) gets on its own. The three misses are cases a feature
+table alone does not flag as one issue: a liquor license tied to its own zoning approval,
 a charter amendment returning after a failed term, and one street condemnation filed as two
 file numbers. See [eval/RESULTS.md](eval/RESULTS.md) for the full ablation and the held out
 split it is checked against.
 
 ---
 
-## Data sources
-
-Both are public, open, and cached to disk with a `fetched_at` timestamp that is
-displayed in the product. **No demo touches the live internet.**
-
-- **Legislative record**: Legistar Web API, City of Baltimore.
-- **Parcel gazetteer**: the City of Baltimore's open property layer
-  (`egisdata.baltimorecity.gov`, dmxOwnership/Properties): `BLOCKLOT`, `BLOCK`, `LOT`,
-  `FULLADDR`, `NEIGHBOR`, `ZONECODE`, owner. 237,092 parcels.
-
----
-
 ## Data and attribution
 
-Both sources are public and open, and the cached copies in `data/cache/` are redistributed
-under those terms.
+Both sources are public and open, cached to disk with a `fetched_at` timestamp that is shown in
+the product, and the cached copies in `data/cache/` are redistributed under those terms.
 
 - **Legislative record**: the Legistar Web API for the City of Baltimore, a Granicus product.
   The content is Baltimore's own legislative record. The fields cached here are file numbers,
   titles, dates, sponsors, statuses and action histories.
 - **Parcel gazetteer**: the City of Baltimore's open property layer, published by Baltimore
-  eGIS.
+  eGIS (`egisdata.baltimorecity.gov`, dmxOwnership/Properties), 237,092 parcels.
 
 Quorum is not affiliated with, endorsed by, or connected to the City of Baltimore or Granicus.
 
@@ -182,7 +210,7 @@ Everything else in this repository was written for this hackathon during the sub
 No pre-existing project code is incorporated.
 
 The cached parcel layer carries an owner name for every parcel because the source layer does.
-The published site shows that name only when the owner is an organisation. Where the owner is
+The published site shows that name only when the owner is an organization. Where the owner is
 a private individual the site says so instead of naming them, which is why the hero case reads
 Loyola University Maryland and a rowhouse does not.
 
@@ -193,7 +221,7 @@ Written before a judge finds them.
 - **One city.** Baltimore only. Nothing here claims to generalize to another
   jurisdiction without new ingestion adapters and a new gazetteer.
 - **One source.** City Council legislation via Legistar. Zoning appeals, liquor
-  licences and tax sale run through three other Baltimore agencies and are out of scope.
+  licenses and tax sale run through three other Baltimore agencies and are out of scope.
 - **A small evaluation population.** 50 hand labeled pairs, 19 of them continuations. That
   is what a corpus of 1,679 records with 266 parcel bearing items supports, and the number
   is stated rather than implied.
