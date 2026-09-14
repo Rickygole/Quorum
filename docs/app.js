@@ -2360,8 +2360,8 @@ function sweepChart(sweep) {
     <div class="sweep">
       <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Accuracy against the title cosine threshold. ${sweep.map(s => `${s.threshold} scores ${Math.round(s.accuracy * 100)} percent`).join("; ")}.">
         <defs><linearGradient id="sweepGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7CB1FF" stop-opacity=".28"></stop>
-          <stop offset="1" stop-color="#7CB1FF" stop-opacity="0"></stop>
+          <stop offset="0" stop-color="#1F5673" stop-opacity=".22"></stop>
+          <stop offset="1" stop-color="#1F5673" stop-opacity="0"></stop>
         </linearGradient></defs>
         <line class="ax" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
         <line class="ax" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
