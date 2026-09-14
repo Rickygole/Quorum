@@ -366,16 +366,16 @@ function tickCount(host) {
   if (!n || !n.dataset.count || reduced()) return;
   const target = Number(n.dataset.count);
   const from = Math.min(target + 30, target * 3 + 5);
-  const t0 = performance.now();
+  const t0 = Date.now();
   const dur = 1100;
-  const step = now => {
-    const k = Math.min(1, (now - t0) / dur);
+  const step = () => {
+    const k = Math.min(1, (Date.now() - t0) / dur);
     const e = 1 - Math.pow(1 - k, 3);
     n.textContent = num(Math.round(from + (target - from) * e));
-    if (k < 1) requestAnimationFrame(step);
+    if (k < 1) setTimeout(step, 30);
   };
   n.textContent = num(from);
-  requestAnimationFrame(step);
+  setTimeout(step, 30);
 }
 
 function countdownBlock(thread) {
@@ -2506,6 +2506,17 @@ function go(route) {
   window.scrollTo(0, 0);
   if (r === "thread") renderSpine(state.thread);
   if (r === "run" && state.pipe && state.pipe.redraw) state.pipe.redraw();
+  reveal(r);
+}
+
+function reveal(route) {
+  const sec = document.getElementById(route);
+  if (!sec) return;
+  const sel = ".section-head, .mail, .appearance, .compare > .panel, .refusal, .entry, .arc-row, .statgrid, .scroll-x, .callout, .panel, .watch-steps .step, .sweep, .matrix";
+  $$(sel, sec).forEach(node => {
+    if (node.closest(".hero") || (node.parentElement && node.parentElement.closest(".rv"))) return;
+    node.classList.add("rv");
+  });
 }
 
 let resizeTimer = 0;
