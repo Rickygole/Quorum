@@ -187,26 +187,56 @@ function spineStops(thread) {
 
 function spineDefs(svg) {
   const defs = svgEl("defs");
-  const rail = svgEl("linearGradient", { id: "railGrad", x1: "0", y1: "0", x2: "1", y2: "0" });
-  rail.append(
-    svgEl("stop", { offset: "0", "stop-color": "#3D6FD1", "stop-opacity": ".35" }),
-    svgEl("stop", { offset: ".55", "stop-color": "#7CB1FF", "stop-opacity": "1" }),
-    svgEl("stop", { offset: "1", "stop-color": "#E9C377", "stop-opacity": "1" })
+  const rough = svgEl("filter", { id: "roughen", x: "-5%", y: "-20%", width: "110%", height: "140%" });
+  rough.append(
+    svgEl("feTurbulence", { type: "fractalNoise", baseFrequency: "0.03", numOctaves: "2", seed: "7", result: "n" }),
+    svgEl("feDisplacementMap", { in: "SourceGraphic", in2: "n", scale: "2.4" })
   );
-  const plate = svgEl("linearGradient", { id: "plateGrad", x1: "0", y1: "0", x2: ".4", y2: "1" });
-  plate.append(
-    svgEl("stop", { offset: "0", "stop-color": "#22302B" }),
-    svgEl("stop", { offset: "1", "stop-color": "#0D1413" })
-  );
-  defs.append(rail, plate);
+  defs.append(rough);
   svg.appendChild(defs);
 }
 
 function plateShape(g, x, y, w, h, live) {
-  const d = 12;
-  g.appendChild(svgEl("polygon", { class: "plate-side", points: `${x + w},${y} ${x + w + d},${y - d} ${x + w + d},${y + h - d} ${x + w},${y + h}` }));
-  g.appendChild(svgEl("polygon", { class: "plate-top", points: `${x},${y} ${x + d},${y - d} ${x + w + d},${y - d} ${x + w},${y}` }));
-  g.appendChild(svgEl("rect", { class: "plate-face" + (live ? " live" : ""), x, y, width: w, height: h, rx: 3 }));
+  g.appendChild(svgEl("rect", { class: "plate-shadow", x: x + 5, y: y + 6, width: w, height: h, rx: 4 }));
+  g.appendChild(svgEl("rect", { class: "plate-face" + (live ? " live" : ""), x, y, width: w, height: h, rx: 4 }));
+}
+
+function stampText(s) {
+  if (s.kind === "future") return { cls: "hearing", text: `Hearing ${dayMonth(s.date)}` };
+  const st = (s.rec && s.rec.status) || "";
+  if (/Failed/i.test(st)) return { cls: "dead", text: "Failed, end of term" };
+  if (/Withdrawn/i.test(st)) return { cls: "dead", text: "Withdrawn" };
+  if (/In Committee/i.test(st)) return { cls: "open", text: "In committee" };
+  return null;
+}
+
+function svgStamp(parent, x, y, s, rot) {
+  const st = stampText(s);
+  if (!st) return;
+  const w = st.text.length * 7.6 + 22;
+  const g = svgEl("g", { class: "svg-stamp " + st.cls, transform: `translate(${x} ${y}) rotate(${rot})` });
+  g.appendChild(svgEl("rect", { x: -w, y: -13, width: w, height: 26, rx: 3 }));
+  g.appendChild(svgEl("rect", { class: "inner", x: -w + 3, y: -10, width: w - 6, height: 20, rx: 2 }));
+  g.appendChild(svgEl("text", { x: -w / 2, y: 4.5, "text-anchor": "middle" }, st.text));
+  parent.appendChild(g);
+}
+
+function wobble(x1, y1, x2, y2, amp, seed) {
+  const n = Math.max(2, Math.round(Math.hypot(x2 - x1, y2 - y1) / 110));
+  let d = `M ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, tm = (i - 0.5) / n;
+    const px = x1 + (x2 - x1) * t, py = y1 + (y2 - y1) * t;
+    const off = Math.sin((i + seed) * 2.3) * amp;
+    const nx = -(y2 - y1), ny = x2 - x1, nl = Math.hypot(nx, ny) || 1;
+    const cx = x1 + (x2 - x1) * tm + nx / nl * off, cy = y1 + (y2 - y1) * tm + ny / nl * off;
+    d += ` Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${px.toFixed(1)} ${py.toFixed(1)}`;
+  }
+  return d;
+}
+
+function ringClass(s) {
+  return "node-ring" + (s.kind === "future" ? " future" : s.kind === "dead" ? " dead" : "");
 }
 
 function renderSpine(thread) {
@@ -219,93 +249,75 @@ function renderSpine(thread) {
   const svg = svgEl("svg", { role: "img" });
   svg.setAttribute("aria-label", `Continuity of one issue: ${stops.map(s => `${fmtDate(s.date)}, ${s.file}, ${s.label}`).join("; ")}`);
   spineDefs(svg);
+  const cards = [];
 
   if (vertical) {
-    const W = 380, cardH = 132, top = 34, stepY = 178;
-    const H = top + stepY * (stops.length - 1) + cardH + 24;
+    const W = 380, cardH = 132, top = 34, stepY = 184;
+    const H = top + stepY * (stops.length - 1) + cardH + 30;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    const railX = 26;
-    svg.appendChild(svgEl("path", { class: "rail-glow", d: `M ${railX} ${top + 30} L ${railX} ${top + stepY * (stops.length - 1) + 40}` }));
-    const rail = svgEl("path", { class: "rail", d: `M ${railX} ${top + 30} L ${railX} ${top + stepY * (stops.length - 1) + 40}` });
-    rail.setAttribute("stroke", "url(#railGrad)");
-    svg.appendChild(rail);
+    const railX = 24;
+    svg.appendChild(svgEl("path", { class: "rail", d: wobble(railX, top + 30, railX, top + stepY * (stops.length - 1) + 30, 5, 1) }));
     stops.forEach((s, i) => {
       const y = top + stepY * i;
-      const g = svgEl("g");
-      plateShape(g, 58, y, 306, cardH, s.kind !== "dead");
-      g.appendChild(svgEl("circle", { class: "node-ring" + (s.kind === "future" ? " future" : s.kind === "dead" ? " dead" : ""), cx: railX, cy: y + 30, r: s.kind === "future" ? 8 : 6 }));
-      g.appendChild(svgEl("path", { class: "gapline", d: `M ${railX + 10} ${y + 30} L 58 ${y + 30}` }));
-      g.appendChild(svgEl("text", { class: "tiny-l", x: 76, y: y + 24 }, s.kicker));
-      g.appendChild(svgEl("text", { class: s.kind === "future" ? "big" : "mono big", x: 76, y: y + 56, fill: s.kind === "future" ? "#E9C377" : "#ECF2EE" }, s.kind === "future" ? "Public hearing" : s.file));
-      g.appendChild(svgEl("text", { class: s.kind === "future" ? "gold" : "soft", x: 76, y: y + 82 }, s.kind === "future" ? s.label.replace("public hearing, ", "") : s.label));
-      g.appendChild(svgEl("text", { class: "soft", x: 76, y: y + 106 }, s.parcel));
+      const g = svgEl("g", { class: "spine-card" });
+      plateShape(g, 52, y, 312, cardH, s.kind !== "dead");
+      g.appendChild(svgEl("text", { class: "tiny-l", x: 70, y: y + 26 }, s.kicker));
+      g.appendChild(svgEl("text", { class: s.kind === "future" ? "big serif" : "mono big", x: 70, y: y + 56 }, s.kind === "future" ? "Public hearing" : s.file));
+      g.appendChild(svgEl("text", { class: s.kind === "future" ? "gold" : s.kind === "dead" ? "flagt" : "soft", x: 70, y: y + 82 }, s.kind === "future" ? s.label.replace("public hearing, ", "") : s.label));
+      g.appendChild(svgEl("text", { class: "soft", x: 70, y: y + 106 }, s.parcel));
+      svgStamp(g, 356, y + cardH - 4, s, -4 + i * 3);
       svg.appendChild(g);
+      cards.push(g);
+      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${railX + 9} ${y + 30} L 52 ${y + 30}` }));
+      svg.appendChild(svgEl("circle", { class: ringClass(s), cx: railX, cy: y + 30, r: s.kind === "future" ? 9 : 7 }));
     });
     if (gap) {
       const y = top + cardH + 30;
-      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${railX} ${y - 14} L ${railX} ${y + 6}` }));
-      svg.appendChild(svgEl("text", { class: "tiny-l", x: 58, y: y + 4 }, `${num(gap)} days later`));
+      svg.appendChild(svgEl("text", { class: "tiny-l note", x: 52, y: y + 10 }, `${num(gap)} days later`));
     }
   } else {
-    const W = 1000, H = 322, railY = 250;
+    const W = 1000, H = 330, railY = 250;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
     const padL = 150, padR = 150;
     const step = (W - padL - padR) / Math.max(1, stops.length - 1);
     const x = i => padL + i * step;
-    svg.appendChild(svgEl("path", { class: "rail-glow", d: `M ${x(0) - 40} ${railY} L ${x(stops.length - 1) + 40} ${railY}` }));
-    const rail = svgEl("path", { class: "rail", d: `M ${x(0) - 40} ${railY} L ${x(stops.length - 1) + 40} ${railY}` });
-    rail.setAttribute("stroke", "url(#railGrad)");
-    svg.appendChild(rail);
+    svg.appendChild(svgEl("path", { class: "rail", d: wobble(x(0) - 40, railY, x(stops.length - 1) + 40, railY, 7, 0) }));
 
     stops.forEach((s, i) => {
       const cx = x(i);
-      const scale = 0.9 + 0.06 * i;
-      const w = 264, h = 136;
+      const w = 264, h = 140;
       const isF = s.kind === "future";
-      const plate = svgEl("g");
-      plate.setAttribute("transform", `translate(${cx} ${railY - 34}) scale(${scale.toFixed(3)}) skewY(-3)`);
-      plate.setAttribute("opacity", (0.82 + 0.09 * i).toFixed(2));
-      plateShape(plate, -w / 2, -h, w, h, s.kind !== "dead");
-      svg.appendChild(plate);
-
+      const tilt = [-1.2, 0.8, -0.6, 1][i % 4];
+      const g = svgEl("g", { class: "spine-card", transform: `translate(${cx} ${railY - 40}) rotate(${tilt})` });
+      plateShape(g, -w / 2, -h, w, h, s.kind !== "dead");
       const tx = -w / 2 + 20;
-      const dy = -0.0524 * tx;
-      const g = svgEl("g");
-      g.setAttribute("transform", `translate(${cx} ${railY - 34}) scale(${scale.toFixed(3)})`);
-      g.appendChild(svgEl("text", { class: "tiny-l", x: tx, y: -h + 28 + dy }, s.kicker));
-      g.appendChild(svgEl("text", { class: isF ? "big" : "mono big", x: tx, y: -h + 60 + dy, fill: isF ? "#E9C377" : "#ECF2EE" }, isF ? "Public hearing" : s.file));
-      g.appendChild(svgEl("text", { class: isF ? "gold" : "soft", x: tx, y: -h + 86 + dy }, isF ? s.label.replace("public hearing, ", "") : s.label));
-      g.appendChild(svgEl("text", { class: "soft", x: tx, y: -h + 110 + dy }, s.parcel));
+      g.appendChild(svgEl("text", { class: "tiny-l", x: tx, y: -h + 30 }, s.kicker));
+      g.appendChild(svgEl("text", { class: isF ? "big serif" : "mono big", x: tx, y: -h + 62 }, isF ? "Public hearing" : s.file));
+      g.appendChild(svgEl("text", { class: isF ? "gold" : s.kind === "dead" ? "flagt" : "soft", x: tx, y: -h + 88 }, isF ? s.label.replace("public hearing, ", "") : s.label));
+      g.appendChild(svgEl("text", { class: "soft", x: tx, y: -h + 112 }, s.parcel));
+      svgStamp(g, w / 2 + 10, -h + 2, s, i % 2 ? 5 : -5);
       svg.appendChild(g);
+      cards.push(g);
 
-      const stem = svgEl("path", { class: "gapline", d: `M ${cx} ${railY - 34} L ${cx} ${railY}` });
-      svg.appendChild(stem);
-      svg.appendChild(svgEl("circle", { class: "node-ring" + (s.kind === "future" ? " future" : s.kind === "dead" ? " dead" : ""), cx, cy: railY, r: s.kind === "future" ? 9 : 6.5 }));
-      svg.appendChild(svgEl("text", { class: "tiny-l", x: cx, y: railY + 30, "text-anchor": "middle" }, fmtDate(s.date)));
+      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${cx} ${railY - 34} L ${cx} ${railY - 9}` }));
+      svg.appendChild(svgEl("circle", { class: ringClass(s), cx, cy: railY, r: isF ? 10 : 7.5 }));
+      svg.appendChild(svgEl("text", { class: "tiny-l", x: cx, y: railY + 34, "text-anchor": "middle" }, fmtDate(s.date)));
     });
 
     if (gap && stops.length > 1) {
       const mid = (x(0) + x(1)) / 2;
-      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${x(0) + 14} ${railY + 52} L ${mid - 92} ${railY + 52}` }));
-      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${mid + 92} ${railY + 52} L ${x(1) - 14} ${railY + 52}` }));
-      svg.appendChild(svgEl("text", { class: "tiny-l", x: mid, y: railY + 56, "text-anchor": "middle" }, `${num(gap)} days, new council`));
+      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${x(0) + 14} ${railY + 58} L ${mid - 96} ${railY + 58}` }));
+      svg.appendChild(svgEl("path", { class: "gapline", d: `M ${mid + 96} ${railY + 58} L ${x(1) - 14} ${railY + 58}` }));
+      svg.appendChild(svgEl("text", { class: "tiny-l note", x: mid, y: railY + 63, "text-anchor": "middle" }, `${num(gap)} days, new council`));
     }
   }
 
   host.appendChild(svg);
   if (reduced()) return;
-  const rails = $$(".rail", svg);
-  rails.forEach(r => {
-    let len = 1200;
-    try { len = r.getTotalLength() || 1200; } catch (e) { len = 1200; }
-    r.style.strokeDasharray = len;
-    r.style.strokeDashoffset = len;
-    r.animate([{ strokeDashoffset: len }, { strokeDashoffset: 0 }], { duration: 1000, easing: "cubic-bezier(.22,.72,.28,1)", fill: "forwards" });
-  });
-  $$("g", svg).forEach((g, i) => {
-    if (!g.querySelector("text")) return;
-    g.animate([{ opacity: 0, transform: g.getAttribute("transform") ? undefined : "translateY(12px)" }, {}], { duration: 420, delay: 200 + 160 * i, easing: "cubic-bezier(.22,.72,.28,1)", fill: "backwards" });
-  });
+  $$(".rail", svg).forEach(r => { r.setAttribute("pathLength", "1"); r.classList.add("draw"); });
+  cards.forEach((g, i) => { g.classList.add("pop"); g.style.animationDelay = `${250 + 320 * i}ms`; });
+  $$(".node-ring", svg).forEach((c, i) => { c.classList.add("pop"); c.style.animationDelay = `${300 + 320 * i}ms`; });
+  $$(".svg-stamp", svg).forEach((st, i) => { st.classList.add("pop"); st.style.animationDelay = `${900 + 320 * i}ms`; });
 }
 
 function threadDelta(thread) {
