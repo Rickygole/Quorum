@@ -210,9 +210,10 @@ So the domain guidance was deleted. The neutral prompt keeps only the task, the 
 |---|---|---|
 | Full prompt, with domain guidance | 100% (50/50) | 19 |
 | Neutral prompt, domain guidance removed | 94% (47/50) | 16 |
-| Best single deterministic feature (parcel exact) | 78% | 8 |
+| Best single deterministic feature (prior terminal) | 84% | |
+| Parcel lookup alone (parcel exact) | 78% | 8 |
 
-**The prompt is not doing the work.** Strip every domain hint and accuracy falls from 100% to 94%, not to the 78% a parcel only rule gets. The model reads the feature table and reasons from it. If the guidance were the rule in disguise, removing it would collapse performance to the level of the rule, and it does not.
+**The prompt is not doing the work.** Strip every domain hint and accuracy falls from 100% to 94%, which is still above every single deterministic feature, the best of which is 84%. The model reads the feature table and reasons from it. If the guidance were the rule in disguise, removing it would collapse performance to the level of the rule, and it does not.
 
 **The domain guidance is worth exactly 3 pairs**, and they are not random. Every miss is a continuation the neutral prompt declined to call, so removing the guidance makes the agent conservative rather than wrong in both directions. It called 16 continuations where 19 are true.
 

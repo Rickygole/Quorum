@@ -91,7 +91,7 @@ same parcel parser, so they can be added up against each other.
 |---|---|
 | Matters in the corpus, introduced 2021-01-11 to 2026-07-13 | **1,679** |
 | Fetched at | `2026-09-10T02:14:14Z` |
-| Matters that name a parcel Quorum can parse | **270** |
+| Matters that name a parcel Quorum can parse | **266** |
 | Of those, resolving to a parcel in the city gazetteer | **252** |
 | Parcels appearing under two or more file numbers | **9** |
 | Matters introduced 2025-01-01 onward | **505** |
@@ -125,7 +125,7 @@ full feature table rather than a single field, earns its place.
 **What the domain guidance is worth.** The Continuity Agent's prompt tells the model, in
 prose, which features matter and why. With every domain hint stripped out and only the
 task, the schema, and an instruction not to invent facts left in place, accuracy on the
-50 pairs falls from 100% to **94% (47/50)**, not down to the **78%** the best single
+50 pairs falls from 100% to **94% (47/50)**, still above the **84%** of the best single
 deterministic feature (parcel exact) gets on its own. The three misses are cases a feature
 table alone does not flag as one issue: a liquor licence tied to its own zoning approval,
 a charter amendment returning after a failed term, and one street condemnation filed as two
@@ -173,12 +173,12 @@ Written before a judge finds them.
 - **One source.** City Council legislation via Legistar. Zoning appeals, liquor
   licences and tax sale run through three other Baltimore agencies and are out of scope.
 - **A small evaluation population.** 50 hand labeled pairs, 19 of them continuations. That
-  is what a corpus of 1,679 records with 270 parcel bearing items supports, and the number
+  is what a corpus of 1,679 records with 266 parcel bearing items supports, and the number
   is stated rather than implied.
 - **The labels are one person's judgment.** They were assigned by reading the source
   documents, and a tuned two clause rule reproduces them exactly. Both facts are reported
   in [eval/RESULTS.md](eval/RESULTS.md) rather than left for a reader to discover.
-- **Parcels are resolved from titles.** 270 of 1,679 records name a parcel Quorum can parse
+- **Parcels are resolved from titles.** 266 of 1,679 records name a parcel Quorum can parse
   and 252 of those resolve against the city gazetteer. The remainder are budget,
   procurement, personnel and citywide matters that name no property, and Quorum drops them
   rather than guessing.

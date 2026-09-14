@@ -1,0 +1,8 @@
+{
+  "prompt": "neutral",
+  "note": "Every domain hint removed from the Continuity Agent system prompt. Same feature table, same pairs, same model.",
+  "n": 50,
+  "correct": 47,
+  "accuracy": 0.94,
+  "called_continuation": 16
+}

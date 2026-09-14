@@ -586,6 +586,9 @@ def write_tier_section(tiers, pairs):
     return L
 
 
+PAIRS_FOR_SINGLES = []
+
+
 def write_ablation_section(ab):
     L = []
     L.append("## Ablation: is the prompt just the rule, written in English?\n")
@@ -612,10 +615,19 @@ def write_ablation_section(ab):
         f"| Neutral prompt, domain guidance removed | {fmt_pct(ab['accuracy'])} "
         f"({ab['correct']}/{ab['n']}) | {ab['called_continuation']} |"
     )
-    L.append("| Best single deterministic feature (parcel exact) | 78% | 8 |\n")
+    skip = ("always continuation", "parcel exact OR (cosine >= 0.97 AND prior terminal)")
+    singles = {
+        name: confusion(PAIRS_FOR_SINGLES, fn)["accuracy"]
+        for name, fn in BASELINES.items()
+        if name not in skip
+    }
+    best_name = max(singles, key=singles.get)
+    L.append(f"| Best single deterministic feature ({best_name}) | {fmt_pct(singles[best_name])} | |")
+    L.append(f"| Parcel lookup alone (parcel exact) | {fmt_pct(singles.get('parcel exact', 0))} | 8 |\n")
     L.append(
         f"**The prompt is not doing the work.** Strip every domain hint and accuracy falls from "
-        f"100% to {fmt_pct(ab['accuracy'])}, not to the 78% a parcel only rule gets. The model reads "
+        f"100% to {fmt_pct(ab['accuracy'])}, which is still above every single deterministic "
+        f"feature, the best of which is {fmt_pct(singles[best_name])}. The model reads "
         "the feature table and reasons from it. If the guidance were the rule in disguise, removing "
         "it would collapse performance to the level of the rule, and it does not.\n"
     )
@@ -888,6 +900,7 @@ def write_results(pairs, missing, baselines, sweep, agent_stats, agent_decisions
 
     L += write_tier_section(tier_report(pairs, agent_decisions), pairs)
 
+    globals()["PAIRS_FOR_SINGLES"] = pairs
     ab = load_ablation()
     if ab:
         L += write_ablation_section(ab)

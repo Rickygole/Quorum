@@ -104,7 +104,7 @@ place instead of a database join.
 
 We also ran an ablation: strip every domain-specific hint out of the Continuity Agent's
 prompt, keep only the task, the schema, and an instruction not to invent facts. Accuracy
-fell from 100% (50/50) to 94% (47/50), not down to the 78% the best single deterministic
+fell from 100% (50/50) to 94% (47/50), still above the 84% of the best single deterministic
 feature gets on its own. The three cases the stripped prompt missed were a liquor license
 matched to its own zoning approval, a charter amendment returning after a failed term, and
 one street condemnation filed as two file numbers. Nothing in a feature table alone flags

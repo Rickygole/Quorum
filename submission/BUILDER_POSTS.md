@@ -123,7 +123,7 @@ where the alternative is a brittle, hand-tuned threshold.
 
 We also ran an ablation, stripping every domain-specific hint from the prompt down to task,
 schema, and a rule against inventing facts. Accuracy dropped from 100% to 94%, three misses,
-still well above the 78% the best single deterministic feature manages alone. That gap of
+still above the 84% the best single deterministic feature manages alone. That gap of
 three pairs, a liquor license tied to its own zoning approval, a returning charter
 amendment, and a street condemnation split into two filings, is what the domain knowledge
 actually buys.

@@ -204,7 +204,7 @@ The fourth check is an ablation. `eval/ablation.py` strips every domain
 specific hint out of the Continuity Agent's prompt, keeping only the task,
 the output schema, and an instruction not to invent facts, then reruns it on
 the same 50 pairs. Accuracy falls from 100% to 94% (47 of 50), not down to
-the 78% the best single deterministic feature (parcel exact) manages alone.
+the 84% the best single deterministic feature (prior terminal) manages alone, and above the 78% of a parcel lookup.
 The three misses are cases a feature table alone does not flag as one issue:
 a liquor licence tied to its own zoning approval, a charter amendment
 returning after a failed term, and one street condemnation filed as two file
