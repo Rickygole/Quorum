@@ -40,7 +40,7 @@ direct invocation, with OpenTelemetry tracing enabled. See
 deployed, what it returns on a real call, and the three bugs that only showed up once it
 left a laptop.
 
-![Quorum pipeline architecture: cached sources into ingestion, into a Strands Graph of five fixed order nodes on Bedrock AgentCore Runtime, into a static site, stopping at a human approval gate](docs/architecture.svg)
+![Quorum architecture: cached sources into ingestion, into a Strands Graph of five fixed order nodes on Bedrock AgentCore Runtime, into a static site, stopping at a human approval gate](docs/architecture.png)
 
 ---
 
