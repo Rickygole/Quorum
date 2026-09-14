@@ -1,6 +1,6 @@
 # Architecture
 
-See [docs/architecture.svg](docs/architecture.svg) for the diagram version of this pipeline.
+See [docs/architecture.png](docs/architecture.png) for the diagram version of this pipeline.
 
 ```
               Legistar Web API (cached, timestamped)
