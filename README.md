@@ -170,6 +170,17 @@ under those terms.
 
 Quorum is not affiliated with, endorsed by, or connected to the City of Baltimore or Granicus.
 
+Third party pieces used under their own licenses:
+
+- **Demo video narration**: voice generated with [ElevenLabs](https://elevenlabs.io). The
+  background music is generated procedurally by `video/music.py`.
+- **Fonts**: Fraunces, Source Sans 3, Archivo and IBM Plex Mono from Google Fonts, under the SIL
+  Open Font License.
+- **three.js**: MIT license, loaded from cdnjs for the Agent run scene.
+
+Everything else in this repository was written for this hackathon during the submission period.
+No pre-existing project code is incorporated.
+
 The cached parcel layer carries an owner name for every parcel because the source layer does.
 The published site shows that name only when the owner is an organisation. Where the owner is
 a private individual the site says so instead of naming them, which is why the hero case reads
