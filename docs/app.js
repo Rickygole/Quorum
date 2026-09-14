@@ -1439,7 +1439,7 @@ function mountPipeline(stats) {
     <span class="chip on"><span class="dotmark"></span>Agent gate, makes a model call</span>
     <span class="chip square"><span class="dotmark"></span>Resolution is deterministic, no model call</span>
     <span class="chip"><span class="dotmark" style="background:var(--flag)"></span>Records dropped at a gate</span>
-    <span class="chip"><span class="dotmark" style="background:var(--paper)"></span>The figure on the road is one resident, and stands for no quantity</span>`;
+    <span class="chip"><span class="dotmark" style="background:var(--brick)"></span>The figure on the road is one resident, and stands for no quantity</span>`;
 
   const flatNote = "Static view. Counts on each stage are exact and come from the exported run.";
 
@@ -1518,20 +1518,20 @@ function roundedBoxGeo(w, h, d, r) {
 
 function roadTexture() {
   const t = makeTex(256, 256, g => {
-    g.fillStyle = "#07181E";
+    g.fillStyle = "#6E685E";
     g.fillRect(0, 0, 256, 256);
-    g.fillStyle = "#0B222B";
+    g.fillStyle = "#CFC4AE";
     g.fillRect(0, 0, 30, 256);
     g.fillRect(226, 0, 30, 256);
-    g.fillStyle = "rgba(255,255,255,.05)";
+    g.fillStyle = "rgba(29,27,24,.06)";
     for (let y = 0; y < 256; y += 32) g.fillRect(36, y, 184, 5);
-    g.fillStyle = "#0E3A44";
+    g.fillStyle = "#8C877D";
     g.fillRect(29, 0, 7, 256);
     g.fillRect(220, 0, 7, 256);
-    g.fillStyle = "#35E3C2";
+    g.fillStyle = "#FFFCF5";
     g.fillRect(31, 0, 3, 256);
     g.fillRect(222, 0, 3, 256);
-    g.fillStyle = "rgba(124,177,255,.55)";
+    g.fillStyle = "rgba(232,169,58,.95)";
     for (let y = 0; y < 256; y += 64) {
       g.fillRect(94, y, 4, 42);
       g.fillRect(158, y, 4, 42);
@@ -1544,11 +1544,11 @@ function roadTexture() {
 function skyTexture() {
   return makeTex(8, 256, g => {
     const grad = g.createLinearGradient(0, 0, 0, 256);
-    grad.addColorStop(0, "#01070A");
-    grad.addColorStop(0.62, "#03161E");
-    grad.addColorStop(0.9, "#0A3140");
-    grad.addColorStop(0.975, "#1C7C86");
-    grad.addColorStop(1, "#7FF0DC");
+    grad.addColorStop(0, "#BFD5DE");
+    grad.addColorStop(0.55, "#E4E6DC");
+    grad.addColorStop(0.88, "#F6ECD6");
+    grad.addColorStop(0.97, "#F5D9A0");
+    grad.addColorStop(1, "#EFC474");
     g.fillStyle = grad;
     g.fillRect(0, 0, 8, 256);
   });
@@ -1558,8 +1558,8 @@ function glowTexture() {
   return makeTex(128, 128, g => {
     const rad = g.createRadialGradient(64, 64, 0, 64, 64, 64);
     rad.addColorStop(0, "rgba(255,255,255,1)");
-    rad.addColorStop(0.28, "rgba(150,230,255,.75)");
-    rad.addColorStop(1, "rgba(60,140,200,0)");
+    rad.addColorStop(0.28, "rgba(255,226,160,.7)");
+    rad.addColorStop(1, "rgba(232,169,58,0)");
     g.fillStyle = rad;
     g.fillRect(0, 0, 128, 128);
   });
@@ -1568,8 +1568,8 @@ function glowTexture() {
 function shadowTexture() {
   return makeTex(128, 128, g => {
     const rad = g.createRadialGradient(64, 64, 0, 64, 64, 62);
-    rad.addColorStop(0, "rgba(0,0,0,.72)");
-    rad.addColorStop(0.55, "rgba(0,0,0,.28)");
+    rad.addColorStop(0, "rgba(29,27,24,.45)");
+    rad.addColorStop(0.55, "rgba(29,27,24,.16)");
     rad.addColorStop(1, "rgba(0,0,0,0)");
     g.fillStyle = rad;
     g.fillRect(0, 0, 128, 128);
@@ -1577,11 +1577,11 @@ function shadowTexture() {
 }
 
 function makeResident() {
-  const coat = new THREE.MeshStandardMaterial({ color: 0xF1F4EE, roughness: 0.62, metalness: 0.08 });
-  const leg = new THREE.MeshStandardMaterial({ color: 0x1E3350, roughness: 0.7, metalness: 0.1 });
+  const coat = new THREE.MeshStandardMaterial({ color: 0xB4442C, roughness: 0.62, metalness: 0.08 });
+  const leg = new THREE.MeshStandardMaterial({ color: 0x1F3A4D, roughness: 0.7, metalness: 0.1 });
   const skin = new THREE.MeshStandardMaterial({ color: 0xC98A5E, roughness: 0.75, metalness: 0.05 });
-  const shoe = new THREE.MeshStandardMaterial({ color: 0x0E181C, roughness: 0.6, metalness: 0.2 });
-  const bagMat = new THREE.MeshStandardMaterial({ color: 0x1F7A70, roughness: 0.55, metalness: 0.2 });
+  const shoe = new THREE.MeshStandardMaterial({ color: 0x1D1B18, roughness: 0.6, metalness: 0.2 });
+  const bagMat = new THREE.MeshStandardMaterial({ color: 0xE8A93A, roughness: 0.55, metalness: 0.2 });
 
   const group = new THREE.Group();
   group.rotation.x = -0.07;
@@ -1659,7 +1659,7 @@ function buildRunner(stage, layer, stats, f) {
   const SEG = 42;
   const V = 28;
   const CAM_Z = 6;
-  const FOG = 0x06202A;
+  const FOG = 0xEEE5D2;
 
   const canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
@@ -1672,14 +1672,14 @@ function buildRunner(stage, layer, stats, f) {
   scene.fog = new THREE.Fog(FOG, 28, 146);
   const camera = new THREE.PerspectiveCamera(62, 2, 0.5, 700);
 
-  scene.add(new THREE.HemisphereLight(0x8fe6ff, 0x04191F, 0.85));
-  const key = new THREE.DirectionalLight(0xffffff, 1);
+  scene.add(new THREE.HemisphereLight(0xFFF6E4, 0x8A7D66, 0.72));
+  const key = new THREE.DirectionalLight(0xFFF8EC, 0.78);
   key.position.set(-8, 18, 10);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0x54c8ff, 0.7);
+  const rim = new THREE.DirectionalLight(0xFFD9A0, 0.45);
   rim.position.set(9, 6, -18);
   scene.add(rim);
-  const lamp = new THREE.PointLight(0xbfe6ff, 1.5, 62);
+  const lamp = new THREE.PointLight(0xFFE8C0, 0.6, 62);
   lamp.position.set(0, 8, -6);
   scene.add(lamp);
 
@@ -1692,7 +1692,7 @@ function buildRunner(stage, layer, stats, f) {
 
   const sun = new THREE.Mesh(
     new THREE.PlaneGeometry(220, 220),
-    new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.42, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })
+    new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.55, depthWrite: false, fog: false })
   );
   sun.position.set(0, 10, -322);
   scene.add(sun);
@@ -1708,7 +1708,7 @@ function buildRunner(stage, layer, stats, f) {
   scene.add(road);
 
   const railGeo = roundedBoxGeo(0.5, 0.5, 400, 0.2);
-  const railMat = new THREE.MeshStandardMaterial({ color: 0x123842, emissive: 0x0A3A44, roughness: 0.5, metalness: 0.4 });
+  const railMat = new THREE.MeshStandardMaterial({ color: 0x8C877D, emissive: 0x000000, roughness: 0.8, metalness: 0.05 });
   [-12.6, 12.6].forEach(x => {
     const m = new THREE.Mesh(railGeo, railMat);
     m.position.set(x, 1.4, -180);
@@ -1718,14 +1718,14 @@ function buildRunner(stage, layer, stats, f) {
   const dummy = new THREE.Object3D();
 
   const blockGeo = roundedBoxGeo(3.2, 9, 3.2, 0.7);
-  const blockMat = new THREE.MeshStandardMaterial({ color: 0x0F2A33, emissive: 0x061D24, roughness: 0.7, metalness: 0.25 });
+  const blockMat = new THREE.MeshStandardMaterial({ color: 0x9E4A36, emissive: 0x1A0804, roughness: 0.95, metalness: 0 });
   const BLOCKS = 30;
   const blocks = new THREE.InstancedMesh(blockGeo, blockMat, BLOCKS);
   blocks.frustumCulled = false;
   scene.add(blocks);
 
   const barGeo = roundedBoxGeo(26, 0.55, 0.55, 0.24);
-  const barMat = new THREE.MeshStandardMaterial({ color: 0x1B4E5C, emissive: 0x1E7C8E, roughness: 0.4, metalness: 0.3 });
+  const barMat = new THREE.MeshStandardMaterial({ color: 0x3F7A5A, emissive: 0x0E2218, roughness: 0.7, metalness: 0.05 });
   const BARS = 15;
   const bars = new THREE.InstancedMesh(barGeo, barMat, BARS);
   bars.frustumCulled = false;
@@ -1735,7 +1735,7 @@ function buildRunner(stage, layer, stats, f) {
   const spos = new Float32Array(STREAKS * 6);
   const sgeo = new THREE.BufferGeometry();
   sgeo.setAttribute("position", new THREE.BufferAttribute(spos, 3));
-  const streaks = new THREE.LineSegments(sgeo, new THREE.LineBasicMaterial({ color: 0xD8F4FF, transparent: true, opacity: 0.46 }));
+  const streaks = new THREE.LineSegments(sgeo, new THREE.LineBasicMaterial({ color: 0x1D1B18, transparent: true, opacity: 0.16 }));
   streaks.frustumCulled = false;
   scene.add(streaks);
   const sdata = [];
@@ -1745,16 +1745,16 @@ function buildRunner(stage, layer, stats, f) {
     sdata.push({ x: Math.cos(a) * r, y: 2 + Math.abs(Math.sin(a)) * r, z: -Math.random() * 120, len: 5 + Math.random() * 13, v: 60 + Math.random() * 70 });
   }
 
-  const gateAccent = { agent: 0x7CB1FF, code: 0xE9C377 };
+  const gateAccent = { agent: 0x1F5673, code: 0xD49A3C };
   const gates = stats.map((s, i) => {
     const agent = s.kind === "agent";
     const accent = agent ? gateAccent.agent : gateAccent.code;
     const g = new THREE.Group();
 
     const pillarMat = new THREE.MeshStandardMaterial({
-      color: agent ? 0x123448 : 0x2E2A1E,
-      emissive: agent ? 0x07202F : 0x1A1608,
-      roughness: 0.45, metalness: 0.35
+      color: agent ? 0xE2D8C3 : 0xE0D2B4,
+      emissive: agent ? 0x0E0D0B : 0x100D06,
+      roughness: 0.85, metalness: 0.02
     });
     const pillarGeo = roundedBoxGeo(3, 13, 3.2, 0.65);
     [-8.9, 8.9].forEach(x => {
@@ -1782,26 +1782,26 @@ function buildRunner(stage, layer, stats, f) {
     if (agent) {
       const ring = new THREE.Mesh(
         new THREE.TorusGeometry(6.6, 0.42, 10, 56),
-        new THREE.MeshStandardMaterial({ color: accent, emissive: 0x1D4C8C, roughness: 0.3, metalness: 0.6 })
+        new THREE.MeshStandardMaterial({ color: accent, emissive: 0x0A2230, roughness: 0.5, metalness: 0.2 })
       );
       ring.position.set(0, 6.6, 0.4);
       g.add(ring);
       const inner = new THREE.Mesh(
         new THREE.TorusGeometry(5.1, 0.2, 8, 48),
-        new THREE.MeshBasicMaterial({ color: 0xBFDCFF, transparent: true, opacity: 0.8 })
+        new THREE.MeshBasicMaterial({ color: 0xE8A93A, transparent: true, opacity: 0.95 })
       );
       inner.position.set(0, 6.6, 0.9);
       g.add(inner);
       g.userData.spin = inner;
       const halo = new THREE.Mesh(
         new THREE.PlaneGeometry(19, 19),
-        new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.2, depthWrite: false, blending: THREE.AdditiveBlending })
+        new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.12, depthWrite: false })
       );
       halo.position.set(0, 6.6, -1.4);
       g.add(halo);
       g.userData.halo = halo;
     } else {
-      const barsMat = new THREE.MeshStandardMaterial({ color: accent, emissive: 0x4A3608, roughness: 0.35, metalness: 0.5 });
+      const barsMat = new THREE.MeshStandardMaterial({ color: accent, emissive: 0x3A2604, roughness: 0.55, metalness: 0.15 });
       const sideGeo = roundedBoxGeo(0.9, 11.6, 0.9, 0.35);
       const capGeo = roundedBoxGeo(12.4, 0.9, 0.9, 0.35);
       [-5.75, 5.75].forEach(x => {
@@ -1816,7 +1816,7 @@ function buildRunner(stage, layer, stats, f) {
       });
       const chevGeo = roundedBoxGeo(7.4, 0.85, 0.85, 0.32);
       [-1, 1].forEach(sgn => {
-        const c = new THREE.Mesh(chevGeo, new THREE.MeshBasicMaterial({ color: 0xF0CB84 }));
+        const c = new THREE.Mesh(chevGeo, new THREE.MeshBasicMaterial({ color: 0x1D1B18 }));
         c.position.set(sgn * 2.6, 6.6, 1.5);
         c.rotation.z = sgn * 0.62;
         g.add(c);
@@ -1824,13 +1824,13 @@ function buildRunner(stage, layer, stats, f) {
     }
 
     if (i === stats.length - 1) {
-      const intakeMat = new THREE.MeshStandardMaterial({ color: 0x14313C, emissive: 0x0A2430, roughness: 0.6, metalness: 0.3 });
+      const intakeMat = new THREE.MeshStandardMaterial({ color: 0x2E3B40, emissive: 0x0A0F12, roughness: 0.8, metalness: 0.1 });
       const hood = new THREE.Mesh(roundedBoxGeo(15, 2.6, 3.4, 0.7), intakeMat);
       hood.position.set(0, 6.4, -5);
       g.add(hood);
       const mouth = new THREE.Mesh(
         new THREE.PlaneGeometry(13.6, 3.4),
-        new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending })
+        new THREE.MeshBasicMaterial({ map: glowTexture(), transparent: true, opacity: 0.8, depthWrite: false })
       );
       mouth.position.set(0, 4.6, -4.9);
       g.add(mouth);
@@ -1849,14 +1849,14 @@ function buildRunner(stage, layer, stats, f) {
   });
 
   const KINDS = [
-    { shape: 0, color: 0x51716B, emissive: 0x0B1817 },
-    { shape: 0, color: 0x7CB1FF, emissive: 0x18437C },
-    { shape: 0, color: 0x3FE0B4, emissive: 0x0D5545 },
-    { shape: 0, color: 0x62736E, emissive: 0x0A1412 },
-    { shape: 0, color: 0xFF8163, emissive: 0x5C1E10 },
-    { shape: 1, color: 0xE9C377, emissive: 0x714C12 },
-    { shape: 1, color: 0xFFB44D, emissive: 0x824604 },
-    { shape: 1, color: 0xFFF3D2, emissive: 0x8F6C20 }
+    { shape: 0, color: 0xFFFCF5, emissive: 0x2A2720 },
+    { shape: 0, color: 0x1F5673, emissive: 0x06141C },
+    { shape: 0, color: 0x3F7A5A, emissive: 0x0C1E14 },
+    { shape: 0, color: 0x8C877D, emissive: 0x141210 },
+    { shape: 0, color: 0xB4442C, emissive: 0x2A0C06 },
+    { shape: 1, color: 0xE8A93A, emissive: 0x4A3004 },
+    { shape: 1, color: 0xD98E2B, emissive: 0x3E2402 },
+    { shape: 1, color: 0xFFF3D2, emissive: 0x4A3A18 }
   ];
   const CAPS = [230, 230, 90, 90, 250, 44, 18, 14];
   const cardGeo = roundedBoxGeo(1.35, 0.92, 0.2, 0.09);
@@ -1864,7 +1864,7 @@ function buildRunner(stage, layer, stats, f) {
   const pools = KINDS.map((k, i) => {
     const m = new THREE.InstancedMesh(
       k.shape ? gemGeo : cardGeo,
-      new THREE.MeshStandardMaterial({ color: k.color, emissive: k.emissive, roughness: k.shape ? 0.25 : 0.42, metalness: k.shape ? 0.55 : 0.2, flatShading: !!k.shape }),
+      new THREE.MeshStandardMaterial({ color: k.color, emissive: k.emissive, roughness: k.shape ? 0.45 : 0.7, metalness: k.shape ? 0.15 : 0.02, flatShading: !!k.shape }),
       CAPS[i]
     );
     m.frustumCulled = false;
