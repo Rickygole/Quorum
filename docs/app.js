@@ -5,6 +5,13 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const el = (t, c, h) => { const n = document.createElement(t); if (c) n.className = c; if (h !== undefined) n.innerHTML = h; return n; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const nodash = s => String(s ?? "").replace(/\s*[\u2014\u2013]\s*/g, ", ");
+const modelLabel = id => {
+  const v = String(id || "");
+  if (!v) return "n/a";
+  const tier = /sonnet/i.test(v) ? "Sonnet" : /haiku/i.test(v) ? "Haiku" : /opus/i.test(v) ? "Opus" : "model";
+  const ver = (v.match(/-(\d)-(\d)-/) || []).slice(1).join(".");
+  return `Amazon Bedrock, ${tier}${ver ? " " + ver : ""}`;
+};
 const mono = s => `<span class="id">${esc(s)}</span>`;
 const num = n => Number(n).toLocaleString("en-US");
 const cos = v => Number(v).toFixed(3);
@@ -1293,7 +1300,7 @@ function renderLiveInvoke() {
           <dt>Explicitly set aside</dt><dd>${(d.non_drivers || []).map(x => esc(nodash(x))).join("<br>") || "none given"}</dd>
           <dt>Session</dt><dd class="id">${esc(d.session_id || "n/a")}</dd>
           <dt>Runtime</dt><dd class="id" style="word-break:break-all">${esc(d.runtime_arn || live.runtime_arn || "n/a")}</dd>
-          <dt>Model</dt><dd class="id">${esc(d.model_id || "n/a")}</dd>
+          <dt>Model</dt><dd class="id">${esc(modelLabel(d.model_id))}</dd>
           <dt>Runtime latency</dt><dd class="id">${d.latency_ms !== undefined ? d.latency_ms + " ms" : "n/a"}</dd>
         </dl>`;
     } catch (err) {
