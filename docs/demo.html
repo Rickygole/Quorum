@@ -805,6 +805,7 @@ body.idle{cursor:none}
 
   function initGL() {
     var canvas = $("#gl");
+    if (/[?&]nogl=1/.test(window.location.search || "")) return false;
     if (!canvas || typeof window.THREE === "undefined") return false;
     var renderer;
     try {
@@ -1203,6 +1204,8 @@ body.idle{cursor:none}
   }
 
   function restart() { t = 0; playing = true; }
+  window.__quorumSeek = function (s) { playing = false; t = Math.max(0, Math.min(TOTAL, s)); render(t); return t; };
+  window.__quorumTotal = function () { return TOTAL; };
   function nextScene() {
     for (var n = 0; n < SCENES.length; n++) {
       if (SCENES[n].start > t + 0.01) { t = SCENES[n].start; return; }

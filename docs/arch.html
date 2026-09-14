@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quorum, how it works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05080A;--ink:#F2F6F4;--ink-2:#AFC0BA;--ink-3:#778A85;--line:#20302E;--line-2:#33474A;--accent:#7CB1FF;--accent-2:#3D6FD1;--flag:#FF8163;--gold:#E9C377;--good:#79D6A8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#000;overflow:hidden}
+body{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;color:var(--ink);cursor:none}
+.mono{font-family:"IBM Plex Mono",Menlo,monospace}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:radial-gradient(1200px 700px at 50% 38%,#0B1720 0%,var(--bg) 62%);overflow:hidden}
+.b{position:absolute;opacity:0;will-change:opacity,transform}
+#title{left:180px;top:78px;font-size:64px;font-weight:600;letter-spacing:-0.02em}
+#sub{left:182px;top:160px;font-size:28px;color:var(--ink-2)}
+#bedrock{left:690px;top:130px;width:540px;height:78px;border:1.5px solid var(--line-2);border-radius:14px;background:#0A1318;display:flex;align-items:center;justify-content:center;gap:16px;font-size:28px;font-weight:600}
+#bedrock .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+#bedrock .tag{font-size:17px;color:var(--ink-3);font-weight:400;letter-spacing:.06em}
+#frame{left:170px;top:282px;width:1340px;height:290px;border:2px dashed var(--line-2);border-radius:22px}
+#frameLabel{left:196px;top:298px;font-size:18px;letter-spacing:.08em;color:var(--ink-3)}
+svg#wires{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+.node{position:absolute;width:210px;margin-left:-105px;top:372px;text-align:center}
+.disc{width:104px;height:104px;margin:0 auto;border-radius:50%;border:2px solid var(--accent-2);background:#08121A;display:flex;align-items:center;justify-content:center;position:relative}
+.disc .core{width:26px;height:26px;border-radius:50%;background:var(--accent)}
+.node.code .disc{border-radius:18px;border-color:var(--gold)}
+.node.code .disc .core{width:30px;height:30px;border-radius:4px;background:var(--gold);transform:rotate(45deg)}
+.node .nm{margin-top:18px;font-size:27px;font-weight:600}
+.node .kd{margin-top:6px;font-size:16px;letter-spacing:.14em;color:var(--ink-3)}
+.node.code .kd{color:var(--gold)}
+.ring{position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--accent);opacity:0}
+.node.code .ring{border-radius:26px;border-color:var(--gold)}
+#token{left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#FFFFFF;box-shadow:0 0 30px 8px rgba(124,177,255,.75),0 0 80px 20px rgba(124,177,255,.25)}
+#tokLabel{font-size:17px;color:var(--ink-2);letter-spacing:.04em;white-space:nowrap}
+#gate{left:1620px;top:352px;width:190px;text-align:center}
+#gate .oct{width:132px;height:132px;margin:0 auto;background:#1C0E0A;border:2.5px solid var(--flag);clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:var(--flag);letter-spacing:.06em}
+#gate .nm{margin-top:16px;font-size:26px;font-weight:600}
+#gate .kd{margin-top:6px;font-size:16px;letter-spacing:.14em;color:var(--flag)}
+#panel{left:170px;top:628px;width:1580px;height:380px;border:1.5px solid var(--line);border-radius:20px;background:rgba(9,16,20,.86)}
+.pane{position:absolute;left:0;top:0;width:100%;height:100%;opacity:0}
+.pane .h{position:absolute;left:52px;top:44px;font-size:44px;font-weight:600;letter-spacing:-0.01em}
+.pane .k{position:absolute;left:54px;top:106px;font-size:17px;letter-spacing:.14em;color:var(--ink-3)}
+.pane .d{position:absolute;left:54px;top:150px;width:560px;font-size:25px;line-height:1.5;color:var(--ink-2)}
+.rows{position:absolute;left:700px;top:30px;width:830px}
+.row{display:flex;justify-content:space-between;align-items:center;height:56px;border-bottom:1px solid var(--line);font-size:25px;opacity:0}
+.row .l{color:var(--ink-3);font-size:19px;letter-spacing:.08em}
+.row .v{font-weight:500}
+.row .v.good{color:var(--good)}
+.row .v.dim{color:var(--ink-3)}
+.row .v.gold{color:var(--gold)}
+.verdict{position:absolute;left:700px;top:322px;font-size:30px;font-weight:600;color:var(--good);opacity:0}
+.badge{position:absolute;left:54px;top:300px;padding:10px 18px;border:1.5px solid var(--gold);border-radius:10px;color:var(--gold);font-size:22px;opacity:0}
+.mail{position:absolute;left:700px;top:46px;width:830px;border:1.5px solid var(--line-2);border-radius:14px;background:#0B151A;padding:26px 30px;opacity:0}
+.mail .s{font-size:28px;font-weight:600;line-height:1.3}
+.mail .m{margin-top:14px;font-size:21px;color:var(--ink-2);line-height:1.5}
+.chip{display:inline-block;margin:18px 12px 0 0;padding:8px 14px;border:1px solid var(--line-2);border-radius:8px;font-size:19px;color:var(--ink-2)}
+.strike{position:relative}
+.strike:after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:2px;background:var(--flag);transform-origin:left;transform:scaleX(var(--k,0))}
+.aside{margin-left:14px;font-size:16px;letter-spacing:.12em;color:var(--flag)}
+#closer{left:0;top:1024px;width:1920px;text-align:center;font-size:22px;color:var(--ink-3);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="b" id="title">How it works</div>
+  <div class="b" id="sub">One record, five stages, in order.</div>
+
+  <div class="b" id="bedrock"><span class="dot"></span>Amazon Bedrock<span class="tag">MODEL</span></div>
+
+  <svg id="wires"></svg>
+
+  <div class="b" id="frame"></div>
+  <div class="b mono" id="frameLabel">STRANDS GRAPH ON BEDROCK AGENTCORE RUNTIME</div>
+
+  <div class="b node" id="n0"><div class="disc"><div class="core"></div><div class="ring"></div></div><div class="nm">Civic Analyst</div><div class="kd mono">AGENT</div></div>
+  <div class="b node code" id="n1"><div class="disc"><div class="core"></div><div class="ring"></div></div><div class="nm">Resolution</div><div class="kd mono">CODE</div></div>
+  <div class="b node" id="n2"><div class="disc"><div class="core"></div><div class="ring"></div></div><div class="nm">Continuity</div><div class="kd mono">AGENT</div></div>
+  <div class="b node" id="n3"><div class="disc"><div class="core"></div><div class="ring"></div></div><div class="nm">Relevance</div><div class="kd mono">AGENT</div></div>
+  <div class="b node" id="n4"><div class="disc"><div class="core"></div><div class="ring"></div></div><div class="nm">Action</div><div class="kd mono">AGENT</div></div>
+
+  <div class="b" id="gate"><div class="oct">STOP</div><div class="nm">A person decides</div><div class="kd mono">HUMAN GATE</div></div>
+
+  <div class="b" id="token"></div>
+  <div class="b mono" id="tokLabel"></div>
+
+  <div class="b" id="panel">
+    <div class="pane" id="p0">
+      <div class="h">Civic Analyst</div><div class="k mono">AGENT, CALLS THE MODEL</div>
+      <div class="d">Reads one published record and extracts the facts. A field it is not sure of stays blank instead of being guessed.</div>
+      <div class="rows">
+        <div class="row"><span class="l mono">FILE NUMBER</span><span class="v mono" id="f_file"></span></div>
+        <div class="row"><span class="l mono">SPONSOR</span><span class="v" id="f_sponsor"></span></div>
+        <div class="row"><span class="l mono">PROPERTY</span><span class="v" id="f_addr"></span></div>
+        <div class="row"><span class="l mono">HEARING</span><span class="v gold" id="f_hearing"></span></div>
+      </div>
+    </div>
+    <div class="pane" id="p1">
+      <div class="h">Resolution</div><div class="k mono">DETERMINISTIC CODE</div>
+      <div class="d">Turns the text of the record into a parcel identifier, matched against the city's own property layer. A made up parcel number is the one error a resident could never catch, so no model is involved.</div>
+      <div class="badge mono">0 model calls</div>
+      <div class="rows">
+        <div class="row"><span class="l mono">PARCEL</span><span class="v mono" id="r_parcel"></span></div>
+        <div class="row"><span class="l mono">LOTS</span><span class="v mono" id="r_lots"></span></div>
+        <div class="row"><span class="l mono">OWNER OF RECORD</span><span class="v" id="r_owner"></span></div>
+        <div class="row"><span class="l mono">SEARCHED</span><span class="v" id="r_count"></span></div>
+      </div>
+    </div>
+    <div class="pane" id="p2">
+      <div class="h">Continuity</div><div class="k mono">AGENT, CALLS THE MODEL</div>
+      <div class="d">Receives a table of evidence computed in code, compares the new record with every earlier one, and must say which evidence decided it and which it set aside.</div>
+      <div class="rows">
+        <div class="row"><span class="l mono">PARCEL</span><span class="v good" id="c_parcel"></span></div>
+        <div class="row"><span class="l mono">SPONSOR</span><span class="v good" id="c_sponsor"></span></div>
+        <div class="row"><span class="l mono">ZONING CHANGE</span><span class="v good" id="c_zone"></span></div>
+        <div class="row"><span class="l mono">EARLIER BILL</span><span class="v good" id="c_prior"></span></div>
+        <div class="row"><span class="l mono">TITLE SIMILARITY</span><span class="v dim"><span class="strike mono" id="c_cos"></span><span class="aside mono" id="c_aside">SET ASIDE</span></span></div>
+      </div>
+      <div class="verdict" id="c_verdict"></div>
+    </div>
+    <div class="pane" id="p3">
+      <div class="h">Relevance</div><div class="k mono">AGENT, CALLS THE MODEL</div>
+      <div class="d">Decides whether the issue touches an address someone is watching. Proximity is not relevance, and saying nothing is the normal result.</div>
+      <div class="rows">
+        <div class="row"><span class="l mono">WATCHED ADDRESS</span><span class="v good" id="v_watch"></span></div>
+        <div class="row"><span class="l mono">RECORDS READ</span><span class="v mono" id="v_read"></span></div>
+        <div class="row"><span class="l mono">THREADS HELD</span><span class="v mono" id="v_threads"></span></div>
+        <div class="row"><span class="l mono">OPEN FOR COMMENT</span><span class="v gold mono" id="v_open"></span></div>
+      </div>
+    </div>
+    <div class="pane" id="p4">
+      <div class="h">Action</div><div class="k mono">AGENT, CALLS THE MODEL</div>
+      <div class="d">Writes the notice a resident receives and drafts a comment with the file number and hearing date taken from the record. Then the pipeline ends.</div>
+      <div class="mail">
+        <div class="s" id="a_subject"></div>
+        <div class="m" id="a_body"></div>
+        <span class="chip mono" id="a_file"></span><span class="chip mono" id="a_date"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="b" id="closer">Quorum never sends anything on a person's behalf.</div>
+</div>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var NODE_X = [300, 570, 840, 1110, 1380];
+  var GATE_X = 1715;
+  var ROW_Y = 424;
+  var TOTAL = 65;
+  var t = 0, playing = true, last = 0;
+
+  var FB = {
+    newer: "26-0148", older: "23-0411", sponsor: "Mark Conway",
+    addr: "205 East Cold Spring Lane", hearing: "2026-09-24",
+    parcel: "5053I001", block: "5053I", lotsNow: ["001", "002"], lotsBefore: ["001", "002", "003"],
+    owner: "Loyola University Maryland, Inc", parcels: 237092, read: 1679, threads: 19, open: 1,
+    cosine: 0.943, zone: "R-1-C to EC-2", committee: "Land Use & Transportation Committee"
+  };
+  var V = Object.assign({}, FB);
+
+  function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+  function ease(x) { x = clamp(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  function win(t0, t1, dur) {
+    dur = dur || 0.7;
+    var a = ease((t - t0) / dur);
+    var b = t1 === null ? 1 : 1 - ease((t - t1) / dur);
+    return Math.min(a, b);
+  }
+  function show(el, t0, t1, dy) {
+    var k = win(t0, t1);
+    el.style.opacity = k;
+    el.style.transform = "translateY(" + ((1 - k) * (dy === undefined ? 18 : dy)) + "px)";
+  }
+  function fmtDate(iso) {
+    var m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var p = iso.split("-");
+    return m[parseInt(p[1], 10) - 1] + " " + parseInt(p[2], 10) + ", " + p[0];
+  }
+  function num(n) { return Number(n).toLocaleString("en-US"); }
+  function titleCase(s) { return String(s).toLowerCase().replace(/\b\w/g, function (c) { return c.toUpperCase(); }); }
+  function daysTo(iso) {
+    var now = new Date(); var d0 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var p = iso.split("-"); var d1 = Date.UTC(+p[0], +p[1] - 1, +p[2]);
+    return Math.round((d1 - d0) / 86400000);
+  }
+
+  function fill() {
+    $("#f_file").textContent = V.newer;
+    $("#f_sponsor").textContent = V.sponsor;
+    $("#f_addr").textContent = "205 to 209 East Cold Spring Lane";
+    $("#f_hearing").textContent = fmtDate(V.hearing);
+    $("#r_parcel").textContent = V.parcel;
+    $("#r_lots").textContent = V.lotsNow.join(", ") + "   was " + V.lotsBefore.join(", ");
+    $("#r_owner").textContent = titleCase(V.owner.replace(/, INC$/i, ""));
+    $("#r_count").textContent = num(V.parcels) + " parcels";
+    $("#c_parcel").textContent = "Exact, block " + V.block;
+    $("#c_sponsor").textContent = "Same, " + V.sponsor;
+    $("#c_zone").textContent = "Same, " + V.zone;
+    $("#c_prior").textContent = V.older + " failed at end of term";
+    $("#c_cos").textContent = V.cosine.toFixed(3);
+    $("#c_verdict").textContent = "Continuation of " + V.older;
+    $("#v_watch").textContent = V.addr;
+    $("#v_read").textContent = num(V.read);
+    $("#v_threads").textContent = num(V.threads);
+    $("#v_open").textContent = String(V.open);
+    var d = daysTo(V.hearing);
+    $("#a_subject").textContent = V.addr + " is back before the council. Hearing in " + d + " days.";
+    $("#a_body").textContent = "The same request was filed as " + V.older + " and died when the council term ended. It returned as " + V.newer + ", one lot smaller.";
+    $("#a_file").textContent = "File " + V.newer;
+    $("#a_date").textContent = "Hearing " + fmtDate(V.hearing);
+  }
+
+  function drawWires() {
+    var svg = $("#wires"), NS = "http://www.w3.org/2000/svg", html = "";
+    for (var i = 0; i < NODE_X.length - 1; i++) {
+      html += '<line id="w' + i + '" x1="' + (NODE_X[i] + 56) + '" y1="' + ROW_Y + '" x2="' + (NODE_X[i + 1] - 56) + '" y2="' + ROW_Y + '" stroke="#3D6FD1" stroke-width="3" stroke-linecap="round"/>';
+    }
+    html += '<line id="wg" x1="' + (NODE_X[4] + 56) + '" y1="' + ROW_Y + '" x2="' + (GATE_X - 70) + '" y2="' + ROW_Y + '" stroke="#FF8163" stroke-width="3" stroke-dasharray="10 10" stroke-linecap="round"/>';
+    [0, 2, 3, 4].forEach(function (i) {
+      html += '<path id="bw' + i + '" d="M 960 208 C 960 290, ' + NODE_X[i] + ' 290, ' + NODE_X[i] + ' 372" fill="none" stroke="#7CB1FF" stroke-width="2" stroke-dasharray="6 8"/>';
+    });
+    svg.innerHTML = html;
+  }
+
+  var MOVES = [
+    { at: 9.7, to: 0 }, { at: 21.0, to: 1 }, { at: 29.8, to: 2 },
+    { at: 47.1, to: 3 }, { at: 53.6, to: 4 }, { at: 59.0, to: 5 }
+  ];
+  function tokenX() {
+    var x = 110, prev = 110;
+    for (var i = 0; i < MOVES.length; i++) {
+      var target = MOVES[i].to === 5 ? GATE_X - 92 : NODE_X[MOVES[i].to];
+      if (t >= MOVES[i].at) {
+        var k = ease((t - MOVES[i].at) / 1.3);
+        x = prev + (target - prev) * k;
+        prev = target;
+      }
+    }
+    return x;
+  }
+  function activeStage() {
+    var s = -1;
+    for (var i = 0; i < MOVES.length; i++) if (t >= MOVES[i].at + 0.6) s = MOVES[i].to;
+    return s;
+  }
+
+  function render() {
+    show($("#title"), 0.2, null);
+    show($("#sub"), 0.8, null);
+    show($("#bedrock"), 4.2, null, -14);
+    show($("#frame"), 4.4, null, 0);
+    show($("#frameLabel"), 5.0, null, 0);
+    for (var i = 0; i < 5; i++) show($("#n" + i), 5.2 + i * 0.35, null, 22);
+    show($("#gate"), 59.0, null, 22);
+    show($("#panel"), 9.4, null, 26);
+
+    var wireK = ease((t - 6.6) / 1.4);
+    for (var w = 0; w < 4; w++) { var ln = $("#w" + w); if (ln) ln.style.opacity = wireK; }
+    var wg = $("#wg"); if (wg) wg.style.opacity = ease((t - 58.6) / 0.8);
+
+    var st = activeStage();
+    var modelActive = (st === 0 || st === 2 || st === 3 || st === 4);
+    [0, 2, 3, 4].forEach(function (i) {
+      var p = $("#bw" + i); if (!p) return;
+      var base = ease((t - 6.8) / 1.2) * 0.18;
+      var on = (st === i) ? (0.55 + 0.45 * Math.abs(Math.sin(t * 3.2))) : 0;
+      p.style.opacity = Math.max(base, on);
+      p.style.strokeDashoffset = -t * 40;
+    });
+    var bd = $("#bedrock .dot");
+    bd.style.opacity = t < 4.2 ? 0 : (modelActive ? 1 : 0.25);
+    $("#bedrock").style.borderColor = modelActive ? "#7CB1FF" : "#33474A";
+
+    for (var n = 0; n < 5; n++) {
+      var ring = $("#n" + n + " .ring");
+      var on2 = st === n;
+      ring.style.opacity = on2 ? (0.5 + 0.5 * Math.abs(Math.sin(t * 2.6))) : 0;
+      ring.style.transform = "scale(" + (on2 ? 1 + 0.06 * Math.sin(t * 2.6) : 1) + ")";
+      var disc = $("#n" + n + " .disc");
+      disc.style.boxShadow = on2 ? (n === 1 ? "0 0 40px rgba(233,195,119,.45)" : "0 0 40px rgba(124,177,255,.5)") : "none";
+    }
+
+    var tk = $("#token"), tl = $("#tokLabel");
+    var tx = tokenX();
+    var tv = ease((t - 8.6) / 0.8);
+    tk.style.opacity = tv;
+    tk.style.transform = "translate(" + tx + "px," + ROW_Y + "px)";
+    tl.style.opacity = tv * (t < 58 ? 1 : 1 - ease((t - 58) / 0.8));
+    tl.style.transform = "translate(" + (tx - 50) + "px," + (ROW_Y - 90) + "px)";
+    tl.textContent = "record " + V.newer;
+
+    var panes = [[9.9, 20.8], [21.4, 29.6], [30.2, 46.9], [47.5, 53.4], [54.0, null]];
+    for (var q = 0; q < 5; q++) {
+      var pane = $("#p" + q), k = win(panes[q][0], panes[q][1], 0.5);
+      pane.style.opacity = k;
+    }
+    var rowTimes = [
+      ["#p0 .row", [12.2, 13.6, 15.2, 17.0]],
+      ["#p1 .row", [23.2, 24.6, 25.8, 27.0]],
+      ["#p2 .row", [32.0, 33.4, 34.8, 36.2, 37.6]],
+      ["#p3 .row", [48.4, 49.4, 50.3, 51.2]]
+    ];
+    rowTimes.forEach(function (r) {
+      var rows = document.querySelectorAll(r[0]);
+      for (var j = 0; j < rows.length; j++) {
+        var kk = ease((t - r[1][j]) / 0.6);
+        rows[j].style.opacity = kk;
+        rows[j].style.transform = "translateX(" + ((1 - kk) * 26) + "px)";
+      }
+    });
+    var badge = $("#p1 .badge"), bk = ease((t - 25.0) / 0.6);
+    badge.style.opacity = bk; badge.style.transform = "scale(" + (0.9 + 0.1 * bk) + ")";
+
+    var cos = $("#c_cos"); cos.style.setProperty("--k", ease((t - 43.2) / 0.9));
+    var aside = $("#c_aside"); aside.style.opacity = ease((t - 43.6) / 0.6);
+    var goodRows = document.querySelectorAll("#p2 .v.good");
+    var glow = ease((t - 40.2) / 0.8);
+    for (var g = 0; g < goodRows.length; g++) goodRows[g].style.textShadow = glow ? "0 0 " + (18 * glow) + "px rgba(121,214,168,.55)" : "none";
+    var verdict = $("#c_verdict"), vk = ease((t - 38.4) / 0.7);
+    verdict.style.opacity = vk; verdict.style.transform = "translateY(" + ((1 - vk) * 14) + "px)";
+
+    var mail = $("#p4 .mail"), mk = ease((t - 55.2) / 0.8);
+    mail.style.opacity = mk; mail.style.transform = "translateY(" + ((1 - mk) * 20) + "px)";
+
+    show($("#closer"), 60.2, null, 10);
+  }
+
+  function frame(ms) {
+    var dt = last ? Math.min(0.1, (ms - last) / 1000) : 0;
+    last = ms;
+    if (playing) { t += dt; if (t > TOTAL) { t = TOTAL; playing = false; } }
+    render();
+    requestAnimationFrame(frame);
+  }
+  function fit() {
+    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    var st = $("#stage");
+    st.style.transform = "translate(" + ((window.innerWidth - 1920 * s) / 2) + "px," + ((window.innerHeight - 1080 * s) / 2) + "px) scale(" + s + ")";
+  }
+
+  window.__quorumSeek = function (s) { playing = false; t = clamp(s, 0, TOTAL); render(); return t; };
+  window.__quorumTotal = function () { return TOTAL; };
+
+  function start() {
+    for (var i = 0; i < NODE_X.length; i++) $("#n" + i).style.left = NODE_X[i] + "px";
+    fill(); drawWires(); fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("keydown", function (e) {
+      if (e.key === " ") { playing = !playing; }
+      if (e.key === "r" || e.key === "R") { t = 0; playing = true; }
+    });
+    if (/[?&]p=0/.test(location.search)) playing = false;
+    render();
+    requestAnimationFrame(frame);
+  }
+
+  function useData(d) {
+    try {
+      var th = (d.threads || []).filter(function (x) { return x.pair_id === 20; })[0];
+      if (th) {
+        var older = th.records[0], newer = th.records[th.records.length - 1];
+        var f = th.features || {};
+        V.newer = newer.file_number; V.older = older.file_number;
+        V.sponsor = (newer.sponsors || [V.sponsor])[0] || V.sponsor;
+        V.hearing = newer.hearing_date || V.hearing;
+        if (f.parcel) {
+          V.lotsNow = f.parcel.lots_a || V.lotsNow;
+          V.lotsBefore = f.parcel.lots_b || V.lotsBefore;
+          if (f.parcel.shared_parcel_ids && f.parcel.shared_parcel_ids[0]) V.parcel = f.parcel.shared_parcel_ids[0];
+        }
+        if (f.title && typeof f.title.cosine === "number") V.cosine = f.title.cosine;
+        if (newer.owner && newer.owner !== "private individual") V.owner = newer.owner;
+        if (newer.parcels && newer.parcels[0] && newer.parcels[0].block) V.block = newer.parcels[0].block;
+      }
+      if (d.counts) { V.read = d.counts.matters || V.read; V.parcels = d.counts.parcels || V.parcels; }
+      V.threads = (d.threads || []).length || V.threads;
+      V.open = (d.threads || []).filter(function (x) { return x.comment_window && x.comment_window.open; }).length || V.open;
+    } catch (e) {}
+  }
+
+  fetch("data/site.json").then(function (r) { return r.json(); }).then(function (d) { useData(d); }).catch(function () {}).then(function () {
+    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    var done = false, go = function () { if (!done) { done = true; start(); } };
+    ready.then(go, go); setTimeout(go, 2500);
+  });
+})();
+</script>
+</body>
+</html>

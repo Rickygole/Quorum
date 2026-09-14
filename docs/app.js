@@ -4,6 +4,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const el = (t, c, h) => { const n = document.createElement(t); if (c) n.className = c; if (h !== undefined) n.innerHTML = h; return n; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nodash = s => String(s ?? "").replace(/\s*[\u2014\u2013]\s*/g, ", ");
 const mono = s => `<span class="id">${esc(s)}</span>`;
 const num = n => Number(n).toLocaleString("en-US");
 const cos = v => Number(v).toFixed(3);
@@ -1286,10 +1287,10 @@ function renderLiveInvoke() {
         <div class="meta small muted">${d.live ? "live call" : "cached, " + esc(d.reason || "")}</div>
         <h3 style="margin:8px 0">${esc(d.decision || "no decision")} ${d.confidence !== undefined ? `at ${Number(d.confidence).toFixed(2)}` : ""}</h3>
         <p class="small">Labeled <strong>${esc(d.label || "?")}</strong>. The agent ${ok ? "agreed" : "did not agree"} with the label.</p>
-        <p>${esc(d.rationale || "")}</p>
+        <p>${esc(nodash(d.rationale || ""))}</p>
         <dl class="evidence">
-          <dt>Drove the decision</dt><dd>${(d.drivers || []).map(esc).join("<br>") || "none given"}</dd>
-          <dt>Explicitly set aside</dt><dd>${(d.non_drivers || []).map(esc).join("<br>") || "none given"}</dd>
+          <dt>Drove the decision</dt><dd>${(d.drivers || []).map(x => esc(nodash(x))).join("<br>") || "none given"}</dd>
+          <dt>Explicitly set aside</dt><dd>${(d.non_drivers || []).map(x => esc(nodash(x))).join("<br>") || "none given"}</dd>
           <dt>Session</dt><dd class="id">${esc(d.session_id || "n/a")}</dd>
           <dt>Runtime</dt><dd class="id" style="word-break:break-all">${esc(d.runtime_arn || live.runtime_arn || "n/a")}</dd>
           <dt>Model</dt><dd class="id">${esc(d.model_id || "n/a")}</dd>

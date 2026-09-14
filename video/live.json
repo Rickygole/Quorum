@@ -1,0 +1,8 @@
+[
+ {"js":"location.hash='#run';window.scrollTo(0,0)","settle":3.0,"frames":60},
+ {"js":"var s=document.querySelector('#live-pair'); s.value='20'; s.dispatchEvent(new Event('change'))","settle":0.4,"frames":45},
+ {"js":"document.querySelector('#live-go').click()","settle":0.5,"frames":150},
+ {"settle":24.0,"frames":90},
+ {"settle":0.05,"frames":120,"scrollFrom":0,"scrollTo":470},
+ {"settle":0.05,"frames":255,"scrollFrom":470,"scrollTo":470}
+]

@@ -1,0 +1,33 @@
+[
+ {"js":"location.hash='#thread';window.scrollTo(0,0)","settle":2.5,"frames":45},
+ {"settle":0.05,"frames":70,"scrollFrom":0,"scrollTo":760},
+ {"settle":0.05,"frames":50,"scrollFrom":760,"scrollTo":760},
+ {"settle":0.05,"frames":80,"scrollFrom":760,"scrollTo":1750},
+ {"settle":0.05,"frames":55,"scrollFrom":1750,"scrollTo":1750},
+ {"settle":0.05,"frames":80,"scrollFrom":1750,"scrollTo":2750},
+ {"settle":0.05,"frames":50,"scrollFrom":2750,"scrollTo":2750},
+
+ {"js":"location.hash='#evidence';window.scrollTo(0,0)","settle":1.8,"frames":50},
+ {"settle":0.05,"frames":70,"scrollFrom":0,"scrollTo":820},
+ {"settle":0.05,"frames":55,"scrollFrom":820,"scrollTo":820},
+
+ {"js":"location.hash='#comment';window.scrollTo(0,0)","settle":1.8,"frames":50},
+ {"settle":0.05,"frames":70,"scrollFrom":0,"scrollTo":700},
+ {"settle":0.05,"frames":60,"scrollFrom":700,"scrollTo":700},
+
+ {"js":"location.hash='#run';window.scrollTo(0,0)","settle":2.0,"frames":45},
+ {"js":"var s=document.querySelector('#live-pair'); s.value='20'; s.dispatchEvent(new Event('change'))","settle":0.8,"frames":25},
+ {"js":"document.querySelector('#live-go').click()","settle":0.6,"frames":20},
+ {"settle":3.0,"frames":12},
+ {"settle":3.0,"frames":12},
+ {"settle":3.0,"frames":12},
+ {"settle":3.0,"frames":12},
+ {"settle":3.0,"frames":12},
+ {"settle":2.0,"frames":60},
+ {"settle":0.05,"frames":80,"scrollFrom":0,"scrollTo":900},
+ {"settle":0.05,"frames":70,"scrollFrom":900,"scrollTo":900},
+
+ {"js":"location.hash='#evaluation';window.scrollTo(0,0)","settle":1.8,"frames":45},
+ {"settle":0.05,"frames":80,"scrollFrom":0,"scrollTo":1100},
+ {"settle":0.05,"frames":60,"scrollFrom":1100,"scrollTo":1100}
+]
