@@ -542,6 +542,38 @@ function citywideCard(thread) {
   return panel;
 }
 
+function renderArrives() {
+  const host = $("#arrives");
+  if (!host) return;
+  const t = (state.data.threads || []).find(x => x.comment_window && x.comment_window.open) || state.thread;
+  if (!t) { host.innerHTML = ""; return; }
+  const r = t.records[t.records.length - 1];
+  const prev = t.records[0];
+  const addr = (r.parcels[0] || {}).address || "your address";
+  const days = countdownOf(t);
+  const when = days && days.days !== null ? `in ${days.days} days` : "soon";
+  host.innerHTML = `
+    <div class="mail">
+      <div class="mail-head">
+        <div><b>To</b> the person who watches ${esc(addr)}</div>
+        <div><b>From</b> Quorum</div>
+        <div><b>Sent</b> once, because something came back</div>
+      </div>
+      <div class="mail-body"><span class="mail-sub">${esc(addr)} is back before the council, hearing ${esc(when)}</span>${esc(
+`A rezoning of ${addr} is scheduled for a public hearing on ${fmtDate(r.hearing_date)} before the ${r.committee || "Baltimore City Council"}.
+
+You have seen this before, even if nobody told you. The same request was filed as ${prev.file_number} on ${fmtDate(prev.introduced_date)} and ${statusClause(prev)}. It is back as ${r.file_number}. The file number changed, the title changed, and the land did not.
+
+What changed: it now covers lots ${(t.features.parcel.lots_a || []).join(" and ")} where the earlier bill covered ${(t.features.parcel.lots_b || []).join(", ")}.
+
+There is a comment window open. A draft is ready for you to edit and send yourself.`)}</div>
+    </div>
+    <p class="small muted" style="margin-top:12px">Most weeks this sends nothing. Quorum read
+    ${num(state.data.counts.matters)} records to find the ${state.data.threads.length} threads on this
+    site, and ${(state.data.threads || []).filter(x => x.comment_window && x.comment_window.open).length}
+    of them can still be acted on. Being quiet is the normal state.</p>`;
+}
+
 function renderCitywide() {
   const host = $("#citywide-body");
   if (!host) return;
@@ -2506,6 +2538,7 @@ async function bootInner() {
 
   renderSpine(state.thread);
   renderThread(state.thread);
+  renderArrives();
   renderCitywide();
   renderRefusal();
   renderArchive();

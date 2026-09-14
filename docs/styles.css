@@ -696,3 +696,11 @@ details.drivers li { font-size: var(--t-sm); color: var(--ink-2); }
 .cd.soon { border-left-color: var(--flag); background: linear-gradient(120deg, rgba(255,129,99,.1), rgba(19,28,26,.6) 46%); }
 .cd.soon .cd-k, .cd.soon .cd-n span { color: var(--flag); }
 .cd.soon .cd-n span { font-size: clamp(40px, 7vw, 76px); }
+
+.whatis { font-size: 17px; line-height: 1.5; max-width: 58ch; margin: 0 0 14px; opacity: .85; }
+.mail { border: 1px solid var(--rule, #A6B2AA); border-radius: 6px; overflow: hidden; max-width: 62ch; }
+.mail-head { padding: 14px 18px; border-bottom: 1px solid var(--rule, #A6B2AA); font-size: 14px; line-height: 1.7; }
+.mail-head b { font-weight: 600; }
+.mail-body { padding: 18px; font-size: 15px; line-height: 1.65; white-space: pre-wrap; }
+.mail-sub { font-size: 17px; font-weight: 600; margin: 2px 0 10px; }
+@media (max-width: 700px) { .mail-body { font-size: 14px; } }
