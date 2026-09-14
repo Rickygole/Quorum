@@ -31,7 +31,7 @@
   <rect x="60" y="206" width="1080" height="84" rx="10" fill="#111827" stroke="#475569" stroke-width="1.5"/>
   <text x="600" y="236" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">Ingestion &amp; normalization</text>
   <text x="600" y="258" text-anchor="middle" font-size="12.5" fill="#94a3b8">Parses matters, normalizes addresses, resolves block and lot references</text>
-  <text x="600" y="277" text-anchor="middle" font-size="11.5" fill="#64748b">1,679 matters read, 270 name a parcel Quorum can parse</text>
+  <text x="600" y="277" text-anchor="middle" font-size="11.5" fill="#64748b">1,679 matters read, 266 name a parcel Quorum can parse</text>
 
   <path d="M600,290 L600,320" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
 
