@@ -1,6 +1,7 @@
 # Demo video, script and shot list
 
-Target 4:24. Hard cap 5:00. Public on YouTube or Vimeo.
+Target 4:24. The published cap is 5:00, confirmed against the official rules. Check it again
+on the submission form before uploading. Public on YouTube or Vimeo.
 
 Every number spoken here is checked against `docs/data/site.json` and `eval/RESULTS.md`.
 Do not add one that is not.
@@ -99,11 +100,16 @@ Record in this order. The site lands on the hero thread with no clicking.
 8. Nav to **Feed**. Show the entries and the line about how many records were read.
 9. Nav to **Draft comment**. Show the locked file number and hearing date, the drafted
    text, and the line saying Quorum has not sent anything. Hover the button. Do not click.
-10. Nav to **Agent run**. Let the runner play. Move through the five gates. Pause on
-    Resolution, which carries no model call, and on Continuity.
-11. Nav to **Evaluation**. Stop on the baselines table, specifically the row where the
+10. Still on **Thread**, scroll to **What actually arrives** and hold on the notification for
+    five seconds. This is the product's whole premise in one artifact: the resident is not
+    watching, so something has to arrive.
+11. Nav to **Agent run**. Scroll straight past the runner to **Run it yourself**. Pick a pair
+    from the dropdown, press the button, and let it run on camera. Read the session id and the
+    latency off the screen out loud. Do not cut away while it thinks. This is the single
+    strongest shot available and it takes about ten seconds.
+12. Nav to **Evaluation**. Stop on the baselines table, specifically the row where the
     tuned two clause rule also scores 100%, then the ablation table under it.
-12. Cut back to the hero thread for the close. End on black.
+13. Cut back to the hero thread for the close. End on black.
 
 ## The last line
 
