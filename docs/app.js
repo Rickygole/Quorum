@@ -344,6 +344,28 @@ function subjectOf(thread) {
   return t.length > 62 ? t.slice(0, 59).trim() + "..." : t;
 }
 
+function dayMonth(iso) {
+  const d = new Date(iso + "T00:00:00");
+  return isNaN(d.getTime()) ? "" : `${d.getDate()} ${MONTHS[d.getMonth()]}`;
+}
+
+function tickCount(host) {
+  const n = host && host.querySelector("[data-count]");
+  if (!n || !n.dataset.count || reduced()) return;
+  const target = Number(n.dataset.count);
+  const from = Math.min(target + 30, target * 3 + 5);
+  const t0 = performance.now();
+  const dur = 1100;
+  const step = now => {
+    const k = Math.min(1, (now - t0) / dur);
+    const e = 1 - Math.pow(1 - k, 3);
+    n.textContent = num(Math.round(from + (target - from) * e));
+    if (k < 1) requestAnimationFrame(step);
+  };
+  n.textContent = num(from);
+  requestAnimationFrame(step);
+}
+
 function countdownBlock(thread) {
   const c = countdownOf(thread);
   const b = thread.records[thread.records.length - 1];
@@ -354,8 +376,9 @@ function countdownBlock(thread) {
     const word = c.days === 0 ? "Today" : c.days === 1 ? "Tomorrow" : num(c.days);
     return `
       <div class="cd${c.days <= 1 ? " soon" : ""}">
+        <span class="stamp hearing thud" aria-hidden="true">Hearing ${esc(dayMonth(c.iso))}</span>
         <p class="cd-k">Public hearing</p>
-        <p class="cd-n"><span>${word}</span>${c.days <= 1 ? "" : `<em>days away</em>`}</p>
+        <p class="cd-n"><span data-count="${c.days > 1 ? c.days : ""}">${word}</span>${c.days <= 1 ? "" : `<em>days away</em>`}</p>
         <p class="cd-meta">${esc(weekday(c.iso))}, ${esc(fmtDate(c.iso))} &middot; ${where}</p>
         <p class="cd-note">${computed} Nothing here is typed in by hand, so it reads one day lower each time the page is opened.</p>
       </div>`;
@@ -389,8 +412,8 @@ function renderHero(thread) {
 
   const eyebrow = $("#hero-eyebrow");
   if (eyebrow) {
-    eyebrow.innerHTML = `${esc(a.file_number)} &nbsp;/&nbsp; ${esc(b.file_number)} &nbsp;&middot;&nbsp; Baltimore City Council` +
-      ` &nbsp;&middot;&nbsp; ${live ? "comment window open" : "comment window closed"}`;
+    eyebrow.innerHTML = `<span class="id">${esc(a.file_number)} / ${esc(b.file_number)}</span><span aria-hidden="true">&middot;</span><span>Baltimore City Council</span>` +
+      `<span aria-hidden="true">&middot;</span><span class="chip ${live ? "on" : ""}"><span class="dotmark"></span>${live ? "comment window open" : "comment window closed"}</span>`;
   }
 
   const h1 = $("#thread-h1");
@@ -407,7 +430,7 @@ function renderHero(thread) {
   }
 
   const cd = $("#countdown");
-  if (cd) cd.innerHTML = countdownBlock(thread);
+  if (cd) { cd.innerHTML = countdownBlock(thread); tickCount(cd); }
 
   const lede = $("#hero-lede");
   if (lede) {
