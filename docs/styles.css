@@ -1,22 +1,29 @@
 :root {
-  --bg:        #0A0F0E;
-  --bg-2:      #0E1615;
-  --surface:   #131C1A;
-  --surface-2: #182421;
-  --line:      #26332F;
-  --line-2:    #364A44;
-  --ink:       #ECF2EE;
-  --ink-2:     #A9B8B1;
-  --ink-3:     #7C8C86;
-  --thread:    #7CB1FF;
-  --thread-2:  #3D6FD1;
-  --thread-dim:#1B2E52;
-  --flag:      #FF8163;
-  --gold:      #E9C377;
-  --paper:     #F1F4EE;
-  --paper-2:   #E4E8E2;
-  --paper-ink: #131C18;
-  --paper-rule:#A6B2AA;
+  --bg:        #F6F1E7;
+  --bg-2:      #EFE7D6;
+  --surface:   #FFFCF5;
+  --surface-2: #F8F2E6;
+  --line:      #DDD2BE;
+  --line-2:    #BFB29B;
+  --ink:       #1D1B18;
+  --ink-2:     #4F4A42;
+  --ink-3:     #6B645A;
+  --thread:    #1F5673;
+  --thread-2:  #2E7396;
+  --thread-dim:#DCE8EE;
+  --flag:      #A63D26;
+  --brick:     #B4442C;
+  --brick-dim: #F5DDD4;
+  --gold:      #8A5A0F;
+  --marigold:  #E8A93A;
+  --marigold-dim: #F8E3B5;
+  --open:      #2F6B4C;
+  --open-dim:  #DCEBDF;
+  --formstone: #8C877D;
+  --paper:     #FFFCF5;
+  --paper-2:   #F3ECDD;
+  --paper-ink: #1D1B18;
+  --paper-rule:#CBBFA8;
 
   --u: 8px;
   --s1: 4px;
@@ -31,16 +38,17 @@
 
   --t-xs: 12px;
   --t-sm: 14px;
-  --t-md: 16px;
-  --t-lg: 19px;
-  --t-xl: 24px;
-  --t-2xl: 32px;
+  --t-md: 17px;
+  --t-lg: 20px;
+  --t-xl: 26px;
+  --t-2xl: 34px;
 
   --r: 3px;
-  --r-lg: 6px;
+  --r-lg: 5px;
   --ease-out: cubic-bezier(.22,.72,.28,1);
   --ease-in: cubic-bezier(.5,0,.85,.3);
-  --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 18px 40px -24px rgba(0,0,0,.9);
+  --shadow: 3px 4px 0 rgba(29,27,24,.09);
+  --shadow-lift: 5px 7px 0 rgba(29,27,24,.12);
 }
 
 * { box-sizing: border-box; }
@@ -48,7 +56,8 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--ink);
   font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
   font-size: var(--t-md);
@@ -58,20 +67,27 @@ body {
   overflow-x: hidden;
 }
 
-.backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+::selection { background: var(--marigold-dim); color: var(--ink); }
+
+.backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .backdrop .grid {
-  position: absolute; inset: -10%;
+  position: absolute; inset: -140px;
   background-image:
-    linear-gradient(to right, rgba(124,177,255,.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(124,177,255,.055) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(120% 80% at 50% 0%, #000 10%, transparent 72%);
-  -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000 10%, transparent 72%);
+    linear-gradient(to right, rgba(31,86,115,.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31,86,115,.07) 1px, transparent 1px),
+    linear-gradient(to right, rgba(31,86,115,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31,86,115,.045) 1px, transparent 1px);
+  background-size: 140px 140px, 140px 140px, 35px 35px, 35px 35px;
+  transform: rotate(-8deg);
+  mask-image: radial-gradient(90% 60% at 70% 0%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(90% 60% at 70% 0%, #000 0%, transparent 75%);
+  animation: drift 90s linear infinite;
 }
 .backdrop .glow {
-  position: absolute; left: 50%; top: -280px; width: 1100px; height: 700px; transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(61,111,209,.22), transparent 70%);
+  position: absolute; right: -200px; top: -260px; width: 900px; height: 620px;
+  background: radial-gradient(closest-side, rgba(232,169,58,.16), transparent 70%);
 }
+@keyframes drift { from { background-position: 0 0, 0 0, 0 0, 0 0; } to { background-position: 140px 140px, 140px 140px, 35px 35px, 35px 35px; } }
 
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--s5); position: relative; z-index: 1; }
 
