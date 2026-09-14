@@ -12,6 +12,7 @@
 | **Built with** | [Strands Agents SDK](https://strandsagents.com), Amazon Bedrock, Amazon Bedrock AgentCore Runtime |
 | **Architecture diagram** | [docs/architecture.png](docs/architecture.png) |
 | **License** | MIT, see [LICENSE](LICENSE) |
+| **Build posts** on builder.aws | [One node with no model call](https://builder.aws.com/content/3JKSXWTbe2jJKh3dCwo27s3IVVt/agents-for-humans-why-one-node-in-my-strands-graph-makes-no-model-call), [The evaluation that ties](https://builder.aws.com/content/3JKhPGiccA0TVefvdU3EVbaNeve/agents-for-humans-publishing-the-evaluation-that-ties-instead-of-the-one-that-flatters), [Three AgentCore deploy bugs](https://builder.aws.com/content/3JKi7c1D3gsBxGX3Op6sERciFB8/agents-for-humans-three-bugs-that-only-appeared-after-deploying-to-amazon-bedrock-agentcore) |
 
 ---
 
